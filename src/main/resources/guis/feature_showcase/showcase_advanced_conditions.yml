@@ -1,0 +1,631 @@
+# ============================================================
+# FEATURE SHOWCASE — Advanced Conditions
+#
+# GUIs in this file:
+#   showcase_expression       — EXPRESSION condition (math/logic)
+#   showcase_placeholder_cmp  — PLACEHOLDER_EQUALS/CONTAINS/GREATER_THAN/LESS_THAN
+#   showcase_script           — SCRIPT condition + action
+#   showcase_inventory_types  — non-CHEST inventory_type (HOPPER, DISPENSER, etc.)
+# ============================================================
+
+
+# ── Expression Conditions ─────────────────────────────────────
+# Each button has a different EXPRESSION condition on it.
+# If the condition fails the button is replaced by the else_item.
+showcase_expression:
+  title: "&6&l∑ Expression Conditions"
+  rows: 4
+  commands: [ "showcase-expression" ]
+  main_menu: showcase_hub
+
+  items:
+
+    border:
+      slots: [ 0-8, 27-35 ]
+      material: ORANGE_STAINED_GLASS_PANE
+      name: "&8"
+
+    info:
+      slot: 4
+      material: KNOWLEDGE_BOOK
+      name: "&6&l&nExpression Conditions"
+      lore:
+        - "&7Use math/logic expressions as conditions."
+        - "&7Placeholders are resolved before evaluation."
+        - ""
+        - "&fExamples:"
+        - "  &8type: &fEXPRESSION"
+        - "  &8expression: &e%vault_eco_balance% >= 1000"
+        - "  &8expression: &e%player_level% * 2 > 30"
+        - "  &8expression: &e(%player_health% + %player_food_level%) >= 30"
+
+    # Level >= 1  (always passes for any player)
+    btn-level:
+      slot: 10
+      material: EXPERIENCE_BOTTLE
+      name: "&a&lLevel Check"
+      lore:
+        - "&7Condition: &e%player_level% >= 1"
+        - ""
+        - "&aYou meet this condition!"
+        - ""
+        - "&8(Click to run a command)"
+      conditions:
+        - type: EXPRESSION
+          expression: "%player_level% >= 1"
+      else_item:
+        material: GRAY_DYE
+        name: "&7&lLevel Check"
+        lore:
+          - "&cYou need at least level 1."
+      commands:
+        - "tell {player} &aLevel check passed!"
+
+    # Level 10+
+    btn-level10:
+      slot: 12
+      material: GOLDEN_APPLE
+      name: "&e&lLevel 10 Required"
+      lore:
+        - "&7Condition: &e%player_level% >= 10"
+        - ""
+        - "&aYou meet this condition!"
+        - ""
+        - "&8(Click to run a command)"
+      conditions:
+        - type: EXPRESSION
+          expression: "%player_level% >= 10"
+      else_item:
+        material: APPLE
+        name: "&7&lLevel 10 Required"
+        lore:
+          - "&cYou need level &e10&c to use this."
+          - "&7Your level: &e%player_level%"
+      commands:
+        - "tell {player} &eLevel 10+ check passed!"
+
+    # Multiply expression: level * 2 > 0
+    btn-multiply:
+      slot: 14
+      material: BLAZE_POWDER
+      name: "&c&lMultiply Expression"
+      lore:
+        - "&7Condition: &e%player_level% * 2 > 0"
+        - "&7(level × 2 must be greater than 0)"
+        - ""
+        - "&aYou meet this condition!"
+      conditions:
+        - type: EXPRESSION
+          expression: "%player_level% * 2 > 0"
+      else_item:
+        material: GUNPOWDER
+        name: "&7&lMultiply Expression"
+        lore:
+          - "&cCondition not met."
+      commands:
+        - "tell {player} &cMultiply expression passed!"
+
+    # Combined addition: health + food >= 10
+    btn-combined:
+      slot: 16
+      material: COOKED_BEEF
+      name: "&d&lCombined Expression"
+      lore:
+        - "&7Condition:"
+        - "&e  %player_health% + %player_food_level% >= 10"
+        - ""
+        - "&7Health + Hunger must be at least 10."
+      conditions:
+        - type: EXPRESSION
+          expression: "%player_health% + %player_food_level% >= 10"
+      else_item:
+        material: ROTTEN_FLESH
+        name: "&7&lCombined Expression"
+        lore:
+          - "&cYour health + hunger is too low."
+      commands:
+        - "tell {player} &dCombined expression passed!"
+
+    back:
+      type: BACK
+      slot: 28
+      material: RED_STAINED_GLASS_PANE
+      name: "&c&l⬅ Back"
+
+    home:
+      type: HOME
+      slot: 31
+      material: NETHER_STAR
+      name: "&e&l⌂ Home"
+
+    main-menu:
+      type: MAIN_MENU
+      slot: 34
+      material: COMPASS
+      name: "&6&lMain Menu"
+
+    close:
+      slot: 35
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
+
+
+# ── Placeholder Comparisons ───────────────────────────────────
+showcase_placeholder_cmp:
+  title: "&b&l🔍 Placeholder Comparisons"
+  rows: 4
+  commands: [ "showcase-placeholder-cmp" ]
+  main_menu: showcase_hub
+
+  items:
+
+    border:
+      slots: [ 0-8, 27-35 ]
+      material: CYAN_STAINED_GLASS_PANE
+      name: "&8"
+
+    info:
+      slot: 4
+      material: KNOWLEDGE_BOOK
+      name: "&b&l&nPlaceholder Comparisons"
+      lore:
+        - "&7Four condition types for comparing"
+        - "&7placeholder values to a fixed value."
+        - ""
+        - "&fTypes:"
+        - "  &8PLACEHOLDER_EQUALS"
+        - "  &8PLACEHOLDER_CONTAINS"
+        - "  &8PLACEHOLDER_GREATER_THAN"
+        - "  &8PLACEHOLDER_LESS_THAN"
+
+    # EQUALS — world name
+    btn-equals:
+      slot: 10
+      material: GRASS_BLOCK
+      name: "&a&lPLACEHOLDER_EQUALS"
+      lore:
+        - "&7placeholder: &f%player_world%"
+        - "&7value: &fworld"
+        - "&7ignore_case: &ftrue"
+        - ""
+        - "&7Passes if you're in the 'world' world."
+      conditions:
+        - type: PLACEHOLDER_EQUALS
+          placeholder: "%player_world%"
+          value: "world"
+          ignore_case: true
+      else_item:
+        material: NETHERRACK
+        name: "&7&lPLACEHOLDER_EQUALS"
+        lore:
+          - "&cYou are not in world 'world'."
+          - "&7Current: &e%player_world%"
+      commands:
+        - "tell {player} &aYou are in world 'world'!"
+
+    # CONTAINS — name contains a letter
+    btn-contains:
+      slot: 12
+      material: NAME_TAG
+      name: "&e&lPLACEHOLDER_CONTAINS"
+      lore:
+        - "&7placeholder: &f%player_name%"
+        - "&7value: &fa"
+        - "&7ignore_case: &ftrue"
+        - ""
+        - "&7Passes if your name contains 'a'."
+      conditions:
+        - type: PLACEHOLDER_CONTAINS
+          placeholder: "%player_name%"
+          value: "a"
+          ignore_case: true
+      else_item:
+        material: PAPER
+        name: "&7&lPLACEHOLDER_CONTAINS"
+        lore:
+          - "&cYour name doesn't contain 'a'."
+      commands:
+        - "tell {player} &eYour name contains the letter 'a'!"
+
+    # GREATER_THAN — level > 0
+    btn-greater:
+      slot: 14
+      material: ARROW
+      name: "&6&lPLACEHOLDER_GREATER_THAN"
+      lore:
+        - "&7placeholder: &f%player_level%"
+        - "&7value: &f0"
+        - ""
+        - "&7Passes if your level is above 0."
+      conditions:
+        - type: PLACEHOLDER_GREATER_THAN
+          placeholder: "%player_level%"
+          value: "0"
+      else_item:
+        material: STICK
+        name: "&7&lPLACEHOLDER_GREATER_THAN"
+        lore:
+          - "&cYour level is 0."
+      commands:
+        - "tell {player} &6Your level is above 0!"
+
+    # LESS_THAN — health < 20
+    btn-less:
+      slot: 16
+      material: POTION
+      name: "&c&lPLACEHOLDER_LESS_THAN"
+      lore:
+        - "&7placeholder: &f%player_health%"
+        - "&7value: &f20"
+        - ""
+        - "&7Passes if you're not at full health."
+      conditions:
+        - type: PLACEHOLDER_LESS_THAN
+          placeholder: "%player_health%"
+          value: "20"
+      else_item:
+        material: SPLASH_POTION
+        name: "&7&lPLACEHOLDER_LESS_THAN"
+        lore:
+          - "&aYou are at full health (20 HP)."
+          - "&7Condition requires health < 20."
+      commands:
+        - "tell {player} &cYour health is below 20!"
+
+    back:
+      type: BACK
+      slot: 28
+      material: RED_STAINED_GLASS_PANE
+      name: "&c&l⬅ Back"
+
+    home:
+      type: HOME
+      slot: 31
+      material: NETHER_STAR
+      name: "&e&l⌂ Home"
+
+    main-menu:
+      type: MAIN_MENU
+      slot: 34
+      material: COMPASS
+      name: "&6&lMain Menu"
+
+    close:
+      slot: 35
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
+
+
+# ── Script Conditions & Actions ───────────────────────────────
+showcase_script:
+  title: "&5&l📜 Script Conditions & Actions"
+  rows: 4
+  commands: [ "showcase-script" ]
+  main_menu: showcase_hub
+
+  items:
+
+    border:
+      slots: [ 0-8, 27-35 ]
+      material: PURPLE_STAINED_GLASS_PANE
+      name: "&8"
+
+    info:
+      slot: 4
+      material: WRITABLE_BOOK
+      name: "&5&l&nScript Engine"
+      lore:
+        - "&7SCRIPT conditions evaluate JavaScript."
+        - "&7SCRIPT actions execute JavaScript."
+        - ""
+        - "&7The &fplayer &7binding gives access to the"
+        - "&7Bukkit Player object directly."
+        - ""
+        - "&8Requires Nashorn (Java 8-14)"
+        - "&8or GraalVM JavaScript."
+
+    # Script condition: player.getLevel() >= 0
+    btn-cond-level:
+      slot: 10
+      material: COMMAND_BLOCK
+      name: "&d&lScript Condition"
+      lore:
+        - "&7Script:"
+        - "  &fplayer.getLevel() >= 0"
+        - ""
+        - "&7This always passes — any level works."
+        - ""
+        - "&8type: SCRIPT"
+      conditions:
+        - type: SCRIPT
+          script: "player.getLevel() >= 0"
+      else_item:
+        material: BEDROCK
+        name: "&8&lScript Condition"
+        lore:
+          - "&cScript engine unavailable on this server."
+      commands:
+        - "tell {player} &dScript condition passed!"
+
+    # Script condition: player.isOp()
+    btn-cond-op:
+      slot: 12
+      material: CHAIN_COMMAND_BLOCK
+      name: "&4&lOP-Only Script"
+      lore:
+        - "&7Script:"
+        - "  &fplayer.isOp()"
+        - ""
+        - "&7Only passes for server operators."
+      conditions:
+        - type: SCRIPT
+          script: "player.isOp()"
+      else_item:
+        material: BEDROCK
+        name: "&7&lOP-Only Script"
+        lore:
+          - "&cYou are not an operator."
+      commands:
+        - "tell {player} &4You are OP!"
+
+    # Script action: custom JS side-effect
+    btn-action:
+      slot: 14
+      material: REPEATING_COMMAND_BLOCK
+      name: "&b&lScript Action"
+      lore:
+        - "&7Clicking fires a SCRIPT action."
+        - ""
+        - "&7Script runs:"
+        - "  &fplayer.sendMessage('Hello from JS!')"
+        - ""
+        - "&8type: SCRIPT (in actions:)"
+      actions:
+        - type: SCRIPT
+          script: "player.sendMessage('\u00a7bHello from JavaScript!');"
+
+    # Combined: script condition + script action
+    btn-combined:
+      slot: 16
+      material: STRUCTURE_BLOCK
+      name: "&e&lCombined Script"
+      lore:
+        - "&7Condition: &fplayer.getHealth() > 0"
+        - "&7Action: &fJS message"
+        - ""
+        - "&7Condition + action both use SCRIPT."
+      conditions:
+        - type: SCRIPT
+          script: "player.getHealth() > 0"
+      else_item:
+        material: DEAD_BUSH
+        name: "&7&lCombined Script"
+        lore:
+          - "&cScript engine unavailable."
+      actions:
+        - type: SCRIPT
+          script: "player.sendMessage('\u00a7eYou are alive with \u00a7f' + player.getHealth() + '\u00a7e HP!');"
+
+    back:
+      type: BACK
+      slot: 28
+      material: RED_STAINED_GLASS_PANE
+      name: "&c&l⬅ Back"
+
+    home:
+      type: HOME
+      slot: 31
+      material: NETHER_STAR
+      name: "&e&l⌂ Home"
+
+    main-menu:
+      type: MAIN_MENU
+      slot: 34
+      material: COMPASS
+      name: "&6&lMain Menu"
+
+    close:
+      slot: 35
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
+
+
+# ── Inventory Types ───────────────────────────────────────────
+# Each "GUI" here uses a different inventory_type.
+# Clicking a button in the hub opens the relevant typed GUI.
+
+showcase_inv_types_hub:
+  title: "&8&l📦 Inventory Types"
+  rows: 3
+  commands: [ "showcase-inv-types" ]
+  main_menu: showcase_hub
+
+  items:
+
+    border:
+      slots: [ 0-8, 18-26 ]
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8"
+
+    info:
+      slot: 4
+      material: KNOWLEDGE_BOOK
+      name: "&f&l&nInventory Types"
+      lore:
+        - "&7Set &finventory_type: &7to use a"
+        - "&7non-chest container as the GUI."
+        - ""
+        - "&fSupported:"
+        - "  &8CHEST (default)"
+        - "  &8HOPPER · DISPENSER · DROPPER"
+        - "  &8FURNACE · BLAST_FURNACE · SMOKER"
+        - "  &8BREWING_STAND · CRAFTING"
+
+    btn-hopper:
+      type: INVENTORY
+      slot: 10
+      inventory: showcase_hopper
+      material: HOPPER
+      name: "&7&lHopper GUI"
+      lore:
+        - "&7inventory_type: &fHOPPER"
+        - "&75 slots"
+        - ""
+        - "&eClick →"
+
+    btn-dispenser:
+      type: INVENTORY
+      slot: 12
+      inventory: showcase_dispenser
+      material: DISPENSER
+      name: "&8&lDispenser GUI"
+      lore:
+        - "&7inventory_type: &fDISPENSER"
+        - "&79 slots (3×3)"
+        - ""
+        - "&eClick →"
+
+    btn-furnace:
+      type: INVENTORY
+      slot: 14
+      inventory: showcase_furnace
+      material: FURNACE
+      name: "&6&lFurnace GUI"
+      lore:
+        - "&7inventory_type: &fFURNACE"
+        - "&73 slots"
+        - ""
+        - "&eClick →"
+
+    close:
+      slot: 22
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
+
+
+# Hopper: 5 slots (0-4)
+showcase_hopper:
+  title: "&7Hopper GUI"
+  inventory_type: HOPPER
+  commands: [ "showcase-hopper" ]
+  main_menu: showcase_hub
+
+  items:
+
+    slot0:
+      slot: 0
+      material: HOPPER
+      name: "&7Slot 0"
+      lore:
+        - "&8inventory_type: HOPPER"
+        - "&8Only 5 slots available (0–4)."
+
+    slot1:
+      slot: 1
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8Slot 1"
+
+    slot2:
+      slot: 2
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8Slot 2"
+
+    slot3:
+      slot: 3
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8Slot 3"
+
+    close:
+      slot: 4
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
+
+
+# Dispenser: 9 slots (3×3, slots 0-8)
+showcase_dispenser:
+  title: "&8Dispenser GUI"
+  inventory_type: DISPENSER
+  commands: [ "showcase-dispenser" ]
+  main_menu: showcase_hub
+
+  items:
+
+    slot0:
+      slot: 0
+      material: DISPENSER
+      name: "&8Slot 0"
+      lore:
+        - "&8inventory_type: DISPENSER"
+        - "&83×3 = 9 slots (0–8)."
+
+    slot1:
+      slot: 1
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8Slot 1"
+    slot2:
+      slot: 2
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8Slot 2"
+    slot3:
+      slot: 3
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8Slot 3"
+    slot5:
+      slot: 5
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8Slot 5"
+    slot6:
+      slot: 6
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8Slot 6"
+    slot7:
+      slot: 7
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8Slot 7"
+
+    close:
+      slot: 4
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
+
+
+# Furnace: 3 slots (0=input, 1=fuel, 2=output)
+showcase_furnace:
+  title: "&6Furnace GUI"
+  inventory_type: FURNACE
+  commands: [ "showcase-furnace" ]
+  auto-convert: true
+  main_menu: showcase_hub
+
+  items:
+
+    input:
+      slot: 0
+      material: IRON_ORE
+      name: "&7Input Slot (0)"
+      lore:
+        - "&8inventory_type: FURNACE"
+        - "&8Slot 0 = item to smelt"
+
+    fuel:
+      slot: 1
+      material: COAL
+      name: "&6Fuel Slot (1)"
+      lore:
+        - "&8Slot 1 = fuel"
+
+    output:
+      slot: 2
+      material: IRON_INGOT
+      name: "&aOutput Slot (2)"
+      lore:
+        - "&8Slot 2 = result"
+        - ""
+        - "&eClick to close"
+      close: true
