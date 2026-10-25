@@ -1,0 +1,250 @@
+# ============================================================
+# FEATURE SHOWCASE — Switch & Input Demos
+#
+# GUIs in this file:
+#   showcase_switch  — SWITCH buttons (multi-state toggles)
+#   showcase_input   — INPUT slot (item placement detection)
+# ============================================================
+
+# ── Switch Demo ───────────────────────────────────────────────
+# Three SWITCH buttons, each with a different number of states.
+# The key: value is matched against the buttons: map on every tick.
+# Replace the static keys with %papi_placeholders% for live data.
+showcase_switch:
+  title: "&a&l⚙ Switch Demo"
+  rows: 4
+  commands: [ "showcase-switch" ]
+  main_menu: showcase_hub
+
+  items:
+
+    border:
+      slots: [ 0-8, 27-35 ]
+      material: LIME_STAINED_GLASS_PANE
+      name: "&8"
+
+    info:
+      slot: 4
+      material: KNOWLEDGE_BOOK
+      name: "&a&l&nSwitch Buttons"
+      lore:
+        - "&7Each SWITCH evaluates a &fkey:&7 value"
+        - "&7(or a PAPI placeholder) every 10 ticks"
+        - "&7and displays the matching button."
+        - ""
+        - "&7The click handler re-evaluates at"
+        - "&7click time and runs that state's commands."
+
+    # 2-state toggle (ON / OFF)
+    switch-toggle:
+      type: SWITCH
+      slot: 10
+      key: "on"                    # replace with %some_placeholder% for live data
+      material: ORANGE_DYE
+      name: "&6Unknown State"
+      buttons:
+        "on":
+          material: LIME_DYE
+          name: "&a&lFeature: &2ON"
+          lore:
+            - "&7The feature is currently &aenabled&7."
+            - ""
+            - "&eClick &7to disable"
+          commands:
+            - "say {player} turned the feature OFF"
+        "off":
+          material: GRAY_DYE
+          name: "&7&lFeature: &8OFF"
+          lore:
+            - "&7The feature is currently &cdisabled&7."
+            - ""
+            - "&eClick &7to enable"
+          commands:
+            - "say {player} turned the feature ON"
+
+    # 3-state cycle (easy / normal / hard)
+    switch-difficulty:
+      type: SWITCH
+      slot: 13
+      key: "normal"
+      material: YELLOW_WOOL
+      name: "&eUnknown Difficulty"
+      buttons:
+        "easy":
+          material: LIME_WOOL
+          name: "&a&lDifficulty: &2EASY"
+          lore:
+            - "&7Click to set &eNormal"
+          commands:
+            - "say {player} chose Normal difficulty"
+        "normal":
+          material: YELLOW_WOOL
+          name: "&e&lDifficulty: &6NORMAL"
+          lore:
+            - "&7Click to set &cHard"
+          commands:
+            - "say {player} chose Hard difficulty"
+        "hard":
+          material: RED_WOOL
+          name: "&c&lDifficulty: &4HARD"
+          lore:
+            - "&7Click to set &aEasy"
+          commands:
+            - "say {player} chose Easy difficulty"
+
+    # 4-state cycle (language selector)
+    switch-lang:
+      type: SWITCH
+      slot: 16
+      key: "en"
+      material: PAPER
+      name: "&7Unknown Language"
+      buttons:
+        "en":
+          material: PAPER
+          name: "&f&l🇬🇧 English"
+          lore:
+            - "&7Click to switch to &eEspañol"
+          commands:
+            - "say {player} selected Spanish"
+        "es":
+          material: PAPER
+          name: "&e&l🇪🇸 Español"
+          lore:
+            - "&7Click to switch to &bFrançais"
+          commands:
+            - "say {player} selected French"
+        "fr":
+          material: PAPER
+          name: "&b&l🇫🇷 Français"
+          lore:
+            - "&7Click to switch to &aDeutsch"
+          commands:
+            - "say {player} selected German"
+        "de":
+          material: PAPER
+          name: "&a&l🇩🇪 Deutsch"
+          lore:
+            - "&7Click to switch to &fEnglish"
+          commands:
+            - "say {player} selected English"
+
+    back:
+      type: BACK
+      slot: 28
+      material: RED_STAINED_GLASS_PANE
+      name: "&c&l⬅ Back"
+
+    home:
+      type: HOME
+      slot: 31
+      material: NETHER_STAR
+      name: "&e&l⌂ Home"
+
+    main-menu:
+      type: MAIN_MENU
+      slot: 34
+      material: COMPASS
+      name: "&6&lMain Menu"
+
+    close:
+      slot: 35
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
+
+
+# ── Input Slot Demo ───────────────────────────────────────────
+# Two INPUT slots to show the feature side by side:
+#   Left slot  — item is consumed (remove-on-place: true)
+#   Right slot — item stays (remove-on-place: false, player removes it)
+showcase_input:
+  title: "&c&l📥 Input Slot Demo"
+  rows: 4
+  commands: [ "showcase-input" ]
+  auto-convert: true
+  main_menu: showcase_hub
+
+  items:
+
+    border:
+      slots: [ 0-8, 27-35 ]
+      material: RED_STAINED_GLASS_PANE
+      name: "&8"
+
+    info:
+      slot: 4
+      material: KNOWLEDGE_BOOK
+      name: "&c&l&nInput Slots"
+      lore:
+        - "&7INPUT slots let players place items"
+        - "&7inside the GUI inventory."
+        - ""
+        - "&7When an item is detected, all"
+        - "&7on-place: commands fire with:"
+        - "  &f%input_item_material%"
+        - "  &f%input_item_name%"
+        - "  &f%input_item_amount%"
+        - ""
+        - "&7remove-on-place: &ctrue &8— item consumed"
+        - "&7remove-on-place: &afalse &8— item stays"
+
+    # Left: item is consumed after commands fire
+    input-consume:
+      type: INPUT
+      slot: 11
+      material: MAGMA_BLOCK
+      name: "&c&l[ Sacrifice Slot ]"
+      lore:
+        - "&7Drop an item here."
+        - "&cIt will be consumed."
+        - ""
+        - "&8on-place fires broadcast + give diamond"
+      on-place:
+        - "broadcast &6{player} &7sacrificed &e%input_item_name% &8×&e%input_item_amount%&7!"
+        - "give {player} diamond 1"
+      remove-on-place: true
+
+    filler-mid:
+      slot: 13
+      material: BLACK_STAINED_GLASS_PANE
+      name: "&8 VS "
+
+    # Right: item stays in the slot, player takes it back
+    input-keep:
+      type: INPUT
+      slot: 15
+      material: CYAN_CONCRETE
+      name: "&b&l[ Inspect Slot ]"
+      lore:
+        - "&7Drop an item here."
+        - "&aIt stays in the slot."
+        - ""
+        - "&8on-place fires a broadcast only"
+      on-place:
+        - "broadcast &b{player} &7is inspecting &e%input_item_name%&7!"
+      remove-on-place: false
+
+    back:
+      type: BACK
+      slot: 28
+      material: RED_STAINED_GLASS_PANE
+      name: "&c&l⬅ Back"
+
+    home:
+      type: HOME
+      slot: 31
+      material: NETHER_STAR
+      name: "&e&l⌂ Home"
+
+    main-menu:
+      type: MAIN_MENU
+      slot: 34
+      material: COMPASS
+      name: "&6&lMain Menu"
+
+    close:
+      slot: 35
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
