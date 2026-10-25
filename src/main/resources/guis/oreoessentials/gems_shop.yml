@@ -1,0 +1,42 @@
+# ============================================================
+# EXAMPLE 2 — OREO CURRENCY  (OreoEssentials custom currency)
+# Requires & deducts a balance from a custom OreoEssentials
+# currency. Replace "gems" with your actual currency ID.
+# Needs: OreoEssentials
+# ============================================================
+gems_shop:
+  title: "&d&l💎 Gems Shop"
+  rows: 3
+  commands: [ "gemsshop" ]
+  auto-convert: true
+  items:
+    "10":
+      material: DIAMOND
+      name: "&b&l5 Diamonds"
+      lore:
+        - "&ePrice: &d100 Gems"
+      commands:
+        - "give {player} diamond 5"
+      close: true
+      conditions:
+        - type: OREO_CURRENCY
+          currency: gems         # your OreoEssentials currency ID
+          amount: 100
+
+    "12":
+      material: EMERALD
+      name: "&a&l10 Emeralds"
+      lore:
+        - "&ePrice: &d250 Gems"
+      commands:
+        - "give {player} emerald 10"
+      close: true
+      conditions:
+        - type: OREO_CURRENCY
+          currency: gems
+          amount: 250
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
