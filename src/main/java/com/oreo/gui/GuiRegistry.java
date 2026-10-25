@@ -30,6 +30,7 @@ public class GuiRegistry {
     private final ConditionListParser conditionListParser;
     private final GuiItemParser itemParser;
     private final BedrockFormParser bedrockParser;
+    private final AnimationConfigParser animationParser;
 
     public GuiRegistry(SmartMenus plugin) {
         this.plugin = plugin;
@@ -37,6 +38,7 @@ public class GuiRegistry {
         this.conditionListParser = new ConditionListParser(plugin, conditionFactory);
         this.itemParser = new GuiItemParser(plugin, conditionListParser);
         this.bedrockParser = new BedrockFormParser(plugin, conditionListParser);
+        this.animationParser = new AnimationConfigParser(plugin, itemParser);
     }
 
     public void cacheNpcBinding(int npcId, String guiId) { npcToGuiMap.put(npcId, guiId); }
@@ -130,7 +132,8 @@ public class GuiRegistry {
                 || section.isSet("items")
                 || section.isSet("commands")
                 || section.isSet("inventory-type")
-                || section.isSet("inventory_type"));
+                || section.isSet("inventory_type")
+                || section.isSet("animations"));
     }
 
     private GuiDefinition loadGuiDefinition(String id, ConfigurationSection guiSection) {
@@ -290,6 +293,13 @@ public class GuiRegistry {
             openCooldown = CooldownConfig.parse(cooldownSection, "gui:" + id);
         }
 
+        Map<String, com.oreo.animation.GuiAnimation> animations =
+                animationParser.parse(id, guiSection.getConfigurationSection("animations"));
+        if (!animations.isEmpty()) {
+            plugin.getLogger().info("  GUI '" + id + "': loaded " + animations.size() + " animation(s): "
+                    + String.join(", ", animations.keySet()));
+        }
+
         return new GuiDefinition.Builder(id, title)
                 .rows(rows)
                 .items(items)
@@ -310,6 +320,7 @@ public class GuiRegistry {
                 .openSoundPitch(openSoundPitch)
                 .bottomInventoryMode(bottomInventoryMode)
                 .openCooldown(openCooldown)
+                .animations(animations)
                 .build();
     }
 

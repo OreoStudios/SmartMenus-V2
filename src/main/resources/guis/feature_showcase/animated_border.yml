@@ -1,0 +1,97 @@
+# Two moving trails like the Meteor Strike reference. Usage: /animatedborder
+# Static controls stay inside the perimeter so the animation cannot replace them.
+animated_border:
+  title: "&6&lMeteor Strike"
+  rows: 5
+  commands: [ "animatedborder" ]
+  items:
+    info:
+      slot: 22
+      material: NETHER_STAR
+      name: "&e&lMoving Border Demo"
+      lore:
+        - "&7Two trails circle the border."
+      glow: true
+    close:
+      slot: 31
+      material: BARRIER
+      name: "&cClose"
+      close: true
+  animations:
+    border:
+      interval: 2
+      playback: LOOP
+      autoplay: true
+      frames:
+        - slots:
+            "1,2,3,4,5,6,38,39,40,41,42,43": { material: GRAY_STAINED_GLASS_PANE, name: "&8" }
+            "0,44": { material: YELLOW_STAINED_GLASS_PANE, name: "&8" }
+            "9,18,26,35": { material: ORANGE_STAINED_GLASS_PANE, name: "&8" }
+            "8,17,27,36": { material: RED_STAINED_GLASS_PANE, name: "&8" }
+            "7,37": { material: BROWN_STAINED_GLASS_PANE, name: "&8" }
+        - slots:
+            "2,3,4,5,6,7,37,38,39,40,41,42": { material: GRAY_STAINED_GLASS_PANE, name: "&8" }
+            "1,43": { material: YELLOW_STAINED_GLASS_PANE, name: "&8" }
+            "0,9,35,44": { material: ORANGE_STAINED_GLASS_PANE, name: "&8" }
+            "17,18,26,27": { material: RED_STAINED_GLASS_PANE, name: "&8" }
+            "8,36": { material: BROWN_STAINED_GLASS_PANE, name: "&8" }
+        - slots:
+            "3,4,5,6,7,8,36,37,38,39,40,41": { material: GRAY_STAINED_GLASS_PANE, name: "&8" }
+            "2,42": { material: YELLOW_STAINED_GLASS_PANE, name: "&8" }
+            "0,1,43,44": { material: ORANGE_STAINED_GLASS_PANE, name: "&8" }
+            "9,18,26,35": { material: RED_STAINED_GLASS_PANE, name: "&8" }
+            "17,27": { material: BROWN_STAINED_GLASS_PANE, name: "&8" }
+        - slots:
+            "4,5,6,7,8,17,27,36,37,38,39,40": { material: GRAY_STAINED_GLASS_PANE, name: "&8" }
+            "3,41": { material: YELLOW_STAINED_GLASS_PANE, name: "&8" }
+            "1,2,42,43": { material: ORANGE_STAINED_GLASS_PANE, name: "&8" }
+            "0,9,35,44": { material: RED_STAINED_GLASS_PANE, name: "&8" }
+            "18,26": { material: BROWN_STAINED_GLASS_PANE, name: "&8" }
+        - slots:
+            "5,6,7,8,17,18,26,27,36,37,38,39": { material: GRAY_STAINED_GLASS_PANE, name: "&8" }
+            "4,40": { material: YELLOW_STAINED_GLASS_PANE, name: "&8" }
+            "2,3,41,42": { material: ORANGE_STAINED_GLASS_PANE, name: "&8" }
+            "0,1,43,44": { material: RED_STAINED_GLASS_PANE, name: "&8" }
+            "9,35": { material: BROWN_STAINED_GLASS_PANE, name: "&8" }
+        - slots:
+            "6,7,8,9,17,18,26,27,35,36,37,38": { material: GRAY_STAINED_GLASS_PANE, name: "&8" }
+            "5,39": { material: YELLOW_STAINED_GLASS_PANE, name: "&8" }
+            "3,4,40,41": { material: ORANGE_STAINED_GLASS_PANE, name: "&8" }
+            "1,2,42,43": { material: RED_STAINED_GLASS_PANE, name: "&8" }
+            "0,44": { material: BROWN_STAINED_GLASS_PANE, name: "&8" }
+        - slots:
+            "0,7,8,9,17,18,26,27,35,36,37,44": { material: GRAY_STAINED_GLASS_PANE, name: "&8" }
+            "6,38": { material: YELLOW_STAINED_GLASS_PANE, name: "&8" }
+            "4,5,39,40": { material: ORANGE_STAINED_GLASS_PANE, name: "&8" }
+            "2,3,41,42": { material: RED_STAINED_GLASS_PANE, name: "&8" }
+            "1,43": { material: BROWN_STAINED_GLASS_PANE, name: "&8" }
+        - slots:
+            "0,1,8,9,17,18,26,27,35,36,43,44": { material: GRAY_STAINED_GLASS_PANE, name: "&8" }
+            "7,37": { material: YELLOW_STAINED_GLASS_PANE, name: "&8" }
+            "5,6,38,39": { material: ORANGE_STAINED_GLASS_PANE, name: "&8" }
+            "3,4,40,41": { material: RED_STAINED_GLASS_PANE, name: "&8" }
+            "2,42": { material: BROWN_STAINED_GLASS_PANE, name: "&8" }
+        - slots:
+            "0,1,2,9,17,18,26,27,35,42,43,44": { material: GRAY_STAINED_GLASS_PANE, name: "&8" }
+            "8,36": { material: YELLOW_STAINED_GLASS_PANE, name: "&8" }
+            "6,7,37,38": { material: ORANGE_STAINED_GLASS_PANE, name: "&8" }
+            "4,5,39,40": { material: RED_STAINED_GLASS_PANE, name: "&8" }
+            "3,41": { material: BROWN_STAINED_GLASS_PANE, name: "&8" }
+        - slots:
+            "0,1,2,3,9,18,26,35,41,42,43,44": { material: GRAY_STAINED_GLASS_PANE, name: "&8" }
+            "17,27": { material: YELLOW_STAINED_GLASS_PANE, name: "&8" }
+            "7,8,36,37": { material: ORANGE_STAINED_GLASS_PANE, name: "&8" }
+            "5,6,38,39": { material: RED_STAINED_GLASS_PANE, name: "&8" }
+            "4,40": { material: BROWN_STAINED_GLASS_PANE, name: "&8" }
+        - slots:
+            "0,1,2,3,4,9,35,40,41,42,43,44": { material: GRAY_STAINED_GLASS_PANE, name: "&8" }
+            "18,26": { material: YELLOW_STAINED_GLASS_PANE, name: "&8" }
+            "8,17,27,36": { material: ORANGE_STAINED_GLASS_PANE, name: "&8" }
+            "6,7,37,38": { material: RED_STAINED_GLASS_PANE, name: "&8" }
+            "5,39": { material: BROWN_STAINED_GLASS_PANE, name: "&8" }
+        - slots:
+            "0,1,2,3,4,5,39,40,41,42,43,44": { material: GRAY_STAINED_GLASS_PANE, name: "&8" }
+            "9,35": { material: YELLOW_STAINED_GLASS_PANE, name: "&8" }
+            "17,18,26,27": { material: ORANGE_STAINED_GLASS_PANE, name: "&8" }
+            "7,8,36,37": { material: RED_STAINED_GLASS_PANE, name: "&8" }
+            "6,38": { material: BROWN_STAINED_GLASS_PANE, name: "&8" }

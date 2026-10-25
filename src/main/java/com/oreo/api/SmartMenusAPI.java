@@ -64,6 +64,22 @@ public final class SmartMenusAPI {
         return true;
     }
 
+    /**
+     * Opens a GUI for {@code viewer} while displaying {@code target}'s data.
+     *
+     * <p>The viewer is the player who has the menu open; the target is the player whose data
+     * dynamic sources (e.g. {@code PLAYER_ENDERCHEST}, {@code PLAYER_INVENTORY}) resolve against.
+     * Passing {@code null} (or the viewer) as the target behaves like {@link #openGui(Player, String)}.</p>
+     *
+     * @return {@code false} if the GUI id is unknown
+     */
+    public boolean openGuiFor(Player viewer, String guiId, Player target) {
+        GuiDefinition def = plugin.getGuiRegistry().getGui(guiId);
+        if (def == null) return false;
+        return com.oreo.gui.GuiOpener.open(plugin, viewer, def,
+                com.oreo.gui.GuiOpener.OpenOptions.unchecked(), target);
+    }
+
     public boolean isGuiLoaded(String guiId) {
         return plugin.getGuiRegistry().getGui(guiId) != null;
     }

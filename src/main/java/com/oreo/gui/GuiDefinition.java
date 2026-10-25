@@ -3,6 +3,7 @@ package com.oreo.gui;
 import com.oreo.SmartMenus;
 import com.oreo.action.Action;
 import com.oreo.bedrock.BedrockFormDefinition;
+import com.oreo.animation.GuiAnimation;
 import com.oreo.condition.Condition;
 import com.oreo.util.ColorUtil;
 import fr.minuskube.inv.InventoryManager;
@@ -52,6 +53,7 @@ public class GuiDefinition {
     private final float openSoundPitch;
     private final BottomInventoryMode bottomInventoryMode;
     private final com.oreo.util.CooldownConfig openCooldown;
+    private final Map<String, GuiAnimation> animations;
 
     private GuiDefinition(String id, String title, int rows, Map<Integer, GuiItem> items,
                           List<String> commands, Integer npcId,
@@ -61,7 +63,8 @@ public class GuiDefinition {
                           BedrockFormDefinition bedrockDefinition, boolean bedrockAutoConvert,
                           List<Condition> openRequirements, List<Action> openActions, List<Action> closeActions,
                           String openSound, float openSoundVolume, float openSoundPitch,
-                          BottomInventoryMode bottomInventoryMode, com.oreo.util.CooldownConfig openCooldown) {
+                          BottomInventoryMode bottomInventoryMode, com.oreo.util.CooldownConfig openCooldown,
+                          Map<String, GuiAnimation> animations) {
         this.id = id;
         this.title = title;
         this.rows = rows;
@@ -83,6 +86,7 @@ public class GuiDefinition {
         this.openSoundPitch = openSoundPitch;
         this.bottomInventoryMode = bottomInventoryMode != null ? bottomInventoryMode : BottomInventoryMode.DEFAULT;
         this.openCooldown = openCooldown;
+        this.animations = animations != null ? animations : Collections.emptyMap();
     }
 
     public static final class Builder {
@@ -107,6 +111,7 @@ public class GuiDefinition {
         private float openSoundPitch = 1.0f;
         private BottomInventoryMode bottomInventoryMode = BottomInventoryMode.DEFAULT;
         private com.oreo.util.CooldownConfig openCooldown = null;
+        private Map<String, GuiAnimation> animations = Collections.emptyMap();
 
         public Builder(String id, String title) {
             this.id = id;
@@ -132,12 +137,13 @@ public class GuiDefinition {
         public Builder openSoundPitch(float openSoundPitch) { this.openSoundPitch = openSoundPitch; return this; }
         public Builder bottomInventoryMode(BottomInventoryMode bottomInventoryMode) { this.bottomInventoryMode = bottomInventoryMode; return this; }
         public Builder openCooldown(com.oreo.util.CooldownConfig openCooldown) { this.openCooldown = openCooldown; return this; }
+        public Builder animations(Map<String, GuiAnimation> animations) { this.animations = animations; return this; }
 
         public GuiDefinition build() {
             return new GuiDefinition(id, title, rows, items, commands, npcId, fillItem, inventoryType,
                     commandArgs, useBottomInventory, bottomItems, bedrockDefinition, bedrockAutoConvert,
                     openRequirements, openActions, closeActions, openSound, openSoundVolume, openSoundPitch,
-                    bottomInventoryMode, openCooldown);
+                    bottomInventoryMode, openCooldown, animations);
         }
     }
 
@@ -163,6 +169,8 @@ public class GuiDefinition {
     public float getOpenSoundPitch() { return openSoundPitch; }
     public BottomInventoryMode getBottomInventoryMode() { return bottomInventoryMode; }
     public com.oreo.util.CooldownConfig getOpenCooldown() { return openCooldown; }
+    public Map<String, GuiAnimation> getAnimations() { return Collections.unmodifiableMap(animations); }
+    public boolean hasAnimations() { return !animations.isEmpty(); }
     public boolean hasNpcBinding() { return npcId != null; }
     public boolean isNpcBound(int checkNpcId) { return npcId != null && npcId == checkNpcId; }
 

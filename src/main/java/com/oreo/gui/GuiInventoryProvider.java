@@ -2,6 +2,9 @@ package com.oreo.gui;
 
 import com.oreo.SmartMenus;
 import com.oreo.action.Action;
+import com.oreo.animation.AnimationController;
+import com.oreo.animation.FrameRenderer;
+import com.oreo.animation.GuiAnimation;
 import com.oreo.condition.Condition;
 import com.oreo.items.ItemProvider;
 import com.oreo.util.ColorUtil;
@@ -41,6 +44,9 @@ public class GuiInventoryProvider implements InventoryProvider {
 
     private static final Map<UUID, Map<Integer, ItemStack>> inputSlotPlaceholders = new ConcurrentHashMap<>();
 
+    /** One {@link AnimationController} per open menu (keyed by viewer). Advanced from {@link #update}. */
+    private static final Map<UUID, AnimationController> animationControllers = new ConcurrentHashMap<>();
+
     private static NamespacedKey GUI_ITEM_KEY = null;
 
     public static void initKeys(SmartMenus plugin) {
@@ -64,6 +70,21 @@ public class GuiInventoryProvider implements InventoryProvider {
     public static ItemStack getInputSlotPlaceholder(UUID playerId, int slot) {
         Map<Integer, ItemStack> map = inputSlotPlaceholders.get(playerId);
         return map != null ? map.get(slot) : null;
+    }
+
+    /**
+     * @return the live {@link AnimationController} for the given viewer's open menu, or {@code null}
+     *         if the player has no menu open or the menu has no animations. Lets other code pause,
+     *         resume, restart or stop animations at runtime.
+     */
+    public static AnimationController getAnimationController(UUID playerId) {
+        return animationControllers.get(playerId);
+    }
+
+    /** Reads the {@link MenuContext} carried by the open menu, defaulting to a viewer-only context. */
+    private MenuContext context(Player viewer, InventoryContents contents) {
+        MenuContext ctx = contents.property(MenuContext.PROPERTY_KEY);
+        return ctx != null ? ctx : new MenuContext(viewer);
     }
 
     public GuiInventoryProvider(GuiDefinition definition, SmartMenus plugin, ItemProvider itemProvider) {
@@ -91,7 +112,9 @@ public class GuiInventoryProvider implements InventoryProvider {
     @Override
     public void init(Player player, InventoryContents contents) {
         activeGuiDefs.put(player.getUniqueId(), definition);
-        Map<String, String> openVars = buildVars(player);
+        MenuContext ctx = context(player, contents);
+        Player dataOwner = ctx.dataOwner();
+        Map<String, String> openVars = buildVars(player, dataOwner);
         for (Action action : definition.getOpenActions()) {
             try { action.execute(plugin, player, openVars); } catch (Exception e) {
                 plugin.getLogger().warning("Open action error in GUI " + definition.getId() + ": " + e.getMessage());
@@ -109,7 +132,7 @@ public class GuiInventoryProvider implements InventoryProvider {
 
         for (GuiItem guiItem : definition.getItems().values()) {
             if (guiItem.getButtonType() == ButtonType.DYNAMIC_PAGINATION) continue;
-            renderGuiItem(player, contents, guiItem, buildVars(player));
+            renderGuiItem(player, contents, guiItem, buildVars(player, dataOwner));
         }
         renderDynamicItems(player, contents);
 
@@ -132,9 +155,48 @@ public class GuiInventoryProvider implements InventoryProvider {
                 }
             }
         }
+
+        setupAnimations(player, contents, ctx);
+    }
+
+    /**
+     * Creates the {@link AnimationController} for this open menu, registers every configured
+     * animation and paints their initial frames. Animations are advanced later from {@link #update}
+     * on the existing per-player SmartInvs update lifecycle — no extra scheduler task is created.
+     */
+    private void setupAnimations(Player player, InventoryContents contents, MenuContext ctx) {
+        if (!definition.hasAnimations()) return;
+
+        AnimationController controller = new AnimationController();
+        for (Map.Entry<String, GuiAnimation> entry : definition.getAnimations().entrySet()) {
+            controller.register(entry.getKey(), entry.getValue());
+        }
+        animationControllers.put(player.getUniqueId(), controller);
+        contents.setProperty(AnimationController.CONTENTS_PROPERTY, controller);
+
+        // Paint the first frame immediately so animated slots are never briefly empty.
+        controller.renderCurrent(contents, frameRenderer(player, ctx.dataOwner()));
+    }
+
+    /** Builds a {@link FrameRenderer} that turns a frame's {@link GuiItem} into a live clickable item. */
+    private FrameRenderer frameRenderer(Player player, Player dataOwner) {
+        Map<String, String> vars = buildVars(player, dataOwner);
+        return (slot, item) -> {
+            if (item == null) return null;
+            ItemStack stack = buildItemStack(item, player, vars, null);
+            if (stack == null) return null;
+            if (item.getClickActions().isEmpty() && item.getCommands().isEmpty()) {
+                return ClickableItem.empty(stack);
+            }
+            return ClickableItem.of(stack, e ->
+                    executeClickActions(plugin, player, item, e.getClick().name(), vars));
+        };
     }
 
     private void renderDynamicItems(Player player, InventoryContents contents) {
+        MenuContext ctx = context(player, contents);
+        Player dataOwner = ctx.dataOwner();
+
         Map<String, List<GuiItem>> groups = new LinkedHashMap<>();
         for (GuiItem guiItem : definition.getItems().values()) {
             if (guiItem.getButtonType() != ButtonType.DYNAMIC_PAGINATION) continue;
@@ -145,29 +207,43 @@ public class GuiInventoryProvider implements InventoryProvider {
         for (List<GuiItem> group : groups.values()) {
             group.sort(Comparator.comparingInt(GuiItem::getSlot));
             GuiItem template = group.get(0);
-            List<Map<String, Object>> elements = DynamicSourceProvider.generate(template.getDynamicSource(), player);
+            List<Map<String, Object>> elements = DynamicSourceProvider.generate(template.getDynamicSource(), player, dataOwner);
             int count = Math.min(group.size(), elements.size());
             for (int i = 0; i < count; i++) {
                 GuiItem slotItem = group.get(i);
-                Map<String, String> vars = buildVars(player);
+                Map<String, String> vars = buildVars(player, dataOwner);
                 Map<String, Object> element = elements.get(i);
                 putElementVars(vars, element);
 
                 ItemStack stack = buildItemStack(template, player, vars, element);
                 if (stack == null) continue;
 
-                contents.set(slotItem.getSlot(), ClickableItem.of(stack, e -> {
+                contents.set(slotItem.getSlot(), dynamicItem(ctx, template.getDynamicSource(), stack, e -> {
                     String clickKey = e.getClick().name();
                     executeClickActions(plugin, player, template, clickKey, vars);
                     if (template.isTakeItem()) {
-                        removeSourceItem(player, element);
+                        // Items are removed from the data owner's inventory/ender chest (which is the
+                        // viewer for normal menus, or the target for /enderchestview <player>).
+                        removeSourceItem(dataOwner, element);
                     }
                     if (template.isGiveItem()) {
+                        // The clicking viewer receives the item.
                         giveSourceItem(player, element, stack);
                     }
                 }));
             }
         }
+    }
+
+    /** Player inventory snapshots belonging to someone else are inspection-only. */
+    static ClickableItem dynamicItem(MenuContext context, DynamicSource source, ItemStack stack,
+                                     java.util.function.Consumer<org.bukkit.event.inventory.InventoryClickEvent> onClick) {
+        boolean playerInventory = source == DynamicSource.PLAYER_ENDERCHEST
+                || source == DynamicSource.PLAYER_INVENTORY;
+        if (playerInventory && !context.viewer().getUniqueId().equals(context.dataOwner().getUniqueId())) {
+            return ClickableItem.empty(stack);
+        }
+        return ClickableItem.of(stack, onClick);
     }
 
     private void putElementVars(Map<String, String> vars, Map<String, Object> element) {
@@ -421,10 +497,32 @@ public class GuiInventoryProvider implements InventoryProvider {
     }
 
     private Map<String, String> buildVars(Player player) {
-        Map<String, String> vars = new HashMap<>();
-        vars.put("player", player.getName());
+        return buildVars(player, player);
+    }
 
-        Map<String, String> argVars = ArgManager.getAll(player.getUniqueId());
+    /**
+     * Builds the placeholder variable map for a menu render.
+     *
+     * <p>{@code %player%}/{@code {player}} always refer to the <b>viewer</b> for backwards
+     * compatibility. When a distinct data owner is supplied (e.g. {@code /enderchestview <player>}),
+     * {@code %target_name%}/{@code %target_uuid%} refer to that owner; otherwise they mirror the
+     * viewer.</p>
+     */
+    private Map<String, String> buildVars(Player viewer, Player dataOwner) {
+        Map<String, String> vars = new HashMap<>();
+        vars.put("player", viewer.getName());
+        vars.put("viewer", viewer.getName());
+        vars.put("viewer_name", viewer.getName());
+        vars.put("viewer_uuid", viewer.getUniqueId().toString());
+
+        if (dataOwner == null) dataOwner = viewer;
+        vars.put("target", dataOwner.getName());
+        vars.put("target_name", dataOwner.getName());
+        vars.put("target_uuid", dataOwner.getUniqueId().toString());
+        vars.put("inventory_click_hint", viewer.getUniqueId().equals(dataOwner.getUniqueId())
+                ? "&aClick &7to move to your inventory" : "&7Read-only inspection");
+
+        Map<String, String> argVars = ArgManager.getAll(viewer.getUniqueId());
         for (Map.Entry<String, String> e : argVars.entrySet()) {
             vars.put("arg_" + e.getKey(), e.getValue());
         }
@@ -551,9 +649,12 @@ public class GuiInventoryProvider implements InventoryProvider {
         tickCounters.remove(playerId);
         activeGuiDefs.remove(playerId);
         inputSlotPlaceholders.remove(playerId);
+        animationControllers.remove(playerId);
     }
 
     public static void handleClose(SmartMenus plugin, Player player) {
+        // Drop the animation controller so playback state never leaks past a close.
+        animationControllers.remove(player.getUniqueId());
         GuiDefinition def = activeGuiDefs.remove(player.getUniqueId());
         if (def == null || def.getCloseActions().isEmpty()) return;
         Map<String, String> vars = new java.util.HashMap<>();
@@ -571,10 +672,18 @@ public class GuiInventoryProvider implements InventoryProvider {
         long currentTick = tickCounters.merge(playerId, 1L, Long::sum);
         Map<String, Long> timers = updateTimers.computeIfAbsent(playerId, k -> new ConcurrentHashMap<>());
 
+        Player dataOwner = context(player, contents).dataOwner();
+
+        // Advance any GUI animations on this same (single) per-player update lifecycle.
+        AnimationController animations = animationControllers.get(playerId);
+        if (animations != null && animations.hasAny()) {
+            animations.tick(contents, frameRenderer(player, dataOwner));
+        }
+
         if (pendingFullRefresh.remove(playerId)) {
             for (GuiItem guiItem : definition.getItems().values()) {
                 if (guiItem.getButtonType() == ButtonType.DYNAMIC_PAGINATION) continue;
-                renderGuiItem(player, contents, guiItem, buildVars(player));
+                renderGuiItem(player, contents, guiItem, buildVars(player, dataOwner));
             }
             return;
         }
@@ -592,7 +701,7 @@ public class GuiInventoryProvider implements InventoryProvider {
             if (currentTick - lastUpdate >= resolved.getUpdateInterval()) {
                 timers.put(timerKey, currentTick);
 
-                renderGuiItem(player, contents, guiItem, buildVars(player));
+                renderGuiItem(player, contents, guiItem, buildVars(player, dataOwner));
             }
         }
 

@@ -9,6 +9,7 @@ import com.oreo.command.SmartMenusCommand;
 import com.oreo.gui.ArgManager;
 import com.oreo.gui.GuiOpener;
 import com.oreo.gui.GuiOpener.OpenOptions;
+import com.oreo.util.ColorUtil;
 import com.oreo.gui.BottomInventoryService;
 import com.oreo.gui.GuiDefinition;
 import com.oreo.gui.GuiInventoryProvider;
@@ -215,6 +216,7 @@ public class SmartMenus extends JavaPlugin implements Listener {
             "guis/dynamic_examples/full_screen_demo.yml",
 
             "guis/feature_showcase/showcase_hub.yml",
+            "guis/feature_showcase/animated_border.yml",
             "guis/feature_showcase/showcase_pagination.yml",
             "guis/feature_showcase/showcase_dynamic.yml",
             "guis/feature_showcase/showcase_switch_input.yml",
@@ -483,8 +485,47 @@ public class SmartMenus extends JavaPlugin implements Listener {
                             return true;
                         }
 
-                        GuiOpener.open(SmartMenus.this, player, definition, OpenOptions.checked());
+                        // Optional target player: "/<cmd> <player>" opens the menu for the sender
+                        // (the viewer) while displaying the named player's data (the target).
+                        // Data sources such as PLAYER_ENDERCHEST then resolve against the target.
+                        Player target = null;
+                        if (args.length > 1) {
+                            player.sendMessage(ColorUtil.color("&cUsage: &f/" + label + " [player]"));
+                            return true;
+                        }
+                        if (args.length == 1) {
+                            target = Bukkit.getPlayerExact(args[0]);
+                            if (target == null) {
+                                player.sendMessage(ColorUtil.color("&cThat player is not online: &f" + args[0]));
+                                return true;
+                            }
+                            if (!target.equals(player)
+                                    && !player.hasPermission("smartmenus.command." + guiId + ".others")
+                                    && !player.hasPermission("smartmenus.command.others")) {
+                                player.sendMessage(ColorUtil.color("&cYou don't have permission to open this menu for another player."));
+                                return true;
+                            }
+                        }
+
+                        GuiOpener.open(SmartMenus.this, player, definition, OpenOptions.checked(), target);
                         return true;
+                    }
+
+                    @Override
+                    public List<String> tabComplete(CommandSender sender, String alias, String[] args) {
+                        if (args.length == 1 && sender instanceof Player p
+                                && (p.hasPermission("smartmenus.command." + guiId + ".others")
+                                    || p.hasPermission("smartmenus.command.others"))) {
+                            String prefix = args[0].toLowerCase(Locale.ENGLISH);
+                            List<String> names = new ArrayList<>();
+                            for (Player online : Bukkit.getOnlinePlayers()) {
+                                if (online.getName().toLowerCase(Locale.ENGLISH).startsWith(prefix)) {
+                                    names.add(online.getName());
+                                }
+                            }
+                            return names;
+                        }
+                        return Collections.emptyList();
                     }
                 };
 

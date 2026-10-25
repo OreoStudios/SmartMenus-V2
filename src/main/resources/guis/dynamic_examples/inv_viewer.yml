@@ -58,12 +58,24 @@ inv_viewer:
       close: true
 
 # ── Ender chest viewer (give-item + take-item) ──────────────────────────────
-# give-item: true  → a copy of the clicked item is added to the player's
-#                    main inventory (drops at feet if inventory is full).
+# give-item: true  → a copy of the clicked item is added to the CLICKER's
+#                    (viewer's) main inventory (drops at feet if full).
 # take-item: true  → the item is simultaneously removed from the ender chest.
 # Use both together to "move" items from ender chest → main inventory.
+#
+# VIEWER / TARGET:
+#   /enderchestview            → view YOUR OWN ender chest        (viewer == target)
+#   /enderchestview <player>   → view <player>'s ender chest      (viewer != target)
+#                                requires: smartmenus.command.enderchest_viewer.others
+#                                (target must be online; read-only inspection)
+#
+# Placeholders:
+#   %player%       → the viewer (whoever ran the command)   — unchanged, backwards compatible
+#   %target_name%  → the player whose ender chest is shown  — equals the viewer when no target
+# Target placeholders like %target_name% identify the owner in item name/lore.
+# Other-player inventory items ignore click actions and give-item/take-item.
 enderchest_viewer:
-  title: "&5&l📦 Your Ender Chest"
+  title: "&5&l📦 Ender Chest Viewer"
   rows: 6
   commands: [ "enderchestview", "ecview" ]
   auto-convert: true
@@ -75,6 +87,18 @@ enderchest_viewer:
       material: PURPLE_STAINED_GLASS_PANE
       name: "&8"
 
+    # Always-visible header showing whose ender chest is on screen.
+    # %target_name% = the target player (or the viewer, when opened without an argument).
+    owner-head:
+      slot: 4
+      material: PLAYER_HEAD
+      name: "&d&l%target_name%&5's Ender Chest"
+      lore:
+        - "&7Viewer: &f%viewer_name%"
+        - "&7Owner:  &d%target_name%"
+      update: true
+      update-interval: 20
+
     ec-items:
       type: DYNAMIC_PAGINATION
       source: PLAYER_ENDERCHEST
@@ -82,13 +106,14 @@ enderchest_viewer:
       material: STONE
       name: "&f%item_name%"
       lore:
+        - "&7Owner: &d%target_name%"
         - "&7Amount: &e%item_amount%"
         - "&7Ender chest slot: &f%item_slot%"
         - ""
-        - "&aClick &7to move to your inventory"
-      # give-item adds the item to the player's main inventory on click
+        - "%inventory_click_hint%"
+      # give-item adds the item to the clicking viewer's main inventory on click
       give-item: true
-      # take-item removes it from the ender chest on click
+      # take-item removes it from the (target's) ender chest on click
       take-item: true
 
     previous-btn:
