@@ -1,0 +1,127 @@
+#  Exert's DeluxeMenus Guide Menu
+#=========================================================
+menu_title: '&8> &x&C&4&9&3&F&F&lN&x&C&0&9&6&F&F&lᴏ&x&B&C&9&A&F&F&lV&x&B&8&9&D&F&F&lᴀ&x&B&5&A&1&F&F&lL&x&B&1&A&4&F&F&lᴀ&x&A&D&A&8&F&F&lɴ&x&A&9&A&B&F&F&lᴅ&x&A&5&A&E&F&F&ls &x&9&D&B&5&F&F&lɢ&x&9&A&B&9&F&F&lᴜ&x&9&6&B&C&F&F&lɪ&x&9&2&C&0&F&F&lᴅ&x&8&E&C&3&F&F&lᴇ &8<'
+open_command:
+  - guide
+  - serverguide
+register_command: true
+open_commands:
+  - '[sound] BLOCK_BEACON_ACTIVATE'
+  - '[message] &7Opening server guide and information...'
+size: 45
+# This menu is for players looking for guidance!
+items:
+  'filler':
+    material: GRAY_STAINED_GLASS_PANE
+    display_name: "&f"
+    data: 1
+    slots: [0-8, 36-44]
+  'rules':
+    material: BOOK
+    slot: 10
+    priority: 1
+    update: true
+    hide_attributes: true
+    display_name: '&6&lʀᴜʟᴇs'
+    lore:
+      - '&7Learn the server rules to ensure fair gameplay.'
+      - ''
+      - '&a&l▶ Click to view rules!'
+    click_commands:
+      - '[sound] ENTITY_EXPERIENCE_ORB_PICKUP'
+      - '[close]'
+      - '[player] rules'
+  'ranks':
+    material: EMERALD
+    slot: 12
+    priority: 1
+    update: true
+    hide_attributes: true
+    display_name: '&6&lʀᴀɴᴋs'
+    lore:
+      - '&7Explore available ranks and their perks.'
+      - ''
+      - '&a&l▶ Click to view ranks!'
+    click_commands:
+      - '[sound] ENTITY_ITEM_PICKUP'
+      - '[close]'
+      - '[player] ranks'
+  'info':
+    material: PAPER
+    slot: 14
+    priority: 1
+    update: true
+    hide_attributes: true
+    display_name: '&6&lɪɴғᴏ'
+    lore:
+      - '&7Discover server features and what makes Novalands special.'
+      - ''
+      - '&a&l▶ Click for info!'
+    click_commands:
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[close]'
+      - '[player] informations'
+  'commands':
+    material: COMPASS
+    slot: 16
+    priority: 1
+    update: true
+    hide_attributes: true
+    display_name: '&6&lᴄᴏᴍᴍᴀɴᴅs'
+    lore:
+      - '&7Get a quick guide to essential server commands.'
+      - ''
+      - '&a&l▶ Click for commands!'
+    click_commands:
+      - '[close]'
+      - '[player] commands'
+  'socials':
+    material: NAME_TAG
+    slot: 32
+    priority: 1
+    update: true
+    hide_attributes: true
+    display_name: '&6&lSocials'
+    lore:
+      - '&7Stay connected with our community!'
+      - '&7Find links to Discord, YouTube, and more.'
+      - ''
+      - '&a&l▶ Click for socials!'
+    click_commands:
+      - '[sound] ENTITY_VILLAGER_TRADE'
+      - '[close]'
+      - '[player] social'
+  'warps':
+    material: ENDER_PEARL
+    slot: 30
+    display_name: '&6&lᴡᴀʀᴘs'
+    lore:
+      - '&7Find key locations using warps.'
+      - ''
+      - '&a&l▶ Click for warps!'
+    click_commands:
+      - '[sound] ENTITY_BLAZE_SHOOT'
+      - '[close]'
+      - '[player] warps'
+  '5':
+    material: RED_BANNER
+    slot: 28
+    display_name: '&6&lᴛᴇᴀᴍs'
+    lore:
+      - '&7Join or manage teams for competitive gameplay.'
+      - ''
+      - '&a&l▶ Click for team info!'
+    click_commands:
+      - '[close]'
+      - '[player] teams'      
+  '8':
+    material: BARRIER
+    slot: 34
+    display_name: '&c&lᴄʟᴏsᴇ'
+    lore:
+      - '&7Exit the guide menu.'
+      - ''
+      - '&a&l▶ Click to close!'
+    click_commands:
+      - '[sound] BLOCK_NOTE_BLOCK_PLING'
+      - '[close]'      
