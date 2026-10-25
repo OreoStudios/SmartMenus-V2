@@ -1,0 +1,163 @@
+# ============================================================
+# EXAMPLE 21 — PAGINATION
+# Demonstrates PAGINATION, NEXT, PREVIOUS, and JUMP buttons.
+# Content area spans rows 2-4 (21 slots). Navigation in row 6.
+#
+# Placeholders available in name / lore:
+#   %display_name%   element field
+#   %description%    element field
+#   %index%          1-based item index across all elements
+#   %page%           current page (1-based)
+#   %max_page%       last page (1-based)
+# ============================================================
+item_catalog:
+  title: "&8&l📦 Item Catalog"
+  rows: 6
+  commands: [ "catalog", "itemcatalog" ]
+  auto-convert: true
+  main_menu: item_catalog
+
+  items:
+
+    border-top:
+      slots: [ 0-8 ]
+      material: BLACK_STAINED_GLASS_PANE
+      name: "&8"
+
+    content:
+      type: PAGINATION
+      slots:
+        - 10-16
+        - 19-25
+        - 28-34
+      elements:
+        - display_name: "Diamond"
+          description: "A precious gem"
+        - display_name: "Emerald"
+          description: "Great for trading"
+        - display_name: "Gold Ingot"
+          description: "Shiny and valuable"
+        - display_name: "Iron Ingot"
+          description: "Sturdy and common"
+        - display_name: "Netherite Ingot"
+          description: "The strongest material"
+        - display_name: "Copper Ingot"
+          description: "Oxidizes over time"
+        - display_name: "Amethyst Shard"
+          description: "Found in geodes"
+        - display_name: "Quartz"
+          description: "From the Nether"
+        - display_name: "Prismarine Shard"
+          description: "From ocean monuments"
+        - display_name: "Blaze Rod"
+          description: "Drops from Blazes"
+        - display_name: "Ender Pearl"
+          description: "For teleportation"
+        - display_name: "Eye of Ender"
+          description: "Locates strongholds"
+        - display_name: "Dragon Breath"
+          description: "From the Ender Dragon"
+        - display_name: "Nether Star"
+          description: "Dropped by the Wither"
+        - display_name: "Heart of the Sea"
+          description: "Found in buried treasure"
+        - display_name: "Totem of Undying"
+          description: "Prevents death once"
+        - display_name: "Elytra"
+          description: "Wings from End ships"
+        - display_name: "Trident"
+          description: "Thrown or melee weapon"
+        - display_name: "Nautilus Shell"
+          description: "Used for conduits"
+        - display_name: "Phantom Membrane"
+          description: "Repairs Elytra"
+        - display_name: "Shulker Shell"
+          description: "Crafts shulker boxes"
+        - display_name: "Wither Skull"
+          description: "Summons the Wither"
+        - display_name: "Ancient Debris"
+          description: "Smelts into Netherite Scrap"
+        - display_name: "Spawner"
+          description: "Rare block"
+      material: ITEM_FRAME
+      name: "&e&l%display_name%"
+      lore:
+        - "&8&m                    "
+        - "  &7%description%"
+        - ""
+        - "  &8#&7%index%  &8•  &7Page &e%page%&7/&e%max_page%"
+        - "&8&m                    "
+
+    filler-left:
+      slots: [ 9, 18, 27 ]
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8"
+
+    filler-right:
+      slots: [ 17, 26, 35 ]
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8"
+
+    border-bottom:
+      slots: [ 36-44 ]
+      material: BLACK_STAINED_GLASS_PANE
+      name: "&8"
+
+    previous:
+      type: PREVIOUS
+      slot: 45
+      is-permanent: false
+      material: ARROW
+      name: "&c&l← Previous"
+      lore:
+        - "&7Page &e%page%&7/&e%max_page%"
+
+    nav-fill-l:
+      slot: 46
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8"
+
+    jump-p1:
+      type: JUMP
+      slot: 47
+      to-page: 0
+      material: PAPER
+      name: "&f&lPage &e1"
+      lore:
+        - "&7Jump to the first page"
+
+    page-info:
+      slot: 49
+      material: BOOK
+      name: "&e&lPage &f%page% &7/ &f%max_page%"
+      lore:
+        - "&7Use the arrows to navigate"
+
+    jump-p2:
+      type: JUMP
+      slot: 51
+      to-page: 1
+      material: PAPER
+      name: "&f&lPage &e2"
+      lore:
+        - "&7Jump to page 2"
+
+    nav-fill-r:
+      slot: 52
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8"
+
+    next:
+      type: NEXT
+      slot: 53
+      is-permanent: false
+      material: ARROW
+      name: "&a&lNext →"
+      lore:
+        - "&7Page &e%page%&7/&e%max_page%"
+
+    close-catalog:
+      slot: 48
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
