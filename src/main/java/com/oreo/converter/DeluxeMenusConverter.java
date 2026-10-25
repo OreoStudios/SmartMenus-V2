@@ -248,3 +248,264 @@ public class DeluxeMenusConverter {
 
         String perm = src.getString("permission");
         if (perm != null && !perm.isBlank()) {
+            Map<String, Object> req = new LinkedHashMap<>();
+            req.put("type", "PERMISSION");
+            req.put("permission", perm);
+            converted.add(req);
+        }
+
+        ConfigurationSection viewReqSec = src.getConfigurationSection("view_requirement");
+        if (viewReqSec != null) {
+            converted.addAll(convertViewRequirementsBlock(viewReqSec));
+        }
+
+        if (!converted.isEmpty()) {
+            out.set(p + ".view-requirements", converted);
+        }
+    }
+
+    private static List<Map<String, Object>> convertViewRequirementsBlock(ConfigurationSection viewReqSec) {
+        ConfigurationSection requirements = viewReqSec.getConfigurationSection("requirements");
+        if (requirements == null) return Collections.emptyList();
+
+        List<Map<String, Object>> result = new ArrayList<>();
+        for (String reqKey : requirements.getKeys(false)) {
+            ConfigurationSection req = requirements.getConfigurationSection(reqKey);
+            if (req == null) continue;
+            Map<String, Object> ogReq = convertSingleRequirement(req);
+            if (ogReq != null) result.add(ogReq);
+        }
+        return result;
+    }
+
+    private static Map<String, Object> convertSingleRequirement(ConfigurationSection req) {
+        String type = req.getString("type", "").toLowerCase(Locale.ROOT).trim();
+        Map<String, Object> result = new LinkedHashMap<>();
+
+        switch (type) {
+            case "has permission": {
+                String perm = req.getString("permission");
+                if (perm == null) return null;
+                result.put("type", "PERMISSION");
+                result.put("permission", perm);
+                return result;
+            }
+            case "has money": {
+                result.put("type", "VAULT_MONEY");
+                result.put("amount", req.getDouble("amount", 0.0));
+                return result;
+            }
+            case "has exp lvl":
+            case "has exp level": {
+                result.put("type", "XP_LEVEL");
+                result.put("amount", req.getInt("amount", 0));
+                return result;
+            }
+            case "has item": {
+                String mat = req.getString("material");
+                if (mat == null) return null;
+                result.put("type", "ITEM");
+                result.put("material", mat.toUpperCase(Locale.ROOT));
+                result.put("amount", req.getInt("amount", 1));
+                return result;
+            }
+            case "has group": {
+                String group = req.getString("group");
+                if (group == null) return null;
+                result.put("type", "LUCKPERMS_GROUP");
+                result.put("group", group);
+                return result;
+            }
+            case "javascript": {
+                String expression = req.getString("expression");
+                if (expression == null) return null;
+                result.put("type", "SCRIPT");
+                result.put("script", expression);
+                return result;
+            }
+            case ">=":
+            case "<=":
+            case "==":
+            case ">":
+            case "<":
+            case "!=": {
+                String input  = req.getString("input");
+                String output = req.getString("output");
+                if (input == null || output == null) return null;
+                result.put("type", "PLACEHOLDER");
+                result.put("placeholder", input);
+                result.put("operator", type);
+                result.put("value", output);
+                return result;
+            }
+            case "string equals": {
+                String input  = req.getString("input");
+                String output = req.getString("output");
+                if (input == null || output == null) return null;
+                result.put("type", "PLACEHOLDER_EQUALS");
+                result.put("placeholder", input);
+                result.put("value", output);
+                return result;
+            }
+            case "string contains": {
+                String input  = req.getString("input");
+                String output = req.getString("output");
+                if (input == null || output == null) return null;
+                result.put("type", "PLACEHOLDER_CONTAINS");
+                result.put("placeholder", input);
+                result.put("value", output);
+                return result;
+            }
+            default:
+
+                return null;
+        }
+    }
+
+    private static List<Integer> resolveSlots(ConfigurationSection src, int maxSize) {
+        if (src.isInt("slot")) return List.of(src.getInt("slot"));
+        if (src.isString("slot")) {
+            try {
+                return List.of(Integer.parseInt(src.getString("slot", "").trim()));
+            } catch (NumberFormatException ignored) {}
+        }
+        List<?> slotList = src.getList("slots");
+        if (slotList != null && !slotList.isEmpty()) {
+            return ConverterUtil.expandSlots(slotList);
+        }
+        return Collections.emptyList();
+    }
+
+    private static List<Map<String, Object>> parseCommandListToActions(List<String> commands) {
+        List<Map<String, Object>> result = new ArrayList<>();
+        for (String cmd : commands) {
+            cmd = cmd.trim();
+            if (cmd.isEmpty()) continue;
+            if (cmd.equalsIgnoreCase("[close]") || cmd.equalsIgnoreCase("[refresh]")) continue;
+            if (isSkippedAction(cmd)) continue;
+            Map<String, Object> action = parseAction(cmd);
+            if (action != null) result.add(action);
+        }
+        return result;
+    }
+
+    private static boolean isSkippedAction(String cmd) {
+        String lc = cmd.toLowerCase(Locale.ROOT);
+        return lc.startsWith("[delay]")
+            || lc.startsWith("[placeholder_delay]")
+            || lc.equalsIgnoreCase("[chat]")
+            || lc.startsWith("[chat] ");
+    }
+
+    private static Map<String, Object> parseAction(String cmd) {
+        Map<String, Object> action = new LinkedHashMap<>();
+        String lc = cmd.toLowerCase(Locale.ROOT);
+
+        if (lc.startsWith("[player] ")) {
+            String c = cmd.substring(9).trim();
+            if (c.startsWith("/")) c = c.substring(1);
+            action.put("type", "PLAYER_COMMAND");
+            action.put("command", c);
+
+        } else if (lc.startsWith("[console] ")) {
+            action.put("type", "CONSOLE_COMMAND");
+            action.put("command", cmd.substring(10).trim());
+
+        } else if (lc.startsWith("[message] ")) {
+            action.put("type", "PLAYER_MESSAGE");
+            action.put("message", ConverterUtil.convertColors(cmd.substring(10).trim()));
+
+        } else if (lc.startsWith("[broadcast] ")) {
+            action.put("type", "BROADCAST");
+            action.put("message", ConverterUtil.convertColors(cmd.substring(12).trim()));
+
+        } else if (lc.startsWith("[actionbar] ")) {
+            action.put("type", "ACTION_BAR");
+            action.put("message", ConverterUtil.convertColors(cmd.substring(12).trim()));
+
+        } else if (lc.startsWith("[minimessage] ")) {
+
+            action.put("type", "PLAYER_MESSAGE");
+            action.put("message", cmd.substring(14).trim());
+
+        } else if (lc.startsWith("[minibroadcast] ")) {
+            action.put("type", "BROADCAST");
+            action.put("message", cmd.substring(16).trim());
+
+        } else if (lc.startsWith("[sound] ")) {
+
+            String soundStr = cmd.substring(8).trim();
+            String[] parts = soundStr.split("\\s+", 3);
+            action.put("type", "SOUND");
+            action.put("sound", parts[0].toUpperCase(Locale.ROOT));
+            if (parts.length >= 2) {
+                double volume = parseDoubleSafe(parts[1], -1);
+                if (volume >= 0) action.put("volume", volume);
+            }
+            if (parts.length >= 3) {
+                double pitch = parseDoubleSafe(parts[2], -1);
+                if (pitch >= 0) action.put("pitch", pitch);
+            }
+
+        } else if (lc.startsWith("[menu] ") || lc.startsWith("[open] ")) {
+            action.put("type", "OPEN_GUI");
+            action.put("gui", cmd.substring(7).trim());
+
+        } else if (lc.startsWith("[openguimenu] ")) {
+            action.put("type", "OPEN_GUI");
+            action.put("gui", cmd.substring(14).trim());
+
+        } else if (lc.startsWith("[connect] ")) {
+            action.put("type", "SERVER_CONNECT");
+            action.put("server", cmd.substring(10).trim());
+
+        } else if (lc.startsWith("[title] ")) {
+            String titleStr = cmd.substring(8).trim();
+            String[] parts = titleStr.split(";", 2);
+            action.put("type", "TITLE");
+            action.put("title", ConverterUtil.convertColors(parts[0]));
+            if (parts.length > 1) action.put("subtitle", ConverterUtil.convertColors(parts[1]));
+
+        } else if (lc.startsWith("[givemoney] ")) {
+            String amt = cmd.substring(12).trim();
+            action.put("type", "CONSOLE_COMMAND");
+            action.put("command", "eco give {player} " + amt);
+
+        } else if (lc.startsWith("[takemoney] ")) {
+            String amt = cmd.substring(12).trim();
+            action.put("type", "CONSOLE_COMMAND");
+            action.put("command", "eco take {player} " + amt);
+
+        } else if (lc.startsWith("[giveexp] ")) {
+            String amt = cmd.substring(10).trim();
+            action.put("type", "CONSOLE_COMMAND");
+            action.put("command", "xp add {player} " + amt);
+
+        } else if (lc.startsWith("[takeexp] ")) {
+            String amt = cmd.substring(10).trim();
+            action.put("type", "CONSOLE_COMMAND");
+            action.put("command", "xp add {player} -" + amt);
+
+        } else {
+            return null;
+        }
+
+        return action;
+    }
+
+    private static int parseIntSafe(String s, int def) {
+        try { return Integer.parseInt(s.trim()); } catch (NumberFormatException e) { return def; }
+    }
+
+    private static double parseDoubleSafe(String s, double def) {
+        try { return Double.parseDouble(s.trim()); } catch (NumberFormatException e) { return def; }
+    }
+
+    private static boolean mapsListEqual(List<Map<String, Object>> a, List<Map<String, Object>> b) {
+        if (a.size() != b.size()) return false;
+        for (int i = 0; i < a.size(); i++) {
+            if (!a.get(i).equals(b.get(i))) return false;
+        }
+        return true;
+    }
+}
