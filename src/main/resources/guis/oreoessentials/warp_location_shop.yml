@@ -1,0 +1,48 @@
+# ============================================================
+# EXAMPLE 16 — OREO WARPS LOCATION (proximity to a warp)
+# Requires the player to be within `radius` blocks of a warp.
+# Placeholders in error_message: {warp} {distance} {radius}
+# Not consumable.
+# Needs: OreoEssentials
+# ============================================================
+warp_location_shop:
+  title: "&6&lLocation Shop"
+  rows: 3
+  commands: [ "locationshop" ]
+  auto-convert: true
+  items:
+    "10":
+      material: COMPASS
+      name: "&e&lSpawn Item"
+      lore:
+        - "&7Must be within 10 blocks of spawn warp."
+      commands:
+        - "give {player} golden_apple 4"
+      close: true
+      conditions:
+        - type: OREO_WARPS_LOCATION
+          warp: spawn
+          radius: 10.0
+          error_message: "&c❌ You must be at spawn! &7({distance} blocks away, need {radius})"
+
+    "12":
+      material: NETHER_STAR
+      name: "&d&lVIP Lounge Item"
+      lore:
+        - "&7Must be within 5 blocks of vip warp."
+        - "&7Also requires VIP permission."
+      commands:
+        - "give {player} nether_star 1"
+      close: true
+      conditions:
+        - type: OREO_WARPS_LOCATION
+          warp: vip
+          radius: 5.0
+          error_message: "&d❌ You must be IN the VIP lounge! &7({distance}m away)"
+        - type: PERMISSION
+          permission: rank.vip
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
