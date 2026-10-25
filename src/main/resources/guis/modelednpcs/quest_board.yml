@@ -1,0 +1,43 @@
+# ============================================================
+# EXAMPLE 20 — NPC-ONLY GUI (no slash command)
+# This GUI opens exclusively when a player right-clicks NPC #5.
+# No commands: field = no slash command registered.
+# Needs: ModeledNPCs
+# ============================================================
+quest_board:
+  title: "&#FFD700&l📜 Quest Board"
+  rows: 3
+  npc_id: 5                            # right-click NPC #5 to open
+  commands: []                         # empty = no slash command
+  auto-convert: true
+  items:
+    "10":
+      material: PAPER
+      name: "&a&lBeginner Quest"
+      lore:
+        - "&7Collect 10 oak logs."
+        - "&aReward: &f$500"
+      commands:
+        - "eco give {player} 500"
+        - "tellraw {player} {\"text\":\"Quest reward claimed!\",\"color\":\"green\"}"
+      close: true
+
+    "12":
+      material: DIAMOND_SWORD
+      name: "&c&lAdvanced Quest"
+      lore:
+        - "&7Defeat the dragon."
+        - "&aReward: &f$50,000"
+        - ""
+        - "&eRequires: &aLevel 50+"
+      commands:
+        - "eco give {player} 50000"
+      close: true
+      conditions:
+        - type: XP_LEVEL
+          amount: 50
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
