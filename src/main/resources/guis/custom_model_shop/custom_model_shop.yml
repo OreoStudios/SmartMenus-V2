@@ -1,0 +1,33 @@
+# ============================================================
+# EXAMPLE 6 — ITEM WITH CUSTOM MODEL DATA
+# Requires & removes items that match a specific CustomModelData
+# value (for resource-pack items).
+# ============================================================
+custom_model_shop:
+  title: "&5&l🎨 Custom Model Shop"
+  rows: 3
+  commands: [ "customshop" ]
+  auto-convert: true
+  items:
+    # This item is displayed WITH custom model data (changes its texture)
+    "11":
+      material: DIAMOND
+      custom_model_data: 1001
+      name: "&b&lMagic Crystal"
+      lore:
+        - "&7A glowing crystal (CMD: 1001)."
+        - ""
+        - "&eRequires: &75 regular diamonds"
+      commands:
+        - "give {player} diamond{CustomModelData:1001} 1"
+      close: true
+      conditions:
+        - type: ITEM_CUSTOM_MODEL
+          material: DIAMOND
+          custom_model_data: 1001    # must match the item in inventory
+          amount: 5
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
