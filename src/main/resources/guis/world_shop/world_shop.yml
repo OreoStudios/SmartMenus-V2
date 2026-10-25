@@ -1,0 +1,60 @@
+# ============================================================
+# EXAMPLE 14 — WORLD
+# Restricts which world(s) the item can be used in.
+# blacklist: true → block listed worlds, allow all others.
+# Not consumable.
+# ============================================================
+world_shop:
+  title: "&c&lWorld Shop"
+  rows: 4
+  commands: [ "worldshop" ]
+  auto-convert: true
+  items:
+    # Whitelist: only in these worlds
+    "10":
+      material: GRASS_BLOCK
+      name: "&a&lOverworld Item"
+      lore:
+        - "&7Only usable in world / lobby."
+      commands:
+        - "give {player} diamond 10"
+      close: true
+      conditions:
+        - type: WORLD
+          worlds:
+            - world
+            - lobby
+
+    # Single world shorthand
+    "12":
+      material: NETHERRACK
+      name: "&c&lNether Item"
+      lore:
+        - "&7Only usable in the Nether."
+      commands:
+        - "give {player} netherite_scrap 5"
+      close: true
+      conditions:
+        - type: WORLD
+          world: world_nether           # single world shorthand
+
+    # Blacklist: allowed everywhere EXCEPT listed worlds
+    "14":
+      material: TNT
+      name: "&c&lDangerous Item"
+      lore:
+        - "&7Cannot be used in spawn or lobby."
+      commands:
+        - "give {player} tnt 16"
+      close: true
+      conditions:
+        - type: WORLD
+          blacklist: true
+          worlds:
+            - spawn
+            - lobby
+
+    "31":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
