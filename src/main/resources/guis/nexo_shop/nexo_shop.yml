@@ -1,0 +1,47 @@
+# ============================================================
+# EXAMPLE 8 — NEXO ITEM
+# Uses a Nexo custom item as the GUI icon AND as a cost.
+# item_type: nexo  /  item_id: your_nexo_id
+# Needs: Nexo
+# ============================================================
+nexo_shop:
+  title: "&9&l⚔ Nexo Shop"
+  rows: 3
+  commands: [ "nexoshop" ]
+  auto-convert: true
+  items:
+    "10":
+      item_type: nexo
+      item_id: "sapphire"               # replace with your Nexo item ID
+      material: DIAMOND                  # fallback material
+      name: "&9&lSapphire"
+      lore:
+        - "&7A beautiful blue gem."
+        - ""
+        - "&ePrice: &a$5,000"
+      commands:
+        - "nexo give {player} sapphire 1"
+      close: true
+      conditions:
+        - type: VAULT_MONEY
+          amount: 5000
+
+    "12":
+      item_type: nexo
+      item_id: "fire_sword"
+      material: DIAMOND_SWORD
+      name: "&c&lFire Sword"
+      lore:
+        - "&7Requires 3 fire essences."
+      commands:
+        - "nexo give {player} fire_sword 1"
+      close: true
+      conditions:
+        - type: NEXO
+          item_id: "fire_essence"       # Nexo items removed from inventory on click
+          amount: 3
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
