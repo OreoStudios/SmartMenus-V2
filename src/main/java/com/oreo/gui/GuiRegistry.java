@@ -181,3 +181,172 @@ public class GuiRegistry {
         BottomInventoryMode bottomInventoryMode = BottomInventoryMode.DEFAULT;
         if (useBottomInventory && guiSection.isSet("bottom_inventory_mode")) {
             String modeStr = guiSection.getString("bottom_inventory_mode", "DEFAULT");
+            bottomInventoryMode = BottomInventoryMode.parse(modeStr, id, plugin.getLogger());
+        }
+
+        Map<Integer, GuiItem> items = new LinkedHashMap<>();
+        ConfigurationSection itemsSection = guiSection.getConfigurationSection("items");
+
+        if (guiSection.isList("patterns") && itemsSection != null && plugin.getPatternRegistry() != null) {
+            for (Object patternObj : guiSection.getList("patterns")) {
+                if (patternObj instanceof String) {
+                    plugin.getPatternRegistry().applyPattern((String) patternObj, itemsSection, Collections.emptyMap());
+                } else if (patternObj instanceof Map) {
+                    @SuppressWarnings("unchecked")
+                    Map<String, Object> patternMap = (Map<String, Object>) patternObj;
+                    String patId = patternMap.containsKey("id") ? patternMap.get("id").toString() : null;
+                    if (patId == null) continue;
+                    Map<String, String> vars = new HashMap<>();
+                    Object varsObj = patternMap.get("vars");
+                    if (varsObj instanceof Map) {
+                        @SuppressWarnings("unchecked")
+                        Map<String, Object> varsMap = (Map<String, Object>) varsObj;
+                        for (Map.Entry<String, Object> e : varsMap.entrySet()) {
+                            vars.put(e.getKey(), e.getValue() != null ? e.getValue().toString() : "");
+                        }
+                    }
+                    plugin.getPatternRegistry().applyPattern(patId, itemsSection, vars);
+                }
+            }
+        }
+
+        if (itemsSection != null) {
+            for (String slotKey : itemsSection.getKeys(false)) {
+                ConfigurationSection itemSection = itemsSection.getConfigurationSection(slotKey);
+                if (itemSection == null) continue;
+
+                List<Integer> slots = parseSlots(slotKey, itemSection);
+                if (slots.isEmpty()) {
+                    plugin.getLogger().warning("Invalid slot '" + slotKey + "' in GUI " + id);
+                    continue;
+                }
+
+                for (int slot : slots) {
+                    GuiItem guiItem = itemParser.loadItem(id, slot, itemSection);
+                    if (guiItem != null) {
+                        items.put(slot, guiItem);
+                    }
+                }
+            }
+        }
+
+        Map<Integer, GuiItem> bottomItems = new LinkedHashMap<>();
+        ConfigurationSection bottomSection = guiSection.getConfigurationSection("bottom_items");
+        if (bottomSection == null) bottomSection = guiSection.getConfigurationSection("bottom-items");
+        if (bottomSection != null) {
+            for (String slotKey : bottomSection.getKeys(false)) {
+                ConfigurationSection itemSection = bottomSection.getConfigurationSection(slotKey);
+                if (itemSection == null) continue;
+
+                List<Integer> slots = parseSlots(slotKey, itemSection);
+                for (int slot : slots) {
+                    if (slot < 0 || slot > 35) {
+                        plugin.getLogger().warning("bottom_items slot " + slot + " out of range (0-35) in GUI " + id);
+                        continue;
+                    }
+                    GuiItem guiItem = itemParser.loadItem(id, slot, itemSection);
+                    if (guiItem != null) bottomItems.put(slot, guiItem);
+                }
+            }
+        }
+
+        BedrockFormDefinition bedrockDefinition = null;
+        boolean bedrockAutoConvert = guiSection.getBoolean("auto-convert",
+                guiSection.getBoolean("auto_convert", false));
+
+        ConfigurationSection bedrockSection = guiSection.getConfigurationSection("bedrock");
+        if (bedrockSection != null) {
+            bedrockDefinition = bedrockParser.load(id, bedrockSection);
+        }
+
+        if (bedrockDefinition != null && bedrockAutoConvert) {
+            plugin.getLogger().info("  GUI '" + id + "': explicit bedrock: block takes priority over auto-convert.");
+            bedrockAutoConvert = false;
+        }
+
+        List<Condition> openRequirements = conditionListParser.parseFromKey(guiSection, "open-requirements");
+        List<Action> openActions = ActionFactory.parseActions(guiSection.getList("open-actions"));
+        List<Action> closeActions = ActionFactory.parseActions(guiSection.getList("close-actions"));
+
+        String openSound = null;
+        float openSoundVolume = 1.0f;
+        float openSoundPitch = 1.0f;
+        if (guiSection.isSet("open_sound") || guiSection.isSet("open-sound")) {
+            String soundKey = guiSection.isSet("open_sound") ? "open_sound" : "open-sound";
+            if (guiSection.isConfigurationSection(soundKey)) {
+                ConfigurationSection soundSection = guiSection.getConfigurationSection(soundKey);
+                openSound = soundSection.getString("sound");
+                openSoundVolume = (float) soundSection.getDouble("volume", 1.0);
+                openSoundPitch = (float) soundSection.getDouble("pitch", 1.0);
+            } else {
+                openSound = guiSection.getString(soundKey);
+            }
+        }
+
+        CooldownConfig openCooldown = null;
+        ConfigurationSection cooldownSection = guiSection.getConfigurationSection("cooldown");
+        if (cooldownSection == null) cooldownSection = guiSection.getConfigurationSection("open-cooldown");
+        if (cooldownSection != null) {
+            openCooldown = CooldownConfig.parse(cooldownSection, "gui:" + id);
+        }
+
+        return new GuiDefinition.Builder(id, title)
+                .rows(rows)
+                .items(items)
+                .commands(guiCommands)
+                .npcId(npcId)
+                .fillItem(fillItem)
+                .inventoryType(inventoryType)
+                .commandArgs(commandArgs)
+                .useBottomInventory(useBottomInventory)
+                .bottomItems(bottomItems)
+                .bedrockDefinition(bedrockDefinition)
+                .bedrockAutoConvert(bedrockAutoConvert)
+                .openRequirements(openRequirements)
+                .openActions(openActions)
+                .closeActions(closeActions)
+                .openSound(openSound)
+                .openSoundVolume(openSoundVolume)
+                .openSoundPitch(openSoundPitch)
+                .bottomInventoryMode(bottomInventoryMode)
+                .openCooldown(openCooldown)
+                .build();
+    }
+
+    public GuiDefinition getGui(String id) { return definitions.get(id); }
+
+    public Set<String> getGuiIds() { return Collections.unmodifiableSet(definitions.keySet()); }
+
+    public File getGuiFile(String id) { return guiFiles.get(id); }
+
+    private List<Integer> parseSlots(String slotKey, ConfigurationSection itemSection) {
+        List<Integer> slots = new ArrayList<>();
+
+        if (itemSection.isSet("slot")) {
+            addSlotValue(slots, itemSection.get("slot"));
+        } else if (itemSection.isSet("slots")) {
+            Object rawSlots = itemSection.get("slots");
+            if (rawSlots instanceof List<?>) {
+                for (Object value : (List<?>) rawSlots) {
+                    addSlotValue(slots, value);
+                }
+            } else {
+                addSlotValue(slots, rawSlots);
+            }
+        } else {
+            addSlotValue(slots, slotKey);
+        }
+
+        LinkedHashSet<Integer> unique = new LinkedHashSet<>();
+        for (int slot : slots) {
+            if (slot >= 0) {
+                unique.add(slot);
+            }
+        }
+        return new ArrayList<>(unique);
+    }
+
+    private void addSlotValue(List<Integer> slots, Object value) {
+        slots.addAll(SlotParser.parse(value));
+    }
+}
