@@ -281,3 +281,306 @@ public class EditorHandlers {
         String base = session.getBasePath();
         switch (slot) {
             case 0 -> manager.promptChat(player, session, EditorSession.ChatMode.GUI_TITLE,    "Enter GUI title (supports &color codes):");
+            case 1 -> {
+                int rows = session.getGuiRows();
+                rows = (click==ClickType.LEFT||click==ClickType.SHIFT_LEFT) ? Math.min(6,rows+1) : Math.max(1,rows-1);
+                session.getConfig().set(base+".rows", rows);
+                player.sendMessage(ColorUtil.color("&aRows: &f"+rows));
+                EditorScreens.openPropertiesEditor(plugin,player,session);
+            }
+            case 2 -> manager.promptChat(player, session, EditorSession.ChatMode.GUI_COMMANDS, "Enter commands separated by commas:");
+            case 4 -> {
+                boolean cur = session.getConfig().getBoolean(base+".use_bottom_inventory",false);
+                session.getConfig().set(base+".use_bottom_inventory",!cur);
+                player.sendMessage(ColorUtil.color("&aBottom inventory: &f"+!cur));
+                EditorScreens.openPropertiesEditor(plugin,player,session);
+            }
+            case 5 -> manager.openBottomLayoutEditor(player,session);
+            case 6 -> {
+                String cur = session.getConfig().getString(base+".inventory_type", session.getConfig().getString(base+".inventory-type","CHEST"));
+                int idx = 0; for(int i=0;i<INV_TYPES.length;i++) if(INV_TYPES[i].equalsIgnoreCase(cur)){idx=i;break;}
+                int next = (click==ClickType.RIGHT||click==ClickType.SHIFT_RIGHT) ? (idx-1+INV_TYPES.length)%INV_TYPES.length : (idx+1)%INV_TYPES.length;
+                String nv = INV_TYPES[next];
+                session.getConfig().set(base+".inventory_type", nv.equals("CHEST") ? null : nv);
+                player.sendMessage(ColorUtil.color("&eInventory type: &f"+nv));
+                EditorScreens.openPropertiesEditor(plugin,player,session);
+            }
+            case 7 -> {
+                if (click==ClickType.RIGHT||click==ClickType.SHIFT_RIGHT) {
+                    session.getConfig().set(base+".npc_id", null);
+                    player.sendMessage(ColorUtil.color("&cNPC binding removed."));
+                    EditorScreens.openPropertiesEditor(plugin,player,session);
+                } else {
+                    manager.promptChat(player, session, EditorSession.ChatMode.PROPERTIES_NPC_ID, "Enter NPC ID number (or 'none' to remove):");
+                }
+            }
+            case 8 -> manager.openLayoutEditor(player,session);
+            case 9 -> {
+
+                if (click==ClickType.RIGHT||click==ClickType.SHIFT_RIGHT) {
+                    session.getConfig().set(base+".fill", null);
+                    player.sendMessage(ColorUtil.color("&cFill item removed."));
+                    EditorScreens.openPropertiesEditor(plugin,player,session);
+                } else {
+                    ItemStack held = player.getInventory().getItemInMainHand();
+                    if (held!=null && !held.getType().isAir()) {
+                        session.getConfig().set(base+".fill.material", held.getType().name());
+                        org.bukkit.inventory.meta.ItemMeta m = held.getItemMeta();
+                        if (m!=null && m.hasDisplayName()) session.getConfig().set(base+".fill.name", m.getDisplayName().replace('\u00a7','&'));
+                        player.sendMessage(ColorUtil.color("&aFill item set: &f"+held.getType().name()));
+                    } else {
+                        player.sendMessage(ColorUtil.color("&cHold the fill item in your hand, or right-click to remove."));
+                        return;
+                    }
+                    EditorScreens.openPropertiesEditor(plugin,player,session);
+                }
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public static void handleConditionListClick(SmartMenus plugin, Player player,
+                                                EditorSession session, EditorManager manager,
+                                                int slot, ClickType click) {
+        boolean viewReqs = session.isEditingViewRequirements();
+        String condKey   = viewReqs ? ".view-requirements" : ".conditions";
+        String itemPath  = session.getItemPath(session.getSelectedSlot());
+
+        if (slot == 45) { manager.openConditionTypePicker(player, session); return; }
+        if (slot == 46 && viewReqs) {
+
+            if (session.getConfig().isSet(itemPath + ".else-item")) {
+                session.getConfig().set(itemPath + ".else-item", null);
+                player.sendMessage(ColorUtil.color("&cElse item removed."));
+            } else {
+                ItemStack held = player.getInventory().getItemInMainHand();
+                if (held != null && !held.getType().isAir()) {
+                    session.getConfig().set(itemPath + ".else-item.material", held.getType().name());
+                    player.sendMessage(ColorUtil.color("&aElse item set to: &f" + held.getType().name()));
+                } else {
+                    player.sendMessage(ColorUtil.color("&cHold the else-item in your hand."));
+                    return;
+                }
+            }
+            EditorScreens.openConditionList(plugin, player, session);
+            return;
+        }
+        if (slot == 53) { session.setEditingViewRequirements(false); manager.openSlotEditor(player, session, session.getSelectedSlot()); return; }
+
+        if (slot < 45) {
+            List<Object> list = (List<Object>) session.getConfig().getList(itemPath + condKey);
+            if (list == null || slot >= list.size()) return;
+            if (click == ClickType.SHIFT_LEFT || click == ClickType.SHIFT_RIGHT) {
+                list.remove(slot);
+                session.getConfig().set(itemPath + condKey, list.isEmpty() ? null : list);
+                player.sendMessage(ColorUtil.color("&cCondition removed."));
+                EditorScreens.openConditionList(plugin, player, session);
+            }
+        }
+    }
+
+    public static void handleConditionTypeClick(SmartMenus plugin, Player player,
+                                                EditorSession session, EditorManager manager,
+                                                int slot, ClickType click) {
+        if (slot == 53) {
+            if (session.isEditingViewRequirements()) manager.openViewReqList(player, session);
+            else manager.openConditionList(player, session);
+            return;
+        }
+        String[] conditionTypes = {
+            "VAULT_MONEY","PERMISSION","XP_LEVEL","XP_POINTS","ITEM","ITEM_CUSTOM_MODEL",
+            "ITEMSADDER","NEXO","WEATHER","WORLD","WORLDGUARD_REGION",
+            "PLACEHOLDER_EQUALS","PLACEHOLDER_GREATER_THAN","PLACEHOLDER_LESS_THAN","PLACEHOLDER_CONTAINS",
+            "EXPRESSION","SCRIPT","LUCKPERMS_GROUP","OREO_CURRENCY","OREO_WARPS"
+        };
+        if (slot >= 0 && slot < conditionTypes.length) {
+            String type = conditionTypes[slot];
+            session.clearConditionBuildState();
+            session.setPendingConditionType(type);
+            session.setPendingConditionParamKeys(EditorScreens.getConditionParamKeys(type));
+
+            if (session.getPendingConditionParamKeys().isEmpty()) {
+
+                java.util.Map<String, Object> cm = new java.util.LinkedHashMap<>();
+                cm.put("type", type);
+                addCondition(session, cm);
+                player.sendMessage(ColorUtil.color("&aCondition added: &f" + type));
+                if (session.isEditingViewRequirements()) manager.openViewReqList(player, session);
+                else manager.openConditionList(player, session);
+            } else {
+                String firstKey = session.getPendingConditionParamKeys().peek();
+                manager.promptChat(player, session, EditorSession.ChatMode.CONDITION_PARAM,
+                        "Enter &e" + firstKey + " &7for condition &e" + type + "&7:");
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void addCondition(EditorSession session, java.util.Map<String, Object> condMap) {
+        String key = session.isEditingViewRequirements()
+                ? session.getItemPath(session.getSelectedSlot()) + ".view-requirements"
+                : session.getItemPath(session.getSelectedSlot()) + ".conditions";
+        List<Object> list = (List<Object>) session.getConfig().getList(key);
+        if (list == null) list = new java.util.ArrayList<>();
+        list.add(condMap);
+        session.getConfig().set(key, list);
+    }
+
+    private static void handleContextSlot13(SmartMenus plugin, Player player, EditorSession session,
+                                             EditorManager manager, String path, org.bukkit.configuration.file.YamlConfiguration config) {
+        String btnType = config.getString(path + ".type", "NONE");
+        switch (btnType.toUpperCase()) {
+            case "JUMP" -> manager.promptChat(player, session, EditorSession.ChatMode.ITEM_TO_PAGE,
+                    "Enter the page number to jump to (integer):");
+            case "SWITCH" -> manager.promptChat(player, session, EditorSession.ChatMode.ITEM_SWITCH_KEY,
+                    "Enter the switch key name:");
+            case "PAGINATION" -> manager.promptChat(player, session, EditorSession.ChatMode.PAGINATION_SLOTS,
+                    "Enter pagination slots as comma-separated ranges (e.g. 10-16,19-25):");
+            default -> {}
+        }
+    }
+
+    private static void handleContextSlot14(SmartMenus plugin, Player player, EditorSession session,
+                                             EditorManager manager, String path, org.bukkit.configuration.file.YamlConfiguration config) {
+        String btnType = config.getString(path + ".type", "NONE");
+        switch (btnType.toUpperCase()) {
+            case "SWITCH" -> manager.openSwitchStates(player, session);
+            case "PAGINATION" -> manager.openPaginationElements(player, session);
+            default -> {}
+        }
+    }
+
+    private static void handleContextSlot15(SmartMenus plugin, Player player, EditorSession session,
+                                             EditorManager manager, String path, org.bukkit.configuration.file.YamlConfiguration config) {
+        String btnType = config.getString(path + ".type", "NONE");
+        if (btnType.equalsIgnoreCase("INPUT")) {
+            manager.promptChat(player, session, EditorSession.ChatMode.ITEM_ON_PLACE,
+                    "Enter on-place commands (pipe-separated):");
+        }
+    }
+
+    private static void handleContextSlot16(SmartMenus plugin, Player player, EditorSession session,
+                                             EditorManager manager, String path, org.bukkit.configuration.file.YamlConfiguration config, ClickType click) {
+        String btnType = config.getString(path + ".type", "NONE");
+        if (btnType.equalsIgnoreCase("INPUT")) {
+            boolean cur = config.getBoolean(path + ".remove-on-place", false);
+            config.set(path + ".remove-on-place", !cur);
+            player.sendMessage(com.oreo.util.ColorUtil.color("&eRemove on place: &f" + !cur));
+            EditorScreens.openSlotEditor(plugin, player, session);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public static void handleSwitchStatesClick(SmartMenus plugin, Player player,
+                                               EditorSession session, EditorManager manager,
+                                               int slot, ClickType click) {
+        int guiSlot = session.getSelectedSlot();
+        String path = session.getItemPath(guiSlot);
+
+        if (slot == 45) {
+            manager.promptChat(player, session, EditorSession.ChatMode.SWITCH_STATE_KEY,
+                    "Enter key name for the new state:");
+            return;
+        }
+        if (slot == 53) {
+            manager.openSlotEditor(player, session, guiSlot);
+            return;
+        }
+        if (slot < 45) {
+            var statesSection = session.getConfig().getConfigurationSection(path + ".buttons");
+            if (statesSection == null) return;
+            List<String> keys = new ArrayList<>(statesSection.getKeys(false));
+            if (slot >= keys.size()) return;
+            if (click == ClickType.SHIFT_LEFT || click == ClickType.SHIFT_RIGHT) {
+                String stateKey = keys.get(slot);
+                session.getConfig().set(path + ".buttons." + stateKey, null);
+                player.sendMessage(com.oreo.util.ColorUtil.color("&cState '&f" + stateKey + "&c' removed."));
+                EditorScreens.openSwitchStates(plugin, player, session);
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public static void handlePaginationElementsClick(SmartMenus plugin, Player player,
+                                                      EditorSession session, EditorManager manager,
+                                                      int slot, ClickType click) {
+        int guiSlot = session.getSelectedSlot();
+        String path = session.getItemPath(guiSlot);
+
+        if (slot == 45) {
+            manager.promptChat(player, session, EditorSession.ChatMode.PAGINATION_ELEMENT_TITLE,
+                    "Enter title for the new pagination element:");
+            return;
+        }
+        if (slot == 53) {
+            manager.openSlotEditor(player, session, guiSlot);
+            return;
+        }
+        if (slot < 45) {
+            List<Object> elemList = (List<Object>) session.getConfig().getList(path + ".elements");
+            if (elemList == null || slot >= elemList.size()) return;
+            if (click == ClickType.SHIFT_LEFT || click == ClickType.SHIFT_RIGHT) {
+                elemList.remove(slot);
+                session.getConfig().set(path + ".elements", elemList.isEmpty() ? null : elemList);
+                player.sendMessage(com.oreo.util.ColorUtil.color("&cElement removed."));
+                EditorScreens.openPaginationElements(plugin, player, session);
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public static void handleActionListClick(SmartMenus plugin, Player player,
+                                             EditorSession session, EditorManager manager,
+                                             int slot, ClickType click) {
+        if (slot == 45) { manager.openActionTypePicker(player, session); return; }
+        if (slot == 53) { manager.openSlotEditor(player, session, session.getSelectedSlot()); return; }
+
+        if (slot < 45) {
+            String actionsPath = session.getItemPath(session.getSelectedSlot()) + ".actions";
+            List<Object> actions = (List<Object>) session.getConfig().getList(actionsPath);
+            if (actions == null || slot >= actions.size()) return;
+
+            if (click == ClickType.SHIFT_LEFT || click == ClickType.SHIFT_RIGHT) {
+                actions.remove(slot);
+                session.getConfig().set(actionsPath, actions.isEmpty() ? null : actions);
+                player.sendMessage(ColorUtil.color("&cAction removed."));
+                EditorScreens.openActionList(plugin, player, session);
+            }
+        }
+    }
+
+    public static void handleActionTypeClick(SmartMenus plugin, Player player,
+                                             EditorSession session, EditorManager manager,
+                                             int slot, ClickType click) {
+        if (slot == 53) { manager.openActionList(player, session); return; }
+
+        String[] actionTypes = {
+                "PLAYER_MESSAGE", "BROADCAST", "ACTION_BAR", "TITLE",
+                "CONSOLE_COMMAND", "PLAYER_COMMAND", "SOUND", "OPEN_GUI",
+                "CLOSE", "GIVE_MONEY", "TAKE_MONEY", "GIVE_XP", "EFFECT", "SERVER_CONNECT"
+        };
+
+        if (slot >= 0 && slot < actionTypes.length) {
+            String actionType = actionTypes[slot];
+            session.setPendingActionType(actionType);
+            session.setPendingActionParam0(null);
+
+            String[] params = EditorScreens.getActionParams(actionType);
+            if (params.length == 0) {
+
+                java.util.Map<String, Object> actionMap = new java.util.LinkedHashMap<>();
+                actionMap.put("type", actionType);
+                String actPath = session.getItemPath(session.getSelectedSlot()) + ".actions";
+                List<Object> actions = (List<Object>) session.getConfig().getList(actPath);
+                if (actions == null) actions = new ArrayList<>();
+                actions.add(actionMap);
+                session.getConfig().set(actPath, actions);
+                player.sendMessage(ColorUtil.color("&aAction added: &f" + actionType));
+                manager.openActionList(player, session);
+            } else {
+                manager.promptChat(player, session, EditorSession.ChatMode.ACTION_PARAM_0,
+                        "Enter the &e" + params[0] + " &7for &e" + actionType + "&7:");
+            }
+        }
+    }
+}
