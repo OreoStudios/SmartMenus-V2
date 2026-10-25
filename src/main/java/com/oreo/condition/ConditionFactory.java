@@ -124,3 +124,111 @@ public class ConditionFactory {
                     return new WorldGuardRegionCondition(plugin,
                             section.getString("region"),
                             section.getBoolean("require_member", false));
+
+                case "PLACEHOLDER":
+                    return new PlaceholderCondition(plugin,
+                            section.getString("placeholder"),
+                            section.getString("operator", "=="),
+                            section.getString("value"),
+                            section.getString("error_message"));
+
+                case "WEATHER":
+                    return new WeatherCondition(plugin, section.getString("weather", "clear"));
+
+                case "WORLD":
+                    List<String> worlds = section.getStringList("worlds");
+                    if (worlds.isEmpty()) {
+                        String singleWorld = section.getString("world");
+                        if (singleWorld != null) {
+                            worlds = new ArrayList<>();
+                            worlds.add(singleWorld);
+                        }
+                    }
+                    if (worlds.isEmpty()) {
+                        plugin.getLogger().warning(plugin.getMessageManager().getMessage("errors.world_condition_no_worlds"));
+                        return null;
+                    }
+                    return new WorldCondition(plugin, worlds, section.getBoolean("blacklist", false));
+                case "LUCKPERMS_GROUP":
+                case "LUCKPERMS_RANK":
+                case "LUCKPERMS":
+                case "GROUP":
+                case "RANK":
+                    return new LuckPermsGroupCondition(
+                            plugin,
+                            section.getString("group"),
+                            section.getBoolean("include_inherited", true),
+                            section.getBoolean("negate", false),
+                            section.getString("error_message")
+                    );
+
+                case "MODELED_NPC":
+                case "NPC":
+                case "NEAR_NPC":
+                    return new ModeledNPCCondition(plugin,
+                            section.getInt("npc_id"),
+                            section.getDouble("radius", 5.0));
+
+                case "EXPRESSION":
+                    return new ExpressionCondition(plugin, section.getString("expression", ""));
+
+                case "PLACEHOLDER_EQUALS":
+                    return new PlaceholderCompareCondition(plugin,
+                            section.getString("placeholder", ""),
+                            section.getString("value", ""),
+                            PlaceholderCompareCondition.CompareMode.EQUALS,
+                            section.getBoolean("ignore_case", true));
+
+                case "PLACEHOLDER_CONTAINS":
+                    return new PlaceholderCompareCondition(plugin,
+                            section.getString("placeholder", ""),
+                            section.getString("value", ""),
+                            PlaceholderCompareCondition.CompareMode.CONTAINS,
+                            section.getBoolean("ignore_case", true));
+
+                case "PLACEHOLDER_GREATER_THAN":
+                    return new PlaceholderCompareCondition(plugin,
+                            section.getString("placeholder", ""),
+                            section.getString("value", "0"),
+                            PlaceholderCompareCondition.CompareMode.GREATER_THAN,
+                            false);
+
+                case "PLACEHOLDER_LESS_THAN":
+                    return new PlaceholderCompareCondition(plugin,
+                            section.getString("placeholder", ""),
+                            section.getString("value", "0"),
+                            PlaceholderCompareCondition.CompareMode.LESS_THAN,
+                            false);
+
+                case "SCRIPT":
+
+                    return new ScriptCondition(plugin,
+                            section.getString("script", section.getString("expression", "")));
+
+                default:
+
+                    if (customRegistry != null) {
+                        com.oreo.api.SmartMenusAPI.ConditionParser factory = customRegistry.get(type.toUpperCase(Locale.ROOT));
+                        if (factory != null) {
+                            try {
+                                return factory.parse(plugin, section);
+                            } catch (Exception e) {
+                                Map<String, String> errReplacements = new HashMap<>();
+                                errReplacements.put("error", e.getMessage());
+                                plugin.getLogger().warning(plugin.getMessageManager().getMessage("errors.condition_parse_failed", errReplacements));
+                            }
+                        }
+                    }
+                    Map<String, String> replacements = new HashMap<>();
+                    replacements.put("type", type);
+                    plugin.getLogger().warning(plugin.getMessageManager().getMessage("errors.unknown_condition_type", replacements));
+                    return null;
+            }
+        } catch (Exception e) {
+            Map<String, String> replacements = new HashMap<>();
+            replacements.put("error", e.getMessage());
+            plugin.getLogger().log(Level.WARNING, plugin.getMessageManager().getMessage("errors.condition_parse_failed", replacements), e);
+            return null;
+        }
+    }
+}
