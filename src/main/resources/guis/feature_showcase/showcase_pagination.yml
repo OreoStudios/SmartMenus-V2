@@ -1,0 +1,219 @@
+# ============================================================
+# FEATURE SHOWCASE — Pagination Demo
+# Demonstrates: PAGINATION, NEXT, PREVIOUS, JUMP, BACK, HOME, MAIN_MENU
+#
+# 30 elements across 3 pages (10 slots × 3 rows = 21 slots per page → 2 pages).
+# Actually 21 slots × 2 pages = 42, so 30 fits in 2 pages.
+# Navigation bar in row 6 uses every nav button type.
+# ============================================================
+showcase_pagination:
+  title: "&e&l📖 Pagination Demo &8| &7Page &e%page%&8/&e%max_page%"
+  rows: 6
+  commands: [ "showcase-pagination" ]
+  auto-convert: true
+  main_menu: showcase_hub
+
+  items:
+
+    border-top:
+      slots: [ 0-8 ]
+      material: YELLOW_STAINED_GLASS_PANE
+      name: "&8"
+
+    # ── Content area: 21 slots across rows 2-4 ───────────────
+
+    content:
+      type: PAGINATION
+      slots:
+        - 10-16
+        - 19-25
+        - 28-34
+      material: PAPER
+      name: "&f&l%title%"
+      lore:
+        - "&8&m──────────────────"
+        - "  &7%description%"
+        - ""
+        - "  &8Item &f%index% &8of &f%total% &8· Page &e%page%&8/&e%max_page%"
+        - "&8&m──────────────────"
+      elements:
+        - title: "Pagination Button"
+          description: "Displays a fixed list of items across multiple pages."
+          total: "30"
+        - title: "Dynamic Pagination"
+          description: "Live data source: online players, worlds, inventory."
+          total: "30"
+        - title: "Next Button"
+          description: "Advances to the next page. Hides on the last page."
+          total: "30"
+        - title: "Previous Button"
+          description: "Goes back one page. Hides on the first page."
+          total: "30"
+        - title: "Jump Button"
+          description: "Jumps directly to a specific page number."
+          total: "30"
+        - title: "Switch Button"
+          description: "Multi-state toggle driven by a placeholder key."
+          total: "30"
+        - title: "Input Slot"
+          description: "Detects item placement and fires on-place commands."
+          total: "30"
+        - title: "Inventory Button"
+          description: "Opens another GUI and pushes current to history."
+          total: "30"
+        - title: "Back Button"
+          description: "Pops the navigation history to return one GUI back."
+          total: "30"
+        - title: "Home Button"
+          description: "Returns to the oldest GUI in the navigation stack."
+          total: "30"
+        - title: "Main Menu Button"
+          description: "Jumps directly to the main_menu defined on the GUI."
+          total: "30"
+        - title: "Slot Ranges"
+          description: "Define content areas as 'slots: [10-16, 19-25]'."
+          total: "30"
+        - title: "Named Item Keys"
+          description: "Items are named (e.g. 'content:') not numbered."
+          total: "30"
+        - title: "Item Sub-section"
+          description: "Support 'item:' sub-section for visual properties."
+          total: "30"
+        - title: "Conditions"
+          description: "All button types support condition checks."
+          total: "30"
+        - title: "Multi-slot Items"
+          description: "One item definition can fill many slots at once."
+          total: "30"
+        - title: "Color Codes"
+          description: "Standard &codes, &#hex, gradients, and rainbow."
+          total: "30"
+        - title: "PlaceholderAPI"
+          description: "Any PAPI placeholder works in titles and lore."
+          total: "30"
+        - title: "Custom Model Data"
+          description: "Apply custom_model_data to any item."
+          total: "30"
+        - title: "ItemsAdder Support"
+          description: "Use item_type: itemsadder with an item_id."
+          total: "30"
+        - title: "Nexo Support"
+          description: "Use item_type: nexo with an item_id."
+          total: "30"
+        - title: "Vault Economy"
+          description: "VAULT_MONEY condition checks and deducts balance."
+          total: "30"
+        - title: "XP Conditions"
+          description: "XP_LEVEL and XP_POINTS conditions consume XP."
+          total: "30"
+        - title: "Permission Checks"
+          description: "PERMISSION condition checks a Bukkit permission node."
+          total: "30"
+        - title: "LuckPerms Groups"
+          description: "LUCKPERMS_GROUP checks group membership."
+          total: "30"
+        - title: "WorldGuard Regions"
+          description: "WORLDGUARD_REGION requires the player to be inside."
+          total: "30"
+        - title: "Weather Conditions"
+          description: "WEATHER checks current world weather state."
+          total: "30"
+        - title: "World Restrictions"
+          description: "WORLD limits a button to specific worlds."
+          total: "30"
+        - title: "NPC Bindings"
+          description: "Set npc_id to open the GUI on NPC right-click."
+          total: "30"
+        - title: "Memory Safe"
+          description: "All per-player state cleans up on disconnect."
+          total: "30"
+
+    filler-left:
+      slots: [ 9, 18, 27 ]
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8"
+
+    filler-right:
+      slots: [ 17, 26, 35 ]
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8"
+
+    border-sep:
+      slots: [ 36-44 ]
+      material: YELLOW_STAINED_GLASS_PANE
+      name: "&8"
+
+    # ── Navigation row ────────────────────────────────────────
+
+    previous:
+      type: PREVIOUS
+      slot: 45
+      is-permanent: false
+      material: ARROW
+      name: "&c&l← Previous"
+      lore:
+        - "&7Go to page &e%page%&7/&e%max_page%"
+
+    back:
+      type: BACK
+      slot: 46
+      material: RED_STAINED_GLASS_PANE
+      name: "&c&l⬅ Back"
+      lore:
+        - "&7Return to the previous menu"
+
+    jump-first:
+      type: JUMP
+      slot: 47
+      to-page: 0
+      material: PAPER
+      name: "&f&lPage &e1"
+      lore:
+        - "&7Jump to page 1"
+
+    home:
+      type: HOME
+      slot: 48
+      material: NETHER_STAR
+      name: "&e&l⌂ Home"
+      lore:
+        - "&7Return to &6Showcase Hub"
+
+    page-display:
+      slot: 49
+      material: BOOK
+      name: "&e&lPage &f%page% &8/ &f%max_page%"
+      lore:
+        - "&7Use arrows or jump buttons to navigate"
+
+    main-menu:
+      type: MAIN_MENU
+      slot: 50
+      material: COMPASS
+      name: "&6&lMain Menu"
+      lore:
+        - "&7Jump to &6Showcase Hub"
+
+    jump-last:
+      type: JUMP
+      slot: 51
+      to-page: 1
+      material: PAPER
+      name: "&f&lPage &e2"
+      lore:
+        - "&7Jump to page 2"
+
+    close:
+      slot: 52
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
+
+    next:
+      type: NEXT
+      slot: 53
+      is-permanent: false
+      material: ARROW
+      name: "&a&lNext →"
+      lore:
+        - "&7Go to page &e%page%&7/&e%max_page%"
