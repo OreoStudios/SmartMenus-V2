@@ -84,3 +84,97 @@ public class ExpressionCondition implements Condition {
     }
 
     private int findOperatorIndex(String expr, String op) {
+        int i = 0;
+        while (i <= expr.length() - op.length()) {
+            if (expr.startsWith(op, i)) {
+
+                boolean isSingleChar = op.length() == 1;
+                if (isSingleChar) {
+                    char next = (i + 1 < expr.length()) ? expr.charAt(i + 1) : '\0';
+                    if (next == '=' || next == '>') { i++; continue; }
+                }
+                return i;
+            }
+            i++;
+        }
+        return -1;
+    }
+
+    private int pos;
+    private String src;
+
+    private double evalArithmetic(String expr) {
+        this.src = expr.trim();
+        this.pos = 0;
+        double result = parseAddSub();
+        return result;
+    }
+
+    private double parseAddSub() {
+        double left = parseMulDiv();
+        while (pos < src.length()) {
+            char c = src.charAt(pos);
+            if (c == '+') { pos++; left += parseMulDiv(); }
+            else if (c == '-') { pos++; left -= parseMulDiv(); }
+            else break;
+        }
+        return left;
+    }
+
+    private double parseMulDiv() {
+        double left = parseUnary();
+        while (pos < src.length()) {
+            char c = src.charAt(pos);
+            if (c == '*') { pos++; left *= parseUnary(); }
+            else if (c == '/') {
+                pos++;
+                double right = parseUnary();
+                if (right == 0) throw new ArithmeticException("Division by zero");
+                left /= right;
+            }
+            else break;
+        }
+        return left;
+    }
+
+    private double parseUnary() {
+        skipSpaces();
+        if (pos < src.length() && src.charAt(pos) == '-') {
+            pos++;
+            return -parseUnary();
+        }
+        if (pos < src.length() && src.charAt(pos) == '+') {
+            pos++;
+            return parseUnary();
+        }
+        return parseAtom();
+    }
+
+    private double parseAtom() {
+        skipSpaces();
+        if (pos < src.length() && src.charAt(pos) == '(') {
+            pos++;
+            double val = parseAddSub();
+            skipSpaces();
+            if (pos < src.length() && src.charAt(pos) == ')') pos++;
+            return val;
+        }
+        return parseNumber();
+    }
+
+    private double parseNumber() {
+        skipSpaces();
+        int start = pos;
+        if (pos < src.length() && src.charAt(pos) == '-') pos++;
+        while (pos < src.length() && (Character.isDigit(src.charAt(pos)) || src.charAt(pos) == '.')) {
+            pos++;
+        }
+        String numStr = src.substring(start, pos).trim();
+        if (numStr.isEmpty()) throw new NumberFormatException("Expected number at position " + start + " in: " + src);
+        return Double.parseDouble(numStr);
+    }
+
+    private void skipSpaces() {
+        while (pos < src.length() && src.charAt(pos) == ' ') pos++;
+    }
+}
