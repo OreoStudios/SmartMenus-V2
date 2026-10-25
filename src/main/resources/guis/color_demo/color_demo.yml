@@ -1,0 +1,40 @@
+# ============================================================
+# EXAMPLE 18 — COLORS & GRADIENTS DEMO
+# Shows all color formatting options available.
+# ============================================================
+color_demo:
+  title: "<gradient:#FF0000:#0000FF>Color Demo</gradient>"
+  rows: 3
+  commands: [ "colordemo" ]
+  auto-convert: true
+  items:
+    "10":
+      material: DIAMOND
+      name: "&#FF6B6BHex Color Name"
+      lore:
+        - "&7Standard codes: &c&lRED &6GOLD &e&oYELLOW"
+        - "&#00FF00Hex green &#FF00FFhex pink"
+        - "&r&7(reset example)"
+      close: false
+
+    "12":
+      material: EMERALD
+      name: "<gradient:#00FF00:#FFFF00>Two-Stop Gradient</gradient>"
+      lore:
+        - "<gradient:#FF1493:#00BFFF>Pink to Blue lore line</gradient>"
+        - "<gradient:#FFD700:#FF4500:#FF0000>Three-stop gradient</gradient>"
+      close: false
+
+    "14":
+      material: NETHER_STAR
+      name: "<rainbow>Rainbow Item Name</rainbow>"
+      lore:
+        - "<rainbow>This lore line is rainbow!</rainbow>"
+        - "&#9400D3Mixed &#FF1493Hex &#00CED1Colors"
+        - "&b&lBold aqua &r&7and reset"
+      close: false
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
