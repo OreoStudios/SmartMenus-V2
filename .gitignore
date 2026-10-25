@@ -1,0 +1,14 @@
+# Build output
+/target/
+dependency-reduced-pom.xml
+
+# IntelliJ IDEA
+/.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local tooling
+/.claude/
