@@ -307,3 +307,298 @@ public class SmartMenus extends JavaPlugin implements Listener {
                 " ",
                 "  ┌──────────────────────────────────────────────────────────┐",
                 "  │  ███████╗███╗   ███╗ █████╗ ██████╗ ████████╗           │",
+                "  │  ██╔════╝████╗ ████║██╔══██╗██╔══██╗╚══██╔══╝           │",
+                "  │  ███████╗██╔████╔██║███████║██████╔╝   ██║              │",
+                "  │  ╚════██║██║╚██╔╝██║██╔══██║██╔══██╗   ██║              │",
+                "  │  ███████║██║ ╚═╝ ██║██║  ██║██║  ██║   ██║              │",
+                "  │  ╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝              │",
+                "  │  ███╗   ███╗███████╗███╗   ██╗██╗   ██╗███████╗         │",
+                "  │  ████╗ ████║██╔════╝████╗  ██║██║   ██║██╔════╝         │",
+                "  │  ██╔████╔██║█████╗  ██╔██╗ ██║██║   ██║███████╗         │",
+                "  │  ██║╚██╔╝██║██╔══╝  ██║╚██╗██║██║   ██║╚════██║         │",
+                "  │  ██║ ╚═╝ ██║███████╗██║ ╚████║╚██████╔╝███████║         │",
+                "  │  ╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝         │",
+                "  │                                                          │",
+                "  │   [-] PacketEvents NOT detected                          │",
+                "  │       Only DEFAULT bottom inventory mode available.      │",
+                "  └──────────────────────────────────────────────────────────┘",
+                " "
+            };
+        }
+        for (String line : lines) {
+            getLogger().info(line);
+        }
+    }
+
+    private void hookOreoEssentialsIfPresent() {
+        if (oreoHooked) return;
+
+        if (Bukkit.getPluginManager().getPlugin("OreoEssentials") == null) {
+            return;
+        }
+
+        oreoHooked = true;
+        getLogger().info("Detected OreoEssentials. Enabling Oreo hooks...");
+
+        if (itemProvider instanceof DefaultItemProvider) {
+            ((DefaultItemProvider) itemProvider).reloadHooks();
+        }
+
+        guiRegistry.reload();
+        unregisterGuiCommands();
+        registeredCommands.clear();
+        registerGuiCommands();
+    }
+
+    public InventoryManager getInventoryManager() {
+        return inventoryManager;
+    }
+
+    public GuiRegistry getGuiRegistry() {
+        return guiRegistry;
+    }
+
+    public ItemProvider getItemProvider() {
+        return itemProvider;
+    }
+
+    public MessageManager getMessageManager() {
+        return messageManager;
+    }
+
+    public PatternRegistry getPatternRegistry() {
+        return patternRegistry;
+    }
+
+    public SmartMenusScriptEngine getScriptEngine() {
+        return scriptEngine;
+    }
+
+    public EditorManager getEditorManager() { return editorManager; }
+    public BedrockManager getBedrockManager() { return bedrockManager; }
+    public ItemLevelManager getItemLevelManager() { return itemLevelManager; }
+    public com.oreo.util.CooldownManager getCooldownManager() { return cooldownManager; }
+
+    public void reloadGuis() {
+        messageManager.reload();
+
+        if (itemProvider instanceof DefaultItemProvider) {
+            ((DefaultItemProvider) itemProvider).reloadHooks();
+        }
+
+        patternRegistry.reload();
+
+        unregisterGuiCommands();
+        registeredCommands.clear();
+
+        guiRegistry.reload();
+
+        if (itemLevelManager != null) itemLevelManager.reload();
+
+        registerGuiCommands();
+
+        Map<String, String> replacements = new HashMap<>();
+        replacements.put("count", String.valueOf(guiRegistry.getGuiIds().size()));
+        getLogger().info(messageManager.getMessage("general.reload.success"));
+        getLogger().info(messageManager.getMessage("general.reload.gui_count", replacements));
+    }
+
+    private void registerNPCListener() {
+        if (Bukkit.getPluginManager().getPlugin("ModeledNPCs") == null) {
+            return;
+        }
+
+        try {
+            getServer().getPluginManager().registerEvents(new NPCInteractListener(this), this);
+
+            int npcBoundGuis = 0;
+            for (String guiId : guiRegistry.getGuiIds()) {
+                GuiDefinition definition = guiRegistry.getGui(guiId);
+                if (definition != null && definition.hasNpcBinding()) {
+                    npcBoundGuis++;
+                }
+            }
+
+            if (npcBoundGuis > 0) {
+                Map<String, String> replacements = new HashMap<>();
+                replacements.put("count", String.valueOf(npcBoundGuis));
+                getLogger().info(messageManager.getMessage("loading.npc_listener", replacements));
+            }
+        } catch (Exception e) {
+            Map<String, String> replacements = new HashMap<>();
+            replacements.put("error", e.getMessage());
+            getLogger().warning(messageManager.getMessage("errors.npc_listener_register_failed", replacements));
+        }
+    }
+
+    private void registerGuiCommands() {
+        try {
+            CommandMap commandMap = getCommandMap();
+            Map<String, Command> knownCommands = getKnownCommands(commandMap);
+
+            for (String guiId : guiRegistry.getGuiIds()) {
+                GuiDefinition definition = guiRegistry.getGui(guiId);
+                if (definition == null || definition.getCommands().isEmpty()) continue;
+
+                List<String> normalized = normalizeCommands(definition.getCommands());
+                if (normalized.isEmpty()) continue;
+
+                List<String> safeNames = new ArrayList<>();
+                for (String name : normalized) {
+                    String key = name.toLowerCase(Locale.ENGLISH);
+                    Command existing = knownCommands.get(key);
+                    if (existing != null && !knownCommands.containsKey("smartmenus:" + key)) {
+                        getLogger().warning("Skipping command '/" + name
+                                + "' for GUI '" + guiId
+                                + "' — already registered by another plugin and will NOT be overridden.");
+                        continue;
+                    }
+                    safeNames.add(name);
+                }
+
+                if (safeNames.isEmpty()) {
+                    getLogger().warning("GUI '" + guiId
+                            + "' has no available command names — all aliases conflict with other plugins.");
+                    continue;
+                }
+
+                String primary = safeNames.get(0);
+                List<String> aliases = safeNames.size() > 1
+                        ? new ArrayList<>(safeNames.subList(1, safeNames.size()))
+                        : Collections.emptyList();
+
+                Command cmd = new Command(primary) {
+                    @Override
+                    public boolean execute(CommandSender sender, String label, String[] args) {
+                        if (!(sender instanceof Player)) {
+                            messageManager.send(sender, "general.player_only");
+                            return true;
+                        }
+
+                        Player player = (Player) sender;
+
+                        if (!player.hasPermission("smartmenus.command." + guiId)
+                                && !player.hasPermission("ogui.command." + guiId)) {
+                            messageManager.send(player, "general.no_permission");
+                            return true;
+                        }
+
+                        GuiOpener.open(SmartMenus.this, player, definition, OpenOptions.checked());
+                        return true;
+                    }
+                };
+
+                cmd.setAliases(new ArrayList<>(aliases));
+                cmd.setDescription("Opens the " + definition.getTitle() + " menu");
+                cmd.setPermission("smartmenus.command." + guiId);
+
+                forceUnregisterNames(knownCommands, primary, aliases);
+
+                cmd.register(commandMap);
+
+                knownCommands.put(primary.toLowerCase(Locale.ENGLISH), cmd);
+                knownCommands.put(("smartmenus:" + primary).toLowerCase(Locale.ENGLISH), cmd);
+                registeredCommands.add(primary);
+
+                for (String a : aliases) {
+                    knownCommands.put(a.toLowerCase(Locale.ENGLISH), cmd);
+                    knownCommands.put(("smartmenus:" + a).toLowerCase(Locale.ENGLISH), cmd);
+                    registeredCommands.add(a);
+                }
+
+                Map<String, String> replacements = new HashMap<>();
+                replacements.put("command", primary + (aliases.isEmpty() ? "" : " (aliases: " + String.join(", ", aliases) + ")"));
+                replacements.put("gui", guiId);
+                getLogger().info(messageManager.getMessage("loading.command_registered", replacements));
+            }
+
+        } catch (Exception e) {
+            Map<String, String> replacements = new HashMap<>();
+            replacements.put("error", e.getMessage());
+            getLogger().log(Level.SEVERE, messageManager.getMessage("errors.command_register_failed", replacements), e);
+        }
+    }
+
+    private void unregisterGuiCommands() {
+        try {
+            CommandMap commandMap = getCommandMap();
+            Map<String, Command> knownCommands = getKnownCommands(commandMap);
+
+            for (String cmdName : registeredCommands) {
+                String key = cmdName.toLowerCase(Locale.ENGLISH);
+                knownCommands.remove(key);
+                knownCommands.remove(("smartmenus:" + key).toLowerCase(Locale.ENGLISH));
+
+                knownCommands.entrySet().removeIf(e ->
+                        e.getKey() != null &&
+                                (e.getKey().equalsIgnoreCase(cmdName) ||
+                                        e.getKey().equalsIgnoreCase("smartmenus:" + cmdName)));
+            }
+
+        } catch (Exception e) {
+            getLogger().log(Level.WARNING, "Failed to unregister GUI commands: " + e.getMessage(), e);
+        }
+    }
+
+    private CommandMap getCommandMap() throws Exception {
+        Class<?> clazz = getServer().getClass();
+        while (clazz != null) {
+            try {
+                Field commandMapField = clazz.getDeclaredField("commandMap");
+                commandMapField.setAccessible(true);
+                return (CommandMap) commandMapField.get(getServer());
+            } catch (NoSuchFieldException e) {
+                clazz = clazz.getSuperclass();
+            }
+        }
+        throw new Exception("Could not find commandMap field in server class hierarchy");
+    }
+
+    @SuppressWarnings("unchecked")
+    private Map<String, Command> getKnownCommands(CommandMap commandMap) throws Exception {
+        Class<?> clazz = commandMap.getClass();
+        while (clazz != null) {
+            try {
+                Field knownCommandsField = clazz.getDeclaredField("knownCommands");
+                knownCommandsField.setAccessible(true);
+                return (Map<String, Command>) knownCommandsField.get(commandMap);
+            } catch (NoSuchFieldException e) {
+                clazz = clazz.getSuperclass();
+            }
+        }
+        throw new Exception("Could not find knownCommands field in CommandMap hierarchy");
+    }
+
+    private List<String> normalizeCommands(List<String> raw) {
+        List<String> out = new ArrayList<>();
+        for (String s : raw) {
+            if (s == null) continue;
+            String v = s.trim();
+            if (v.isEmpty()) continue;
+            if (v.startsWith("/")) v = v.substring(1);
+            v = v.toLowerCase(Locale.ENGLISH);
+            v = v.replaceAll("[^\\p{L}0-9_:\\-]", "");
+            if (!v.isEmpty()) out.add(v);
+        }
+        LinkedHashSet<String> set = new LinkedHashSet<>(out);
+        return new ArrayList<>(set);
+    }
+
+    private void forceUnregisterNames(Map<String, Command> knownCommands, String primary, List<String> aliases) {
+        List<String> all = new ArrayList<>();
+        all.add(primary);
+        all.addAll(aliases);
+
+        for (String name : all) {
+            String key = name.toLowerCase(Locale.ENGLISH);
+
+            knownCommands.remove(key);
+            knownCommands.remove(("smartmenus:" + key).toLowerCase(Locale.ENGLISH));
+
+            knownCommands.entrySet().removeIf(e ->
+                    e.getKey() != null &&
+                            (e.getKey().equalsIgnoreCase(name) ||
+                                    e.getKey().equalsIgnoreCase("smartmenus:" + name)));
+        }
+    }
+}
