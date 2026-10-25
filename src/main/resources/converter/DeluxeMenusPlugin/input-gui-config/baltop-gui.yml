@@ -1,0 +1,239 @@
+menu_title: '&#6d0af7&lʙᴀʟᴀɴᴄᴇ ᴛᴏᴘ'
+open_command:
+  - balancetop
+  - btop
+  - b
+open_commands:
+  - "[message] &8[&bʙᴛ&8] &f sᴄᴀɴɴɪɴɢ.."
+  - "[sound] UI_TOAST_IN"
+size: 45
+items:
+  'leader1':
+    material: 'head-%essentials_baltop_player_0%'
+    update: true
+    priority: 1
+    slot: 10
+    display_name: '&5%essentials_baltop_player_0% &9#1'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_0%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader2':
+    material: 'head-%essentials_baltop_player_1%'
+    update: true
+    priority: 2
+    slot: 11
+    display_name: '&5%essentials_baltop_player_1% &9#2'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_1%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader3':
+    material: 'head-%essentials_baltop_player_2%'
+    update: true
+    priority: 3
+    slot: 12
+    display_name: '&5%essentials_baltop_player_2% &9#3'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_2%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader4':
+    material: 'head-%essentials_baltop_player_3%'
+    update: true
+    priority: 1
+    slot: 13
+    display_name: '&5%essentials_baltop_player_3% &9#4'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_3%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader5':
+    material: 'head-%essentials_baltop_player_4%'
+    update: true
+    priority: 1
+    slot: 14
+    display_name: '&5%essentials_baltop_player_4% &9#5'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_4%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader6':
+    material: 'head-%essentials_baltop_player_5%'
+    update: true
+    priority: 1
+    slot: 15
+    display_name: '&5%essentials_baltop_player_5% &9#6'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_5%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader7':
+    material: 'head-%essentials_baltop_player_6%'
+    update: true
+    priority: 1
+    slot: 16
+    display_name: '&5%essentials_baltop_player_6% &9#7'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_6%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader8':
+    material: 'head-%essentials_baltop_player_7%'
+    update: true
+    priority: 1
+    slot: 19
+    display_name: '&5%essentials_baltop_player_7% &9#8'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7Oᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_7%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader9':
+    material: 'head-%essentials_baltop_player_8%'
+    update: true
+    priority: 1
+    slot: 20
+    display_name: '&5%essentials_baltop_player_8% &9#9'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7Oᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_8%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader10':
+    material: 'head-%essentials_baltop_player_9%'
+    update: true
+    priority: 1
+    slot: 21
+    display_name: '&5%essentials_baltop_player_9% &9#10'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_9%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader11':
+    material: 'head-%essentials_baltop_player_10%'
+    update: true
+    priority: 1
+    slot: 22
+    display_name: '&5%essentials_baltop_player_10% &9#11'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_10%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader12':
+    material: 'head-%essentials_baltop_player_11%'
+    update: true
+    priority: 1
+    slot: 23
+    display_name: '&5%essentials_baltop_player_11% &9#12'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_11%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader13':
+    material: 'head-%essentials_baltop_player_12%'
+    update: true
+    priority: 1
+    slot: 24
+    display_name: '&5%essentials_baltop_player_12% &9#13'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_12%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader14':
+    material: 'head-%essentials_baltop_player_13%'
+    update: true
+    priority: 1
+    slot: 25
+    display_name: '&5%essentials_baltop_player_13% &9#14'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_13%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader15':
+    material: 'head-%essentials_baltop_player_14%'
+    update: true
+    priority: 1
+    slot: 28
+    display_name: '&5%essentials_baltop_player_14% &9#15'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_14%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader16':
+    material: 'head-%essentials_baltop_player_15%'
+    update: true
+    priority: 1
+    slot: 29
+    display_name: '&5%essentials_baltop_player_15% &9#16'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_15%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader17':
+    material: 'head-%essentials_baltop_player_16%'
+    update: true
+    priority: 1
+    slot: 30
+    display_name: '&5%essentials_baltop_player_16% &9#17'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_16%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader18':
+    material: 'head-%essentials_baltop_player_17%'
+    update: true
+    priority: 1
+    slot: 31
+    display_name: '&5%essentials_baltop_player_17% &9#18'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_17%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader19':
+    material: 'head-%essentials_baltop_player_18%'
+    update: true
+    priority: 1
+    slot: 32
+    display_name: '&5%essentials_baltop_player_18% &9#19'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_18%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader20':
+    material: 'head-%essentials_baltop_player_19%'
+    update: true
+    priority: 1
+    slot: 33
+    display_name: '&5%essentials_baltop_player_19% &9#20'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_19%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'leader21':
+    material: 'head-%essentials_baltop_player_20%'
+    update: true
+    priority: 1
+    slot: 34
+    display_name: '&5%essentials_baltop_player_20% &9#21'
+    lore:
+      - '&7&m――――――&6✦&7&m――――――'
+      - '&7ᴏᴡɴᴇʀꜱʜɪᴘ: &a$%essentials_baltop_balance_formatted_20%'
+      - '&7&m――――――&6✦&7&m――――――'
+  'player-info':
+    material: head-%player_name%
+    update: true
+    priority: 1
+    slot: 40
+    display_name: '&eʏᴏᴜʀ sᴛᴀᴛɪsᴛɪᴄs'
+    lore:
+      - '&7ʙᴀʟᴀɴᴄᴇ: &a$%vault_eco_balance_formatted%'
+      - '&7ʙᴀʟᴛᴏᴘ ʀᴀɴᴋ: &f%essentials_baltop_rank%'
+  'filler':
+    material: 'black_stained_glass_pane'
+    slots:
+    - 0-9
+    - 17-18
+    - 26-27
+    - 35-39
+    - 41-44
+    
+    display_name: ''
