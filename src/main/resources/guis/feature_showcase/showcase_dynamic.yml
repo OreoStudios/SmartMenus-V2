@@ -1,0 +1,449 @@
+# ============================================================
+# FEATURE SHOWCASE — Dynamic Pagination Hub + all source demos
+# Demonstrates: DYNAMIC_PAGINATION with every DynamicSource
+#
+# GUIs in this file:
+#   showcase_dynamic_hub  — sub-hub linking to each source demo
+#   showcase_online       — ONLINE_PLAYERS source
+#   showcase_worlds       — WORLDS source
+#   showcase_inventory    — PLAYER_INVENTORY source
+#   showcase_enderchest   — PLAYER_ENDERCHEST source
+#   showcase_groups       — PERMISSION_GROUPS source (needs LuckPerms)
+# ============================================================
+
+# ── Dynamic Hub ───────────────────────────────────────────────
+showcase_dynamic_hub:
+  title: "&b&l🔄 Dynamic Pagination"
+  rows: 3
+  commands: [ "showcase-dynamic" ]
+  main_menu: showcase_hub
+
+  items:
+
+    border:
+      slots: [ 0-8, 18-26 ]
+      material: CYAN_STAINED_GLASS_PANE
+      name: "&8"
+
+    btn-online:
+      type: INVENTORY
+      slot: 10
+      inventory: showcase_online
+      material: PLAYER_HEAD
+      name: "&e&lOnline Players"
+      lore:
+        - "&7Source: &fONLINE_PLAYERS"
+        - "&7Auto-skinned skulls, live data."
+        - ""
+        - "&eClick →"
+
+    btn-worlds:
+      type: INVENTORY
+      slot: 12
+      inventory: showcase_worlds
+      material: GRASS_BLOCK
+      name: "&a&lWorlds"
+      lore:
+        - "&7Source: &fWORLDS"
+        - "&7AUTO material picks icon by environment."
+        - ""
+        - "&eClick →"
+
+    btn-inventory:
+      type: INVENTORY
+      slot: 14
+      inventory: showcase_inventory
+      material: CHEST
+      name: "&d&lPlayer Inventory"
+      lore:
+        - "&7Source: &fPLAYER_INVENTORY"
+        - "&7Renders your actual items."
+        - "&7take-item: true removes on click."
+        - ""
+        - "&eClick →"
+
+    btn-enderchest:
+      type: INVENTORY
+      slot: 15
+      inventory: showcase_enderchest
+      material: ENDER_CHEST
+      name: "&5&lEnder Chest"
+      lore:
+        - "&7Source: &fPLAYER_ENDERCHEST"
+        - "&7Renders your ender chest items."
+        - ""
+        - "&eClick →"
+
+    btn-groups:
+      type: INVENTORY
+      slot: 16
+      inventory: showcase_groups
+      material: SHIELD
+      name: "&6&lPermission Groups"
+      lore:
+        - "&7Source: &fPERMISSION_GROUPS"
+        - "&7Lists all LuckPerms groups."
+        - "&7Needs: LuckPerms"
+        - ""
+        - "&eClick →"
+
+    back:
+      type: BACK
+      slot: 19
+      material: RED_STAINED_GLASS_PANE
+      name: "&c&l⬅ Back"
+
+    home:
+      type: HOME
+      slot: 22
+      material: NETHER_STAR
+      name: "&e&l⌂ Home"
+
+    main-menu:
+      type: MAIN_MENU
+      slot: 25
+      material: COMPASS
+      name: "&6&lMain Menu"
+
+    close:
+      slot: 20
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
+
+
+# ── Online Players ────────────────────────────────────────────
+showcase_online:
+  title: "&b&l👥 Online Players &8(&7%page%&8/&7%max_page%&8)"
+  rows: 6
+  commands: [ "showcase-online" ]
+  main_menu: showcase_hub
+
+  items:
+
+    border:
+      slots: [ 0-8, 45-53 ]
+      material: CYAN_STAINED_GLASS_PANE
+      name: "&8"
+
+    players:
+      type: DYNAMIC_PAGINATION
+      source: ONLINE_PLAYERS
+      slots: [ 9-44 ]
+      material: PLAYER_HEAD
+      name: "&e&l%player_name%"
+      lore:
+        - "&8&m──────────────────"
+        - "  &7World:    &f%player_world%"
+        - "  &7Gamemode: &f%player_gamemode%"
+        - "  &7Health:   &a%player_health%&7/&a%player_max_health%"
+        - "  &7Level:    &e%player_level%"
+        - "  &7Ping:     &f%player_ping%ms"
+        - "&8&m──────────────────"
+        - "  &eClick &7to teleport"
+      commands:
+        - "tp {player} %player_name%"
+
+    previous:
+      type: PREVIOUS
+      slot: 46
+      is-permanent: false
+      material: ARROW
+      name: "&c&l← Previous"
+
+    back:
+      type: BACK
+      slot: 47
+      material: RED_STAINED_GLASS_PANE
+      name: "&c&l⬅ Back"
+
+    page-info:
+      slot: 49
+      material: PAPER
+      name: "&7Page &f%page% &7of &f%max_page%"
+
+    home:
+      type: HOME
+      slot: 51
+      material: NETHER_STAR
+      name: "&e&l⌂ Home"
+
+    next:
+      type: NEXT
+      slot: 52
+      is-permanent: false
+      material: ARROW
+      name: "&a&lNext →"
+
+    close:
+      slot: 53
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
+
+
+# ── Worlds ────────────────────────────────────────────────────
+showcase_worlds:
+  title: "&2&l🌍 Worlds &8(&7%page%&8/&7%max_page%&8)"
+  rows: 4
+  commands: [ "showcase-worlds" ]
+  main_menu: showcase_hub
+
+  items:
+
+    border:
+      slots: [ 0-8, 27-35 ]
+      material: GREEN_STAINED_GLASS_PANE
+      name: "&8"
+
+    worlds:
+      type: DYNAMIC_PAGINATION
+      source: WORLDS
+      slots: [ 9-26 ]
+      material: AUTO
+      name: "&a&l%world_name%"
+      lore:
+        - "&8&m──────────────────"
+        - "  &7Environment: &f%world_type%"
+        - "  &7Players:     &e%world_players%"
+        - "  &7Time:        &f%world_time%"
+        - "  &7Difficulty:  &c%world_difficulty%"
+        - "&8&m──────────────────"
+        - "  &eClick &7to teleport"
+      commands:
+        - "world {player} %world_name%"
+
+    previous:
+      type: PREVIOUS
+      slot: 28
+      is-permanent: false
+      material: ARROW
+      name: "&c&l← Previous"
+
+    back:
+      type: BACK
+      slot: 29
+      material: RED_STAINED_GLASS_PANE
+      name: "&c&l⬅ Back"
+
+    home:
+      type: HOME
+      slot: 31
+      material: NETHER_STAR
+      name: "&e&l⌂ Home"
+
+    main-menu:
+      type: MAIN_MENU
+      slot: 33
+      material: COMPASS
+      name: "&6&lMain Menu"
+
+    next:
+      type: NEXT
+      slot: 34
+      is-permanent: false
+      material: ARROW
+      name: "&a&lNext →"
+
+    close:
+      slot: 35
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
+
+
+# ── Player Inventory ──────────────────────────────────────────
+showcase_inventory:
+  title: "&d&l🎒 Your Inventory &8(&7%page%&8/&7%max_page%&8)"
+  rows: 6
+  commands: [ "showcase-inventory" ]
+  main_menu: showcase_hub
+
+  items:
+
+    border:
+      slots: [ 0-8, 45-53 ]
+      material: PURPLE_STAINED_GLASS_PANE
+      name: "&8"
+
+    items:
+      type: DYNAMIC_PAGINATION
+      source: PLAYER_INVENTORY
+      slots: [ 9-44 ]
+      material: STONE
+      name: "&f&l%item_name%"
+      lore:
+        - "&7Amount: &e×%item_amount%"
+        - "&7Slot:   &f%item_slot%"
+        - ""
+        - "&cClick &7to take from inventory"
+      take-item: true
+
+    previous:
+      type: PREVIOUS
+      slot: 46
+      is-permanent: false
+      material: ARROW
+      name: "&c&l← Previous"
+
+    back:
+      type: BACK
+      slot: 47
+      material: RED_STAINED_GLASS_PANE
+      name: "&c&l⬅ Back"
+
+    page-info:
+      slot: 49
+      material: CHEST
+      name: "&7Page &f%page% &7of &f%max_page%"
+
+    home:
+      type: HOME
+      slot: 51
+      material: NETHER_STAR
+      name: "&e&l⌂ Home"
+
+    next:
+      type: NEXT
+      slot: 52
+      is-permanent: false
+      material: ARROW
+      name: "&a&lNext →"
+
+    close:
+      slot: 53
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
+
+
+# ── Ender Chest ───────────────────────────────────────────────
+showcase_enderchest:
+  title: "&5&l📦 Ender Chest &8(&7%page%&8/&7%max_page%&8)"
+  rows: 6
+  commands: [ "showcase-enderchest" ]
+  main_menu: showcase_hub
+
+  items:
+
+    border:
+      slots: [ 0-8, 45-53 ]
+      material: PURPLE_STAINED_GLASS_PANE
+      name: "&8"
+
+    ec-items:
+      type: DYNAMIC_PAGINATION
+      source: PLAYER_ENDERCHEST
+      slots: [ 9-44 ]
+      material: STONE
+      name: "&f&l%item_name%"
+      lore:
+        - "&7Amount: &e×%item_amount%"
+        - "&7Slot:   &f%item_slot%"
+        - ""
+        - "&cClick &7to take from ender chest"
+      take-item: true
+
+    previous:
+      type: PREVIOUS
+      slot: 46
+      is-permanent: false
+      material: ARROW
+      name: "&c&l← Previous"
+
+    back:
+      type: BACK
+      slot: 47
+      material: RED_STAINED_GLASS_PANE
+      name: "&c&l⬅ Back"
+
+    page-info:
+      slot: 49
+      material: ENDER_CHEST
+      name: "&7Page &f%page% &7of &f%max_page%"
+
+    home:
+      type: HOME
+      slot: 51
+      material: NETHER_STAR
+      name: "&e&l⌂ Home"
+
+    next:
+      type: NEXT
+      slot: 52
+      is-permanent: false
+      material: ARROW
+      name: "&a&lNext →"
+
+    close:
+      slot: 53
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
+
+
+# ── Permission Groups ─────────────────────────────────────────
+showcase_groups:
+  title: "&6&l🛡 Permission Groups &8(&7%page%&8/&7%max_page%&8)"
+  rows: 4
+  commands: [ "showcase-groups" ]
+  auto-convert: true
+  main_menu: showcase_hub
+
+  items:
+
+    border:
+      slots: [ 0-8, 27-35 ]
+      material: ORANGE_STAINED_GLASS_PANE
+      name: "&8"
+
+    groups:
+      type: DYNAMIC_PAGINATION
+      source: PERMISSION_GROUPS
+      slots: [ 9-26 ]
+      material: SHIELD
+      name: "&6&l%group_name%"
+      lore:
+        - "&7Weight: &e%group_weight%"
+        - ""
+        - "&eClick &7to run a command"
+      commands:
+        - "say {player} clicked group %group_name%"
+
+    previous:
+      type: PREVIOUS
+      slot: 28
+      is-permanent: false
+      material: ARROW
+      name: "&c&l← Previous"
+
+    back:
+      type: BACK
+      slot: 29
+      material: RED_STAINED_GLASS_PANE
+      name: "&c&l⬅ Back"
+
+    home:
+      type: HOME
+      slot: 31
+      material: NETHER_STAR
+      name: "&e&l⌂ Home"
+
+    main-menu:
+      type: MAIN_MENU
+      slot: 33
+      material: COMPASS
+      name: "&6&lMain Menu"
+
+    next:
+      type: NEXT
+      slot: 34
+      is-permanent: false
+      material: ARROW
+      name: "&a&lNext →"
+
+    close:
+      slot: 35
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
