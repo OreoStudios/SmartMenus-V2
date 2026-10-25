@@ -1,0 +1,47 @@
+# ============================================================
+# EXAMPLE 7 — ITEMSADDER ITEM
+# Uses an ItemsAdder custom item as the GUI icon AND as a cost.
+# item_type: itemsadder  /  item_id: your:item_id
+# Needs: ItemsAdder
+# ============================================================
+itemsadder_shop:
+  title: "&c&l🔥 ItemsAdder Shop"
+  rows: 3
+  commands: [ "iashop" ]
+  auto-convert: true
+  items:
+    "10":
+      item_type: itemsadder
+      item_id: "iasurvival:ruby"        # replace with your ItemsAdder item ID
+      material: DIAMOND                  # fallback if ItemsAdder is unavailable
+      name: "&c&lRuby"
+      lore:
+        - "&7A precious red gem."
+        - ""
+        - "&ePrice: &a$1,000"
+      commands:
+        - "iagive {player} iasurvival:ruby 1"
+      close: true
+      conditions:
+        - type: VAULT_MONEY
+          amount: 1000
+
+    "12":
+      item_type: itemsadder
+      item_id: "iasurvival:magic_crystal"
+      material: EMERALD
+      name: "&5&lMagic Crystal"
+      lore:
+        - "&7Requires 5 rubies."
+      commands:
+        - "iagive {player} iasurvival:magic_crystal 1"
+      close: true
+      conditions:
+        - type: ITEMSADDER
+          item_id: "iasurvival:ruby"    # items removed from inventory on click
+          amount: 5
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
