@@ -1,0 +1,62 @@
+# ============================================================
+# EXAMPLE 11 — PLACEHOLDERAPI
+# Evaluates any PAPI placeholder against a value.
+# Operators: == != > < >= <= contains equals not_equals
+# Not consumable.
+# Needs: PlaceholderAPI + the placeholder's expansion
+# ============================================================
+placeholder_shop:
+  title: "&e&l📊 Dynamic Shop"
+  rows: 3
+  commands: [ "dynamicshop", "papishop" ]
+  auto-convert: true
+  items:
+    "10":
+      material: EMERALD
+      name: "&a&lRich Player Bonus"
+      lore:
+        - "&7Requires $10,000 Vault balance."
+      commands:
+        - "give {player} emerald 64"
+      close: true
+      conditions:
+        - type: PLACEHOLDER
+          placeholder: "%vault_eco_balance%"
+          operator: ">="
+          value: "10000"
+          error_message: "&cYou need at least $10,000 balance!"
+
+    "12":
+      material: DIAMOND
+      name: "&b&lKill Count Reward"
+      lore:
+        - "&7Requires 100+ player kills."
+      commands:
+        - "give {player} diamond 10"
+      close: true
+      conditions:
+        - type: PLACEHOLDER
+          placeholder: "%statistic_player_kills%"
+          operator: ">="
+          value: "100"
+          error_message: "&cYou need at least 100 player kills!"
+
+    "14":
+      material: GOLD_INGOT
+      name: "&e&lPlaytime Reward"
+      lore:
+        - "&7Requires 10+ hours played."
+      commands:
+        - "give {player} gold_ingot 64"
+      close: true
+      conditions:
+        - type: PLACEHOLDER
+          placeholder: "%statistic_hours_played%"
+          operator: ">="
+          value: "10"
+          error_message: "&cYou need at least 10 hours playtime!"
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
