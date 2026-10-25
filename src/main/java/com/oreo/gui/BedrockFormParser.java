@@ -104,3 +104,88 @@ final class BedrockFormParser {
 
     @SuppressWarnings("unchecked")
     private BedrockButton loadButton(String guiId, Map<String, Object> map) {
+        try {
+            String text      = map.containsKey("text")       ? map.get("text").toString()       : "Button";
+            String imageType = map.containsKey("image-type") ? map.get("image-type").toString() : null;
+            String imageData = map.containsKey("image-data") ? map.get("image-data").toString() : null;
+
+            List<Condition> buttonConditions = Collections.emptyList();
+            if (map.containsKey("conditions") && map.get("conditions") instanceof List) {
+                YamlConfiguration tmp = new YamlConfiguration();
+                tmp.set("conditions", map.get("conditions"));
+                ConfigurationSection tmpSection = tmp.createSection("__btn");
+                tmpSection.set("conditions", map.get("conditions"));
+                buttonConditions = conditions.parseFromKey(tmpSection, "conditions");
+            }
+
+            List<Action> actions = Collections.emptyList();
+            if (map.containsKey("actions") && map.get("actions") instanceof List) {
+                actions = ActionFactory.parseActions((List<?>) map.get("actions"));
+            }
+
+            return new BedrockButton(text, imageType, imageData, buttonConditions, actions);
+        } catch (Exception e) {
+            plugin.getLogger().warning("Failed to parse bedrock button in GUI " + guiId + ": " + e.getMessage());
+            return null;
+        }
+    }
+
+    private BedrockFormInput loadInput(String guiId, Map<String, Object> map) {
+        try {
+            String typeStr = map.containsKey("type") ? map.get("type").toString().toUpperCase() : "INPUT";
+            String label   = map.containsKey("label") ? map.get("label").toString() : "";
+
+            String key     = map.containsKey("key")   ? map.get("key").toString()   : Ids.slugify(label);
+
+            switch (typeStr) {
+                case "INPUT":
+                    return BedrockFormInput.input(
+                            key, label,
+                            map.containsKey("placeholder") ? map.get("placeholder").toString() : "",
+                            map.containsKey("default")     ? map.get("default").toString()     : "",
+                            map.containsKey("max-length")  ? Integer.parseInt(map.get("max-length").toString()) : 256);
+                case "DROPDOWN": {
+                    List<String> opts = map.containsKey("options") && map.get("options") instanceof List
+                            ? toStringList((List<?>) map.get("options"))
+                            : new ArrayList<>();
+                    int defIdx = map.containsKey("default-index") ? Integer.parseInt(map.get("default-index").toString()) : 0;
+                    return BedrockFormInput.dropdown(key, label, opts, defIdx);
+                }
+                case "SLIDER": {
+                    float min  = map.containsKey("min")   ? Float.parseFloat(map.get("min").toString())   : 0f;
+                    float max  = map.containsKey("max")   ? Float.parseFloat(map.get("max").toString())   : 100f;
+                    float step = map.containsKey("step")  ? Float.parseFloat(map.get("step").toString())  : 1f;
+                    float def  = map.containsKey("default") ? Float.parseFloat(map.get("default").toString()) : min;
+                    return BedrockFormInput.slider(key, label, min, max, step, def);
+                }
+                case "STEP_SLIDER": {
+                    List<String> steps = map.containsKey("steps") && map.get("steps") instanceof List
+                            ? toStringList((List<?>) map.get("steps"))
+                            : new ArrayList<>();
+                    int defIdx = map.containsKey("default-index") ? Integer.parseInt(map.get("default-index").toString()) : 0;
+                    return BedrockFormInput.stepSlider(key, label, steps, defIdx);
+                }
+                case "TOGGLE": {
+                    boolean def = map.containsKey("default") && Boolean.parseBoolean(map.get("default").toString());
+                    return BedrockFormInput.toggle(key, label, def);
+                }
+                case "LABEL":
+                    return BedrockFormInput.label(label);
+                default:
+                    plugin.getLogger().warning("Unknown bedrock input type '" + typeStr + "' in GUI " + guiId);
+                    return null;
+            }
+        } catch (Exception e) {
+            plugin.getLogger().warning("Failed to parse bedrock input in GUI " + guiId + ": " + e.getMessage());
+            return null;
+        }
+    }
+
+    private List<String> toStringList(List<?> raw) {
+        List<String> result = new ArrayList<>();
+        for (Object o : raw) {
+            if (o != null) result.add(o.toString());
+        }
+        return result;
+    }
+}
