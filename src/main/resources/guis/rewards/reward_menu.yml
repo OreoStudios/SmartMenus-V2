@@ -1,0 +1,85 @@
+reward_menu:
+  title: "&a&lRewards"
+  rows: 3
+  commands: [ "rewards", "rewardmenu" ]
+  auto-convert: true
+
+  items:
+    border:
+      slots: [ 0-8, 18-26 ]
+      material: LIME_STAINED_GLASS_PANE
+      name: "&8"
+
+    diamond_reward:
+      slot: 10
+      material: DIAMOND
+      name: "&b&lDiamond Reward"
+      lore:
+        - "&7Click to receive:"
+        - "&f- &b1 Diamond"
+      actions:
+        - type: CONSOLE_COMMAND
+          command: "give {player} diamond 1"
+        - type: PLAYER_MESSAGE
+          message: "&aYou received &b1 Diamond&a!"
+      close: true
+
+    food_reward:
+      slot: 12
+      material: COOKED_BEEF
+      name: "&6&lFood Pack"
+      lore:
+        - "&7Click to receive:"
+        - "&f- &610 Cooked Beef"
+      actions:
+        - type: CONSOLE_COMMAND
+          command: "give {player} cooked_beef 10"
+        - type: PLAYER_MESSAGE
+          message: "&aYou received &610 Cooked Beef&a!"
+      close: true
+
+    starter_kit:
+      slot: 14
+      material: IRON_SWORD
+      name: "&f&lStarter Kit"
+      lore:
+        - "&7Click to receive:"
+        - "&f- Iron Sword"
+        - "&f- Iron Pickaxe"
+        - "&f- 16 Bread"
+      actions:
+        - type: CONSOLE_COMMAND
+          command: "give {player} iron_sword 1"
+        - type: CONSOLE_COMMAND
+          command: "give {player} iron_pickaxe 1"
+        - type: CONSOLE_COMMAND
+          command: "give {player} bread 16"
+        - type: PLAYER_MESSAGE
+          message: "&aYou received the &fStarter Kit&a!"
+      close: true
+
+    vip_reward:
+      slot: 16
+      material: GOLD_INGOT
+      name: "&e&lVIP Reward"
+      lore:
+        - "&7Requires:"
+        - "&f- &evip.reward"
+        - ""
+        - "&7Click to receive:"
+        - "&f- &e5 Gold Ingots"
+      conditions:
+        - type: PERMISSION
+          permission: "vip.reward"
+      actions:
+        - type: CONSOLE_COMMAND
+          command: "give {player} gold_ingot 5"
+        - type: PLAYER_MESSAGE
+          message: "&aYou received your &eVIP Reward&a!"
+      close: true
+
+    close:
+      slot: 22
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
