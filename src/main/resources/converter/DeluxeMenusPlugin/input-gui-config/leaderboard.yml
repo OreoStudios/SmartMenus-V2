@@ -1,0 +1,578 @@
+# Made by Aeon - v1.1.1
+menu_title: "&7ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ"
+register_command: true
+size: 54
+open_command:
+  - leaderboard
+
+open_commands:
+  - "[sound] UI_TOAST_IN"
+close_commands:
+  - "[sound] UI_TOAST_OUT"
+items:
+  # ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩
+  "balance":
+    material: SUNFLOWER
+    slot: 4
+    display_name: "                  &#fce94e&l%customfont_style: 1,Balance%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%changeoutput_ignorecolor_input:{essentials_baltop_balance_commas_0}_matcher:0_ifmatch:_else:${essentials_baltop_balance_commas_0}% &8• &f%changeoutput_ignorecolor_input:{essentials_baltop_player_stripped_0}_matcher:0_ifmatch:_else:{essentials_baltop_player_stripped_0}%"
+      - "   &#C0C0C0② &f%changeoutput_ignorecolor_input:{essentials_baltop_balance_commas_1}_matcher:0_ifmatch:_else:${essentials_baltop_balance_commas_1}% &8• &f%changeoutput_ignorecolor_input:{essentials_baltop_player_stripped_1}_matcher:0_ifmatch:_else:{essentials_baltop_player_stripped_1}%"
+      - "   &#CD7F32③ &f%changeoutput_ignorecolor_input:{essentials_baltop_balance_commas_2}_matcher:0_ifmatch:_else:${essentials_baltop_balance_commas_2}% &8• &f%changeoutput_ignorecolor_input:{essentials_baltop_player_stripped_2}_matcher:0_ifmatch:_else:{essentials_baltop_player_stripped_2}%"
+      - "   &#E5E4E2④ &f%changeoutput_ignorecolor_input:{essentials_baltop_balance_commas_3}_matcher:0_ifmatch:_else:${essentials_baltop_balance_commas_3}% &8• &f%changeoutput_ignorecolor_input:{essentials_baltop_player_stripped_3}_matcher:0_ifmatch:_else:{essentials_baltop_player_stripped_3}%"
+      - "   &#f0f0f0⑤ &f%changeoutput_ignorecolor_input:{essentials_baltop_balance_commas_4}_matcher:0_ifmatch:_else:${essentials_baltop_balance_commas_4}% &8• &f%changeoutput_ignorecolor_input:{essentials_baltop_player_stripped_4}_matcher:0_ifmatch:_else:{essentials_baltop_player_stripped_4}%"
+      - "   &#f0f0f0⑥ &f%changeoutput_ignorecolor_input:{essentials_baltop_balance_commas_5}_matcher:0_ifmatch:_else:${essentials_baltop_balance_commas_5}% &8• &f%changeoutput_ignorecolor_input:{essentials_baltop_player_stripped_5}_matcher:0_ifmatch:_else:{essentials_baltop_player_stripped_5}%"
+      - "   &#f0f0f0⑦ &f%changeoutput_ignorecolor_input:{essentials_baltop_balance_commas_6}_matcher:0_ifmatch:_else:${essentials_baltop_balance_commas_6}% &8• &f%changeoutput_ignorecolor_input:{essentials_baltop_player_stripped_6}_matcher:0_ifmatch:_else:{essentials_baltop_player_stripped_6}%"
+      - "   &#f0f0f0⑧ &f%changeoutput_ignorecolor_input:{essentials_baltop_balance_commas_7}_matcher:0_ifmatch:_else:${essentials_baltop_balance_commas_7}% &8• &f%changeoutput_ignorecolor_input:{essentials_baltop_player_stripped_7}_matcher:0_ifmatch:_else:{essentials_baltop_player_stripped_7}%"
+      - "   &#f0f0f0⑨ &f%changeoutput_ignorecolor_input:{essentials_baltop_balance_commas_8}_matcher:0_ifmatch:_else:${essentials_baltop_balance_commas_8}% &8• &f%changeoutput_ignorecolor_input:{essentials_baltop_player_stripped_8}_matcher:0_ifmatch:_else:{essentials_baltop_player_stripped_8}%"
+      - "   &#f0f0f0⑩ &f%changeoutput_ignorecolor_input:{essentials_baltop_balance_commas_9}_matcher:0_ifmatch:_else:${essentials_baltop_balance_commas_9}% &8• &f%changeoutput_ignorecolor_input:{essentials_baltop_player_stripped_9}_matcher:0_ifmatch:_else:{essentials_baltop_player_stripped_9}%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%essentials_baltop_rank% &8• &7Balance $%vault_eco_balance_commas%"
+  "playersKilled":
+    material: NETHERITE_SWORD
+    slot: 10
+    display_name: "             &#a4949f&l%customfont_style: 1,Players Killed%"
+    hide_attributes: true
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_player_kills_1_alltime_value% &8• &f%ajlb_lb_statistic_player_kills_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_player_kills_2_alltime_value% &8• &f%ajlb_lb_statistic_player_kills_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_player_kills_3_alltime_value% &8• &f%ajlb_lb_statistic_player_kills_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_player_kills_4_alltime_value% &8• &f%ajlb_lb_statistic_player_kills_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_player_kills_5_alltime_value% &8• &f%ajlb_lb_statistic_player_kills_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_player_kills_6_alltime_value% &8• &f%ajlb_lb_statistic_player_kills_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_player_kills_7_alltime_value% &8• &f%ajlb_lb_statistic_player_kills_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_player_kills_8_alltime_value% &8• &f%ajlb_lb_statistic_player_kills_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_player_kills_9_alltime_value% &8• &f%ajlb_lb_statistic_player_kills_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_player_kills_10_alltime_value% &8• &f%ajlb_lb_statistic_player_kills_10_alltime_name% "
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_player_kills_alltime% &8• &7Killed %ajlb_value_statistic_player_kills_alltime%"
+  "timesDied":
+    material: SKELETON_SKULL
+    slot: 11
+    display_name: "                &#bcbcbc&l%customfont_style: 1,Times Died%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_deaths_1_alltime_value% &8• &f%ajlb_lb_statistic_deaths_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_deaths_2_alltime_value% &8• &f%ajlb_lb_statistic_deaths_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_deaths_3_alltime_value% &8• &f%ajlb_lb_statistic_deaths_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_deaths_4_alltime_value% &8• &f%ajlb_lb_statistic_deaths_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_deaths_5_alltime_value% &8• &f%ajlb_lb_statistic_deaths_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_deaths_6_alltime_value% &8• &f%ajlb_lb_statistic_deaths_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_deaths_7_alltime_value% &8• &f%ajlb_lb_statistic_deaths_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_deaths_8_alltime_value% &8• &f%ajlb_lb_statistic_deaths_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_deaths_9_alltime_value% &8• &f%ajlb_lb_statistic_deaths_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_deaths_10_alltime_value% &8• &f%ajlb_lb_statistic_deaths_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_deaths_alltime% &8• &7Died %ajlb_value_statistic_deaths_alltime%"
+  "timePlayed":
+    material: CLOCK
+    slot: 12
+    display_name: "               &#f1d589&l%customfont_style: 1,Time Played%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_time_played_1_alltime_value% &8• &f%ajlb_lb_statistic_time_played_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_time_played_2_alltime_value% &8• &f%ajlb_lb_statistic_time_played_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_time_played_3_alltime_value% &8• &f%ajlb_lb_statistic_time_played_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_time_played_4_alltime_value% &8• &f%ajlb_lb_statistic_time_played_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_time_played_5_alltime_value% &8• &f%ajlb_lb_statistic_time_played_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_time_played_6_alltime_value% &8• &f%ajlb_lb_statistic_time_played_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_time_played_7_alltime_value% &8• &f%ajlb_lb_statistic_time_played_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_time_played_8_alltime_value% &8• &f%ajlb_lb_statistic_time_played_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_time_played_9_alltime_value% &8• &f%ajlb_lb_statistic_time_played_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_time_played_10_alltime_value% &8• &f%ajlb_lb_statistic_time_played_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_time_played_alltime% &8• &7Played %ajlb_value_statistic_time_played_alltime%"
+  "timeSneaked":
+    material: SOUL_SAND
+    slot: 13
+    display_name: "              &#91705d&l%customfont_style: 1,Time Sneaked%"
+    hide_attributes: true
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sneak_time_1_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sneak_time_1_alltime_rawvalue}/20/60} min.% &8• &f%ajlb_lb_statistic_sneak_time_1_alltime_name%"
+      - "   &#C0C0C0② &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sneak_time_2_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sneak_time_2_alltime_rawvalue}/20/60} min.% &8• &f%ajlb_lb_statistic_sneak_time_2_alltime_name%"
+      - "   &#CD7F32③ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sneak_time_3_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sneak_time_3_alltime_rawvalue}/20/60} min.% &8• &f%ajlb_lb_statistic_sneak_time_3_alltime_name%"
+      - "   &#E5E4E2④ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sneak_time_4_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sneak_time_4_alltime_rawvalue}/20/60} min.% &8• &f%ajlb_lb_statistic_sneak_time_4_alltime_name%"
+      - "   &#E5E4E2⑤ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sneak_time_5_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sneak_time_5_alltime_rawvalue}/20/60} min.% &8• &f%ajlb_lb_statistic_sneak_time_5_alltime_name%"
+      - "   &#E5E4E2⑥ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sneak_time_6_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sneak_time_6_alltime_rawvalue}/20/60} min.% &8• &f%ajlb_lb_statistic_sneak_time_6_alltime_name%"
+      - "   &#E5E4E2⑦ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sneak_time_7_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sneak_time_7_alltime_rawvalue}/20/60} min.% &8• &f%ajlb_lb_statistic_sneak_time_7_alltime_name%"
+      - "   &#E5E4E2⑧ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sneak_time_8_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sneak_time_8_alltime_rawvalue}/20/60} min.% &8• &f%ajlb_lb_statistic_sneak_time_8_alltime_name%"
+      - "   &#E5E4E2⑨ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sneak_time_9_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sneak_time_9_alltime_rawvalue}/20/60} min.% &8• &f%ajlb_lb_statistic_sneak_time_9_alltime_name%"
+      - "   &#E5E4E2⑩ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sneak_time_10_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sneak_time_10_alltime_rawvalue}/20/60} min.% &8• &f%ajlb_lb_statistic_sneak_time_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_sneak_time_alltime% &8• &7Sneaked %math_1:1_{ajlb_value_statistic_sneak_time_alltime_raw}/20/60% min."
+  "timesJumped":
+    material: SLIME_BLOCK
+    slot: 14
+    display_name: "              &#77b068&l%customfont_style: 1,Times Jumped%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_jump_1_alltime_value% &8• &f%ajlb_lb_statistic_jump_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_jump_2_alltime_value% &8• &f%ajlb_lb_statistic_jump_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_jump_3_alltime_value% &8• &f%ajlb_lb_statistic_jump_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_jump_4_alltime_value% &8• &f%ajlb_lb_statistic_jump_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_jump_5_alltime_value% &8• &f%ajlb_lb_statistic_jump_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_jump_6_alltime_value% &8• &f%ajlb_lb_statistic_jump_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_jump_7_alltime_value% &8• &f%ajlb_lb_statistic_jump_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_jump_8_alltime_value% &8• &f%ajlb_lb_statistic_jump_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_jump_9_alltime_value% &8• &f%ajlb_lb_statistic_jump_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_jump_10_alltime_value% &8• &f%ajlb_lb_statistic_jump_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_jump_alltime% &8• &7Jumped %ajlb_value_statistic_jump_alltime%"
+  "distanceWalked":
+    material: LEATHER_BOOTS
+    slot: 15
+    hide_attributes: true
+    display_name: "            &#b7a396&l%customfont_style: 1,Distance Walked%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_walk_one_cm_1_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_walk_one_cm_1_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_walk_one_cm_1_alltime_name%"
+      - "   &#C0C0C0② &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_walk_one_cm_2_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_walk_one_cm_2_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_walk_one_cm_2_alltime_name%"
+      - "   &#CD7F32③ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_walk_one_cm_3_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_walk_one_cm_3_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_walk_one_cm_3_alltime_name%"
+      - "   &#E5E4E2④ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_walk_one_cm_4_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_walk_one_cm_4_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_walk_one_cm_4_alltime_name%"
+      - "   &#E5E4E2⑤ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_walk_one_cm_5_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_walk_one_cm_5_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_walk_one_cm_5_alltime_name%"
+      - "   &#E5E4E2⑥ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_walk_one_cm_6_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_walk_one_cm_6_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_walk_one_cm_6_alltime_name%"
+      - "   &#E5E4E2⑦ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_walk_one_cm_7_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_walk_one_cm_7_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_walk_one_cm_7_alltime_name%"
+      - "   &#E5E4E2⑧ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_walk_one_cm_8_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_walk_one_cm_8_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_walk_one_cm_8_alltime_name%"
+      - "   &#E5E4E2⑨ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_walk_one_cm_9_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_walk_one_cm_9_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_walk_one_cm_9_alltime_name%"
+      - "   &#E5E4E2⑩ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_walk_one_cm_10_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_walk_one_cm_10_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_walk_one_cm_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_walk_one_cm_alltime% &8• &7Walked %math_1:1_{ajlb_value_statistic_walk_one_cm_alltime_raw}/10000% km"
+  "distanceSprinted":
+    material: SPLASH_POTION
+    potion_effects:
+      - SPEED;1;1
+    rgb: 196, 195, 255
+    slot: 16
+    hide_effects: true
+    display_name: "          &#c4c3d1&l%customfont_style: 1,Distance Sprinted%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_1_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_1_alltime_rawvalue}/10000} km% &8• &f%ajlb_lb_statistic_sprint_one_cm_1_alltime_name%"
+      - "   &#C0C0C0② &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_2_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_2_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_sprint_one_cm_2_alltime_name%"
+      - "   &#CD7F32③ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_3_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_3_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_sprint_one_cm_3_alltime_name%"
+      - "   &#E5E4E2④ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_4_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_4_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_sprint_one_cm_4_alltime_name%"
+      - "   &#E5E4E2⑤ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_5_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_5_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_sprint_one_cm_5_alltime_name%"
+      - "   &#E5E4E2⑥ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_6_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_6_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_sprint_one_cm_6_alltime_name%"
+      - "   &#E5E4E2⑦ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_7_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_7_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_sprint_one_cm_7_alltime_name%"
+      - "   &#E5E4E2⑧ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_8_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_8_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_sprint_one_cm_8_alltime_name%"
+      - "   &#E5E4E2⑨ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_9_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_9_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_sprint_one_cm_9_alltime_name%"
+      - "   &#E5E4E2⑩ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_10_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_sprint_one_cm_10_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_sprint_one_cm_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_sprint_one_cm_alltime% &8• &7Sprinted %math_1:1_{ajlb_value_statistic_sprint_one_cm_alltime_raw}/10000% km"
+  "distanceAviated":
+    material: ELYTRA
+    slot: 19
+    display_name: "           &#8b8b98&l%customfont_style: 1,Distance Aviated%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_1_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_1_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_aviate_one_cm_1_alltime_name%"
+      - "   &#C0C0C0② &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_2_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_2_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_aviate_one_cm_2_alltime_name%"
+      - "   &#CD7F32③ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_3_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_3_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_aviate_one_cm_3_alltime_name%"
+      - "   &#E5E4E2④ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_4_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_4_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_aviate_one_cm_4_alltime_name%"
+      - "   &#E5E4E2⑤ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_5_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_5_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_aviate_one_cm_5_alltime_name%"
+      - "   &#E5E4E2⑥ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_6_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_6_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_aviate_one_cm_6_alltime_name%"
+      - "   &#E5E4E2⑦ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_7_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_7_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_aviate_one_cm_7_alltime_name%"
+      - "   &#E5E4E2⑧ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_8_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_8_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_aviate_one_cm_8_alltime_name%"
+      - "   &#E5E4E2⑨ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_9_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_9_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_aviate_one_cm_9_alltime_name%"
+      - "   &#E5E4E2⑩ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_10_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_aviate_one_cm_10_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_aviate_one_cm_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_aviate_one_cm_alltime% &8• &7Aviated %math_1:1_{ajlb_value_statistic_aviate_one_cm_alltime_raw}/10000% km"
+  "distanceHorse":
+    material: SADDLE
+    slot: 20
+    display_name: "          &#ee895b&l%customfont_style: 1,Distance by Horse%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_horse_one_cm_1_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_horse_one_cm_1_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_horse_one_cm_1_alltime_name%"
+      - "   &#C0C0C0② &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_horse_one_cm_2_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_horse_one_cm_2_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_horse_one_cm_2_alltime_name%"
+      - "   &#CD7F32③ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_horse_one_cm_3_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_horse_one_cm_3_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_horse_one_cm_3_alltime_name%"
+      - "   &#E5E4E2④ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_horse_one_cm_4_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_horse_one_cm_4_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_horse_one_cm_4_alltime_name%"
+      - "   &#E5E4E2⑤ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_horse_one_cm_5_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_horse_one_cm_5_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_horse_one_cm_5_alltime_name%"
+      - "   &#E5E4E2⑥ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_horse_one_cm_6_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_horse_one_cm_6_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_horse_one_cm_6_alltime_name%"
+      - "   &#E5E4E2⑦ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_horse_one_cm_7_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_horse_one_cm_7_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_horse_one_cm_7_alltime_name%"
+      - "   &#E5E4E2⑧ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_horse_one_cm_8_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_horse_one_cm_8_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_horse_one_cm_8_alltime_name%"
+      - "   &#E5E4E2⑨ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_horse_one_cm_9_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_horse_one_cm_9_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_horse_one_cm_9_alltime_name%"
+      - "   &#E5E4E2⑩ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_horse_one_cm_10_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_horse_one_cm_10_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_horse_one_cm_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_horse_one_cm_alltime% &8• &7Ridden %math_1:1_{ajlb_value_statistic_horse_one_cm_alltime_raw}/10000% km"
+  "distanceMinecart":
+    material: MINECART
+    slot: 21
+    display_name: "        &#9ca0a3&l%customfont_style: 1,Distance by Minecart%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_1_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_1_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_minecart_one_cm_1_alltime_name%"
+      - "   &#C0C0C0② &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_2_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_2_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_minecart_one_cm_2_alltime_name%"
+      - "   &#CD7F32③ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_3_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_3_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_minecart_one_cm_3_alltime_name%"
+      - "   &#E5E4E2④ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_4_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_4_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_minecart_one_cm_4_alltime_name%"
+      - "   &#E5E4E2⑤ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_5_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_5_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_minecart_one_cm_5_alltime_name%"
+      - "   &#E5E4E2⑥ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_6_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_6_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_minecart_one_cm_6_alltime_name%"
+      - "   &#E5E4E2⑦ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_7_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_7_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_minecart_one_cm_7_alltime_name%"
+      - "   &#E5E4E2⑧ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_8_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_8_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_minecart_one_cm_8_alltime_name%"
+      - "   &#E5E4E2⑨ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_9_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_9_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_minecart_one_cm_9_alltime_name%"
+      - "   &#E5E4E2⑩ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_10_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_minecart_one_cm_10_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_aviate_one_cm_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_minecart_one_cm_alltime% &8• &7Ridden %math_1:1_{ajlb_value_statistic_minecart_one_cm_alltime}/10000% km"
+  "distanceBoat":
+    material: OAK_BOAT
+    slot: 22
+    display_name: "           &#ba9661&l%customfont_style: 1,Distance by Boat%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_boat_one_cm_1_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_boat_one_cm_1_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_boat_one_cm_1_alltime_name%"
+      - "   &#C0C0C0② &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_boat_one_cm_2_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_boat_one_cm_2_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_boat_one_cm_2_alltime_name%"
+      - "   &#CD7F32③ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_boat_one_cm_3_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_boat_one_cm_3_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_boat_one_cm_3_alltime_name%"
+      - "   &#E5E4E2④ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_boat_one_cm_4_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_boat_one_cm_4_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_boat_one_cm_4_alltime_name%"
+      - "   &#E5E4E2⑤ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_boat_one_cm_5_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_boat_one_cm_5_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_boat_one_cm_5_alltime_name%"
+      - "   &#E5E4E2⑥ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_boat_one_cm_6_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_boat_one_cm_6_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_boat_one_cm_6_alltime_name%"
+      - "   &#E5E4E2⑦ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_boat_one_cm_7_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_boat_one_cm_7_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_boat_one_cm_7_alltime_name%"
+      - "   &#E5E4E2⑧ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_boat_one_cm_8_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_boat_one_cm_8_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_boat_one_cm_8_alltime_name%"
+      - "   &#E5E4E2⑨ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_boat_one_cm_9_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_boat_one_cm_9_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_boat_one_cm_9_alltime_name%"
+      - "   &#E5E4E2⑩ &f%utils_parse_changeoutput_ignorecolor_input:{math_1:1_{ajlb_lb_statistic_boat_one_cm_10_alltime_rawvalue}}_matcher:-1_ifmatch:_else:{math_1:1_{ajlb_lb_statistic_boat_one_cm_10_alltime_rawvalue}/100000} km% &8• &f%ajlb_lb_statistic_boat_one_cm_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_boat_one_cm_alltime% &8• &7Rowed %math_1:1_{ajlb_value_statistic_boat_one_cm_alltime_raw}/10000% km"
+  "bossesDefeated":
+    material: DRAGON_HEAD
+    slot: 23
+    display_name: "          &#bb66ff&l%customfont_style: 1,Bosses Defeated%"
+    lore:
+      - "          &7Ender Dragon, Wither,"
+      - "         &7Warden, Elder Guardian"
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_1_alltime_value% &8• &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_2_alltime_value% &8• &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_3_alltime_value% &8• &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_4_alltime_value% &8• &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_5_alltime_value% &8• &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_6_alltime_value% &8• &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_7_alltime_value% &8• &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_8_alltime_value% &8• &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_9_alltime_value% &8• &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_10_alltime_value% &8• &f%ajlb_lb_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_alltime% &8• &7Defeated %ajlb_value_statistic_kill_entity:ender_dragon,wither,warden,elder_guardian_alltime%"
+  "mobsKilled":
+    material: ZOMBIE_HEAD
+    slot: 24
+    display_name: "               &#3d632f&l%customfont_style: 1,Mobs Killed%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_mob_kills_1_alltime_value% &8• &f%ajlb_lb_statistic_mob_kills_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_mob_kills_2_alltime_value% &8• &f%ajlb_lb_statistic_mob_kills_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_mob_kills_3_alltime_value% &8• &f%ajlb_lb_statistic_mob_kills_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_mob_kills_4_alltime_value% &8• &f%ajlb_lb_statistic_mob_kills_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_mob_kills_5_alltime_value% &8• &f%ajlb_lb_statistic_mob_kills_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_mob_kills_6_alltime_value% &8• &f%ajlb_lb_statistic_mob_kills_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_mob_kills_7_alltime_value% &8• &f%ajlb_lb_statistic_mob_kills_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_mob_kills_8_alltime_value% &8• &f%ajlb_lb_statistic_mob_kills_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_mob_kills_9_alltime_value% &8• &f%ajlb_lb_statistic_mob_kills_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_mob_kills_10_alltime_value% &8• &f%ajlb_lb_statistic_mob_kills_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_mob_kills_alltime% &8• &7Killed %ajlb_value_statistic_mob_kills_alltime%"
+  "fishCaught":
+    material: COD
+    slot: 25
+    display_name: "               &#c4a070&l%customfont_style: 1,Fish Caught%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_fish_caught_1_alltime_value% &8• &f%ajlb_lb_statistic_fish_caught_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_fish_caught_2_alltime_value% &8• &f%ajlb_lb_statistic_fish_caught_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_fish_caught_3_alltime_value% &8• &f%ajlb_lb_statistic_fish_caught_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_fish_caught_4_alltime_value% &8• &f%ajlb_lb_statistic_fish_caught_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_fish_caught_5_alltime_value% &8• &f%ajlb_lb_statistic_fish_caught_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_fish_caught_6_alltime_value% &8• &f%ajlb_lb_statistic_fish_caught_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_fish_caught_7_alltime_value% &8• &f%ajlb_lb_statistic_fish_caught_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_fish_caught_8_alltime_value% &8• &f%ajlb_lb_statistic_fish_caught_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_fish_caught_9_alltime_value% &8• &f%ajlb_lb_statistic_fish_caught_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_fish_caught_10_alltime_value% &8• &f%ajlb_lb_statistic_fish_caught_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_fish_caught_alltime% &8• &7Caught %ajlb_value_statistic_fish_caught_alltime%"
+  "ancientDebrisMined":
+    material: ANCIENT_DEBRIS
+    slot: 28
+    display_name: "        &#8a6d62&l%customfont_style: 1,Ancient Debris Mined%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_mine_block:ancient_debris_1_alltime_value% &8• &f%ajlb_lb_statistic_mine_block:ancient_debris_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_mine_block:ancient_debris_2_alltime_value% &8• &f%ajlb_lb_statistic_mine_block:ancient_debris_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_mine_block:ancient_debris_3_alltime_value% &8• &f%ajlb_lb_statistic_mine_block:ancient_debris_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_mine_block:ancient_debris_4_alltime_value% &8• &f%ajlb_lb_statistic_mine_block:ancient_debris_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_mine_block:ancient_debris_5_alltime_value% &8• &f%ajlb_lb_statistic_mine_block:ancient_debris_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_mine_block:ancient_debris_6_alltime_value% &8• &f%ajlb_lb_statistic_mine_block:ancient_debris_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_mine_block:ancient_debris_7_alltime_value% &8• &f%ajlb_lb_statistic_mine_block:ancient_debris_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_mine_block:ancient_debris_8_alltime_value% &8• &f%ajlb_lb_statistic_mine_block:ancient_debris_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_mine_block:ancient_debris_9_alltime_value% &8• &f%ajlb_lb_statistic_mine_block:ancient_debris_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_mine_block:ancient_debris_10_alltime_value% &8• &f%ajlb_lb_statistic_mine_block:ancient_debris_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_mine_block:ancient_debris_alltime% &8• &7Mined %ajlb_value_statistic_mine_block:ancient_debris_alltime%"
+  "animalsBred":
+    material: WHEAT
+    slot: 29
+    display_name: "              &#d4b562&l%customfont_style: 1,Animals Bred%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_animals_bred_1_alltime_value% &8• &f%ajlb_lb_statistic_animals_bred_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_animals_bred_2_alltime_value% &8• &f%ajlb_lb_statistic_animals_bred_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_animals_bred_3_alltime_value% &8• &f%ajlb_lb_statistic_animals_bred_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_animals_bred_4_alltime_value% &8• &f%ajlb_lb_statistic_animals_bred_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_animals_bred_5_alltime_value% &8• &f%ajlb_lb_statistic_animals_bred_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_animals_bred_6_alltime_value% &8• &f%ajlb_lb_statistic_animals_bred_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_animals_bred_7_alltime_value% &8• &f%ajlb_lb_statistic_animals_bred_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_animals_bred_8_alltime_value% &8• &f%ajlb_lb_statistic_animals_bred_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_animals_bred_9_alltime_value% &8• &f%ajlb_lb_statistic_animals_bred_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_animals_bred_10_alltime_value% &8• &f%ajlb_lb_statistic_animals_bred_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_animals_bred_alltime% &8• &7Bred %ajlb_value_statistic_animals_bred_alltime%"
+  "villagersTraded":
+    material: EMERALD
+    slot: 30
+    display_name: "       &#88f4b0&l%customfont_style: 1,Traded with Villager%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_traded_with_villager_1_alltime_value% &8• &f%ajlb_lb_statistic_traded_with_villager_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_traded_with_villager_2_alltime_value% &8• &f%ajlb_lb_statistic_traded_with_villager_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_traded_with_villager_3_alltime_value% &8• &f%ajlb_lb_statistic_traded_with_villager_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_traded_with_villager_4_alltime_value% &8• &f%ajlb_lb_statistic_traded_with_villager_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_traded_with_villager_5_alltime_value% &8• &f%ajlb_lb_statistic_traded_with_villager_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_traded_with_villager_6_alltime_value% &8• &f%ajlb_lb_statistic_traded_with_villager_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_traded_with_villager_7_alltime_value% &8• &f%ajlb_lb_statistic_traded_with_villager_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_traded_with_villager_8_alltime_value% &8• &f%ajlb_lb_statistic_traded_with_villager_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_traded_with_villager_9_alltime_value% &8• &f%ajlb_lb_statistic_traded_with_villager_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_traded_with_villager_10_alltime_value% &8• &f%ajlb_lb_statistic_traded_with_villager_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_traded_with_villager_alltime% &8• &7Traded %ajlb_value_statistic_traded_with_villager_alltime%"
+  "itemsEnchanted":
+    material: ENCHANTING_TABLE
+    slot: 31
+    display_name: "            &#a6cdc6&l%customfont_style: 1,Items Enchanted%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_item_enchanted_1_alltime_value% &8• &f%ajlb_lb_statistic_item_enchanted_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_item_enchanted_2_alltime_value% &8• &f%ajlb_lb_statistic_item_enchanted_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_item_enchanted_3_alltime_value% &8• &f%ajlb_lb_statistic_item_enchanted_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_item_enchanted_4_alltime_value% &8• &f%ajlb_lb_statistic_item_enchanted_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_item_enchanted_5_alltime_value% &8• &f%ajlb_lb_statistic_item_enchanted_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_item_enchanted_6_alltime_value% &8• &f%ajlb_lb_statistic_item_enchanted_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_item_enchanted_7_alltime_value% &8• &f%ajlb_lb_statistic_item_enchanted_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_item_enchanted_8_alltime_value% &8• &f%ajlb_lb_statistic_item_enchanted_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_item_enchanted_9_alltime_value% &8• &f%ajlb_lb_statistic_item_enchanted_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_item_enchanted_10_alltime_value% &8• &f%ajlb_lb_statistic_item_enchanted_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_item_enchanted_alltime% &8• &7Enchanted %ajlb_value_statistic_item_enchanted_alltime%"
+  "expLevels":
+    material: EXPERIENCE_BOTTLE
+    slot: 32
+    display_name: "                &#fff5e1&l%customfont_style: 1,EXP Levels%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_player_level_1_alltime_value% &8• &f%ajlb_lb_player_level_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_player_level_2_alltime_value% &8• &f%ajlb_lb_player_level_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_player_level_3_alltime_value% &8• &f%ajlb_lb_player_level_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_player_level_4_alltime_value% &8• &f%ajlb_lb_player_level_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_player_level_5_alltime_value% &8• &f%ajlb_lb_player_level_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_player_level_6_alltime_value% &8• &f%ajlb_lb_player_level_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_player_level_7_alltime_value% &8• &f%ajlb_lb_player_level_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_player_level_8_alltime_value% &8• &f%ajlb_lb_player_level_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_player_level_9_alltime_value% &8• &f%ajlb_lb_player_level_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_player_level_10_alltime_value% &8• &f%ajlb_lb_player_level_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_player_level_alltime% &8• &7Level %ajlb_value_player_level_alltime%"
+  "bellsRung":
+    material: BELL
+    slot: 33
+    display_name: "                &#fce94e&l%customfont_style: 1,Bells Rung%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_bell_ring_1_alltime_value% &8• &f%ajlb_lb_statistic_bell_ring_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_bell_ring_2_alltime_value% &8• &f%ajlb_lb_statistic_bell_ring_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_bell_ring_3_alltime_value% &8• &f%ajlb_lb_statistic_bell_ring_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_bell_ring_4_alltime_value% &8• &f%ajlb_lb_statistic_bell_ring_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_bell_ring_5_alltime_value% &8• &f%ajlb_lb_statistic_bell_ring_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_bell_ring_6_alltime_value% &8• &f%ajlb_lb_statistic_bell_ring_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_bell_ring_7_alltime_value% &8• &f%ajlb_lb_statistic_bell_ring_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_bell_ring_8_alltime_value% &8• &f%ajlb_lb_statistic_bell_ring_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_bell_ring_9_alltime_value% &8• &f%ajlb_lb_statistic_bell_ring_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_bell_ring_10_alltime_value% &8• &f%ajlb_lb_statistic_bell_ring_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_bell_ring_alltime% &8• &7Rung %ajlb_value_statistic_bell_ring_alltime%"
+  "timesSlept":
+    material: RED_BED
+    slot: 34
+    display_name: "          &#b9362e&l%customfont_style: 1,Times Slept In Bed%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_sleep_in_bed_1_alltime_value% &8• &f%ajlb_lb_statistic_sleep_in_bed_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_sleep_in_bed_2_alltime_value% &8• &f%ajlb_lb_statistic_sleep_in_bed_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_sleep_in_bed_3_alltime_value% &8• &f%ajlb_lb_statistic_sleep_in_bed_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_sleep_in_bed_4_alltime_value% &8• &f%ajlb_lb_statistic_sleep_in_bed_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_sleep_in_bed_5_alltime_value% &8• &f%ajlb_lb_statistic_sleep_in_bed_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_sleep_in_bed_6_alltime_value% &8• &f%ajlb_lb_statistic_sleep_in_bed_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_sleep_in_bed_7_alltime_value% &8• &f%ajlb_lb_statistic_sleep_in_bed_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_sleep_in_bed_8_alltime_value% &8• &f%ajlb_lb_statistic_sleep_in_bed_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_sleep_in_bed_9_alltime_value% &8• &f%ajlb_lb_statistic_sleep_in_bed_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_sleep_in_bed_10_alltime_value% &8• &f%ajlb_lb_statistic_sleep_in_bed_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_sleep_in_bed_alltime% &8• &7Slept %ajlb_value_statistic_sleep_in_bed_alltime%"
+  "raidsTriggered":
+    material: CROSSBOW
+    slot: 37
+    display_name: "            &#c4732a&l%customfont_style: 1,Raids Triggered%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_raid_trigger_1_alltime_value% &8• &f%ajlb_lb_statistic_raid_trigger_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_raid_trigger_2_alltime_value% &8• &f%ajlb_lb_statistic_raid_trigger_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_raid_trigger_3_alltime_value% &8• &f%ajlb_lb_statistic_raid_trigger_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_raid_trigger_4_alltime_value% &8• &f%ajlb_lb_statistic_raid_trigger_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_raid_trigger_5_alltime_value% &8• &f%ajlb_lb_statistic_raid_trigger_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_raid_trigger_6_alltime_value% &8• &f%ajlb_lb_statistic_raid_trigger_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_raid_trigger_7_alltime_value% &8• &f%ajlb_lb_statistic_raid_trigger_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_raid_trigger_8_alltime_value% &8• &f%ajlb_lb_statistic_raid_trigger_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_raid_trigger_9_alltime_value% &8• &f%ajlb_lb_statistic_raid_trigger_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_raid_trigger_10_alltime_value% &8• &f%ajlb_lb_statistic_raid_trigger_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_raid_trigger_alltime% &8• &7Triggered %ajlb_value_statistic_raid_trigger_alltime%"
+  "raidsWon":
+    material: TOTEM_OF_UNDYING
+    slot: 38
+    display_name: "                &#efe399&l%customfont_style: 1,Raids Won%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_raid_win_1_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_raid_win_2_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_raid_win_3_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_raid_win_4_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_raid_win_5_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_raid_win_6_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_raid_win_7_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_raid_win_8_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_raid_win_9_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_raid_win_10_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_raid_win_alltime% &8• &7Won %ajlb_value_statistic_raid_win_alltime%"
+  "noteBlocksPlayed":
+    material: NOTE_BLOCK
+    slot: 39
+    display_name: "         &#cb7b50&l%customfont_style: 1,Note Blocks Played%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_noteblock_played_1_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_noteblock_played_2_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_noteblock_played_3_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_noteblock_played_4_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_noteblock_played_5_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_noteblock_played_6_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_noteblock_played_7_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_noteblock_played_8_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_noteblock_played_9_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_noteblock_played_10_alltime_value% &8• &f%ajlb_lb_statistic_raid_win_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_raid_win_alltime% &8• &7Played %ajlb_value_statistic_raid_win_alltime%"
+  "recordsPlayed":
+    material: MUSIC_DISC_PIGSTEP
+    slot: 40
+    hide_effects: true
+    display_name: "            &#da9728&l%customfont_style: 1,Records Played%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_record_played_1_alltime_value% &8• &f%ajlb_lb_statistic_record_played_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_record_played_2_alltime_value% &8• &f%ajlb_lb_statistic_record_played_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_record_played_3_alltime_value% &8• &f%ajlb_lb_statistic_record_played_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_record_played_4_alltime_value% &8• &f%ajlb_lb_statistic_record_played_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_record_played_5_alltime_value% &8• &f%ajlb_lb_statistic_record_played_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_record_played_6_alltime_value% &8• &f%ajlb_lb_statistic_record_played_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_record_played_7_alltime_value% &8• &f%ajlb_lb_statistic_record_played_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_record_played_8_alltime_value% &8• &f%ajlb_lb_statistic_record_played_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_record_played_9_alltime_value% &8• &f%ajlb_lb_statistic_record_played_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_record_played_10_alltime_value% &8• &f%ajlb_lb_statistic_record_played_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_record_played_alltime% &8• &7Played %ajlb_value_statistic_record_played_alltime%"
+  "itemsDropped":
+    material: POINTED_DRIPSTONE
+    slot: 41
+    display_name: "             &#9e8b70&l%customfont_style: 1,Items Dropped%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_drop_count_1_alltime_value% &8• &f%ajlb_lb_statistic_drop_count_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_drop_count_2_alltime_value% &8• &f%ajlb_lb_statistic_drop_count_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_drop_count_3_alltime_value% &8• &f%ajlb_lb_statistic_drop_count_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_drop_count_4_alltime_value% &8• &f%ajlb_lb_statistic_drop_count_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_drop_count_5_alltime_value% &8• &f%ajlb_lb_statistic_drop_count_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_drop_count_6_alltime_value% &8• &f%ajlb_lb_statistic_drop_count_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_drop_count_7_alltime_value% &8• &f%ajlb_lb_statistic_drop_count_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_drop_count_8_alltime_value% &8• &f%ajlb_lb_statistic_drop_count_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_drop_count_9_alltime_value% &8• &f%ajlb_lb_statistic_drop_count_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_drop_count_10_alltime_value% &8• &f%ajlb_lb_statistic_drop_count_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_drop_count_alltime% &8• &7Dropped %ajlb_value_statistic_drop_count_alltime%"
+  "flowersPotted":
+    material: FLOWER_POT
+    slot: 42
+    display_name: "            &#986554&l%customfont_style: 1,Flowers Potted%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_flower_potted_1_alltime_value% &8• &f%ajlb_lb_statistic_flower_potted_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_flower_potted_2_alltime_value% &8• &f%ajlb_lb_statistic_flower_potted_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_flower_potted_3_alltime_value% &8• &f%ajlb_lb_statistic_flower_potted_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_flower_potted_4_alltime_value% &8• &f%ajlb_lb_statistic_flower_potted_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_flower_potted_5_alltime_value% &8• &f%ajlb_lb_statistic_flower_potted_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_flower_potted_6_alltime_value% &8• &f%ajlb_lb_statistic_flower_potted_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_flower_potted_7_alltime_value% &8• &f%ajlb_lb_statistic_flower_potted_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_flower_potted_8_alltime_value% &8• &f%ajlb_lb_statistic_flower_potted_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_flower_potted_9_alltime_value% &8• &f%ajlb_lb_statistic_flower_potted_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_flower_potted_10_alltime_value% &8• &f%ajlb_lb_statistic_flower_potted_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_flower_potted_alltime% &8• &7Potted %ajlb_value_statistic_flower_potted_alltime%"
+  "timesLeft":
+    material: ENDER_PEARL
+    slot: 43
+    display_name: "               &#2bcbaf&l%customfont_style: 1,Times Left%"
+    lore:
+      - "  &8&m                                             &r  "
+      - "   &#FFD700① &f%ajlb_lb_statistic_leave_game_1_alltime_value% &8• &f%ajlb_lb_statistic_leave_game_1_alltime_name%"
+      - "   &#C0C0C0② &f%ajlb_lb_statistic_leave_game_2_alltime_value% &8• &f%ajlb_lb_statistic_leave_game_2_alltime_name%"
+      - "   &#CD7F32③ &f%ajlb_lb_statistic_leave_game_3_alltime_value% &8• &f%ajlb_lb_statistic_leave_game_3_alltime_name%"
+      - "   &#E5E4E2④ &f%ajlb_lb_statistic_leave_game_4_alltime_value% &8• &f%ajlb_lb_statistic_leave_game_4_alltime_name%"
+      - "   &#f0f0f0⑤ &f%ajlb_lb_statistic_leave_game_5_alltime_value% &8• &f%ajlb_lb_statistic_leave_game_5_alltime_name%"
+      - "   &#f0f0f0⑥ &f%ajlb_lb_statistic_leave_game_6_alltime_value% &8• &f%ajlb_lb_statistic_leave_game_6_alltime_name%"
+      - "   &#f0f0f0⑦ &f%ajlb_lb_statistic_leave_game_7_alltime_value% &8• &f%ajlb_lb_statistic_leave_game_7_alltime_name%"
+      - "   &#f0f0f0⑧ &f%ajlb_lb_statistic_leave_game_8_alltime_value% &8• &f%ajlb_lb_statistic_leave_game_8_alltime_name%"
+      - "   &#f0f0f0⑨ &f%ajlb_lb_statistic_leave_game_9_alltime_value% &8• &f%ajlb_lb_statistic_leave_game_9_alltime_name%"
+      - "   &#f0f0f0⑩ &f%ajlb_lb_statistic_leave_game_10_alltime_value% &8• &f%ajlb_lb_statistic_leave_game_10_alltime_name%"
+      - "  &8&m                                             &r  "
+      - "   &7Pos. #%ajlb_position_statistic_leave_game_alltime% &8• &7Left %ajlb_value_statistic_leave_game_alltime%"
+  "close":
+    material: BARRIER
+    slot: 49
+    display_name: "       &#e00000&l%customfont_style: 1,Close%"
+    lore:
+      - "  &8&m                   &r  "
+      - "   &7Click to close"
+    click_commands:
+      - "[close]"
+  "filler":
+     material: BLACK_STAINED_GLASS_PANE
+     slots:
+       - 0
+       - 8
+       - 9
+       - 17
+       - 18
+       - 26
+       - 27
+       - 35
+       - 36
+       - 44
+       - 45
+       - 53
+     display_name: "&r"
+  "filler1":
+     material: GRAY_STAINED_GLASS_PANE
+     slots:
+       - 1-3
+       - 5-7
+       - 46-48
+       - 50-52
+     display_name: "&r"
