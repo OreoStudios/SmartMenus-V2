@@ -1,0 +1,65 @@
+# ============================================================
+# EXAMPLE 24 — DYNAMIC_PAGINATION + ONLINE_PLAYERS
+# Shows a paginated list of all online players as skulls.
+# Click a head to teleport to that player (requires permission).
+# Usage: /online  or  /onlineplayers
+# ============================================================
+online_players:
+  title: "&b&l👥 Online Players &8(&7%page%&8/&7%max_page%&8)"
+  rows: 6
+  commands: [ "online", "onlineplayers" ]
+  auto-convert: true
+
+  items:
+
+    border:
+      slots: [ 0-8, 45-53 ]
+      material: BLUE_STAINED_GLASS_PANE
+      name: "&8"
+
+    player-list:
+      type: DYNAMIC_PAGINATION
+      source: ONLINE_PLAYERS
+      slots: [ 9-44 ]
+      # material PLAYER_HEAD → auto-skinned skull for each player
+      material: PLAYER_HEAD
+      name: "&e%player_name%"
+      lore:
+        - "&7World: &f%player_world%"
+        - "&7Gamemode: &f%player_gamemode%"
+        - "&7Health: &a%player_health%&7/&a%player_max_health%"
+        - "&7Level: &e%player_level%"
+        - "&7Ping: &f%player_ping%ms"
+        - ""
+        - "&eClick &7to teleport"
+      commands:
+        - "tp {player} %player_name%"
+
+    previous-btn:
+      type: PREVIOUS
+      slot: 48
+      material: ARROW
+      name: "&c&l← Previous"
+      lore:
+        - "&7Page &f%page%&7/&f%max_page%"
+      is-permanent: false
+
+    page-info:
+      slot: 49
+      material: PAPER
+      name: "&7Page &f%page% &7of &f%max_page%"
+
+    next-btn:
+      type: NEXT
+      slot: 50
+      material: ARROW
+      name: "&a&lNext →"
+      lore:
+        - "&7Page &f%page%&7/&f%max_page%"
+      is-permanent: false
+
+    close-btn:
+      slot: 53
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
