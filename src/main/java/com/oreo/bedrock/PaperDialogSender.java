@@ -156,3 +156,167 @@ final class PaperDialogSender {
         String resolved = applyPlaceholders(player, content);
         if (!resolved.isBlank()) {
             bodies.add(inst.plainMessageDialogBody(LEGACY.deserialize(resolved)));
+        }
+        bodies.addAll(extraBodies);
+
+        DialogBase.Builder builder = DialogBase.builder(comp(player, title))
+                .body(bodies);
+
+        if (!inputs.isEmpty()) {
+            builder.inputs(inputs);
+        }
+
+        return builder.build();
+    }
+
+    private static List<DialogInput> buildInputs(DialogInstancesProvider inst,
+                                                  Player player,
+                                                  List<BedrockFormInput> inputs) {
+        List<DialogInput> result = new ArrayList<>();
+        for (BedrockFormInput inp : inputs) {
+            Component label = comp(player, inp.getLabel());
+            switch (inp.getType()) {
+                case INPUT:
+                    result.add(inst.textBuilder(inp.getKey(), label)
+                            .initial(inp.getDefaultText())
+                            .maxLength(inp.getMaxLength())
+                            .build());
+                    break;
+                case TOGGLE:
+                    result.add(inst.booleanBuilder(inp.getKey(), label)
+                            .initial(inp.getDefaultBool())
+                            .build());
+                    break;
+                case SLIDER:
+                    result.add(inst.numberRangeBuilder(inp.getKey(), label,
+                            inp.getMin(), inp.getMax())
+                            .step(inp.getStep())
+                            .initial(inp.getDefaultFloat())
+                            .build());
+                    break;
+                case STEP_SLIDER: {
+                    List<SingleOptionDialogInput.OptionEntry> entries = new ArrayList<>();
+                    List<String> steps = inp.getOptions();
+                    for (int i = 0; i < steps.size(); i++) {
+                        entries.add(inst.singleOptionEntry(
+                                String.valueOf(i),
+                                Component.text(steps.get(i)),
+                                i == inp.getDefaultIndex()));
+                    }
+                    result.add(inst.singleOptionBuilder(inp.getKey(), label, entries).build());
+                    break;
+                }
+                case DROPDOWN: {
+                    List<SingleOptionDialogInput.OptionEntry> entries = new ArrayList<>();
+                    List<String> opts = inp.getOptions();
+                    for (int i = 0; i < opts.size(); i++) {
+                        entries.add(inst.singleOptionEntry(
+                                String.valueOf(i),
+                                Component.text(opts.get(i)),
+                                i == inp.getDefaultIndex()));
+                    }
+                    result.add(inst.singleOptionBuilder(inp.getKey(), label, entries).build());
+                    break;
+                }
+                case LABEL:
+                    break;
+            }
+        }
+        return result;
+    }
+
+    private static List<DialogBody> buildLabelBodies(DialogInstancesProvider inst,
+                                                      Player player,
+                                                      List<BedrockFormInput> inputs) {
+        List<DialogBody> result = new ArrayList<>();
+        for (BedrockFormInput inp : inputs) {
+            if (inp.getType() == BedrockFormInput.InputType.LABEL) {
+                result.add(inst.plainMessageDialogBody(comp(player, inp.getLabel())));
+            }
+        }
+        return result;
+    }
+
+    private static void storeInputValues(Player player, List<BedrockFormInput> inputs,
+                                          DialogResponseView response) {
+        Map<String, String> existing = new HashMap<>(ArgManager.getAll(player.getUniqueId()));
+        for (BedrockFormInput inp : inputs) {
+            if (inp.getType() == BedrockFormInput.InputType.LABEL) continue;
+            existing.put(inp.getKey(), readValue(inp, response));
+        }
+        ArgManager.store(player.getUniqueId(), existing);
+    }
+
+    private static String readValue(BedrockFormInput inp, DialogResponseView response) {
+        try {
+            switch (inp.getType()) {
+                case INPUT: {
+                    String v = response.getText(inp.getKey());
+                    return v != null ? v : "";
+                }
+                case TOGGLE: {
+                    Boolean v = response.getBoolean(inp.getKey());
+                    return v != null ? String.valueOf(v) : "false";
+                }
+                case SLIDER: {
+                    Float v = response.getFloat(inp.getKey());
+                    return v != null ? String.valueOf(v) : "0";
+                }
+                case STEP_SLIDER: {
+                    String v = response.getText(inp.getKey());
+                    if (v == null) return "";
+                    try {
+                        int idx = Integer.parseInt(v);
+                        List<String> steps = inp.getOptions();
+                        if (idx >= 0 && idx < steps.size()) return steps.get(idx);
+                    } catch (NumberFormatException ignored) {}
+                    return v;
+                }
+                case DROPDOWN: {
+                    String v = response.getText(inp.getKey());
+                    if (v == null) return "";
+                    try {
+                        int idx = Integer.parseInt(v);
+                        List<String> opts = inp.getOptions();
+                        if (idx >= 0 && idx < opts.size()) return opts.get(idx);
+                    } catch (NumberFormatException ignored) {}
+                    return v;
+                }
+                default:
+                    return "";
+            }
+        } catch (Exception e) {
+            Bukkit.getLogger().warning("[SmartMenus] Failed to read bedrock form input '"
+                    + inp.getKey() + "': " + e.getMessage());
+            return "";
+        }
+    }
+
+    private static void showDialog(Player player, Dialog dialog) {
+        ((Audience) player).showDialog((DialogLike) dialog);
+    }
+
+    private static void onAudiencePlayer(Audience audience,
+                                          java.util.function.Consumer<Player> consumer) {
+        if (audience instanceof Player p) {
+            consumer.accept(p);
+        }
+    }
+
+    private static Component comp(Player player, String text) {
+        return LEGACY.deserialize(applyPlaceholders(player, text == null ? "" : text));
+    }
+
+    private static String applyPlaceholders(Player player, String text) {
+        if (text == null) return "";
+        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            try {
+                text = me.clip.placeholderapi.PlaceholderAPI.setPlaceholders(player, text);
+            } catch (Exception e) {
+                Bukkit.getLogger().warning("[SmartMenus] PlaceholderAPI failed for '"
+                        + text + "': " + e.getMessage());
+            }
+        }
+        return text;
+    }
+}
