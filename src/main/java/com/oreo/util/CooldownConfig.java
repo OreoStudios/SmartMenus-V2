@@ -65,3 +65,64 @@ public final class CooldownConfig {
         }
         if (section.isSet("hours")) {
             millis += Math.round(section.getDouble("hours") * 3_600_000.0);
+        }
+        if (section.isSet("minutes")) {
+            millis += Math.round(section.getDouble("minutes") * 60_000.0);
+        }
+        if (section.isSet("seconds")) {
+            millis += Math.round(section.getDouble("seconds") * 1000.0);
+        }
+        if (millis <= 0L) return null;
+
+        String id = section.getString("id", defaultId);
+        String bypass = section.getString("bypass-permission", section.getString("bypass_permission", null));
+
+        String message = resolveText(section, "message",
+                "&cYou must wait &e%time_left% &cbefore doing this again.");
+        String title = resolveText(section, "title", "&c&lWAIT");
+        String subtitle = resolveText(section, "subtitle", "&e%time_left% &7remaining");
+
+        int fadeIn = section.getInt("fade-in", section.getInt("fade_in", 10));
+        int stay = section.getInt("stay", 40);
+        int fadeOut = section.getInt("fade-out", section.getInt("fade_out", 10));
+        boolean actionBar = section.getBoolean("action-bar", section.getBoolean("action_bar", false));
+        String sound = section.getString("sound", null);
+
+        return new CooldownConfig(id, millis, bypass, message, title, subtitle,
+                fadeIn, stay, fadeOut, actionBar, sound);
+    }
+
+    private static String resolveText(ConfigurationSection section, String key, String def) {
+        if (!section.isSet(key)) return def;
+        String value = section.getString(key, "");
+        return value == null ? "" : value;
+    }
+
+    public static long parseDuration(String raw) {
+        if (raw == null) return 0L;
+        String trimmed = raw.trim().toLowerCase(Locale.ENGLISH);
+        if (trimmed.isEmpty()) return 0L;
+
+        if (trimmed.matches("\\d+")) {
+            try {
+                return Long.parseLong(trimmed) * 1000L;
+            } catch (NumberFormatException e) {
+                return 0L;
+            }
+        }
+
+        long total = 0L;
+        Matcher matcher = DURATION_PATTERN.matcher(trimmed);
+        while (matcher.find()) {
+            long value = Long.parseLong(matcher.group(1));
+            switch (matcher.group(2).toLowerCase(Locale.ENGLISH)) {
+                case "d": total += value * 86_400_000L; break;
+                case "h": total += value * 3_600_000L; break;
+                case "m": total += value * 60_000L; break;
+                case "s": total += value * 1000L; break;
+                default: break;
+            }
+        }
+        return total;
+    }
+}
