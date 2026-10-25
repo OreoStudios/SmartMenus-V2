@@ -1,0 +1,383 @@
+menu_title: '&0&lJobs Menu'
+open_command:
+  - job
+  - jobs
+  - jobsmenu
+  - jobs browse
+  - jobs
+  - jobs help
+  - jobs:help
+  - jobs:jobs
+  - jobs:join
+open_commands:
+  - '[sound] UI_BUTTON_CLICK'
+
+size: 56
+
+#################################################################################################
+#                                         Jobs Menu Items                                       #
+#################################################################################################
+items:
+  'miner':  # Miner Job & Its Details
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjg0ZDY2ZTJhOWFhZDViMjM4OGUxODM5OGUxZDQ4MjYwOWI4MGRkNDUzZTIyNmFmYjJlNTkxOWQ5M2VjNmY2YSJ9fX0=
+    slot: 12
+    display_name: '&#fc6012&lMiner Job'
+    lore:
+      - '&#fc6012ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ:'
+      - '&8&l | &fᴇᴀʀɴ ᴍᴏɴᴇʏ ʙʏ ᴍɪɴɪɴɢ ᴍɪɴᴇʀᴀʟs & ᴏʀᴇs.'
+      - '&7'
+      - '&#fc6012ᴊᴏʙ sᴛᴀᴛs: '
+      - '  &8&l➤ &fᴛᴏᴛᴀʟ ᴡᴏʀᴋᴇʀs: &#fc6012%jobsr_totalplayers_miner%'
+      - '  &8&l➤ &fʟᴇᴠᴇʟ: &#fc6012%jobsr_user_jlevel_miner% &7/ &8200'
+      - '  &8&l➤ &fᴍᴀx ᴅᴀɪʟʏ qᴜᴇsᴛs: &#fc60121'
+      - '&f'
+      - '&#fc6012ʜᴏᴡ ᴛᴏ ᴇᴀʀɴ?'
+      - '&8&l | &fʙʀᴇᴀᴋ sᴛᴏɴᴇ, ᴅᴇᴇᴘsʟᴀᴛᴇ, & ᴍɪɴᴇʀᴀʟs.'
+      - '&f'
+      - '&#fc6012ᴠᴀʟɪᴅ ᴀᴄᴛɪᴏɴꜱ'
+      - '&8&l | &fʟᴇꜰᴛ-ᴄʟɪᴄᴋ ᴛᴏ ᴊᴏɪɴ'
+      - '&8&l | &fʀɪɢʜᴛ-ᴄʟɪᴄᴋ ᴛᴏ ʟᴇᴀᴠᴇ'
+    right_click_commands:
+      - '[player] jobs leave miner'
+      - '[close]'
+    left_click_commands:
+      - '[player] jobs join miner'
+      - '[close]'
+
+  'builder':   # Builder Job & Its Details
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTYwMjAyMjMyYWY1Zjg1MDI4MzY5NmUwMWJlOWQwMjU5MjdjZTk4MTMxYTA0Zjg3OWJhMGQ5NWQwYTJmNDMxNyJ9fX0=
+    slot: 13
+    display_name: '&#03fca5&lBuilder Job'
+    lore:
+      - '&#03fca5ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ:'
+      - '&8&l | &fᴇᴀʀɴ ᴍᴏɴᴇʏ ᴘʟᴀᴄɪɴɢ ʙʟᴏᴄᴋs.'
+      - '&7'
+      - '&#03fca5ᴊᴏʙ sᴛᴀᴛs: '
+      - '  &8&l➤ &fᴛᴏᴛᴀʟ ᴡᴏʀᴋᴇʀs: &#03fca5%jobsr_totalplayers_builder%'
+      - '  &8&l➤ &fʟᴇᴠᴇʟ: &#03fca5%jobsr_user_jlevel_builder% &7/ &8200'
+      - '  &8&l➤ &fᴍᴀx ᴅᴀɪʟʏ qᴜᴇsᴛs: &#03fca51'
+      - '&f'
+      - '&#03fca5ʜᴏᴡ ᴛᴏ ᴇᴀʀɴ?'
+      - '&8&l | &fᴘʟᴀᴄᴇ ᴀɴᴅ ʙʀᴇᴀᴋ ʙᴜɪʟᴅɪɴɢ ᴍᴀᴛᴇʀɪᴀʟs.'
+      - '&f'
+      - '&#03fca5ᴠᴀʟɪᴅ ᴀᴄᴛɪᴏɴꜱ'
+      - '&8&l | &fʟᴇꜰᴛ-ᴄʟɪᴄᴋ ᴛᴏ ᴊᴏɪɴ'
+      - '&8&l | &fʀɪɢʜᴛ-ᴄʟɪᴄᴋ ᴛᴏ ʟᴇᴀᴠᴇ'
+    right_click_commands:
+      - '[player] jobs leave builder'
+      - '[close]'
+    left_click_commands:
+      - '[player] jobs join builder'
+      - '[close]'
+
+  'hunter': # Hunter Job & Its Details
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjIzNWRhYzkzZjdhMzQ1N2YzZWE3MWRlZTE4Y2Q2NWJlMDUyM2VkOTIzYzE1Y2U1NzI1MjA2YWUzOWEyNTdkMiJ9fX0=
+    slot: 14
+    display_name: '&#ff5757&lHunter Job'
+    lore:
+      - '&#ff5757ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ:'
+      - '&8&l | &fᴇᴀʀɴ ᴍᴏɴᴇʏ ᴋɪʟʟɪɴɢ ᴀɴɪᴍᴀʟs & ᴍᴏʙs.'
+      - '&7'
+      - '&#ff5757ᴊᴏʙ sᴛᴀᴛs: '
+      - '  &8&l➤ &fᴛᴏᴛᴀʟ ᴡᴏʀᴋᴇʀs: &#ff5757%jobsr_totalplayers_hunter%'
+      - '  &8&l➤ &fʟᴇᴠᴇʟ: &#ff5757%jobsr_user_jlevel_hunter% &7/ &8200'
+      - '  &8&l➤ &fᴍᴀx ᴅᴀɪʟʏ qᴜᴇsᴛs: &#ff57571'
+      - '&f'
+      - '&#ff5757ʜᴏᴡ ᴛᴏ ᴇᴀʀɴ?'
+      - '&8&l | &fᴋɪʟʟ ʟɪᴠᴇsᴛᴏᴄᴋ & ɢᴀɪɴ ʀᴇᴡᴀʀᴅs.'
+      - '&f'
+      - '&#ff5757ᴠᴀʟɪᴅ ᴀᴄᴛɪᴏɴꜱ'
+      - '&8&l | &fʟᴇꜰᴛ-ᴄʟɪᴄᴋ ᴛᴏ ᴊᴏɪɴ'
+      - '&8&l | &fʀɪɢʜᴛ-ᴄʟɪᴄᴋ ᴛᴏ ʟᴇᴀᴠᴇ'
+    right_click_commands:
+      - '[player] jobs leave hunter'
+      - '[close]'
+    left_click_commands:
+      - '[player] jobs join hunter'
+      - '[close]'
+
+  'woodcutter':  # Woodcutter Job & Its Details
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjExYTVlOWJkYTI0MmI3NWYzYzIwZDdlZDQzNGNiNzIxYWU0MTlmYWEwNjkxN2Q3ZjI5ZWZjMDA5YjgxOTE5MyJ9fX0=
+    slot: 20
+    display_name: '&#5aabf2&lWoodcutter Job'
+    lore:
+      - '&#5aabf2ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ:'
+      - '&8&l | &fᴇᴀʀɴ ᴍᴏɴᴇʏ ᴄʜᴏᴘᴘɪɴɢ ᴛʀᴇᴇs.'
+      - '&7'
+      - '&#5aabf2ᴊᴏʙ sᴛᴀᴛs: '
+      - '  &8&l➤ &fᴛᴏᴛᴀʟ ᴡᴏʀᴋᴇʀs: &#5aabf2%jobsr_totalplayers_woodcutter%'
+      - '  &8&l➤ &fʟᴇᴠᴇʟ: &#5aabf2%jobsr_user_jlevel_woodcutter% &7/ &8200'
+      - '  &8&l➤ &fᴍᴀx ᴅᴀɪʟʏ qᴜᴇsᴛs: &#5aabf21'
+      - '&f'
+      - '&#5aabf2ʜᴏᴡ ᴛᴏ ᴇᴀʀɴ?'
+      - '&8&l | &fʙʀᴇᴀᴋ ʟᴏɢs & ʟᴇᴀᴠᴇs ꜰᴏʀ ᴘʀᴏꜰɪᴛs.'
+      - '&f'
+      - '&#5aabf2ᴠᴀʟɪᴅ ᴀᴄᴛɪᴏɴꜱ'
+      - '&8&l | &fʟᴇꜰᴛ-ᴄʟɪᴄᴋ ᴛᴏ ᴊᴏɪɴ'
+      - '&8&l | &fʀɪɢʜᴛ-ᴄʟɪᴄᴋ ᴛᴏ ʟᴇᴀᴠᴇ'
+    right_click_commands:
+      - '[player] jobs leave woodcutter'
+      - '[close]'
+    left_click_commands:
+      - '[player] jobs join woodcutter'
+      - '[close]'
+
+  'farmer':  # Farmer Job & Its Details
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2I0M2IyMzE4OWRjZjEzMjZkYTQyNTNkMWQ3NTgyZWY1YWQyOWY2YzI3YjE3MWZlYjE3ZTMxZDA4NGUzYTdkIn19fQ==
+    slot: 21
+    display_name: '&#17bd4f&lFarmer Job'
+    lore:
+      - '&#17bd4fɪɴꜰᴏʀᴍᴀᴛɪᴏɴ:'
+      - '&8&l | &fᴇᴀʀɴ ᴍᴏɴᴇʏ ᴛʜʀᴏᴜɢʜ ᴀɢʀɪᴄᴜʟᴛᴜʀᴇ.'
+      - '&7'
+      - '&#17bd4fᴊᴏʙ sᴛᴀᴛs: '
+      - '  &8&l➤ &fᴛᴏᴛᴀʟ ᴡᴏʀᴋᴇʀs: &#17bd4f%jobsr_totalplayers_farmer%'
+      - '  &8&l➤ &fʟᴇᴠᴇʟ: &#17bd4f%jobsr_user_jlevel_farmer% &7/ &8200'
+      - '  &8&l➤ &fᴍᴀx ᴅᴀɪʟʏ qᴜᴇsᴛs: &#17bd4f1'
+      - '&f'
+      - '&#17bd4fʜᴏᴡ ᴛᴏ ᴇᴀʀɴ?'
+      - '&8&l | &fᴘʟᴀɴᴛ, ᴄʀᴏᴘ, ʙʀᴇᴇᴅ, & ᴛᴀᴍᴇ.'
+      - '&f'
+      - '&#17bd4fᴠᴀʟɪᴅ ᴀᴄᴛɪᴏɴꜱ'
+      - '&8&l | &fʟᴇꜰᴛ-ᴄʟɪᴄᴋ ᴛᴏ ᴊᴏɪɴ'
+      - '&8&l | &fʀɪɢʜᴛ-ᴄʟɪᴄᴋ ᴛᴏ ʟᴇᴀᴠᴇ'
+    right_click_commands:
+      - '[player] jobs leave farmer'
+      - '[close]'
+    left_click_commands:
+      - '[player] jobs join farmer'
+      - '[close]'
+
+  'explorer':  # Explorer Job & Its Details
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTYzMzgzMjJkMjZjNmE3YzA4ZmI5ZmQyMjk1OWExMzY3MjhmYTJkNGRjY2QyMmIxNTYzZWIxYmJhYTFkNTQ3MSJ9fX0=
+    slot: 22
+    display_name: '&#8b3fba&lExplorer Job'
+    lore:
+      - '&#8b3fbaɪɴꜰᴏʀᴍᴀᴛɪᴏɴ:'
+      - '&8&l | &fᴇᴀʀɴ ᴍᴏɴᴇʏ ᴇxᴘʟᴏʀɪɴɢ & ᴛʀᴀᴠᴇʟɪɴɢ.'
+      - '&7'
+      - '&#8b3fbaᴊᴏʙ sᴛᴀᴛs: '
+      - '  &8&l➤ &fᴛᴏᴛᴀʟ ᴡᴏʀᴋᴇʀs: &#8b3fba%jobsr_totalplayers_explorer%'
+      - '  &8&l➤ &fʟᴇᴠᴇʟ: &#8b3fba%jobsr_user_jlevel_explorer% &7/ &8200'
+      - '  &8&l➤ &fᴍᴀx ᴅᴀɪʟʏ qᴜᴇsᴛs: &#8b3fba1'
+      - '&f'
+      - '&#8b3fbaʜᴏᴡ ᴛᴏ ᴇᴀʀɴ?'
+      - '&8&l | &fᴅɪsᴄᴏᴠᴇʀ ɴᴇᴡ ʀᴇɢɪᴏɴs & ᴀʀᴇᴀs.'
+      - '&f'
+      - '&#8b3fbaᴠᴀʟɪᴅ ᴀᴄᴛɪᴏɴꜱ'
+      - '&8&l | &fʟᴇꜰᴛ-ᴄʟɪᴄᴋ ᴛᴏ ᴊᴏɪɴ'
+      - '&8&l | &fʀɪɢʜᴛ-ᴄʟɪᴄᴋ ᴛᴏ ʟᴇᴀᴠᴇ'
+    right_click_commands:
+      - '[player] jobs leave explorer'
+      - '[close]'
+    left_click_commands:
+      - '[player] jobs join explorer'
+      - '[close]'
+
+  'fisherman':   # Fisherman Job & Its Details
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmFjYWNlZjVmMDRiZWQ0MmU4YTgwOGNjZWMzOTg4OWU2NjZmYjEyOTllOTlhOWUwOTA2MGY4Y2YyOWU2YmFmNiJ9fX0=
+    slot: 23
+    display_name: '&#14f1ff&lFisherman Job'
+    lore:
+      - '&#14f1ffɪɴꜰᴏʀᴍᴀᴛɪᴏɴ:'
+      - '&8&l | &fᴇᴀʀɴ ᴍᴏɴᴇʏ ᴄᴀsᴛɪɴɢ ᴀ ʟɪɴᴇ.'
+      - '&7'
+      - '&#14f1ffᴊᴏʙ sᴛᴀᴛs: '
+      - '  &8&l➤ &fᴛᴏᴛᴀʟ ᴡᴏʀᴋᴇʀs: &#14f1ff%jobsr_totalplayers_fisherman%'
+      - '  &8&l➤ &fʟᴇᴠᴇʟ: &#14f1ff%jobsr_user_jlevel_fisherman% &7/ &8200'
+      - '  &8&l➤ &fᴍᴀx ᴅᴀɪʟʏ qᴜᴇsᴛs: &#14f1ff1'
+      - '&f'
+      - '&#14f1ffʜᴏᴡ ᴛᴏ ᴇᴀʀɴ?'
+      - '&8&l | &fᴄᴀsᴛ ʏᴏᴜʀ ʟɪɴᴇ ɪɴ ᴡᴀᴛᴇʀ.'
+      - '&f'
+      - '&#14f1ffᴠᴀʟɪᴅ ᴀᴄᴛɪᴏɴꜱ'
+      - '&8&l | &fʟᴇꜰᴛ-ᴄʟɪᴄᴋ ᴛᴏ ᴊᴏɪɴ'
+      - '&8&l | &fʀɪɢʜᴛ-ᴄʟɪᴄᴋ ᴛᴏ ʟᴇᴀᴠᴇ'
+    right_click_commands:
+      - '[player] jobs leave fisherman'
+      - '[close]'
+    left_click_commands:
+      - '[player] jobs join fisherman'
+      - '[close]'
+
+  'digger': # Digger Job & Its Details
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjkxMDlkMjIyOWUwNzNlNDYwZDMwZTUyNDY3MjhiOGQ4YWVjNDY0NTI3NTgxYzMzODUzOGI0MzYzZWFhNGZkYSJ9fX0=
+    slot: 24
+    display_name: '&#7aff88&lDigger Job'
+    lore:
+      - '&#7aff88ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ:'
+      - '&8&l | &fᴇᴀʀɴ ᴍᴏɴᴇʏ ᴇxᴄᴀᴠᴀᴛɪɴɢ ᴇᴀʀᴛʜ.'
+      - '&7'
+      - '&#7aff88ᴊᴏʙ sᴛᴀᴛs: '
+      - '  &8&l➤ &fᴛᴏᴛᴀʟ ᴡᴏʀᴋᴇʀs: &#7aff88%jobsr_totalplayers_digger%'
+      - '  &8&l➤ &fʟᴇᴠᴇʟ: &#7aff88%jobsr_user_jlevel_digger% &7/ &8200'
+      - '  &8&l➤ &fᴍᴀx ᴅᴀɪʟʏ qᴜᴇsᴛs: &#7aff881'
+      - '&f'
+      - '&#7aff88ʜᴏᴡ ᴛᴏ ᴇᴀʀɴ?'
+      - '&8&l | &fʙʀᴇᴀᴋ sᴏɪʟ & ᴅɪʀᴛ ʙʟᴏᴄᴋs.'
+      - '&f'
+      - '&#7aff88ᴠᴀʟɪᴅ ᴀᴄᴛɪᴏɴꜱ'
+      - '&8&l | &fʟᴇꜰᴛ-ᴄʟɪᴄᴋ ᴛᴏ ᴊᴏɪɴ'
+      - '&8&l | &fʀɪɢʜᴛ-ᴄʟɪᴄᴋ ᴛᴏ ʟᴇᴀᴠᴇ'
+    right_click_commands:
+      - '[player] jobs leave digger'
+      - '[close]'
+    left_click_commands:
+      - '[player] jobs join digger'
+      - '[close]'
+
+  'weaponsmith': # Weaponsmith Job & Its Details
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzViNTA5NTNkN2VmNmYyZDNkYTA3OGJhNGZlZTk0ZGMxMTczMzVlMzA5ZGVkY2JmMjFlM2Q3NDNjOWQ5ZDljNSJ9fX0=
+    slot: 30
+    display_name: '&#cacc50&lWeaponsmith Job'
+    lore:
+      - '&#cacc50ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ:'
+      - '&8&l | &fᴇᴀʀɴ ᴍᴏɴᴇʏ ꜰᴏʀɢɪɴɢ ɢᴇᴀʀ.'
+      - '&7'
+      - '&#cacc50ᴊᴏʙ sᴛᴀᴛs: '
+      - '  &8&l➤ &fᴛᴏᴛᴀʟ ᴡᴏʀᴋᴇʀs: &#cacc50%jobsr_totalplayers_weaponsmith%'
+      - '  &8&l➤ &fʟᴇᴠᴇʟ: &#cacc50%jobsr_user_jlevel_weaponsmith% &7/ &8200'
+      - '  &8&l➤ &fᴍᴀx ᴅᴀɪʟʏ qᴜᴇsᴛs: &#cacc501'
+      - '&f'
+      - '&#cacc50ʜᴏᴡ ᴛᴏ ᴇᴀʀɴ?'
+      - '&8&l | &fᴄʀᴀꜰᴛ, ᴄᴀʀᴠᴇ, & ʀᴇᴘᴀɪʀ.'
+      - '&f'
+      - '&#cacc50ᴠᴀʟɪᴅ ᴀᴄᴛɪᴏɴꜱ'
+      - '&8&l | &fʟᴇꜰᴛ-ᴄʟɪᴄᴋ ᴛᴏ ᴊᴏɪɴ'
+      - '&8&l | &fʀɪɢʜᴛ-ᴄʟɪᴄᴋ ᴛᴏ ʟᴇᴀᴠᴇ'
+    right_click_commands:
+      - '[player] jobs leave weaponsmith'
+      - '[close]'
+    left_click_commands:
+      - '[player] jobs join weaponsmith'
+      - '[close]'
+
+  'brewer': # Brewer Job & Its Details
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTkzNWEwNzJmZmRmZWI5MTY3NGMzM2JjYzk1ODVmOWEzMzJiZmEzYWM1ODNkNzU0YTU4ODlmNzg1MTMxM2JjZCJ9fX0=
+    slot: 31
+    display_name: '&#ff6ece&lBrewer Job'
+    lore:
+      - '&#ff6eceɪɴꜰᴏʀᴍᴀᴛɪᴏɴ:'
+      - '&8&l | &fᴇᴀʀɴ ᴍᴏɴᴇʏ ʙʏ ᴄᴏɴᴄᴏᴄᴛɪɴɢ ᴘᴏᴛɪᴏɴs.'
+      - '&7'
+      - '&#ff6eceᴊᴏʙ sᴛᴀᴛs: '
+      - '  &8&l➤ &fᴛᴏᴛᴀʟ ᴡᴏʀᴋᴇʀs: &#ff6ece%jobsr_totalplayers_brewer%'
+      - '  &8&l➤ &fʟᴇᴠᴇʟ: &#ff6ece%jobsr_user_jlevel_brewer% &7/ &8200'
+      - '  &8&l➤ &fᴍᴀx ᴅᴀɪʟʏ qᴜᴇsᴛs: &#ff6ece1'
+      - '&f'
+      - '&#ff6eceʜᴏᴡ ᴛᴏ ᴇᴀʀɴ?'
+      - '&8&l | &fᴍɪx ɪɴɢʀᴇᴅɪᴇɴᴛs & ɪɴғʟᴜsᴇ ᴘᴏᴡᴇʀ.'
+      - '&f'
+      - '&#ff6eceᴠᴀʟɪᴅ ᴀᴄᴛɪᴏɴꜱ'
+      - '&8&l | &fʟᴇꜰᴛ-ᴄʟɪᴄᴋ ᴛᴏ ᴊᴏɪɴ'
+      - '&8&l | &fʀɪɢʜᴛ-ᴄʟɪᴄᴋ ᴛᴏ ʟᴇᴀᴠᴇ'
+    right_click_commands:
+      - '[player] jobs leave brewer'
+      - '[close]'
+    left_click_commands:
+      - '[player] jobs join brewer'
+      - '[close]'
+
+  'enchanter': # Enchanter Job & Its Details
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmFkNzA3NzIyNmU5ZTU5Y2U4NzJjZmUxODFlM2VjYzJmNGNlMWJmZDIwMmI2MTRkZDRjZDQ1NjBlODZhMjc1MyJ9fX0=
+    slot: 32
+    display_name: '&#428042&lEnchanter Job'
+    lore:
+      - '&#428042ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ:'
+      - '&8&l | &fᴇᴀʀɴ ᴍᴏɴᴇʏ ᴇɴᴄʜᴀɴᴛɪɴɢ ᴡᴀʀᴘᴇᴅ ɢᴀʀ.'
+      - '&7'
+      - '&#428042ᴊᴏʙ sᴛᴀᴛs: '
+      - '  &8&l➤ &fᴛᴏᴛᴀʟ ᴡᴏʀᴋᴇʀs: &#428042%jobsr_totalplayers_enchanter%'
+      - '  &8&l➤ &fʟᴇᴠᴇʟ: &#428042%jobsr_user_jlevel_enchanter% &7/ &8200'
+      - '  &8&l➤ &fᴍᴀx ᴅᴀɪʟʏ qᴜᴇsᴛs: &#4280421'
+      - '&f'
+      - '&#428042ʜᴏᴡ ᴛᴏ ᴇᴀʀɴ?'
+      - '&8&l | &fᴀᴘᴘʟʏ ᴍᴀɢɪᴄ ᴛᴏ ᴀᴍɪ ɢᴇᴀʀ.'
+      - '&f'
+      - '&#428042ᴠᴀʟɪᴅ ᴀᴄᴛɪᴏɴꜱ'
+      - '&8&l | &fʟᴇꜰᴛ-ᴄʟɪᴄᴋ ᴛᴏ ᴊᴏɪɴ'
+      - '&8&l | &fʀɪɢʜᴛ-ᴄʟɪᴄᴋ ᴛᴏ ʟᴇᴀᴠᴇ'
+    right_click_commands:
+      - '[player] jobs leave enchanter'
+      - '[close]'
+    left_click_commands:
+      - '[player] jobs join enchanter'
+      - '[close]'
+
+
+####################################################################################################
+#                                     Utility Buttons Section                                      #
+####################################################################################################
+  'playerprofile':   # Player Profile Item
+    material: head-%player_name%
+    slot: 45
+    display_name: '&#02f740ʏᴏᴜʀ ᴘʀᴏꜰɪʟᴇ:'
+    lore:
+      - '&#02f740ᴅᴇsᴄʀɪᴘᴛɪᴏɴ:'
+      - '&8&l | &fᴍᴀꜱᴛᴇʀ ᴘʀᴏꜰɪᴛᴀʙʟᴇ ᴘʀᴏꜰᴇꜱꜱɪᴏɴꜱ ᴛᴏ '
+      - '&8&l | &fᴇᴀʀɴ ᴍᴏɴᴇʏ ᴀɴᴅ ʙᴜɪʟᴅ ʏᴏᴜʀ ᴇᴍᴘɪʀᴇ.'
+      - '&7'
+      - '&#02f740ᴀᴄᴛɪᴠᴇ ᴇᴍᴘʟᴏʏᴍᴇɴᴛ:'
+      - '  &8&l➤ &fᴀᴄᴛɪᴠᴇ ᴊᴏʙs: &#02f740%jobsr_user_joinedjobcount% &7/ &8%jobsr_maxjobs%'
+      - '  &8&l➤ &fᴄᴜʀʀᴇɴᴛ ᴊᴏʙs: &9%jobsr_user_jobs%'
+      - '&7'
+      - '&#02f740ᴘʀᴏꜰɪᴛ sᴛᴀᴛɪsᴛɪᴄs:'
+      - '  &8&l➤ &fᴛᴏᴛᴀʟ ᴘʀᴏꜰɪᴛ ʟᴇᴠᴇʟ: &#02f740%jobsr_user_totallevels%'
+      - '  &8&l➤ &fᴡᴀʟʟᴇᴛ ᴘᴏɪɴᴛs: &#02f740%jobsr_user_points_fixed%'
+      - '  &8&l➤ &fᴛᴏᴛᴀʟ ᴘᴏɪɴᴛs ᴇᴀʀɴᴇᴅ: &#02f740%jobsr_user_total_points%'
+      - '&7'
+      - '&#02f740qᴜᴇsᴛ ᴘʀᴏɢʀᴇss:'
+      - '  &8&l➤ &fᴘᴇɴᴅɪɴɢ ᴅᴀɪʟʏ qᴜᴇsᴛs: &#02f740%jobsr_user_dailyquests_pending%'
+      - '  &8&l➤ &fᴄᴏᴍᴘʟᴇᴛᴇᴅ ᴛᴏᴅᴀʏ: &#02f740%jobsr_user_dailyquests_completed%'
+      - '  &8&l➤ &fᴛᴏᴛᴀʟ qᴜᴇsᴛs ꜰɪɴɪsʜᴇᴅ: &#02f740%jobsr_user_doneq%'
+      - '&7'
+
+  'quests':
+    material: BOOK
+    glint: true
+    slot: 49
+    display_name: '&#ffdd00&lJobs Quests'
+    lore:
+      - '&#ffdd00ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ:'
+      - '&8&l | &fᴄᴏᴍᴘʟᴇᴛᴇ ᴅᴀɪʟʏ ᴊᴏʙ ǫᴜᴇsᴛs '
+      - '&8&l | &fᴛᴏ ᴇᴀʀɴ ʀᴇᴡᴀʀᴅs.'
+      - '&7'
+      - '&#ffdd00ʜᴏᴡ ɪᴛ ᴡᴏʀᴋs:'
+      - '&8&l | &fᴇᴀʀɴ ᴍᴏɴᴇʏ, ᴇxᴘ ᴀɴᴅ ᴘᴏɪɴᴛs'
+      - '&8&l | &fʙʏ ᴄᴏᴍᴘʟᴇᴛɪɴɢ ǫᴜᴇsᴛs.'
+      - '&f'
+      - '&#ffdd00ɴᴏᴛᴇ:'
+      - '&8&l | &fǫᴜᴇsᴛs ʀᴇꜱᴇᴛ ᴀᴛ 12:00 ᴀᴍ.'
+      - '&f'
+      - '&#ffdd00ᴠᴀʟɪᴅ ᴀᴄᴛɪᴏɴꜱ'
+      - '&8&l | &fᴄʟɪᴄᴋ ᴛᴏ ᴠɪᴇᴡ'
+    left_click_commands:
+      - '[player] jobs quests'
+    right_click_commands:
+      - '[player] jobs quests'
+
+  'close':
+    material: RED_DYE
+    slot: 53
+    display_name: '&c&lClose Menu'
+    lore:
+      - '&7'
+      - '&8&l➤ &cClick to close this menu.'
+    left_click_commands:
+      - '[close]'
+    right_click_commands:
+      - '[close]'
+
+
+
+
+  'fillitem': # Fillers
+    material: black_STAINED_GLASS_PANE
+    display_name: '&f '
+    slots:
+      - 0-11
+      - 15-19
+      - 25-29
+      - 33-44
+      - 46-48
+      - 50-52
