@@ -1,0 +1,582 @@
+title: >-
+  §x§F§F§A§1§4§7⚡
+  §x§F§F§A§9§3§7R§x§F§F§A§D§2§Fᴀ§x§F§F§B§1§2§7ç§x§F§F§B§4§2§0ᴀ§x§F§F§B§8§1§8s
+  §x§F§F§C§0§0§8B§x§F§F§C§4§0§0ʟ§x§F§F§C§0§0§9ᴀ§x§F§F§B§B§1§2ᴄ§x§F§F§B§7§1§Bᴋ§x§F§F§B§3§2§4O§x§F§F§A§E§2§Cᴜ§x§F§F§A§A§3§5ᴛ
+  §x§F§F§A§1§4§7⚡
+type: inventory
+rows: 6
+commands:
+  - raças
+  - races
+  - raça
+  - origens
+  - origem
+open:
+  requirements: []
+  commands:
+  - '[console] execute at %player_name% run playsound minecraft:block.beacon.activate master %player_name% ~ ~ ~ 1 0.8'
+  fail: []
+exampleItem:
+  HEART_OF_THE_SEA:
+    material: HEART_OF_THE_SEA
+layout:
+  '0':
+    - raças_slot_0
+  '1':
+    - raças_slot_1
+  '2':
+    - raças_slot_2
+  '3':
+    - raças_slot_3
+  '4':
+    - raças_slot_4
+  '5':
+    - raças_slot_5
+  '6':
+    - raças_slot_6
+  '7':
+    - raças_slot_7
+  '8':
+    - raças_slot_8
+  '9':
+    - raças_slot_9
+  '17':
+    - raças_slot_17
+  '18':
+    - raças_slot_18
+  '20':
+    - raças_slot_20
+  '21':
+    - raças_slot_21
+  '22':
+    - raças_slot_22
+  '23':
+    - raças_slot_23
+  '24':
+    - raças_slot_24
+  '26':
+    - raças_slot_26
+  '27':
+    - raças_slot_27
+  '29':
+    - raças_slot_29
+  '30':
+    - raças_slot_30
+  '31':
+    - raças_slot_31
+  '32':
+    - raças_slot_32
+  '33':
+    - raças_slot_33
+  '35':
+    - raças_slot_35
+  '36':
+    - raças_slot_36
+  '44':
+    - raças_slot_44
+  '45':
+    - raças_slot_45
+  '46':
+    - raças_slot_46
+  '47':
+    - raças_slot_47
+  '48':
+    - raças_slot_48
+  '49':
+    - raças_slot_49
+  '50':
+    - raças_slot_50
+  '51':
+    - raças_slot_53
+  '52':
+    - raças_slot_52
+  '53':
+    - raças_slot_51
+items:
+  exampleItem:
+    material: cobblestone
+    item-model: '4001'
+    actions:
+      requirements:
+        - '[item] material=cobblestone custom=4001 amount=5'
+      commands:
+        - >-
+          [console] broadcast <#5AFAF5>⛨ <#FF00AC> %player_name%<white>
+          Esᴄᴏʟʜᴇᴜ<reset> %superheroes_description%
+      fail:
+        - '[console] broadcast teste'
+  raças_slot_0:
+    material: black_stained_glass_pane
+  raças_slot_1:
+    material: black_stained_glass_pane
+  raças_slot_2:
+    material: black_stained_glass_pane
+  raças_slot_3:
+    material: black_stained_glass_pane
+  raças_slot_4:
+    material: pufferfish
+    name: ' §e§m━━━━━━━━━&r&#FFFC97 ⚡&r &#FFF385R&#FFEF7Cᴀ&#FFEA73ç&#FFE66Bᴀ&#FFE162s &#FFD850B&#FFD447ʟ&#FFCF3Eᴀ&#FFCB35ᴄ&#FFC62Cᴋ&#FFC224O&#FFBD1Bᴜ&#FFB912ᴛ &#FFB000⚡ §m━━━━━━━━━━━'
+    itemType:
+      - noAttributes
+    lore:
+      - '&#FFFC97• &fAs ʀᴀçᴀs ɴᴏ ʙʟᴀᴄᴋᴏᴜᴛ ᴛêᴍ ᴜᴍ ᴘᴀᴘᴇʟ'
+      - '&#FFFC97• &fsᴜᴘᴇʀ ɪᴍᴘᴏʀᴛᴀɴᴛᴇ, ᴘᴏɪs, ᴅãᴏ sᴜᴘᴇʀ'
+      - '&#FFFC97• &fᴘᴏᴅᴇʀᴇs ᴀ ǫᴜᴇᴍ ᴀs ᴜsᴀ!'
+      - '&#FFFC97• &fCʟɪǫᴜᴇ ᴇᴍ ᴜᴍ ᴅᴏs ɪᴛᴇɴs ᴀʙᴀɪxᴏ'
+      - '&#FFFC97• &fᴘᴀʀᴀ ᴇsᴄᴏʟʜᴇʀ ᴜᴍᴀ ʀᴀçᴀ!'
+      - '&#FFFC97• &#FF0000Aᴘᴇɴᴀs ᴄᴜɪᴅᴀᴅᴏ ǫᴜᴇ só é ᴘᴏssɪᴠᴇʟ'
+      - '&#FFFC97• &#FF0000ᴇsᴄᴏʟʜᴇʀ ᴀ ʀᴀçᴀ 1 ᴠᴇᴢ ɢʀᴀᴛᴜɪᴛᴀᴍᴇɴᴛᴇ!'
+      - >-
+        &#FFCD00&m                 &r&#FFCD00
+        Iɴғ&#FFDC12ᴏʀᴍ&#FFEA25ᴀçõ&#FFEA25ᴇs&#FFCD00 &m                  &r
+      - '   &#FFFC97• &fᴘᴀʀᴀ ᴍᴜᴅᴀʀ ᴅᴇ ʀᴀçᴀ ᴜsᴇ ᴀ ɴᴏssᴀ'
+      - '           &#9FC5FF≈ M&#8AD1F9ᴏᴇᴅ&#75DCF3ᴀ ᴅ&#61E8ECᴇ T&#4CF3E6ʀᴏᴄ&#37FFE0ᴀ ≈'
+      - '         &#FFFC97• &fA sᴜᴀ ʀᴀçᴀ: &6&n%superheroes_name%'
+      - >-
+        &#FFCD00&m                                                    
+        &#FFF937&r
+  raças_slot_5:
+    material: black_stained_glass_pane
+  raças_slot_6:
+    material: black_stained_glass_pane
+  raças_slot_7:
+    material: black_stained_glass_pane
+  raças_slot_8:
+    material: black_stained_glass_pane
+  raças_slot_9:
+    material: black_stained_glass_pane
+  raças_slot_17:
+    material: black_stained_glass_pane
+  raças_slot_18:
+    material: black_stained_glass_pane
+  raças_slot_20:
+    material: yellow_dye
+    lore:
+      - '       &#FFC900• &fO ᴍᴀɪs ʀáᴘɪᴅᴏ ᴅᴏ BʟᴀᴄᴋOᴜᴛ!'
+      - >-
+        &#FFF000&m          &r&f [&#FFC900 Esᴛᴀᴛísᴛɪᴄᴀs ɴᴏʀᴍᴀɪs &f]
+        &#FFF000&m           
+      - '                &#2BFF00+ &#FFF000Vᴇʟᴏᴄɪᴅᴀᴅᴇ V'
+      - '                &#2BFF00+ &#76C1FFPʀᴇssᴀ I'
+      - '&f]&#FF8B00&m                                                     &r&f['
+      - '        &#2BFF00✔ &fFᴀçᴀ sʜɪғᴛ ᴘᴀʀᴀ ᴀᴛɪᴠᴀʀ ᴏ'
+      - >-
+        &#FFF000&m    &r&f [&#FFC900 ⚡ &#FFCC00M&#FFCE00ᴏ&#FFD000ᴅ&#FFD100ᴏ
+        &#FFD500H&#FFD700ɪ&#FFD800ᴘ&#FFDA00ᴇ&#FFDC00ʀ&#FFDD00ᴠ&#FFDF00ᴇ&#FFE100ʟ&#FFE200ᴏ&#FFE400ᴄ&#FFE600ɪ&#FFE800ᴅ&#FFE900ᴀ&#FFEB00ᴅ&#FFED00ᴇ
+        &#FFF000⚡ &8(&77s&8) &f] &#FFF000&m     
+      - '                &#20FF00+ &#FFC900Vᴇʟᴏᴄɪᴅᴀᴅᴇ XV'
+      - '                &#20FF00+ &#76C1FFPʀᴇssᴀ III'
+      - '&f]&#FF8B00&m                                                     &r&f['
+      - '            &#20FF00+ &#FF4545Vɪᴅᴀ ᴅɪᴍɪɴᴜɪᴅᴀ &8(&718&8)'
+      - '            &#20FF00+ &#EFFF6EAʟᴛᴜʀᴀ ɴᴏʀᴍᴀʟ &8(&72m&8)'
+      - '&f]&#FF8B00&m                                                     &r&f['
+    name: '                    <#FFC900>⚡ <#FFD300>F<#FFD800>ʟ<#FFDD00>ᴀ<#FFE100>s<#FFE600>ʜ <#FFF000>⚡'
+    actions:
+      commands:
+        - '[console] hero select flash %player_name%'
+        - '[delay] 10'
+        - >-
+          [console] broadcast <#5AFAF5>⛨ <#FF00AC> %player_name%<white>
+          Esᴄᴏʟʜᴇᴜ<reset> %superheroes_description%
+        - ''
+      requirements:
+        - '[item] material=structure_void custom=4001 amount=1'
+      fail:
+        - '[msg] &cCᴏɴsɪɢᴀ ᴜᴍᴀ ᴍᴏᴇᴅᴀ ᴅᴇ ʀᴀçᴀ, ᴘᴀʀᴀ ᴄᴏɴsᴇɢᴜɪʀ ᴍᴜᴅᴀʀ!'
+  raças_slot_21:
+    material: jungle_sapling
+    lore:
+      - '              &#CEFF00• &fEᴜ sᴏᴜ ᴏ Gʀᴏᴏᴛ!'
+      - '&#99FF5D&m                                                        '
+      - '   &#20FF00✔ &fCʟɪǫᴜᴇ ᴇᴍ &#CEFF00&nᴏᴜᴛʀᴏ&r&f ᴊᴏɢᴀᴅᴏʀ ᴘᴀʀᴀ'
+      - '             &fᴅᴀʀ &#CEFF00&nᴀʙsᴏʀçãᴏ&r&f II &8(&760s&8)'
+      - '&#99FF5D&m                                                        '
+      - '   &#20FF00✔ &fFᴀçᴀ sʜɪғᴛ ᴘᴀʀᴀ ᴛɪʀᴀʀ 2 ᴄᴏʀᴀçõᴇs'
+      - '  &fᴀᴏ sᴇᴜ ɪɴɪᴍɪɢᴏ ᴇ ᴛɪʀᴀʀ 8 ᴘᴏɴᴛᴏs ᴅᴇ ғᴏᴍᴇ!'
+      - >-
+        &#AAFF3D&m              &r&f[ &7Cᴏᴏʟᴅᴏᴡɴ &8(&720s&8)
+        &f]&#AAFF3D&m                   
+      - "               &8\U0001F356\U0001F356&#FFBC00\U0001F356\U0001F356\U0001F356\U0001F356\U0001F356\U0001F356\U0001F356\U0001F356"
+      - '                &8❤❤&#FF0000❤❤❤❤❤❤❤❤'
+      - '&#99FF5D&m                                                        '
+      - '   &#20FF00✔ &fEᴍ ʙɪᴏᴍᴀs ᴅᴇ ғʟᴏʀᴇsᴛᴀ ᴠᴏᴄê ɢᴀɴʜᴀ'
+      - '            &#FF0000❤ &#0E9400ʀᴇɢᴇɴᴇʀᴀçãᴏ ɪɪ &#FF0000❤ &8(&6ꝏ&8)'
+      - '&#99FF5D&m                                                        '
+      - '            &#20FF00+ &#6EDFFFRᴇsɪsᴛêɴᴄɪᴀ II'
+      - '            &#20FF00+ &#FF9345Bᴏᴏsᴛ ᴅᴇ ᴠɪᴅᴀ II'
+      - '            &#20FF00+ &#FF0000Lᴇɴᴛɪᴅãᴏ II'
+      - '            &#20FF00+ &#FF4545Vɪᴅᴀ ᴀᴜᴍᴇɴᴛᴀᴅᴀ &8(&770&8)'
+      - '            &#20FF00+ &#EFFF6EAʟᴛᴜʀᴀ ᴀᴜᴍᴇɴᴛᴀᴅᴀ &8(&72.65m&8)'
+      - '&#99FF5D&m                                                        '
+    name: '                   <#99FF5D>☃ <#A6FF46>G<#ADFF3A>ʀ<#B4FF2F>ᴏ<#BAFF23>ᴏ<#C1FF17>ᴛ <#CEFF00>☃'
+    actions:
+      commands:
+        - '[console] hero select groot %player_name%'
+        - '[delay] 10'
+        - >-
+          [console] broadcast <#5AFAF5>⛨ <#FF00AC> %player_name%<white>
+          Esᴄᴏʟʜᴇᴜ<reset> %superheroes_description%
+        - ''
+      requirements:
+        - '[item] material=structure_void custom=4001 amount=1'
+      fail:
+        - '[msg] &cCᴏɴsɪɢᴀ ᴜᴍᴀ ᴍᴏᴇᴅᴀ ᴅᴇ ʀᴀçᴀ, ᴘᴀʀᴀ ᴄᴏɴsᴇɢᴜɪʀ ᴍᴜᴅᴀʀ!'
+  raças_slot_22:
+    material: iron_ingot
+    lore:
+      - '              &f• &#FFFFFFF&#F7F7F7ᴏ&#F0F0F0ʀ&#E8E8E8ç&#E1E1E1ᴀ &#D2D2D2ᴍ&#CACACAᴀ&#D2D2D2ɢ&#D9D9D9ɴ&#E1E1E1é&#E8E8E8ᴛ&#F0F0F0ɪ&#F7F7F7ᴄ&#FFFFFFᴀ'
+      - '&#9D9D9D&m                                                         &r'
+      - '      &fFᴀçᴀ sʜɪғᴛ ᴇ &#9D9D9Dᴘᴜxᴇ&f ᴛᴏᴅᴏs ᴄᴏɴsɪɢᴏ!'
+      - '                    &8(§x§F§F§F§F§F§F6§x§F§1§F§1§F§1 §x§E§3§E§3§E§3b§x§D§4§D§4§D§4l§x§C§6§C§6§C§6o§x§D§9§D§9§D§9c§x§E§C§E§C§E§Co§x§F§F§F§F§F§Fs&8)'
+      - '&fAʟéᴍ ᴅᴇ ᴅᴀʀ &#9D9D9D&nʟᴇɴᴛɪᴅãᴏ I&r&f ᴘᴏʀ &#9D9D9D&n7s&r&f ᴀᴏs ɪɴɪᴍɪɢᴏs!'
+      - "&fE ᴄᴀᴅᴀ &#9D9D9D&n2s&r&f ᴜᴍ &#FF8800\U0001F356&r&f é ᴜsᴀᴅᴏ ᴘᴀʀᴀ ᴀ &#9D9D9D&nsᴜᴀ ᴇɴᴇʀɢɪᴀ!"
+      - '&#9D9D9D&m                                                         &r'
+      - '                  &#858585⛏ &e&lNOVO! &#858585⛏'
+      - '             &#E0E0E0Vᴇɪɴ ᴍɪɴᴇʀ ᴀᴛɪᴠᴀᴅᴏ!'
+      - '    &#E0E0E0Qᴜᴇʙʀᴇ ᴀs ᴠᴇɪᴀs ᴅᴇ ᴍɪɴᴇʀɪᴏs ᴛᴏᴅᴀs!'
+      - '&#9D9D9D&m                                                         &r'
+      - '            &#20FF00+ &#FF8800Gʀᴀᴠɪᴅᴀᴅᴇ 0'
+      - '            &#20FF00+ &#6EDFFFRᴇsɪsᴛêɴᴄɪᴀ I'
+      - '            &#20FF00+ &#FF4545Vɪᴅᴀ ᴀᴜᴍᴇɴᴛᴀᴅᴀ &8(&736&8)'
+      - '            &#20FF00+ &#EFFF6EAʟᴛᴜʀᴀ ᴀᴜᴍᴇɴᴛᴀᴅᴀ &8(&72.1m&8)'
+      - '&#9D9D9D&m                                                         &r'
+    name: '                 &#FFFFFF⏩ &#EAEAEAM&#DFDFDFᴀ&#D5D5D5ɢ&#CACACAɴ&#D5D5D5ᴇ&#DFDFDFᴛ&#EAEAEAᴏ &#FFFFFF⏪'
+    actions:
+      commands:
+        - '[console] hero select magneto %player_name%'
+        - '[delay] 10'
+        - >-
+          [console] broadcast <#5AFAF5>⛨ <#FF00AC> %player_name%<white>
+          Esᴄᴏʟʜᴇᴜ<reset> %superheroes_description%
+        - ''
+      requirements:
+        - '[item] material=structure_void custom=4001 amount=1'
+      fail:
+        - '[msg] &cCᴏɴsɪɢᴀ ᴜᴍᴀ ᴍᴏᴇᴅᴀ ᴅᴇ ʀᴀçᴀ, ᴘᴀʀᴀ ᴄᴏɴsᴇɢᴜɪʀ ᴍᴜᴅᴀʀ!'
+  raças_slot_23:
+    material: amethyst_shard
+    lore:
+      - ' &f• &fᴏ sᴜᴘᴇʀ-ʜᴏᴍᴇᴍ ᴄʜᴇɢᴏᴜ ᴀ ᴇsᴛᴇ ᴍᴜɴᴅᴏ!'
+      - ' &8&m                &r &f[ &bʜᴀʙɪʟɪᴅᴀᴅᴇs &f] &8&m                '
+      - ' &a✔ &fᴄᴀᴍɪɴʜᴇ sᴏʙʀᴇ ᴀ áɢᴜᴀ ᴄᴏᴍ ᴏ sᴜᴘᴇʀ'
+      - '      &f[ &b❄ sᴏᴘʀᴏ ᴄᴏɴɢᴇʟᴀɴᴛᴇ ❄ &f]'
+      - ' &a✔ &fᴘʀᴇsɪᴏɴᴇ ᴏ sʜɪғᴛ ᴅᴜʀᴀɴᴛᴇ 3 sᴇɢᴜɴᴅᴏs'
+      - '   &f[ &9↑ sᴜᴘᴇʀ ᴘᴜʟᴏ ↑ &f] &a↑ &8(&740 ʙʟᴏᴄᴏs&8) &8(&725s&8)'
+      - ' &a✔ &fᴠᴏᴄê ᴇᴍᴀɴᴀ ᴜᴍᴀ &bᴀᴜʀᴀ ᴅᴇ 10 ʙʟᴏᴄᴏs'
+      - '   &fǫᴜᴇ &cᴅᴇsᴀᴄᴇʟᴇʀᴀ &fᴘʀᴏᴊéᴛᴇɪs ɴᴏ ᴀʀ ᴇ'
+      - ' &fᴄᴏʟᴏᴄᴀ &dʟᴇɴᴛɪᴅãᴏ ɪ &fᴀᴏs ɪɴɪᴍɪɢᴏs ᴘʀóxɪᴍᴏs!'
+      - ' &a✔ &fɪᴍᴜɴᴇ ᴀ &6ᴛᴏᴅᴏs &fᴏs ᴛɪᴘᴏs ᴅᴇ &nᴇxᴘʟᴏsãᴏ!&r &e☢'
+      - ' &8&m                &r &f[ &eᴀᴛʀɪʙᴜᴛᴏs &f] &8&m                '
+      - '            &a+ &bʀᴇsᴘɪʀᴀçãᴏ ᴀǫᴜáᴛɪᴄᴀ ɪ'
+      - '                  &a+ &7ʀᴇsɪsᴛêɴᴄɪᴀ ɪ'
+      - '            &a+ &cʀᴇsɪsᴛêɴᴄɪᴀ ᴀᴏ ғᴏɢᴏ ɪ'
+      - '                    &a+ &eғᴀᴅɪɢᴀ ɪ'
+      - '                &a+ &cᴠɪᴅᴀ ᴀᴜᴍᴇɴᴛᴀᴅᴀ &8(&756&8)'
+      - '             &a+ &fᴀʟᴛᴜʀᴀ ᴀᴜᴍᴇɴᴛᴀᴅᴀ &8(&72.5ᴍ&8)'
+      - ' &8&m                                                '
+    name: >-
+      <st><gradient:#FF9292:#94FFF9>               </gradient></st> &#FF7878⛨
+      &#78EFFFsᴜᴘᴇʀ-ʜᴏᴍᴇᴍ &#FF7878⛨ <st><gradient:#94FFF9:#FF9292>             
+      </gradient></st>
+    actions:
+      commands:
+        - '[console] hero select superman %player_name%'
+        - '[delay] 10'
+        - >-
+          [console] broadcast <#5AFAF5>⛨ <#FF00AC> %player_name%<white>
+          Esᴄᴏʟʜᴇᴜ<reset> %superheroes_description%
+        - ''
+      requirements:
+        - '[item] material=structure_void custom=4001 amount=1'
+      fail:
+        - '[msg] &cCᴏɴsɪɢᴀ ᴜᴍᴀ ᴍᴏᴇᴅᴀ ᴅᴇ ʀᴀçᴀ, ᴘᴀʀᴀ ᴄᴏɴsᴇɢᴜɪʀ ᴍᴜᴅᴀʀ!'
+  raças_slot_24:
+    material: red_dye
+    lore:
+      - '      &f• &#C90000C&#CE0000ᴏ&#D20000ᴍ &#DB0000ᴀ &#E40000ᴍ&#E90000ᴏ&#ED0000ʀ&#F20000ᴛ&#F60000ᴇ &#FF0000ᴇ&#FB0000ʟ&#F60000ᴇ &#ED0000ʀ&#E90000ᴇ&#E40000ɢ&#E00000ᴇ&#DB0000ɴ&#D70000ᴇ&#D20000ʀ&#CE0000ᴀ&#C90000!'
+      - >-
+        &#C90000&m        &r &f[
+        &#C90000H&#CE0000ᴀ&#D40000ʙ&#D90000ɪ&#DF0000ʟ&#E40000ɪ&#E90000ᴅ&#EF0000ᴀ&#F40000ᴅ&#FA0000ᴇ&#FF0000s
+        &#F30000ᴘ&#ED0000ᴀ&#E70000s&#E10000s&#DB0000ɪ&#D50000ᴠ&#CF0000ᴀ&#C90000s
+        &f] &#C90000&m        &r
+      - '&#C90000✔ &fMᴀᴛᴇ ᴀʟɢᴜᴍ ᴀɴɪᴍᴀʟ, ᴍᴏʙ, ᴇɴᴛɪᴅᴀᴅᴇ'
+      - '   &fᴘᴀʀᴀ ʀᴇᴄᴇʙᴇʀ &#C90000Rᴇɢᴇɴᴇʀᴀçãᴏ&f I &8(&710s&8)'
+      - '&#C90000✔ &fRᴏᴜʙᴇ ᴀ ᴠɪᴅᴀ ᴅᴏ sᴇᴜ ᴏᴘᴏɴᴇɴᴛᴇ'
+      - '   &fǫᴜᴇ ᴄᴀᴅᴀ ᴠᴇᴢ ǫᴜᴇ &#FF0000&nᴍᴀᴛᴀ ᴜᴍ ᴊᴏɢᴀᴅᴏʀ&f'
+      - '   &fʀᴇᴄᴇʙᴇ &#FF00001 &nᴄᴏʀᴀçãᴏ ᴇxᴛʀᴀ&f ! &#FF0000100 ❤ &7MAX'
+      - '&#C90000✔ &fAo &#C90000&nmatar&f qualquer entidade você'
+      - '       &#FF0000regenera&f instantaneamente'
+      - '        &#C90000&n2&#C90000 corações&f !'
+      - >-
+        &f[ &#C98400B&#D29000ᴏ&#DB9B00ɴ&#E4A700ú&#EDB200s &#FFC900ᴅ&#F4BB00ᴇ
+        &#DFA000ᴅ&#D49200ɪ&#C98400ᴀ &f] &#C90000&m     &r
+        &f[&#C90089B&#D10082ᴏ&#D8007Bɴ&#E00074ú&#E8006Es &#F70060ᴅ&#FF0059ᴇ
+        &#ED0069ɴ&#E40071ᴏ&#DB0079ɪ&#D20081ᴛ&#C90089ᴇ &f]
+      - '&#00FF01✔ &fFraqueza I              &#00FF01✔ &fVᴇʟᴏᴄɪᴅᴀᴅᴇ I'
+      - '&#00FF01✔ &fLentidão I               &#00FF01✔ &fFᴏʀçᴀ I'
+      - '&#00FF01✔ &fFome I                  &#00FF01✔ &fRᴇsɪsᴛêɴᴄɪᴀ I'
+      - '                            &#00FF01✔ &fʀᴇɢᴇɴᴇʀᴀçãᴏ I'
+      - '           &f [ &#8700C9V&#9500D1ɪ&#A400D8s&#B200E0ã&#C000E8ᴏ &#DD00F7N&#EB00FFᴏ&#DD00F7ᴛ&#CE00F0ᴜ&#C000E8ʀ&#B200E0ɴ&#A400D8ᴀ &#8700C9I&f ]'
+      - '&#C90000&m                                                  &r'
+      - '          &#20FF00+ &#FF4545Vɪᴅᴀ ᴀᴜᴍᴇɴᴛᴀᴅᴀ &8(&732&8)'
+      - '          &#20FF00+ &#FF4545ᴅᴀɴᴏ ᴀᴜᴍᴇɴᴛᴀᴅᴏ &8(&7 Tudo &8)'
+      - '          &#20FF00+ &#EFFF6EAʟᴛᴜʀᴀ ᴅɪᴍɪɴᴜɪᴅᴀ &8(&71.6cm&8)'
+      - '&#C90000&m                                                  &r'
+    name: '                  &#C90000❤ &#DF0000ᴍ&#E90000ᴏ&#F40000ʀ&#FF0000ʙ&#F40000ɪ&#E90000ᴜ&#DF0000s &#C90000❤'
+    actions:
+      commands:
+        - '[console] hero select morbius %player_name%'
+        - '[delay] 10'
+        - >-
+          [console] broadcast <#5AFAF5>⛨ <#FF00AC> %player_name%<white>
+          Esᴄᴏʟʜᴇᴜ<reset> %superheroes_description%
+        - ''
+      requirements:
+        - '[item] material=structure_void custom=4001 amount=1'
+      fail:
+        - '[msg] &cCᴏɴsɪɢᴀ ᴜᴍᴀ ᴍᴏᴇᴅᴀ ᴅᴇ ʀᴀçᴀ, ᴘᴀʀᴀ ᴄᴏɴsᴇɢᴜɪʀ ᴍᴜᴅᴀʀ!'
+  raças_slot_26:
+    material: black_stained_glass_pane
+  raças_slot_27:
+    material: black_stained_glass_pane
+  raças_slot_29:
+    material: black_dye
+    lore:
+      - '                <#DBDBDB>Ω <#DBDBDB>N<#D0D0D0>ó<#C5C5C5>s<#BABABA> <#AFAFAF>s<#A3A3A3>ᴏ<#989898>ᴍ<#8D8D8D>ᴏ<#828282>s<#8F8F8F> <#9B9B9B>V<#A8A8A8>ᴇ<#B5B5B5>ɴ<#C2C2C2>ᴏ<#CECECE>ᴍ<#DBDBDB>!'
+      - >-
+        <st><gradient:#DBDBDB:#828282:#DBDBDB>                                                       
+        </gradient></st>
+      - '       &8Ω &7&lTᴇɴᴛáᴄᴜʟᴏ ᴅᴏ Sɪᴍʙɪᴏɴᴛᴇ &8Ω'
+      - '   &7• &fDᴀɴᴏ: 6,5 &7|&f Cᴏᴏʟᴅᴏᴡɴ: 4s &7|&f Dɪsᴛâɴᴄɪᴀ: 6'
+      - '  &#FF0000Clique com o Tentaculo na mão para usar!'
+      - >-
+        <st><gradient:#DBDBDB:#828282:#DBDBDB>                                                       
+        </gradient></st>
+      - '          &#FF0000✔ &7Qᴜᴀɴᴅᴏ ᴍᴀᴛᴀ ᴀʟɢᴜᴍᴀ ᴄᴏɪsᴀ'
+      - '             &7ᴇʟᴇ ʀᴇɢᴇɴᴇʀᴀ ᴀ sᴜᴀ ғᴏᴍᴇ!'
+      - >-
+        <st><gradient:#DBDBDB:#828282:#DBDBDB>                                                       
+        </gradient></st>
+      - '    &#FF0000✔ &7Qᴜᴀɴᴅᴏ ᴇɴᴛʀᴀ ᴇᴍ ᴄᴏᴍʙᴀᴛᴇ, ᴘᴏᴅᴇ'
+      - '    &#FF0000✔ &7Cᴏʟᴏᴄᴀʀ ᴛᴇɪᴀ ᴅᴇ ᴀʀᴀɴʜᴀ ɴᴏ ɪɴɪᴍɪɢᴏ!'
+      - '                   &#FF0000• &f0.1% Cʜᴀɴᴄᴇ       '
+      - >-
+        <st><gradient:#C0C0C0:#828282:#C0C0C0>               </gradient></st>
+        &#FF0000↓↓↓ Aᴛʀɪʙᴜᴛᴏs ↓↓↓
+        <st><gradient:#C0C0C0:#828282:#C0C0C0>               </gradient></st>
+      - '                 &#2BFF00+ &#00FFBDSᴜᴘᴇʀ ᴘᴜʟᴏ IV'
+      - '                 &#2BFF00+ &#849D4DFᴏᴍᴇ I'
+      - '                 &#2BFF00+ &#9864D1sᴇᴍ ᴅᴀɴᴏ ᴅᴇ ǫᴜᴇᴅᴀ'
+      - '               &#20FF00+ &#FF4545Vɪᴅᴀ ᴀᴜᴍᴇɴᴛᴀᴅᴀ &8(&740&8)'
+      - '              &#20FF00+ &#EFFF6EAʟᴛᴜʀᴀ ᴀᴜᴍᴇɴᴛᴀᴅᴀ &8(&72.1m&8)'
+      - >-
+        <st><gradient:#DBDBDB:#828282:#DBDBDB>                                                       
+        </gradient></st>
+    name: '                      <#DBDBDB>Ω<#C5C5C5> <#AFAFAF>V<#989898>ᴇ<#828282>ɴ<#989898>ᴏ<#AFAFAF>ᴍ<#C5C5C5> <#DBDBDB>Ω'
+    actions:
+      commands:
+        - '[console] hero select venom %player_name%'
+        - '[delay] 10'
+        - >-
+          [console] broadcast <#5AFAF5>⛨ <#FF00AC> %player_name%<white>
+          Esᴄᴏʟʜᴇᴜ<reset> %superheroes_description%
+        - ''
+      requirements:
+        - '[item] material=structure_void custom=4001 amount=1'
+      fail:
+        - '[msg] &cCᴏɴsɪɢᴀ ᴜᴍᴀ ᴍᴏᴇᴅᴀ ᴅᴇ ʀᴀçᴀ, ᴘᴀʀᴀ ᴄᴏɴsᴇɢᴜɪʀ ᴍᴜᴅᴀʀ!'
+  raças_slot_30:
+    material: enchanted_book
+    lore:
+      - '&f• Esᴛá ʙʀᴜxᴀ é ᴜᴍᴀ ᴅᴀs ᴍᴀɪs ғᴏʀᴛᴇs!'
+      - '&#FF00AC&m                                                  &r'
+      - ' &#2BFF00✔ &l&dLɪᴠʀᴏ ᴅᴏs Pᴇᴄᴀᴅᴏs &7 - &6Dᴀʀᴋʜᴏʟᴅ'
+      - '&#A4FAF7Cʟɪǫᴜᴇ ᴄᴏᴍ ᴏ ʟɪᴠʀᴏ ɴᴀ ᴍãᴏ ᴘᴀʀᴀ ᴜsᴀʀ!'
+      - '&#FF00AC&m                                                  &r'
+      - ' &#2BFF00✔ &fFᴀçᴀ F &8(&7ᴍᴜᴅᴀʀ ᴀ ᴍãᴏ&8) &fᴘᴀʀᴀ ᴄᴏʟᴏᴄᴀʀ'
+      - '     &fᴏs sᴇᴜs &fɪɴɪᴍɪɢᴏs ᴀ sᴏғʀᴇʀ ɴᴏ Aʀ!'
+      - >-
+        &#FF5D5D&m           &r&f[ &7Cᴏᴏʟᴅᴏᴡɴ &8(&725s&8)
+        &f]&#FF5D5D&m                
+      - '            &#2BFF00+ &#FF5D5DCᴇɢᴜᴇɪʀᴀ &8(&710s&8)'
+      - '            &#2BFF00+ &#FF5D5DWɪᴛʜᴇʀ &8(&710s&8)'
+      - '            &#2BFF00+ &#FF5D5DEsᴄᴜʀɪᴅãᴏ &8(&710s&8)'
+      - '            &#2BFF00+ &#FF5D5DLᴇᴠɪᴛᴀçãᴏ &8(&75s&8)'
+      - '&#FF00AC&m                                                  &r'
+      - '   &#2BFF00✔ &#EA5DFFPᴏʀ sᴇʀ ᴜᴍᴀ ʙʀᴜxᴀ, ᴏ ᴅᴀɴᴏ ғᴏɪ'
+      - '           &#EA5DFFᴀʟᴛᴀᴍᴇɴᴛᴇ ʀᴇᴅᴜᴢɪᴅᴏ!'
+      - '          &#20FF00+ &#FF4545Vɪᴅᴀ ᴀᴜᴍᴇɴᴛᴀᴅᴀ &8(&720&8)'
+      - '        &#20FF00+ &#EFFF6EAʟᴛᴜʀᴀ ᴅɪᴍɪɴᴜɪᴅᴀ &8(&71.8m&8)'
+      - '&#FF00AC&m                                                  &r'
+    name: '        <#FF0048>¤ <#FF0067>Fᴇɪᴛɪᴄᴇɪʀᴀ Esᴄᴀʀʟᴀᴛᴇ <#FF0048>¤'
+    actions:
+      commands:
+        - '[console] hero select scarlet_witch %player_name%'
+        - '[delay] 10'
+        - >-
+          [console] broadcast <#5AFAF5>⛨ <#FF00AC> %player_name%<white>
+          Esᴄᴏʟʜᴇᴜ<reset> %superheroes_description%
+        - ''
+      requirements:
+        - '[item] material=structure_void custom=4001 amount=1'
+      fail:
+        - '[msg] &cCᴏɴsɪɢᴀ ᴜᴍᴀ ᴍᴏᴇᴅᴀ ᴅᴇ ʀᴀçᴀ, ᴘᴀʀᴀ ᴄᴏɴsᴇɢᴜɪʀ ᴍᴜᴅᴀʀ!'
+  raças_slot_31:
+    material: feather
+    lore:
+      - '&f• Sɪᴍ, ᴛᴀᴍʙᴇᴍ ᴛᴇᴍ ᴏᴘçãᴏ ᴘᴀʀᴀ'
+      - '&f• ᴠᴏʟᴛᴀʀᴇs ᴀ sᴇʀᴇs ᴄᴏᴍᴏ ᴇʀᴀs...'
+      - '&f• Cʟɪᴄᴀ ᴀǫᴜɪ ᴘᴀʀᴀ ᴠᴏʟᴛᴀʀ ᴀ sᴇʀ'
+      - '              <gradient:#FFFCAB:#FFAFF8>ʜᴜᴍᴀɴᴏ</gradient>'
+      - '      &a+ &fsᴇᴍ ᴘᴏᴅᴇʀ ᴀʟɢᴜᴍ...'
+      - >-
+        <st><gradient:#FFFCAB:#FFAFF8>                                        
+        </gradient></st>
+      - '            &e&lDE GRAÇA!!'
+      - >-
+        <st><gradient:#FFFCAB:#FFAFF8>                                        
+        </gradient></st>
+    name: '          &f【 <gradient:#FFFCAB:#FFAFF8>Sᴇᴍ ᴘᴏᴅᴇʀ</gradient>&f 】'
+    actions:
+      commands:
+        - '[console] hero select sem_poder %player_name%'
+        - '[delay] 10'
+        - >-
+          [console] broadcast <#5AFAF5>⛨ <#FF00AC> %player_name%<white>
+          Esᴄᴏʟʜᴇᴜ<reset> %superheroes_description%
+        - ''
+      requirements: []
+      fail:
+        - '[msg] &cCᴏɴsɪɢᴀ ᴜᴍᴀ ᴍᴏᴇᴅᴀ ᴅᴇ ʀᴀçᴀ, ᴘᴀʀᴀ ᴄᴏɴsᴇɢᴜɪʀ ᴍᴜᴅᴀʀ!'
+  raças_slot_32:
+    material: >-
+      [head]
+      eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjdhNTI1MTJiMzA1N2RiY2YyZjcwNjcxNjI1YTUxMTBhYzVmNjNjMWQyYzBjZGY5OGEyNjFhMTQ3Y2VmNjllYyJ9fX0=
+    lore:
+      - '                    &#00FF3E⏏ &#12FF34H&#1BFF30ᴜ&#23FF2Bʟ&#2CFF26ᴋ &#3EFF1DS&#47FF18ᴍ&#50FF13ᴀ&#58FF0Es&#61FF0Aʜ &#73FF00⏏'
+      - '&#00FF3E&m                                                        '
+      - ' &#2BFF00✔ &#CAFF9FCʟɪǫᴜᴇ ɴᴏs ɪɴɪᴍɪɢᴏs ᴄᴏᴍ ᴏ ᴅɪʀᴇɪᴛᴏ ᴘᴀʀᴀ'
+      - '                 &#CAFF9Fʟᴇᴠᴀɴᴛᴀʀ ᴇʟᴇs!'
+      - '     &#2BFF00✔ &#CAFF9FFᴀçᴀ sʜɪғᴛ ᴘᴀʀᴀ ᴀᴛɪʀᴀʀ ᴏs sᴇᴜs'
+      - '                  &#CAFF9Fɪɴɪᴍɪɢᴏs ɴᴏ ᴀʀ!'
+      - '&#00FF3E&m                                                        '
+      - '&#2BFF00✔ &#CAFF9FCʟɪǫᴜᴇ ɴᴏ ᴀʀ ᴄᴏᴍ ᴀ ᴍãᴏ ᴠᴀᴢɪᴀ ᴘᴀʀᴀ ғᴀᴢᴇʀ'
+      - "&#00BC2E&m          &r &#00FF3E⏏ &#12FF34H&#1AFF30ᴜ&#23FF2Bʟ&#2CFF26ᴋ &#3DFF1DS&#46FF18ᴍ&#4FFF13ᴀ&#58FF0Es&#60FF0Aʜ &#72FF00⏏ &#FF000025\U0001F5E1 &8(&720s&8) &#00BC2E&m           &r"
+      - '             &#CAFF9Fɪʀá ᴄᴜsᴛᴀʀ 1 ᴅᴇ Fᴏᴍᴇ!'
+      - "               &8\U0001F356&#FFBC00\U0001F356\U0001F356\U0001F356\U0001F356\U0001F356\U0001F356\U0001F356\U0001F356\U0001F356"
+      - '&#00FF3E&m                                                        '
+      - '                 &#2BFF00+ &#CAFF9FSᴜᴘᴇʀ ᴘᴜʟᴏ II'
+      - '                 &#2BFF00+ &#FF7A7ALᴇɴᴛɪᴅãᴏ II'
+      - '                 &#2BFF00+ &#7AFFE0Rᴇsɪsᴛêɴᴄɪᴀ I'
+      - '                 &#2BFF00+ &#9864D1sᴇᴍ ᴅᴀɴᴏ ᴅᴇ ǫᴜᴇᴅᴀ'
+      - '            &#20FF00+ &#FF4545Vɪᴅᴀ ᴀᴜᴍᴇɴᴛᴀᴅᴀ &8(&740&8)'
+      - '            &#20FF00+ &#EFFF6EAʟᴛᴜʀᴀ ᴀᴜᴍᴇɴᴛᴀᴅᴀ &8(&72.7m&8)'
+      - '&#00FF3E&m                                                        '
+    name: '                        <#00FF3E>⏏ <#21FF2C>H<#31FF23>ᴜ<#42FF1B>ʟ<#52FF12>ᴋ <#73FF00>⏏'
+    actions:
+      commands:
+        - '[console] hero select hulk %player_name%'
+        - '[delay] 10'
+        - >-
+          [console] broadcast <#5AFAF5>⛨ <#FF00AC> %player_name%<white>
+          Esᴄᴏʟʜᴇᴜ<reset> %superheroes_description%
+        - ''
+      requirements:
+        - '[item] material=structure_void custom=4001 amount=1'
+      fail:
+        - '[msg] &cCᴏɴsɪɢᴀ ᴜᴍᴀ ᴍᴏᴇᴅᴀ ᴅᴇ ʀᴀçᴀ, ᴘᴀʀᴀ ᴄᴏɴsᴇɢᴜɪʀ ᴍᴜᴅᴀʀ!'
+  raças_slot_33:
+    material: >-
+      [head]
+      eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODI4NDYxOWNlZTdhYTdjNDMwYjY0ZTJiMmYyNzMwMTY4NTM5Yzc0ODJkZjViNzEzYzUxNTUxNTM4OTFkYzdhIn19fQ==
+    lore:
+      - '        &cCᴇɢᴏ ᴍᴀs ǫᴜᴇ ᴠê ᴛᴜᴅᴏ'
+      - '&#FF0000&m                                             '
+      - '&#FF0000• &fTᴇᴍ &c5%&f ᴅᴇ ᴄʜᴀɴᴄᴇ ᴅᴇ ᴅᴇsᴠɪᴀʀ'
+      - '&#FF0000• &fᴜᴍ ɢᴏʟᴘᴇ ᴅᴇ ǫᴜᴀʟǫᴜᴇʀ ɪɴɪᴍɪɢᴏ'
+      - '&a&r'
+      - '&#FF0000• &fDᴀɴᴏ ᴀᴜᴍᴇɴᴛᴀᴅᴏ ᴇᴍ &#FF000030%'
+      - '&a&r'
+      - '&#FF0000• &fCᴇɢᴜᴇɪʀᴀ &#FF0000&nᴘᴇʀᴍᴀɴᴇɴᴛᴇ&r&f ᴍᴀs ǫᴜᴇ'
+      - '&#FF0000• &fᴄᴏɴsᴇɢᴜᴇ ᴠᴇʀ ᴛᴏᴅᴏs ᴏs ɪɴɪᴍɪɢᴏs'
+      - '&#FF0000• &fᴇᴍ ᴜᴍ ʀᴀɪᴏ ᴅᴇ 5 ʙʟᴏᴄᴏs!'
+      - '&a&r'
+      - '&#FF0000• &fSᴀʟᴛᴏ ᴀᴜᴍᴇɴᴛᴀᴅᴏ ᴅᴇ 2 ʙʟᴏᴄᴏs!'
+      - '&a&r'
+      - "&#FF0000• &fNãᴏ sᴇɴᴛᴇ ғᴏᴍᴇ ǫᴜᴀʟǫᴜᴇʀ! &#FF9100\U0001F356"
+      - '&a&r'
+      - '&#FF0000• &fCᴏɴsᴇɢᴜᴇ ᴀᴛᴀᴄᴀʀ ᴍᴀɪs &c&nʟᴏɴɢᴇ&r&f ᴅᴏ'
+      - '&#FF0000• &fǫᴜᴇ ᴛᴏᴅᴏs ᴏs sᴇᴜs ɪɴɪᴍɪɢᴏs!'
+      - '&#FF0000&m                                             '
+      - '            &#2BFF00+ &#838383Cᴇɢᴜᴇɪʀᴀ IV'
+      - '           &#2BFF00+ &#545454Esᴄᴜʀɪᴅãᴏ IV'
+      - '       &#20FF00+ &#FF4545Vɪᴅᴀ ᴀᴜᴍᴇɴᴛᴀᴅᴀ &8(&735&8)'
+      - '        &#20FF00+ &#EFFF6EAʟᴛᴜʀᴀ ɴᴏʀᴍᴀʟ &8(&72m&8)'
+      - '&#FF0000&m                                             '
+    name: '             <#FF8B00>Ω <#FF6464>Dᴀʀᴇᴅᴇᴠɪʟ <#FF8B00>Ω'
+    actions:
+      commands:
+        - '[console] hero select daredevil %player_name%'
+        - '[delay] 10'
+        - >-
+          [console] broadcast <#5AFAF5>⛨ <#FF00AC> %player_name%<white>
+          Esᴄᴏʟʜᴇᴜ<reset> %superheroes_description%
+        - ''
+      requirements:
+        - '[item] material=structure_void custom=4001 amount=1'
+      fail:
+        - '[msg] &cCᴏɴsɪɢᴀ ᴜᴍᴀ ᴍᴏᴇᴅᴀ ᴅᴇ ʀᴀçᴀ, ᴘᴀʀᴀ ᴄᴏɴsᴇɢᴜɪʀ ᴍᴜᴅᴀʀ!'
+  raças_slot_35:
+    material: black_stained_glass_pane
+  raças_slot_36:
+    material: black_stained_glass_pane
+  raças_slot_44:
+    material: black_stained_glass_pane
+  raças_slot_45:
+    material: black_stained_glass_pane
+  raças_slot_46:
+    material: black_stained_glass_pane
+  raças_slot_47:
+    material: black_stained_glass_pane
+  raças_slot_48:
+    material: black_stained_glass_pane
+  raças_slot_49:
+    material: >-
+      [head]
+      eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmE4N2UzZDk2ZTFjZmViOWNjZmIzYmE1M2EyMTdmYWY1MjQ5ZTI4NTUzM2IyNzFhMmZiMjg0YzMwZGJkOTgyOSJ9fX0=
+    name: '&aProxima página!'
+    actions:
+      commands:
+        - '[console] pa open raças1 %player_name%'
+  raças_slot_50:
+    material: black_stained_glass_pane
+  raças_slot_51:
+    material: black_stained_glass_pane
+  raças_slot_52:
+    material: black_stained_glass_pane
+  raças_slot_53:
+    material: black_stained_glass_pane
+  fail: []
+command: 'raças'
+aliases:
+- origens
+- dormamu
+- doutor-estranho
+- super-homem
+- flash
+- groot
+- scarlet-witch
+- venom
+- magneto
+- hulk
+- morbius
+- Mistiço
+- raças
+- races
+- origin
+- raça
+- originalidade
+- racas
+- raças
+- origin
+
