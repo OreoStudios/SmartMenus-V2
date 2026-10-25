@@ -1,0 +1,38 @@
+# ============================================================
+# EXAMPLE 3 — XP LEVEL
+# Requires & deducts XP levels from the player.
+# ============================================================
+xp_shop:
+  title: "&a&l⚡ XP Shop"
+  rows: 3
+  commands: [ "xpshop", "levelshop" ]
+  auto-convert: true
+  items:
+    "10":
+      material: EXPERIENCE_BOTTLE
+      name: "&a&l3 Diamonds (costs 5 levels)"
+      lore:
+        - "&ePrice: &a5 XP Levels"
+      commands:
+        - "give {player} diamond 3"
+      close: true
+      conditions:
+        - type: XP_LEVEL
+          amount: 5
+
+    "12":
+      material: NETHERITE_INGOT
+      name: "&5&lNetherite Ingot (costs 30 levels)"
+      lore:
+        - "&ePrice: &a30 XP Levels"
+      commands:
+        - "give {player} netherite_ingot 1"
+      close: true
+      conditions:
+        - type: XP_LEVEL
+          amount: 30
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
