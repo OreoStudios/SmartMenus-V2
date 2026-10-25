@@ -1,0 +1,93 @@
+name: SmartMenus
+version: 3.5
+main: com.oreo.SmartMenus
+api-version: '1.21'
+folia-supported: true
+
+softdepend:
+  - Vault
+  - OreoEssentials
+  - PlaceholderAPI
+  - ItemsAdder
+  - Nexo
+  - WorldGuard
+  - ModeledNPCs
+  - floodgate
+  - Geyser-Spigot
+  - packetevents
+commands:
+  smartmenus:
+    description: Open or reload Smart Menus.
+    usage: /smartmenus <open|reload> [id] [player]
+    permission: smartmenus.command
+    aliases: [sm, smenu, smenus, smartmenu, ogui, gui, omenu]
+
+permissions:
+  smartmenus.command:
+    default: true
+  smartmenus.open:
+    default: true
+  smartmenus.reload:
+    default: op
+  smartmenus.captureitem:
+    description: Capture a held item into a GUI config file
+    default: op
+  smartmenus.editor:
+    description: Access the in-game GUI editor
+    default: op
+  smartmenus.convert:
+    description: Convert other plugin GUI configs to SmartMenus format
+    default: op
+  smartmenus.itemlevel:
+    description: Manage item levels and rarities
+    default: op
+  smartmenus.command.*:
+    description: Allows using all GUI commands
+    default: true
+  smartmenus.*:
+    description: Grants all Smart Menus permissions
+    default: op
+    children:
+      smartmenus.command: true
+      smartmenus.open: true
+      smartmenus.reload: true
+      smartmenus.captureitem: true
+      smartmenus.editor: true
+      smartmenus.convert: true
+      smartmenus.itemlevel: true
+      smartmenus.command.*: true
+  ogui.command:
+    description: Legacy alias for smartmenus.command
+    default: true
+  ogui.open:
+    description: Legacy alias for smartmenus.open
+    default: true
+  ogui.reload:
+    description: Legacy alias for smartmenus.reload
+    default: op
+  ogui.editor:
+    description: Legacy alias for smartmenus.editor
+    default: op
+  ogui.convert:
+    description: Legacy alias for smartmenus.convert
+    default: op
+  ogui.captureitem:
+    description: Legacy alias for smartmenus.captureitem
+    default: op
+  ogui.itemlevel:
+    description: Legacy alias for smartmenus.itemlevel
+    default: op
+  ogui.command.*:
+    description: Legacy alias for smartmenus.command.*
+    default: true
+  ogui.*:
+    description: Legacy alias for all Smart Menus permissions
+    default: op
+    children:
+      ogui.command: true
+      ogui.open: true
+      ogui.reload: true
+      ogui.editor: true
+      ogui.convert: true
+      ogui.itemlevel: true
+      ogui.command.*: true
