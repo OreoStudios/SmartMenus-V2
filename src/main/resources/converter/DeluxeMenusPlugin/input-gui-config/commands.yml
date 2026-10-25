@@ -1,0 +1,181 @@
+#  Exert's DeluxeMenus Commands GUI Menu
+#=========================================================
+menu_title: '&8> &6&lᴄᴏᴍᴍᴀɴᴅs ᴍᴇɴᴜ'
+open_command:
+  - commandmenu
+  - command
+  - commands
+register_command: true
+open_commands:
+  - '[sound] BLOCK_END_PORTAL_FRAME_FILL'
+  - '[message] &7Opening the Command Menu!'
+size: 54
+# Organized command categories for ease of access.
+items:
+  'filler':
+    material: GRAY_STAINED_GLASS_PANE
+    display_name: "&f"
+    data: 1
+    slots: [0-8, 36-44, 45-53]
+
+  'economy':
+    material: GOLD_INGOT
+    slot: 10
+    display_name: '&6ᴇᴄᴏɴᴏᴍʏ ᴄᴏᴍᴍᴀɴᴅs'
+    lore:
+      - '&7Manage your in-game currency with ease:'
+      - '&7- &f/shop&7: Browse the shop.'
+      - '&7- &f/sell&7: Sell items.'
+      - '&7- &f/pay&7: To pay other players.'
+      - ''
+      - '&a&l▶ Click to access shop!'
+    click_commands:
+      - '[sound] ENTITY_VILLAGER_AMBIENT'
+      - '[player] shop'      
+      - '[close]'
+
+  'teleport':
+    material: ENDER_PEARL
+    slot: 12
+    display_name: '&5ᴛᴇʟᴇᴘᴏʀᴛ ᴄᴏᴍᴍᴀɴᴅs'
+    lore:
+      - '&7Navigate around the world easily:'
+      - '&7- &f/tpa&7: Request teleport to a player.'
+      - '&7- &f/tpahere&7: Ask a player to teleport to you.'
+      - '&7- &f/rtp&7: Random Teleport.'
+      - '&7- &f/spawn&7: Return to spawn.'
+      - '&7- &f/sethome&7: Set your home.'
+      - '&7- &f/home&7: Teleport to your home.'
+      - ''
+      - '&a&l▶ Click to Random TP!'
+    click_commands:
+      - '[sound] ENTITY_ENDERMAN_TELEPORT'
+      - '[player] rtp'
+      - '[close]'
+
+  'leaderboard':
+    material: BOOK
+    slot: 14
+    display_name: '&9ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ & sᴛᴀᴛs'
+    lore:
+      - '&7Check player stats and rankings:'
+      - '&7- &f/leaderboard&7: View the top players.'
+      - '&7- &f/stats&7: View View your stats.'
+      - ''
+      - '&a&l▶ Left Click to view leaderboards!'
+      - '&e&l▶ Right Click to view your stats!'
+    left_click_commands:
+      - '[sound] BLOCK_ENCHANTMENT_TABLE_USE'
+      - '[player] leaderboard'      
+      - '[close]'
+    right_click_commands:
+      - '[sound] BLOCK_ENCHANTMENT_TABLE_USE'
+      - '[player] stats'      
+      - '[close]'
+
+  'team':
+    material: RED_BANNER
+    slot: 16
+    display_name: '&3ᴛᴇᴀᴍ ᴄᴏᴍᴍᴀɴᴅs'
+    lore:
+      - '&7Team up and dominate:'
+      - '&7- &f/teams&7: Manage your team.'
+      - '&7- &f/team create&7: Create a new team.'
+      - '&7- &f/team invite&7: Invite a player to your team.'
+      - '&7- &f/team color&7: Set your team color.'
+      - '&7- &f/team chat&7: Chat with your team privately.'
+      - '&7- &f/team echest&7: Access the team ender chest.'
+      - '&7- &f/team setwarp&7: Set a team warp.'
+      - '&7- &f/team warp <name>&7: Warp to a team location.'
+      - '&7- &f/team sethome&7: Set your team home.'
+      - '&7- &f/team home&7: Teleport to your team home.'
+      - '&7- &f/team deposit <amount>&7: Deposit money into your team bank.'
+      - '&7- &f/team withdraw <amount>&7: Withdraw money from your team bank.'
+      - '&7- &f/team bal&7: Check your team’s balance.'
+      - '&7- &f/team top&7: View the top teams on the server.'
+      - '&7- &f/team list&7: List all active teams.'
+      - ''      
+      - '&a&l▶ Click for more team commands!'
+    click_commands:
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[player] teams'      
+      - '[close]'
+      
+  'auction':
+    material: EMERALD
+    slot: 28
+    display_name: '&2ᴀᴜᴄᴛɪᴏɴ ʜᴏᴜsᴇ'
+    lore:
+      - '&7Sell and buy items with other players:'
+      - '&7- &f/ah&7: Open the auction house.'
+      - '&7- &f/ah sell&7: Sell items in the auction.'
+      - '&7- &f/ah help&7: Learn how the auction works.'
+      - ''
+      - '&a&l▶ Click for auction house!'
+    click_commands:
+      - '[sound] BLOCK_ANVIL_USE'
+      - '[player] ah'      
+      - '[close]'
+
+  'bounty':
+    material: CROSSBOW
+    slot: 30
+    display_name: '&4ʙᴏᴜɴᴛʏ sʏsᴛᴇᴍ'
+    lore:
+      - '&7Place bounties on other players!'
+      - '&7- &f/bounty&7: Manage bounties.'
+      - ''
+      - '&a&l▶ Click to view bounties!'
+    click_commands:
+      - '[sound] ENTITY_ARROW_SHOOT'
+      - '[player] bounty'
+      - '[close]'
+
+  'socials':
+    material: NAME_TAG
+    slot: 32
+    display_name: '&6sᴏᴄɪᴀʟ ғᴇᴀᴛᴜʀᴇs'
+    lore:
+      - '&7Stay connected with other players and the community!'
+      - '&7- &f/mail send <player>&7: Send a mail when the player is offline.'
+      - '&7- &f/mail read&7: Read your sent/received mail.'
+      - '&7- &f/msg <player> <message>&7: Send a private message to a player.'
+      - '&7- &f/social&7: View server social links.'
+      - '&7- &f/discord&7: Join our Discord server.'
+      - '&7- &f/youtube&7: Check out our YouTube channel.'
+      - ''
+      - '&a&l▶ Click for social commands!'
+    click_commands:
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[openguimenu] social'      
+      - '[message] &7Accessing social commands...'
+      - '[close]'
+      
+  'server_guide':
+    material: PAPER
+    slot: 34
+    display_name: '&6sᴇʀᴠᴇʀ ɢᴜɪᴅᴇ'
+    lore:
+      - '&7Access important server information and guides.'
+      - '&7- &f/info&7: Get detailed server info.'
+      - '&7- &f/guide&7: View server guides and tips.'
+      - '&7- &f/help&7: Get help with server commands.'
+      - ''
+      - '&a&l▶ Click for server guide and info!'
+    click_commands:
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[openguimenu] guide'
+      - '[message] &7Opening server guide and information...'
+      - '[close]'
+      
+  'exit':
+    material: BARRIER
+    slot: 49
+    display_name: '&cᴄʟᴏsᴇ ᴍᴇɴᴜ'
+    lore:
+      - '&7Exit the command menu.'
+      - ''
+      - '&a&l▶ Click to close!'
+    click_commands:
+      - '[sound] BLOCK_CHEST_CLOSE'
+      - '[close]'
