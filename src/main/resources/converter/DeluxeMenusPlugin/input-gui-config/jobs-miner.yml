@@ -1,0 +1,556 @@
+#     _       _           __  __                     ____             __ _       
+#    | | ___ | |__  ___  |  \/  | ___ _ __  _   _   / ___|___  _ __  / _(_) __ _ 
+# _  | |/ _ \| '_ \/ __| | |\/| |/ _ \ '_ \| | | | | |   / _ \| '_ \| |_| |/ _` |
+#| |_| | (_) | |_) \__ \ | |  | |  __/ | | | |_| | | |__| (_) | | | |  _| | (_| |
+# \___/ \___/|_.__/|___/ |_|  |_|\___|_| |_|\__,_|  \____\___/|_| |_|_| |_|\__, |
+#                                                                          |___/
+#                             Made by: windzz
+
+menu_title: '&f<shift:-8><glyph:job_miner>'
+size: 53
+update_interval: 1
+open_command:
+  - job
+  - job menu
+  - job browse
+  - jobs
+  - jobs menu
+  - jobs browse
+update_interval: 1
+items:
+
+  "information":
+    material: paper
+    model_data: 10000
+    slot: 8
+    display_name: "&#f2821fʟᴇs ᴍᴇᴛɪᴇʀs"
+    lore:
+      - '&8❯ sʏsᴛᴇᴍᴇ'
+      - ''
+      - '&7En complétant les actions des métiers'
+      - '&7vous allez obtenir de &fla monnaie'
+      - '&7de &fl''expérience&7, et des &4cubits &f/cubits'
+      - ''      
+      - '&7En débloquant les &fprestiges&7 vous pourrez'
+      - '&7accéder à &fplusieurs &fmétiers &7en simultané'
+      - '' 
+
+  "actions":
+    material: paper
+    model_data: 10000
+    display_name: '&#ebb434ᴀᴄᴛɪᴏɴs'
+    slot: 27
+    lore:
+    - '&8❯ ᴄʟɪǫᴜᴀʙʟᴇ'
+    - ''           
+    - '&7Découvrez les tâches vous permettant'
+    - '&7de gagner Monnaie, Expérience et Cubits.'
+    - ''
+    - '&f:left_click: &#fad766ᴄʟɪǫᴜᴇᴢ: ᴀᴄᴄᴇᴅᴇʀ'      
+    left_click_commands:
+    - '[sound] BLOCK_NOTE_BLOCK_HAT 0.8 1.4'
+    - '[openguimenu] jobs-miner'
+
+  "paliers":
+    material: paper
+    model_data: 10000
+    display_name: '&#ebb434ᴘᴀʟɪᴇʀs'
+    slot: 36                
+    lore:
+    - '&8❯ ᴄʟɪǫᴜᴀʙʟᴇ'
+    - ''           
+    - '&7Découvrez les paliers vous permettant'
+    - '&7de gagner des récompenses.'
+    - ''
+    - '&f:left_click: &#fad766ᴄʟɪǫᴜᴇᴢ: ᴀᴄᴄᴇᴅᴇʀ'
+    left_click_commands:
+    - '[sound] BLOCK_NOTE_BLOCK_HAT 0.8 1.4'
+    - '[openguimenu] level-miner-01'
+
+  "classement":
+    material: paper
+    model_data: 10000
+    display_name: '&#ebb434cʟᴀssᴇᴍᴇɴᴛ'
+    slot: 18                           
+    lore:
+    - '&8❯ ᴄʟɪǫᴜᴀʙʟᴇ'
+    - ''          
+    - '&7Découvrez les meilleurs mineurs'
+    - '&7présent sur le serveur.'
+    - ''
+    - '&f:left_click: &#fad766ᴄʟɪǫᴜᴇᴢ: ᴀᴄᴄᴇᴅᴇʀ'
+    left_click_commands:
+    - '[sound] BLOCK_NOTE_BLOCK_HAT 0.8 1.4'
+    - '[openguimenu] jobs-miner-top'
+
+  "next":
+    material: paper
+    model_data: 10000
+    slots: 
+      - 52
+      - 53
+    display_name: "&#f2821f⯈ &#ebb434ɢᴀɪɴs sᴜɪᴠᴀɴᴛ"
+    lore:
+    - '&8❯ ᴄʟɪǫᴜᴀʙʟᴇ'
+    - ''
+    - '&7Cliquer ici pour passer'
+    - '&7aux gains suivant'
+    - ''
+    - '&f:left_click: &#fad766ᴄʟɪǫᴜᴇᴢ: ᴀᴄᴄᴇᴅᴇʀ'    
+    click_commands:
+      - "[sound] UI_BUTTON_CLICK"
+      - "[openguimenu] jobs-miner-2"
+
+  "minerjobs":
+    material: paper
+    model_data: 10000
+    slot: 0
+    display_name: "&#ab2ea7ᴍɪɴᴇᴜʀ"
+    lore:
+    - '&8❯ ᴄʟɪǫᴜᴀʙʟᴇ'
+    - ''     
+    - '&7Creusez profondément et extrayez'
+    - '&7des minéraux précieux de la terre.'
+    - ''
+    - '&#e64427⯈ ᴠᴏᴜs ᴇᴛᴇs ɪᴄɪ'     
+
+  "farmerjobs":
+    material: paper
+    model_data: 10000
+    slot: 1
+    display_name: "&#ebb434ғᴇʀᴍɪᴇʀ"
+    lore:
+    - '&8❯ ᴄʟɪǫᴜᴀʙʟᴇ'
+    - ''     
+    - '&7Cultivez et récoltez des cultures.'
+    - '&7Récoltez le fruit de votre travail.'
+    - ''
+    - '&#ebb434⯈ ᴄʟɪᴄ ɢᴀᴜᴄʜᴇ: ᴀᴄᴄᴇᴅᴇʀ'  
+    left_click_commands:
+      - "[sound] UI_BUTTON_CLICK"
+      - "[openguimenu] jobs-farmer"
+
+  "fisherjobs":
+    material: paper
+    model_data: 10000
+    slot: 2
+    display_name: "&#6dd7e3ᴘᴇᴄʜᴇᴜʀ"
+    lore:
+    - '&8❯ ᴄʟɪǫᴜᴀʙʟᴇ'
+    - ''     
+    - '&7Attrapez des poissons pour vivre.'
+    - '&7Récoltez les richesses de la mer.'
+    - ''
+    - '&#ebb434⯈ ᴄʟɪᴄ ɢᴀᴜᴄʜᴇ: ᴀᴄᴄᴇᴅᴇʀ'   
+    left_click_commands:
+      - "[sound] UI_BUTTON_CLICK"
+      - "[openguimenu] jobs-fisherman"
+
+  "lumberjackjobs":
+    material: paper
+    model_data: 10000
+    slot: 3
+    display_name: "&#2be334ʙᴜᴄʜᴇʀᴏɴ"
+    lore:
+    - '&8❯ ᴄʟɪǫᴜᴀʙʟᴇ'
+    - ''     
+    - '&7Abattez des arbres et récoltez'
+    - '&7des ressources en bois précieuses.'
+    - ''
+    - '&#ebb434⯈ ᴄʟɪᴄ ɢᴀᴜᴄʜᴇ: ᴀᴄᴄᴇᴅᴇʀ'   
+    left_click_commands:
+      - "[sound] UI_BUTTON_CLICK"
+      - "[openguimenu] jobs-lumberjack"
+
+  "hunterjobs":
+    material: paper
+    model_data: 10000
+    slot: 4
+    display_name: "&#ebb434cʜᴀssᴇuʀ"
+    lore:
+    - '&8❯ ᴄʟɪǫᴜᴀʙʟᴇ'
+    - ''     
+    - '&7Suivez et chassez des animaux'
+    - '&8| &7pour des monstres.'
+    - ''
+    - '&#ebb434⯈ ᴄʟɪᴄ ɢᴀᴜᴄʜᴇ: ᴀᴄᴄᴇᴅᴇʀ'   
+    left_click_commands:
+      - "[sound] UI_BUTTON_CLICK"
+      - "[openguimenu] jobs-hunter"
+
+  "next_2":
+    material: paper
+    model_data: 10000
+    slot: 85
+    display_name: "&#f2821f⯈ &#ebb434ɢᴀɪɴs sᴜɪᴠᴀɴᴛ"
+    lore:
+    - '&8❯ ᴄʟɪǫᴜᴀʙʟᴇ'
+    - ''
+    - '&7Cliquer ici pour passer'
+    - '&7aux gains suivant'
+    - ''
+    - '&f:left_click: &#fad766ᴄʟɪǫᴜᴇᴢ: ᴀᴄᴄᴇᴅᴇʀ'    
+    click_commands:
+      - "[sound] UI_BUTTON_CLICK"
+      - "[openguimenu] jobs-miner-2"      
+
+##################################
+#          SELECTIONNER          #    
+##################################
+
+  MINER:
+    material: paper
+    model_data: 10005
+    display_name: '&#31bf13ʀᴇᴊᴏɪɴᴅʀᴇ'
+    slot: 7
+    priority: 3
+    lore:
+    - '&8❯ ᴄʟɪǫᴜᴀʙʟᴇ'
+    - ''    
+    - '&8• &7ɴɪvᴇᴀu ᴀᴄᴛᴜᴇʟ: &#EAE8E9%jobsr_user_jlevel_miner%&7/&#31bf13%jobsr_maxlvl_miner%'
+    - '&8• &7ɴɪvᴇᴀu suɪvᴀɴᴛ: &#EAE8E9%jobsr_user_jexp_miner%&7/&#31bf13%jobsr_user_jmaxexp_miner% EXP'
+    - ''
+    - '&f:left_click: &#fad766ᴄʟɪǫᴜᴇᴢ: ᴀᴄᴄᴇᴅᴇʀ'
+    left_click_commands:
+    - '[player] jobs join miner'
+    - '[refresh]'
+  MINER-SELECT:
+    material: paper
+    model_data: 10006
+    display_name: '&#e64427ǫᴜɪᴛᴛᴇʀ'
+    slot: 7 
+    priority: 2
+    view_requirement:
+      requirements:
+        jobs_requirement:
+         type: string contains
+         input: "%jobsr_user_isin_miner%"
+         output: 'Vrai'
+    lore:
+    - '&8❯ ᴄʟɪǫᴜᴀʙʟᴇ'
+    - ''     
+    - '&8• &7ɴɪvᴇᴀu ᴀᴄᴛᴜᴇʟ: &#EAE8E9%jobsr_user_jlevel_miner%&7/&#31bf13%jobsr_maxlvl_miner%'
+    - '&8• &7ɴɪvᴇᴀu suɪvᴀɴᴛ: &#EAE8E9%jobsr_user_jexp_miner%&7/&#31bf13%jobsr_user_jmaxexp_miner% EXP'
+    - '&8• &7ᴘʀᴏɢʀᴇssɪᴏɴ: %progress_bar_{jobsr_user_jexp_miner}_c:&a&l∎_p:&e&l∎_r:&7∎_l:15_m:{jobsr_user_jmaxexp_miner}_fullbar:{&#7EC674}Terminé !% &8(&#7EC674+ %jobsr_user_jmexp_miner%&8)'
+    - ''
+    - '&f:left_click: &#fad766ᴄʟɪǫᴜᴇᴢ: ᴀᴄᴄᴇᴅᴇʀ'
+    left_click_commands:
+    - '[sound] ITEM_ARMOR_EQUIP_LEATHER 2 0.4'
+    - '[player] jobs leave miner'
+    - '[refresh]' 
+  MINER-WARNING:
+    material: paper
+    model_data: 10006
+    display_name: '&#e64427ǫᴜɪᴛᴛᴇʀ'
+    slot: 7 
+    priority: 1
+    view_requirement:
+      requirements:
+        jobs_requirement:
+         type: string contains
+         input: "%jobsr_user_isin_miner%"
+         output: 'Vrai'
+        jobs_requirement_2:
+         type: javascript
+         expression: "%jobsr_user_joinedjobcount% == %jobsr_maxjobs%"
+    lore:
+    - '&8❯ ᴄʟɪǫᴜᴀʙʟᴇ'
+    - ''    
+    - '&8• &7ɴɪvᴇᴀu ᴀᴄᴛᴜᴇʟ: &#EAE8E9%jobsr_user_jlevel_miner%&7/&#31bf13%jobsr_maxlvl_miner%'
+    - '&8• &7ɴɪvᴇᴀu suɪvᴀɴᴛ: &#EAE8E9%jobsr_user_jexp_miner%&7/&#31bf13%jobsr_user_jmaxexp_miner% EXP'
+    - "&8• &7ᴘʀᴏɢʀᴇssɪᴏɴ: %progress_bar_{jobsr_user_jexp_miner}_c:&a&l∎_p:&e&l∎_r:&7∎_l:15_m:{jobsr_user_jmaxexp_miner}_fullbar:{&#7EC674}Terminé !% &8(&#7EC674+ %jobsr_user_jmexp_miner%&8)"
+    - ''
+    - '&f:left_click: &#fad766ᴄʟɪǫᴜᴇᴢ: ᴀᴄᴄᴇᴅᴇʀ'
+    left_click_commands:
+    - '[sound] ITEM_ARMOR_EQUIP_LEATHER 2 0.4'
+    - '[player] jobs leave miner'
+    - '[refresh]' 
+  MINER-DISABLE:
+    material: paper
+    model_data: 10006
+    display_name: '&#e64427ǫᴜɪᴛᴛᴇʀ'
+    slot: 7 
+    priority: 0
+    view_requirement:
+      requirements:
+        jobs_requirement:
+         type: string contains
+         input: "%jobsr_user_isin_miner%"
+         output: 'Faux'
+        jobs_requirement_2:
+         type: javascript
+         expression: "%jobsr_user_joinedjobcount% == %jobsr_maxjobs%"
+    lore:
+    - '&8❯ sʏsᴛᴇᴍᴇ'
+    - '' 
+    - '&cVous avez atteint la limite maximale'
+    - '&cd''emplois qu''un joueur peut avoir!'
+    - ''
+    - '&cVous devez quitter un emploi pour pouvoir'
+    - '&cpouvoir en rejoindre d''autres, ou farmer'
+    - '&c lesprestiges (/prestiges).'
+    left_click_commands:
+      - "[sound] BLOCK_NOTE_BLOCK_BASS"
+      - "[message] &8(&#D77351✘&8) &#D77351Vous avez déjà rejoint trop de métiers !"
+      - "[close]"
+    right_click_commands:
+      - "[sound] BLOCK_NOTE_BLOCK_BASS"
+      - "[message] &8(&#D77351✘&8) &#D77351Vous avez déjà rejoint trop de métiers !"
+      - "[close]"
+
+##################################
+#             CASSER             #    
+##################################
+
+  stone:
+    material: stone
+    slot: 20
+    display_name: '&#ab2ea7Roche'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''  
+    - '&f⌔ &7Monnaie: &#EFCA4F0.01 &fꐢ'
+    - '&f⌔ &7Expérience: &#0394fc0.10 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.01 &f℥'    
+  granite:
+    material: Granite
+    slot: 21
+    display_name: '&#ab2ea7Granite'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''  
+    - '&f⌔ &7Monnaie: &#EFCA4F0.01 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.10 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.05 &f℥'
+  andesite:
+    material: Andesite
+    slot: 22
+    display_name: '&#ab2ea7Andesite'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''  
+    - '&f⌔ &7Monnaie: &#EFCA4F0.01 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.10 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.05 &f℥'
+  diorite:
+    material: Diorite
+    slot: 23
+    display_name: '&#ab2ea7Diorite'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''  
+    - '&f⌔ &7Monnaie: &#EFCA4F0.10 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.10 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.05 &f℥'
+  tuff:
+    material: Tuff
+    slot: 24
+    display_name: '&#ab2ea7Tuf'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''  
+    - '&f⌔ &7Monnaie: &#EFCA4F0.15 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.20 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.75 &f℥'
+  calcite:
+    material: calcite
+    slot: 25
+    display_name: '&#ab2ea7Calcite'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''  
+    - '&f⌔ &7Monnaie: &#EFCA4F0.15 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.2 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.75 &f℥'
+  basalt:
+    material: basalt
+    slot: 26
+    display_name: '&#ab2ea7Basalte'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''  
+    - '&f⌔ &7Monnaie: &#EFCA4F0.02 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.03 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.02 &f℥'
+  deepslate:
+    material: deepslate
+    slot: 29
+    display_name: '&#ab2ea7Ardoise des abimes'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''        
+    - '&f⌔ &7Monnaie: &#EFCA4F0.02 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.05 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.02 &f℥'      
+  cobbled_deepslate:
+    material: cobbled_deepslate
+    slot: 30
+    display_name: '&#ab2ea7Pierres des abïmes'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''        
+    - '&f⌔ &7Monnaie: &#EFCA4F0.02 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.03 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.02 &f℥'
+  netherrack:
+    material: netherrack
+    slot: 31
+    display_name: '&#ab2ea7Netherrack'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''        
+    - '&f⌔ &7Monnaie: &#EFCA4F0.02 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.03 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.02 &f℥'                              
+  obsidian:
+    material: obsidian
+    slot: 32
+    display_name: '&#ab2ea7Obsidienne'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''        
+    - '&f⌔ &7Monnaie: &#EFCA4F1.50 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc3 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644271 &f℥'
+  end_stone:
+    material: end_stone
+    slot: 33
+    display_name: '&#ab2ea7Pierre de l''end'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''        
+    - '&f⌔ &7Monnaie: &#EFCA4F0.01 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.05 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.04 &f℥'
+  prismarine:
+    material: prismarine
+    slot: 34
+    display_name: '&#ab2ea7Prismarine'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''        
+    - '&f⌔ &7Monnaie: &#EFCA4F0.01 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.10 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.09 &f℥'
+  copper_ore:
+    material: copper_ore
+    slot: 35
+    display_name: '&#ab2ea7Cuivre'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''        
+    - '&f⌔ &7Monnaie: &#EFCA4F0.3 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.35 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.2 &f℥'
+  deepslate_copper_ore:
+    material: deepslate_copper_ore
+    slot: 38
+    display_name: '&#ab2ea7Cuivre des abîmes'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''        
+    - '&f⌔ &7Monnaie: &#EFCA4F0.3 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.42 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.2 &f℥'
+  coal_ore:
+    material: coal_ore
+    slot: 39
+    display_name: '&#ab2ea7FCharbon'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''        
+    - '&f⌔ &7Monnaie: &#EFCA4F0.20 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.20 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.15 &f℥'
+  deepslate_coal_ore:
+    material: deepslate_coal_ore
+    slot: 40
+    display_name: '&#ab2ea7Charbon des abîmes'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''        
+    - '&f⌔ &7Monnaie: &#EFCA4F0.22 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.22 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.18 &f℥'
+  iron_ore:
+    material: iron_ore
+    slot: 41
+    display_name: '&#ab2ea7Fer'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''        
+    - '&f⌔ &7Monnaie: &#EFCA4F0.30 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.35 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.20 &f℥'
+  deepslate_iron_ore:
+    material: deepslate_iron_ore
+    slot: 42
+    display_name: '&#ab2ea7Fer des abîmes'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''        
+    - '&f⌔ &7Monnaie: &#EFCA4F0.30 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.42 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.20 &f℥'
+  gold_ore:
+    material: gold_ore
+    slot: 43
+    display_name: '&#ab2ea7Or'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''        
+    - '&f⌔ &7Monnaie: &#EFCA4F0.40 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.40 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.20 &f℥'
+  deepslate_gold_ore:
+    material: deepslate_gold_ore
+    slot: 44
+    display_name: '&#ab2ea7Or des abîmes'
+    item_flags:
+      - HIDE_ATTRIBUTES
+    lore:
+    - '&8❯ &8ᴄᴀssᴇʀ'
+    - ''        
+    - '&f⌔ &7Monnaie: &#EFCA4F0.50 &fꐢ'
+    - '&f⌔ &7Experience: &#0394fc0.50 &fꐣ'
+    - '&f⌔ &7Cubit: &#e644270.75 &f℥'
