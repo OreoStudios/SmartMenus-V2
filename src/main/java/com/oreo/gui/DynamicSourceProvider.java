@@ -13,12 +13,35 @@ public final class DynamicSourceProvider {
 
     private DynamicSourceProvider() {}
 
+    /**
+     * Backwards-compatible entry point: the viewer is also the data owner.
+     *
+     * @see #generate(DynamicSource, Player, Player)
+     */
     public static List<Map<String, Object>> generate(DynamicSource source, Player viewer) {
+        return generate(source, viewer, viewer);
+    }
+
+    /**
+     * Generates the dynamic elements for a source.
+     *
+     * <p>Player-scoped sources ({@link DynamicSource#PLAYER_INVENTORY},
+     * {@link DynamicSource#PLAYER_ENDERCHEST}) read from {@code dataOwner}, allowing a staff member
+     * (the {@code viewer}) to inspect another player's (the {@code dataOwner}) data. Other sources
+     * are viewer-relative — {@link DynamicSource#ONLINE_PLAYERS} still flags entries as "self"
+     * against the viewer.</p>
+     *
+     * @param source    the dynamic source type
+     * @param viewer    the player who has the menu open
+     * @param dataOwner the player whose inventory/ender chest should be read (usually the viewer)
+     */
+    public static List<Map<String, Object>> generate(DynamicSource source, Player viewer, Player dataOwner) {
+        if (dataOwner == null) dataOwner = viewer;
         switch (source) {
             case ONLINE_PLAYERS:   return generateOnlinePlayers(viewer);
             case WORLDS:           return generateWorlds();
-            case PLAYER_INVENTORY: return generatePlayerInventory(viewer);
-            case PLAYER_ENDERCHEST:return generatePlayerEnderChest(viewer);
+            case PLAYER_INVENTORY: return generatePlayerInventory(dataOwner);
+            case PLAYER_ENDERCHEST:return generatePlayerEnderChest(dataOwner);
             case PERMISSION_GROUPS:return generatePermissionGroups();
             default:               return Collections.emptyList();
         }

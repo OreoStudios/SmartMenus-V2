@@ -41,6 +41,9 @@ permissions:
   smartmenus.itemlevel:
     description: Manage item levels and rarities
     default: op
+  smartmenus.command.others:
+    description: Open a GUI command targeting another player's data (e.g. /enderchestview <player>)
+    default: op
   smartmenus.command.*:
     description: Allows using all GUI commands
     default: true
@@ -55,6 +58,7 @@ permissions:
       smartmenus.editor: true
       smartmenus.convert: true
       smartmenus.itemlevel: true
+      smartmenus.command.others: true
       smartmenus.command.*: true
   ogui.command:
     description: Legacy alias for smartmenus.command

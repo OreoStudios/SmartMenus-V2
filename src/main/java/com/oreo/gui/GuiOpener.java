@@ -5,6 +5,9 @@ import com.oreo.bedrock.BedrockManager;
 import com.oreo.condition.Condition;
 import org.bukkit.entity.Player;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public final class GuiOpener {
 
     private GuiOpener() {
@@ -30,6 +33,16 @@ public final class GuiOpener {
     }
 
     public static boolean open(SmartMenus plugin, Player player, GuiDefinition def, OpenOptions options) {
+        return open(plugin, player, def, options, null);
+    }
+
+    /**
+     * Opens a menu for {@code player} (the viewer) optionally displaying {@code target}'s data.
+     *
+     * <p>When {@code target} is non-null and differs from the viewer, a {@link MenuContext} is passed
+     * to the menu so data sources such as {@code PLAYER_ENDERCHEST} resolve against the target.</p>
+     */
+    public static boolean open(SmartMenus plugin, Player player, GuiDefinition def, OpenOptions options, Player target) {
         if (def == null) return false;
 
         if (options.checkRequirements()) {
@@ -52,7 +65,11 @@ public final class GuiOpener {
             if (options.allowBedrockAutoConvert() && bm.autoConvertForBedrock(player, def)) return true;
         }
 
-        def.createInventory(plugin.getInventoryManager(), plugin, player).open(player);
+        Map<String, Object> properties = new HashMap<>();
+        // Always record a context so the provider can distinguish viewer/target uniformly.
+        properties.put(MenuContext.PROPERTY_KEY,
+                new MenuContext(player, (target != null && !target.equals(player)) ? target : null));
+        def.createInventory(plugin.getInventoryManager(), plugin, player).open(player, properties);
 
         // Record the open in the navigation history so the BACK action can return here.
         // Skip consecutive duplicates (e.g. a refresh re-opening the same menu).

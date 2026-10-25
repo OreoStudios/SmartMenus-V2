@@ -1,0 +1,83 @@
+# ============================================================
+# EXAMPLE — GUI ANIMATIONS
+#
+# Demonstrates config-driven animations that ride the normal SmartMenus
+# update lifecycle (no extra scheduler tasks). Static clickable items
+# coexist with animated slots.
+#
+# Usage: /animatedborder
+#
+# Playback modes: LOOP | ONCE | REVERSE | PING_PONG
+# ============================================================
+animated_border:
+  title: "&b&l✦ Animated Menu ✦"
+  rows: 5
+  commands: [ "animatedborder" ]
+
+  # ── Normal, static clickable items keep working exactly as before ──────────
+  items:
+    info:
+      slot: 22
+      material: NETHER_STAR
+      name: "&e&lAnimated Border Demo"
+      lore:
+        - "&7The border cycles colours while"
+        - "&7this item stays fully clickable."
+      glow: true
+
+    close:
+      slot: 40
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
+
+  # ── Animations ─────────────────────────────────────────────────────────────
+  animations:
+    border:
+      interval: 8          # ticks each frame is shown (~0.4s)
+      start-delay: 0       # ticks to wait before the first advance
+      playback: LOOP       # LOOP | ONCE | REVERSE | PING_PONG
+      autoplay: true       # start automatically when the menu opens
+      loops: 0             # 0 = infinite
+
+      frames:
+        - slots:
+            "0-8,9,17,18,26,27,35,36-44":
+              material: RED_STAINED_GLASS_PANE
+              name: "&8"
+        - slots:
+            "0-8,9,17,18,26,27,35,36-44":
+              material: ORANGE_STAINED_GLASS_PANE
+              name: "&8"
+        - slots:
+            "0-8,9,17,18,26,27,35,36-44":
+              material: YELLOW_STAINED_GLASS_PANE
+              name: "&8"
+        - slots:
+            "0-8,9,17,18,26,27,35,36-44":
+              material: LIME_STAINED_GLASS_PANE
+              name: "&8"
+        - slots:
+            "0-8,9,17,18,26,27,35,36-44":
+              material: LIGHT_BLUE_STAINED_GLASS_PANE
+              name: "&8"
+        - slots:
+            "0-8,9,17,18,26,27,35,36-44":
+              material: BLUE_STAINED_GLASS_PANE
+              name: "&8"
+        - slots:
+            "0-8,9,17,18,26,27,35,36-44":
+              material: PURPLE_STAINED_GLASS_PANE
+              name: "&8"
+
+    # A second, independent animation: a blinking "loading" indicator.
+    loading:
+      interval: 6
+      playback: PING_PONG
+      frames:
+        - slots:
+            "13": { material: GRAY_DYE,  name: "&7Loading." }
+        - slots:
+            "13": { material: LIGHT_GRAY_DYE, name: "&7Loading.." }
+        - slots:
+            "13": { material: WHITE_DYE, name: "&fLoading..." }
