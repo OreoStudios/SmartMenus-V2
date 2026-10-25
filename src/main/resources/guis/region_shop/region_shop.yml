@@ -1,0 +1,43 @@
+# ============================================================
+# EXAMPLE 12 — WORLDGUARD REGION
+# Requires the player to be standing inside a specific region.
+# require_member: true → player must also be a member/owner.
+# Not consumable.
+# Needs: WorldGuard
+# ============================================================
+region_shop:
+  title: "&2&l🏰 Region Shop"
+  rows: 3
+  commands: [ "regionshop" ]
+  auto-convert: true
+  items:
+    "10":
+      material: GOLDEN_APPLE
+      name: "&6&lSpawn Reward"
+      lore:
+        - "&7Only available while in the spawn region."
+      commands:
+        - "give {player} golden_apple 1"
+      close: true
+      conditions:
+        - type: WORLDGUARD_REGION
+          region: spawn              # replace with your region name
+          require_member: false      # true = must be region member/owner
+
+    "12":
+      material: DIAMOND
+      name: "&b&lVIP Zone Reward"
+      lore:
+        - "&7Only for VIP region members."
+      commands:
+        - "give {player} diamond 10"
+      close: true
+      conditions:
+        - type: WORLDGUARD_REGION
+          region: vip-zone
+          require_member: true
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
