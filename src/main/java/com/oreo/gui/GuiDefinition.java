@@ -118,3 +118,89 @@ public class GuiDefinition {
         public Builder commands(List<String> commands) { this.commands = commands; return this; }
         public Builder npcId(Integer npcId) { this.npcId = npcId; return this; }
         public Builder fillItem(GuiItem fillItem) { this.fillItem = fillItem; return this; }
+        public Builder inventoryType(InventoryType inventoryType) { this.inventoryType = inventoryType; return this; }
+        public Builder commandArgs(List<ArgDefinition> commandArgs) { this.commandArgs = commandArgs; return this; }
+        public Builder useBottomInventory(boolean useBottomInventory) { this.useBottomInventory = useBottomInventory; return this; }
+        public Builder bottomItems(Map<Integer, GuiItem> bottomItems) { this.bottomItems = bottomItems; return this; }
+        public Builder bedrockDefinition(BedrockFormDefinition bedrockDefinition) { this.bedrockDefinition = bedrockDefinition; return this; }
+        public Builder bedrockAutoConvert(boolean bedrockAutoConvert) { this.bedrockAutoConvert = bedrockAutoConvert; return this; }
+        public Builder openRequirements(List<Condition> openRequirements) { this.openRequirements = openRequirements; return this; }
+        public Builder openActions(List<Action> openActions) { this.openActions = openActions; return this; }
+        public Builder closeActions(List<Action> closeActions) { this.closeActions = closeActions; return this; }
+        public Builder openSound(String openSound) { this.openSound = openSound; return this; }
+        public Builder openSoundVolume(float openSoundVolume) { this.openSoundVolume = openSoundVolume; return this; }
+        public Builder openSoundPitch(float openSoundPitch) { this.openSoundPitch = openSoundPitch; return this; }
+        public Builder bottomInventoryMode(BottomInventoryMode bottomInventoryMode) { this.bottomInventoryMode = bottomInventoryMode; return this; }
+        public Builder openCooldown(com.oreo.util.CooldownConfig openCooldown) { this.openCooldown = openCooldown; return this; }
+
+        public GuiDefinition build() {
+            return new GuiDefinition(id, title, rows, items, commands, npcId, fillItem, inventoryType,
+                    commandArgs, useBottomInventory, bottomItems, bedrockDefinition, bedrockAutoConvert,
+                    openRequirements, openActions, closeActions, openSound, openSoundVolume, openSoundPitch,
+                    bottomInventoryMode, openCooldown);
+        }
+    }
+
+    public String getId() { return id; }
+    public String getTitle() { return title; }
+    public int getRows() { return rows; }
+    public Map<Integer, GuiItem> getItems() { return Collections.unmodifiableMap(items); }
+    public List<String> getCommands() { return Collections.unmodifiableList(commands); }
+    public Integer getNpcId() { return npcId; }
+    public GuiItem getFillItem() { return fillItem; }
+    public InventoryType getInventoryType() { return inventoryType; }
+    public List<ArgDefinition> getCommandArgs() { return Collections.unmodifiableList(commandArgs); }
+    public boolean isUseBottomInventory() { return useBottomInventory; }
+    public Map<Integer, GuiItem> getBottomItems() { return Collections.unmodifiableMap(bottomItems); }
+    public BedrockFormDefinition getBedrockDefinition() { return bedrockDefinition; }
+    public boolean hasBedrockForm() { return bedrockDefinition != null; }
+    public boolean isBedrockAutoConvert() { return bedrockAutoConvert; }
+    public List<Condition> getOpenRequirements() { return Collections.unmodifiableList(openRequirements); }
+    public List<Action> getOpenActions() { return Collections.unmodifiableList(openActions); }
+    public List<Action> getCloseActions() { return Collections.unmodifiableList(closeActions); }
+    public String getOpenSound() { return openSound; }
+    public float getOpenSoundVolume() { return openSoundVolume; }
+    public float getOpenSoundPitch() { return openSoundPitch; }
+    public BottomInventoryMode getBottomInventoryMode() { return bottomInventoryMode; }
+    public com.oreo.util.CooldownConfig getOpenCooldown() { return openCooldown; }
+    public boolean hasNpcBinding() { return npcId != null; }
+    public boolean isNpcBound(int checkNpcId) { return npcId != null && npcId == checkNpcId; }
+
+    public SmartInventory createInventory(InventoryManager manager, SmartMenus plugin) {
+        return createInventory(manager, plugin, null);
+    }
+
+    /**
+     * Builds the inventory for {@code viewer}: the title gets {player} and PlaceholderAPI
+     * placeholders (e.g. %customizer_glyph_pack_id% for resource-pack GUI textures) resolved
+     * for that player. Without a viewer or PlaceholderAPI the title is used as written.
+     */
+    public SmartInventory createInventory(InventoryManager manager, SmartMenus plugin, Player viewer) {
+        SmartInventory.Builder builder = SmartInventory.builder()
+                .id("smartmenus:" + id)
+                .provider(new GuiInventoryProvider(this, plugin, plugin.getItemProvider()))
+                .title(ColorUtil.color(resolveTitle(viewer)))
+                .manager(manager);
+
+        if (inventoryType == InventoryType.CHEST) {
+            builder.size(rows, 9);
+        } else {
+            builder.type(inventoryType);
+        }
+
+        return builder.build();
+    }
+
+    private String resolveTitle(Player viewer) {
+        if (viewer == null || title == null) return title;
+        String resolved = title.replace("{player}", viewer.getName());
+        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            try {
+                resolved = me.clip.placeholderapi.PlaceholderAPI.setPlaceholders(viewer, resolved);
+            } catch (NoClassDefFoundError | RuntimeException ignored) {
+                // PlaceholderAPI missing or failing — keep the title as written
+            }
+        }
+        return resolved;
+    }
+}
