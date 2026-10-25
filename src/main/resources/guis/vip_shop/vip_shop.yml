@@ -1,0 +1,44 @@
+# ============================================================
+# EXAMPLE 9 — PERMISSION
+# Checks that the player has a specific permission node.
+# Not consumable — permission is NOT removed on click.
+# ============================================================
+vip_shop:
+  title: "&6&l👑 VIP Shop"
+  rows: 3
+  commands: [ "vipshop" ]
+  auto-convert: true
+  items:
+    "10":
+      material: DIAMOND_BLOCK
+      name: "&b&lVIP Diamond Package"
+      lore:
+        - "&7Exclusive for VIP members."
+        - ""
+        - "&eRequires: &6rank.vip permission"
+        - "&ePrice: &a$1,000"
+      commands:
+        - "give {player} diamond_block 5"
+      close: true
+      conditions:
+        - type: PERMISSION
+          permission: rank.vip
+        - type: VAULT_MONEY
+          amount: 1000
+
+    "12":
+      material: NETHERITE_BLOCK
+      name: "&5&lMVP Package"
+      lore:
+        - "&eRequires: &6rank.mvp"
+      commands:
+        - "give {player} netherite_block 3"
+      close: true
+      conditions:
+        - type: PERMISSION
+          permission: rank.mvp
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
