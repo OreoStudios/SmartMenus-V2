@@ -116,3 +116,118 @@ public class BedrockManager {
         Collections.sort(sortedSlots);
 
         for (int slot : sortedSlots) {
+            GuiItem item = definition.getItems().get(slot);
+            if (item == null) continue;
+
+            boolean hasActions = !item.getActionsForClick("ANY").isEmpty()
+                    || !item.getClickActions().isEmpty()
+                    || !item.getCommands().isEmpty();
+            if (!hasActions) continue;
+
+            GuiItem effective = item;
+            for (com.oreo.condition.Condition c : item.getViewRequirements()) {
+                try {
+                    if (!c.check(player)) {
+                        effective = item.getElseItem();
+                        break;
+                    }
+                } catch (Exception e) {
+                    log.warning("[SmartMenus] Condition check error during auto-form build: " + e.getMessage());
+                }
+            }
+            if (effective == null) continue;
+
+            String name = effective.getName();
+            if (name == null || name.isBlank()) {
+
+                name = formatMaterialName(effective.getMaterial());
+            }
+
+            List<String> lore = effective.getLore();
+            if (!lore.isEmpty()) {
+                StringBuilder sb = new StringBuilder(name);
+                int limit = Math.min(lore.size(), 3);
+                for (int i = 0; i < limit; i++) {
+                    String line = lore.get(i);
+                    if (line != null && !line.isBlank()) {
+                        sb.append("\n").append(line);
+                    }
+                }
+                name = sb.toString();
+            }
+
+            List<com.oreo.action.Action> actions = item.getActionsForClick("ANY");
+
+            buttons.add(new BedrockButton(name, null, null,
+                    item.getConditions(), actions));
+        }
+
+        if (buttons.isEmpty()) return null;
+
+        return new BedrockFormDefinition.Builder(BedrockFormDefinition.FormType.SIMPLE_FORM)
+                .title(definition.getTitle())
+                .buttons(buttons)
+                .npcName(definition.getTitle())
+                .dialogueTag(definition.getId() + ".auto")
+                .build();
+    }
+
+    private static String formatMaterialName(String material) {
+        if (material == null || material.isBlank()) return "Button";
+
+        String[] parts = material.split("_");
+        StringBuilder sb = new StringBuilder();
+        for (String part : parts) {
+            if (!part.isEmpty()) {
+                sb.append(Character.toUpperCase(part.charAt(0)));
+                if (part.length() > 1) sb.append(part.substring(1).toLowerCase());
+                sb.append(' ');
+            }
+        }
+        return sb.toString().trim();
+    }
+
+    static boolean checkConditions(Player player, List<Condition> conditions) {
+        for (Condition c : conditions) {
+            try {
+                if (!c.check(player)) return false;
+            } catch (Exception e) {
+                org.bukkit.Bukkit.getLogger().warning("[SmartMenus] Bedrock condition check error: " + e.getMessage());
+            }
+        }
+        return true;
+    }
+
+    static void sendDenyMessage(Player player, List<Condition> conditions) {
+        for (Condition c : conditions) {
+            try {
+                if (!c.check(player)) {
+                    String msg = c.getErrorMessage(player);
+                    if (msg != null && !msg.isEmpty()) {
+                        player.sendMessage(ColorUtil.color(msg));
+                    }
+                    return;
+                }
+            } catch (Exception e) {
+                org.bukkit.Bukkit.getLogger().warning("[SmartMenus] Bedrock deny message condition error: " + e.getMessage());
+            }
+        }
+    }
+
+    static void executeActions(Player player, List<Action> actions, SmartMenus plugin) {
+        Map<String, String> vars = ArgManager.getAll(player.getUniqueId());
+        for (Action a : actions) {
+            try {
+                a.execute(plugin, player, vars);
+            } catch (Exception e) {
+                plugin.getLogger().warning("Bedrock action error: " + e.getMessage());
+            }
+        }
+    }
+
+    private static boolean isFloodgateUUID(UUID uuid) {
+        return uuid.toString().startsWith(FLOODGATE_UUID_PREFIX);
+    }
+
+    public boolean isFloodgateEnabled() { return floodgateEnabled; }
+}
