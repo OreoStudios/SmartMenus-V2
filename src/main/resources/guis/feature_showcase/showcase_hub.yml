@@ -1,0 +1,165 @@
+# ============================================================
+# FEATURE SHOWCASE — Main Hub
+# Opens with: /showcase  or  /featureshowcase
+#
+# 6-row hub — each button links to a feature sub-menu.
+# ============================================================
+showcase_hub:
+  title: "&8&l⚙ Feature Showcase"
+  rows: 6
+  commands: [ "showcase", "featureshowcase" ]
+  auto-convert: true
+  main_menu: showcase_hub
+
+  items:
+
+    border-top:
+      slots: [ 0-8 ]
+      material: BLACK_STAINED_GLASS_PANE
+      name: "&8"
+
+    border-bot:
+      slots: [ 45-53 ]
+      material: BLACK_STAINED_GLASS_PANE
+      name: "&8"
+
+    side-left:
+      slots: [ 9, 18, 27, 36 ]
+      material: BLACK_STAINED_GLASS_PANE
+      name: "&8"
+
+    side-right:
+      slots: [ 17, 26, 35, 44 ]
+      material: BLACK_STAINED_GLASS_PANE
+      name: "&8"
+
+    # ── Row 1 — original features ──────────────────────────
+    btn-pagination:
+      type: INVENTORY
+      slot: 10
+      inventory: showcase_pagination
+      material: BOOK
+      name: "&e&lPagination"
+      lore:
+        - "&7Static element lists with page controls."
+        - ""
+        - "&8Features: &fPAGINATION"
+        - "&8          &fNEXT · PREVIOUS · JUMP"
+        - ""
+        - "&eClick to open →"
+
+    btn-dynamic:
+      type: INVENTORY
+      slot: 12
+      inventory: showcase_dynamic_hub
+      material: COMPASS
+      name: "&b&lDynamic Pagination"
+      lore:
+        - "&7Live data pulled from the server."
+        - ""
+        - "&8Sources: &fONLINE_PLAYERS"
+        - "&8          &fWORLDS · PLAYER_INVENTORY"
+        - "&8          &fPLAYER_ENDERCHEST"
+        - "&8          &fPERMISSION_GROUPS"
+        - ""
+        - "&eClick to open →"
+
+    btn-switch:
+      type: INVENTORY
+      slot: 14
+      inventory: showcase_switch
+      material: COMPARATOR
+      name: "&a&lSwitch Buttons"
+      lore:
+        - "&7Multi-state toggles driven by"
+        - "&7a placeholder or static key."
+        - ""
+        - "&8Features: &fSWITCH"
+        - ""
+        - "&eClick to open →"
+
+    btn-input:
+      type: INVENTORY
+      slot: 16
+      inventory: showcase_input
+      material: HOPPER
+      name: "&c&lItem Input Slots"
+      lore:
+        - "&7Slots that accept item placement"
+        - "&7and fire commands on drop."
+        - ""
+        - "&8Features: &fINPUT"
+        - ""
+        - "&eClick to open →"
+
+    # ── Row 2 — advanced conditions ────────────────────────
+    btn-expression:
+      type: INVENTORY
+      slot: 19
+      inventory: showcase_expression
+      material: BLAZE_POWDER
+      name: "&6&lExpression Conditions"
+      lore:
+        - "&7Math/logic expressions as conditions."
+        - ""
+        - "&8Example:"
+        - "  &f%vault_eco_balance% >= 1000"
+        - "  &f%player_level% * 2 > 30"
+        - ""
+        - "&8Feature: &fEXPRESSION"
+        - ""
+        - "&eClick to open →"
+
+    btn-placeholder-cmp:
+      type: INVENTORY
+      slot: 21
+      inventory: showcase_placeholder_cmp
+      material: SPYGLASS
+      name: "&b&lPlaceholder Comparisons"
+      lore:
+        - "&7Compare placeholder values to"
+        - "&7a fixed string or number."
+        - ""
+        - "&8Features:"
+        - "  &fPLACEHOLDER_EQUALS"
+        - "  &fPLACEHOLDER_CONTAINS"
+        - "  &fPLACEHOLDER_GREATER_THAN"
+        - "  &fPLACEHOLDER_LESS_THAN"
+        - ""
+        - "&eClick to open →"
+
+    btn-script:
+      type: INVENTORY
+      slot: 23
+      inventory: showcase_script
+      material: WRITABLE_BOOK
+      name: "&5&lScript Conditions & Actions"
+      lore:
+        - "&7Write JavaScript conditions"
+        - "&7and actions inline in YAML."
+        - ""
+        - "&8Requires: &fNashorn / GraalVM JS"
+        - "&8Feature: &fSCRIPT"
+        - ""
+        - "&eClick to open →"
+
+    btn-inv-types:
+      type: INVENTORY
+      slot: 25
+      inventory: showcase_inv_types_hub
+      material: FURNACE
+      name: "&f&lInventory Types"
+      lore:
+        - "&7Open GUIs as HOPPER, DISPENSER,"
+        - "&7FURNACE, and other container types."
+        - ""
+        - "&8Key: &finventory_type: HOPPER"
+        - ""
+        - "&eClick to open →"
+
+    # ── Bottom nav ─────────────────────────────────────────
+    close:
+      slot: 49
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
