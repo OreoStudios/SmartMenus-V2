@@ -1,0 +1,118 @@
+    menu_title: '&8« &8&nNᴏVᴀLᴀɴᴅs ʀᴜʟᴇs&8 »'
+    open_command:
+    - staffrules
+    - rules
+    - rule
+    size: 45
+    items:
+      '1':
+        material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2M0ZDdhM2JjM2RlODMzZDMwMzJlODVhMGJmNmYyYmVmNzY4Nzg2MmIzYzZiYzQwY2U3MzEwNjRmNjE1ZGQ5ZCJ9fX0=
+        slot: 20
+        display_name: '&e① &6ʙʟᴀᴄᴋʟɪsᴛᴇᴅ ᴍᴏᴅs'
+        lore:
+        - ''
+        - '&6■ &fAny hacked clients'
+        - '&6■ &fAny ghost clients'
+        - '&6■ &fAny injectable clients'
+        - '&6■ &fAuto Totem'
+        - '&6■ &fX-ray mod / texture pack'
+        - '&6■ &fMinebot mod'
+        - '&6■ &fInventory Tweaks mod'
+        - '&6■ &fChest ESP mod'
+        - '&6■ &fMacros / Keybind mods'
+        - '&6■ &fAuto-Clicker mod'
+        - ''
+        - '&a» This list can be changed anytime «'
+      '2':
+        material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTMzMzBmYmVkMzc3YzI0NGY0ODdlNGJjNTY4MmQxNWFmNDBkM2NlNGMzMmVlMDNmYzI0YTdmOTUyZTdkMjlhOSJ9fX0=
+        slot: 21
+        display_name: '&e② &6ᴄʜᴀᴛ ʀᴜʟᴇs'
+        lore:
+        - ''
+        - '&6■ &fPlease don''t spam the chat'
+        - '&6■ &fPlease don''t bypass chat filters'
+        - '&6■ &fTry to keep swearing to a minimal'
+        - '&6■ &fStaff harassment is not allowed'
+        - '&6■ &fStaff disrespect is not allowed'
+        - '&6■ &fNo racist remarks or slurs'
+        - '&6■ &fNo sexual remarks'
+        - ''
+        - '&a» This list can be changed anytime «'        
+      '3':
+        material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmNhYzg1MGZiOGZiNjFlNmFmYzYzOGJhZjRkOWJiYjE4NWVlODNlZWJkMWZiODM3NTU1NzYwNGJhM2FjNzg5MCJ9fX0=
+        slot: 23
+        display_name: '&e③ &6ɢᴇɴᴇʀᴀʟ ʀᴜʟᴇs'
+        lore:
+        - ''
+        - '&6■ &fNo cheating / hacks'
+        - '&6■ &fDDoS or Dox threats are not tolerated'
+        - '&6■ &fBe respectful to all server members'
+        - '&6■ &fNo advertising'
+        - '&6■ &fAlt account is not allowed'
+        - '&6■ &fGlitch exploiting is banable'
+        - '&6■ &fDon''t ask for ranks from staff'
+        - ''
+        - '&a» This list can be changed anytime «'
+      '4':
+        material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWY4NjkwNDhmMDZkMzE4ZTUwNThiY2EwYTg3NmE1OTg2MDc5ZjQ1YTc2NGQxMmFiMzRhNDkzMWRiNmI4MGFkYyJ9fX0=
+        slot: 24
+        display_name: '&e④ &6ᴏᴛʜᴇʀ'
+        lore:
+        - ''
+        - '&6■ &fRespect for all players &7= &eWarning or Ban'
+        - '&6■ &fNo offensive or harmful language &7= &eMute or Ban'
+        - '&6■ &fNo harassment or bullying &7= &eMute or Ban'
+        - '&6■ &fNo inappropriate or toxic behavior &7= &eMute or Ban'
+        - ''
+        - '&a» This list can be changed anytime «'
+      '6':
+        material: book
+        slot: 4
+        display_name: '&6&lɪɴғᴏʀᴍᴀᴛɪᴏɴs'
+        lore:
+        - ''
+        - '&6▶ &fIn this menu you can view the &eserver rules'
+        - ''
+        - '&e▶ &cFailure to follow these rules' 
+        - '&cwill result in mute / warn or ban.'
+        - ''
+        - '&a» Right click to get the full list of rules «'
+        left_click_commands:
+        - '[message] &eEnter the link below and view the full list of rules'
+        - '[message] &f'        
+        - '[message] &a■ https://discord.com/channels/1120770415514632333/1261974622098685982'
+        - '[message] &f'
+        - '[close]'
+        right_click_commands:
+        - '[message] &eEnter the link below and view the full list of rules'
+        - '[message] &f'        
+        - '[message] &a■ https://discord.com/channels/1120770415514632333/1261974622098685982'
+        - '[message] &f'
+        - '[close]'
+      '7':
+        material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2VkMWFiYTczZjYzOWY0YmM0MmJkNDgxOTZjNzE1MTk3YmUyNzEyYzNiOTYyYzk3ZWJmOWU5ZWQ4ZWZhMDI1In19fQ==
+        data: 0
+        slot: 40
+        left_click_commands:
+        - '[close]'
+        right_click_commands:
+        - '[close]'
+        display_name: '&6Close'
+        lore:
+        - ''
+        - '&8▪ &fRight click to'
+        - '&8▪ &fclose the menu.'
+        - '&f'
+        - '&a[Click to close the menu]'              
+      Panels:
+        material: orange_stained_glass_pane
+        display_name: '&f'
+        slots:
+        - 9
+        - 18
+        - 27
+        - 39
+        - 41
+        - 17
+        - 26
+        - 35
