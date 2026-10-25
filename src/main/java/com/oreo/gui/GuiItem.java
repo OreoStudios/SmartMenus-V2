@@ -137,3 +137,100 @@ public class GuiItem {
         public Builder commands(List<String> commands) { this.commands = commands; return this; }
         public Builder closeOnClick(boolean v) { this.closeOnClick = v; return this; }
         public Builder price(double price) { this.price = price; return this; }
+        public Builder requirement(String req) { this.requirement = req; return this; }
+        public Builder conditions(List<Condition> conditions) { this.conditions = conditions; return this; }
+        public Builder itemType(String itemType) { this.itemType = itemType; return this; }
+        public Builder itemId(String itemId) { this.itemId = itemId; return this; }
+        public Builder customModelData(Integer cmd) { this.customModelData = cmd; return this; }
+        public Builder clickActions(Map<String, List<Action>> clickActions) { this.clickActions = clickActions; return this; }
+        public Builder viewRequirements(List<Condition> viewReqs) { this.viewRequirements = viewReqs; return this; }
+        public Builder elseItem(GuiItem elseItem) { this.elseItem = elseItem; return this; }
+        public Builder buttonType(ButtonType buttonType) { this.buttonType = buttonType; return this; }
+        public Builder chatInputType(String chatInputType) { this.chatInputType = chatInputType; return this; }
+        public Builder chatPromptMessage(String chatPromptMessage) { this.chatPromptMessage = chatPromptMessage; return this; }
+        public Builder chatCancelWord(String chatCancelWord) { this.chatCancelWord = chatCancelWord; return this; }
+        public Builder glow(boolean glow) { this.glow = glow; return this; }
+        public Builder itemFlags(List<String> itemFlags) { this.itemFlags = itemFlags; return this; }
+        public Builder enchantments(Map<String, Integer> enchantments) { this.enchantments = enchantments; return this; }
+        public Builder autoUpdate(boolean autoUpdate) { this.autoUpdate = autoUpdate; return this; }
+        public Builder updateInterval(int updateInterval) { this.updateInterval = updateInterval; return this; }
+        public Builder permanent(boolean permanent) { this.permanent = permanent; return this; }
+        public Builder dynamicSource(DynamicSource dynamicSource) { this.dynamicSource = dynamicSource; return this; }
+        public Builder takeItem(boolean takeItem) { this.takeItem = takeItem; return this; }
+        public Builder giveItem(boolean giveItem) { this.giveItem = giveItem; return this; }
+        public Builder amount(int amount) { this.amount = amount; return this; }
+        public Builder onPlaceCommands(List<String> onPlaceCommands) { this.onPlaceCommands = onPlaceCommands; return this; }
+        public Builder onPlaceActions(List<Action> onPlaceActions) { this.onPlaceActions = onPlaceActions; return this; }
+        public Builder removeOnPlace(boolean removeOnPlace) { this.removeOnPlace = removeOnPlace; return this; }
+        public Builder cooldown(CooldownConfig cooldown) { this.cooldown = cooldown; return this; }
+
+        public GuiItem build() {
+            return new GuiItem(this);
+        }
+    }
+
+    public int getSlot() { return slot; }
+    public String getMaterial() { return material; }
+    public String getName() { return name; }
+    public List<String> getLore() { return Collections.unmodifiableList(lore); }
+    public List<String> getCommands() { return Collections.unmodifiableList(commands); }
+    public boolean isCloseOnClick() { return closeOnClick; }
+
+    public double getPrice() { return purchase.price(); }
+    public String getRequirement() { return purchase.requirement(); }
+    public boolean hasPrice() { return purchase.price() > 0; }
+    public boolean hasRequirement() { return purchase.requirement() != null && !purchase.requirement().isEmpty(); }
+
+    public List<Condition> getConditions() { return Collections.unmodifiableList(conditions); }
+    public boolean hasConditions() { return !conditions.isEmpty(); }
+    public String getItemType() { return item.type(); }
+    public String getItemId() { return item.id(); }
+    public Integer getCustomModelData() { return item.customModelData(); }
+
+    public boolean isCustomItem() {
+        return "itemsadder".equalsIgnoreCase(item.type()) || "nexo".equalsIgnoreCase(item.type());
+    }
+
+    public boolean isVanillaItem() { return "vanilla".equalsIgnoreCase(item.type()); }
+
+    public Map<String, List<Action>> getClickActions() { return Collections.unmodifiableMap(clickActions); }
+
+    public List<Action> getActionsForClick(String clickKey) {
+        if (clickActions.containsKey(clickKey)) return clickActions.get(clickKey);
+        if (clickActions.containsKey("ANY")) return clickActions.get("ANY");
+        if (clickActions.containsKey("LEGACY")) return clickActions.get("LEGACY");
+        return Collections.emptyList();
+    }
+
+    public List<Condition> getViewRequirements() { return Collections.unmodifiableList(viewRequirements); }
+    public GuiItem getElseItem() { return elseItem; }
+
+    public ButtonType getButtonType() { return buttonType; }
+    public String getChatInputType() { return chatInput.type(); }
+    public String getChatPromptMessage() { return chatInput.promptMessage(); }
+    public String getChatCancelWord() { return chatInput.cancelWord(); }
+
+    public boolean isGlow() { return visuals.glow(); }
+    public List<String> getItemFlags() { return Collections.unmodifiableList(visuals.itemFlags()); }
+    public Map<String, Integer> getEnchantments() { return Collections.unmodifiableMap(visuals.enchantments()); }
+
+    public boolean isAutoUpdate() { return autoUpdate.enabled(); }
+    public int getUpdateInterval() { return autoUpdate.interval(); }
+
+    public boolean isPermanent() { return permanent; }
+    public DynamicSource getDynamicSource() { return dynamicSource; }
+    public boolean isTakeItem() { return placement.takeItem(); }
+    public boolean isGiveItem() { return placement.giveItem(); }
+    public int getAmount() { return amount; }
+
+    public List<String> getOnPlaceCommands() { return Collections.unmodifiableList(placement.onPlaceCommands()); }
+    public List<Action> getOnPlaceActions() { return Collections.unmodifiableList(placement.onPlaceActions()); }
+    public boolean isRemoveOnPlace() { return placement.removeOnPlace(); }
+    public CooldownConfig getCooldown() { return cooldown; }
+
+    @Override
+    public String toString() {
+        return "GuiItem{slot=" + slot + ", material='" + material + "', itemType='" + item.type()
+                + "', conditions=" + conditions.size() + ", buttonType=" + buttonType + '}';
+    }
+}
