@@ -1,0 +1,6 @@
+commands:
+  rtp:
+   command: rtp
+   inventory: rtp
+   aliases:
+   - 
