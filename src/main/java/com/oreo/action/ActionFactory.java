@@ -238,3 +238,241 @@ public class ActionFactory {
             this.fadeIn = fadeIn; this.stay = stay; this.fadeOut = fadeOut;
         }
         @Override
+        public void execute(SmartMenus plugin, Player player, Map<String, String> vars) {
+            LegacyComponentSerializer legacy =
+                    LegacyComponentSerializer.legacySection();
+            Title adventureTitle = Title.title(
+                    legacy.deserialize(ColorUtil.color(replaceVars(title, player, vars))),
+                    legacy.deserialize(ColorUtil.color(replaceVars(subtitle, player, vars))),
+                    Title.Times.times(
+                            Duration.ofMillis(fadeIn * 50L),
+                            Duration.ofMillis(stay * 50L),
+                            Duration.ofMillis(fadeOut * 50L)
+                    )
+            );
+            ((Audience) player).showTitle(adventureTitle);
+        }
+    }
+
+    private static final class SoundAction implements Action {
+        private final String soundName;
+        private final float volume, pitch;
+        private final boolean broadcast;
+        SoundAction(String soundName, float volume, float pitch, boolean broadcast) {
+            this.soundName = soundName; this.volume = volume; this.pitch = pitch;
+            this.broadcast = broadcast;
+        }
+        @Override
+        public void execute(SmartMenus plugin, Player player, Map<String, String> vars) {
+            Sound sound;
+            try {
+                sound = Sound.valueOf(replaceVars(soundName, player, vars).toUpperCase());
+            } catch (IllegalArgumentException e) {
+                plugin.getLogger().warning("Unknown sound: " + soundName);
+                return;
+            }
+            if (broadcast) {
+                for (Player p : Bukkit.getOnlinePlayers()) {
+                    p.playSound(p.getLocation(), sound, volume, pitch);
+                }
+            } else {
+                player.playSound(player.getLocation(), sound, volume, pitch);
+            }
+        }
+    }
+
+    private static final class TeleportAction implements Action {
+        private final String world;
+        private final double x, y, z;
+        private final float yaw, pitch;
+        TeleportAction(String world, double x, double y, double z, float yaw, float pitch) {
+            this.world = world; this.x = x; this.y = y; this.z = z; this.yaw = yaw; this.pitch = pitch;
+        }
+        @Override
+        public void execute(SmartMenus plugin, Player player, Map<String, String> vars) {
+            World w = Bukkit.getWorld(replaceVars(world, player, vars));
+            if (w == null) {
+                plugin.getLogger().warning("Teleport: world not found: " + world);
+                return;
+            }
+            player.teleport(new Location(w, x, y, z, yaw, pitch));
+        }
+    }
+
+    private static final class PlayerCommandAction implements Action {
+        private final String command;
+        PlayerCommandAction(String command) { this.command = command; }
+        @Override
+        public void execute(SmartMenus plugin, Player player, Map<String, String> vars) {
+            String cmd = replaceVars(command, player, vars);
+            if (cmd.startsWith("/")) cmd = cmd.substring(1);
+            player.performCommand(cmd);
+        }
+    }
+
+    private static final class RandomConsoleCommandAction implements Action {
+        private final List<String> commands;
+        RandomConsoleCommandAction(List<String> commands) { this.commands = commands; }
+        @Override
+        public void execute(SmartMenus plugin, Player player, Map<String, String> vars) {
+            if (commands.isEmpty()) return;
+            String cmd = replaceVars(commands.get(RANDOM.nextInt(commands.size())), player, vars);
+            if (cmd.startsWith("/")) cmd = cmd.substring(1);
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd);
+        }
+    }
+
+    private static final class RandomPlayerCommandAction implements Action {
+        private final List<String> commands;
+        RandomPlayerCommandAction(List<String> commands) { this.commands = commands; }
+        @Override
+        public void execute(SmartMenus plugin, Player player, Map<String, String> vars) {
+            if (commands.isEmpty()) return;
+            String cmd = replaceVars(commands.get(RANDOM.nextInt(commands.size())), player, vars);
+            if (cmd.startsWith("/")) cmd = cmd.substring(1);
+            player.performCommand(cmd);
+        }
+    }
+
+    private static final class OpenInventoryAction implements Action {
+        private final String guiId;
+        OpenInventoryAction(String guiId) { this.guiId = guiId; }
+        @Override
+        public void execute(SmartMenus plugin, Player player, Map<String, String> vars) {
+            String id = replaceVars(guiId, player, vars);
+            GuiDefinition def = plugin.getGuiRegistry().getGui(id);
+            if (def == null) {
+
+                String normalizedId = Ids.slugify(id);
+                if (!normalizedId.equals(id)) {
+                    def = plugin.getGuiRegistry().getGui(normalizedId);
+                }
+            }
+            if (def == null) {
+                plugin.getLogger().warning("OPEN_GUI: GUI not found: '" + id
+                        + "'. Known GUIs: " + plugin.getGuiRegistry().getGuiIds());
+                return;
+            }
+            GuiOpener.open(plugin, player, def, OpenOptions.checked());
+        }
+    }
+
+    private static final class CloseInventoryAction implements Action {
+        @Override
+        public void execute(SmartMenus plugin, Player player, Map<String, String> vars) {
+            player.closeInventory();
+        }
+    }
+
+    public static final class OpenBedrockFormAction implements Action {
+        private final String guiId;
+        public OpenBedrockFormAction(String guiId) { this.guiId = guiId; }
+        @Override
+        public void execute(SmartMenus plugin, Player player, Map<String, String> vars) {
+            String id = replaceVars(guiId, player, vars);
+            GuiDefinition def = plugin.getGuiRegistry().getGui(id);
+            if (def == null) {
+                plugin.getLogger().warning("OPEN_BEDROCK_FORM: GUI not found: " + id);
+                return;
+            }
+            GuiOpener.open(plugin, player, def, OpenOptions.unchecked());
+        }
+    }
+
+    public static final class OpenBedrockDialogueAction implements Action {
+        private final String guiId;
+        public OpenBedrockDialogueAction(String guiId) { this.guiId = guiId; }
+        @Override
+        public void execute(SmartMenus plugin, Player player, Map<String, String> vars) {
+            String id = replaceVars(guiId, player, vars);
+            GuiDefinition def = plugin.getGuiRegistry().getGui(id);
+            if (def == null) {
+                plugin.getLogger().warning("OPEN_BEDROCK_DIALOGUE: GUI not found: " + id);
+                return;
+            }
+            GuiOpener.open(plugin, player, def, OpenOptions.uncheckedNoBedrockConvert());
+        }
+    }
+
+    private static final class BackAction implements Action {
+        @Override
+        public void execute(SmartMenus plugin, Player player, Map<String, String> vars) {
+            UUID playerId = player.getUniqueId();
+
+            // Drop the current menu, then reopen the previous one from the navigation history.
+            NavigationManager.pop(playerId);
+            String previous = NavigationManager.pop(playerId);
+            if (previous == null) {
+                player.closeInventory();
+                return;
+            }
+
+            GuiDefinition def = plugin.getGuiRegistry().getGui(previous);
+            if (def == null) {
+                player.closeInventory();
+                return;
+            }
+            // Reopening re-pushes the target, so the history stays consistent.
+            GuiOpener.open(plugin, player, def, OpenOptions.unchecked());
+        }
+    }
+
+    private static final class ServerConnectAction implements Action {
+        private final String server;
+        ServerConnectAction(String server) { this.server = server; }
+        @Override
+        public void execute(SmartMenus plugin, Player player, Map<String, String> vars) {
+            String srv = replaceVars(server, player, vars);
+            try {
+                java.io.ByteArrayOutputStream bout = new java.io.ByteArrayOutputStream();
+                java.io.DataOutputStream out = new java.io.DataOutputStream(bout);
+                out.writeUTF("Connect");
+                out.writeUTF(srv);
+                player.sendPluginMessage(plugin, "BungeeCord", bout.toByteArray());
+            } catch (Exception e) {
+                plugin.getLogger().warning("SERVER_CONNECT failed: " + e.getMessage());
+            }
+        }
+    }
+
+    private static final class ScriptAction implements Action {
+        private final String script;
+        ScriptAction(String script) { this.script = script; }
+        @Override
+        public void execute(SmartMenus plugin, Player player, Map<String, String> vars) {
+            plugin.getScriptEngine().evalAction(script, player);
+        }
+    }
+
+    public static final class ChanceRewardAction implements Action {
+        private final List<Map<String, Object>> rewards;
+
+        public ChanceRewardAction(List<Map<String, Object>> rewards) {
+            this.rewards = rewards;
+        }
+
+        @Override
+        public void execute(SmartMenus plugin, Player player, Map<String, String> vars) {
+            if (rewards.isEmpty()) return;
+            double roll = RANDOM.nextDouble() * 100.0;
+            double cumulative = 0.0;
+            for (Map<String, Object> reward : rewards) {
+                cumulative += doubleVal(reward, "chance", 0.0);
+                if (roll < cumulative) {
+                    for (String cmd : strList(reward, "commands")) {
+                        String resolved = replaceVars(cmd, player, vars);
+                        if (resolved.startsWith("/")) resolved = resolved.substring(1);
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), resolved);
+                    }
+                    for (String msg : strList(reward, "messages")) {
+                        Component component =
+                                ColorUtil.colorComponent(replaceVars(msg, player, vars));
+                        ((Audience) player).sendMessage(component);
+                    }
+                    return;
+                }
+            }
+
+        }
+    }
+}
