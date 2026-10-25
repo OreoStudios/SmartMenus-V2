@@ -1,0 +1,42 @@
+# ============================================================
+# EXAMPLE 5 — ITEM (vanilla item cost)
+# Requires & removes vanilla items from the player's inventory.
+# ============================================================
+item_trade:
+  title: "&e&l🔄 Item Trading"
+  rows: 3
+  commands: [ "itemtrade", "tradeshop" ]
+  auto-convert: true
+  items:
+    "10":
+      material: IRON_INGOT
+      name: "&7&lIron → Gold (32 iron = 8 gold)"
+      lore:
+        - "&eRequires: &732 Iron Ingots"
+        - "&aReceive: &e8 Gold Ingots"
+      commands:
+        - "give {player} gold_ingot 8"
+      close: true
+      conditions:
+        - type: ITEM
+          material: IRON_INGOT
+          amount: 32
+
+    "12":
+      material: GOLD_INGOT
+      name: "&e&lGold → Diamond (16 gold = 3 diamond)"
+      lore:
+        - "&eRequires: &e16 Gold Ingots"
+        - "&aReceive: &b3 Diamonds"
+      commands:
+        - "give {player} diamond 3"
+      close: true
+      conditions:
+        - type: ITEM
+          material: GOLD_INGOT
+          amount: 16
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
