@@ -1,0 +1,26 @@
+# ============================================================
+# EXAMPLE 4 — XP POINTS (total experience points, not levels)
+# Requires & deducts raw XP points from the player.
+# ============================================================
+xp_points_shop:
+  title: "&2&l✨ XP Points Shop"
+  rows: 3
+  commands: [ "xppointsshop" ]
+  auto-convert: true
+  items:
+    "11":
+      material: EMERALD
+      name: "&a&l5 Emeralds (costs 500 XP points)"
+      lore:
+        - "&ePrice: &a500 XP Points"
+      commands:
+        - "give {player} emerald 5"
+      close: true
+      conditions:
+        - type: XP_POINTS
+          amount: 500
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
