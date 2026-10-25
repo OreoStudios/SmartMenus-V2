@@ -110,3 +110,107 @@ public class InputSlotListener implements Listener {
 
             GuiItem guiItem = def.getItems().get(rawSlot);
             if (guiItem == null || guiItem.getButtonType() != ButtonType.INPUT) continue;
+
+            ItemStack placed = entry.getValue().clone();
+
+            com.oreo.util.CooldownConfig cooldown = guiItem.getCooldown();
+            if (cooldown != null && cooldown.isEnabled()
+                    && plugin.getCooldownManager() != null
+                    && !plugin.getCooldownManager().tryUse(player, cooldown)) {
+                event.setCancelled(true);
+                return;
+            }
+
+            if (guiItem.isRemoveOnPlace()) {
+                event.setCancelled(true);
+
+                Bukkit.getScheduler().runTask(plugin, () -> {
+                    ItemStack cursor = player.getItemOnCursor();
+                    if (cursor != null && cursor.getType() != Material.AIR) {
+                        int remaining = cursor.getAmount() - placed.getAmount();
+                        if (remaining <= 0) {
+                            player.setItemOnCursor(new ItemStack(Material.AIR));
+                        } else {
+                            cursor.setAmount(remaining);
+                            player.setItemOnCursor(cursor);
+                        }
+                    }
+                    fireOnPlace(player, guiItem, placed);
+                });
+            } else {
+
+                final int finalSlot = rawSlot;
+                Bukkit.getScheduler().runTask(plugin, () -> {
+                    ItemStack inSlot = player.getOpenInventory().getTopInventory().getItem(finalSlot);
+                    if (inSlot != null && inSlot.getType() != Material.AIR) {
+                        updateContents(player, finalSlot, ClickableItem.empty(inSlot));
+                    }
+                    fireOnPlace(player, guiItem, placed);
+                });
+            }
+            return;
+        }
+    }
+
+    private boolean isPickupAction(InventoryAction action) {
+        return action == InventoryAction.PICKUP_ALL
+                || action == InventoryAction.PICKUP_ONE
+                || action == InventoryAction.PICKUP_SOME
+                || action == InventoryAction.PICKUP_HALF;
+    }
+
+    private boolean isPlacementAction(InventoryAction action) {
+        return action == InventoryAction.PLACE_ALL
+                || action == InventoryAction.PLACE_ONE
+                || action == InventoryAction.PLACE_SOME
+                || action == InventoryAction.SWAP_WITH_CURSOR;
+    }
+
+    private void consumeCursor(Player player, InventoryAction action, ItemStack originalCursor) {
+        if (action == InventoryAction.PLACE_ONE) {
+            int remaining = originalCursor.getAmount() - 1;
+            if (remaining <= 0) {
+                player.setItemOnCursor(new ItemStack(Material.AIR));
+            } else {
+                originalCursor.setAmount(remaining);
+                player.setItemOnCursor(originalCursor);
+            }
+        } else {
+            player.setItemOnCursor(new ItemStack(Material.AIR));
+        }
+    }
+
+    private void updateContents(Player player, int slot, ClickableItem item) {
+        plugin.getInventoryManager().getContents(player).ifPresent(contents ->
+                contents.set(slot / 9, slot % 9, item));
+    }
+
+    private void restorePlaceholder(Player player, int slot) {
+        ItemStack placeholder = GuiInventoryProvider.getInputSlotPlaceholder(player.getUniqueId(), slot);
+        if (placeholder != null) {
+            updateContents(player, slot, ClickableItem.empty(placeholder));
+        }
+    }
+
+    private void fireOnPlace(Player player, GuiItem guiItem, ItemStack item) {
+        List<Action> actions = guiItem.getOnPlaceActions();
+        if (actions.isEmpty()) return;
+
+        String itemName = item.getType().name();
+        if (item.hasItemMeta()) {
+            ItemMeta meta = item.getItemMeta();
+            if (meta != null && meta.hasDisplayName()) {
+                itemName = meta.getDisplayName();
+            }
+        }
+
+        Map<String, String> vars = new HashMap<>();
+        vars.put("input_item_material", item.getType().name());
+        vars.put("input_item_name", itemName);
+        vars.put("input_item_amount", String.valueOf(item.getAmount()));
+
+        for (Action action : actions) {
+            action.execute(plugin, player, vars);
+        }
+    }
+}
