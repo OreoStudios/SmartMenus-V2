@@ -1,0 +1,70 @@
+
+menu_title: '&8> &8&lᴠᴏᴛᴇ ғᴏʀ §x§8§e§c§3§f§fɴᴏᴠᴀʟᴀɴᴅs'
+open_command:
+  - votingmenu
+  - vote
+open_commands:
+  - '[sound] UI_TOAST_IN'
+close_commands:
+  - '[sound] UI_TOAST_OUT'  
+size: 27
+
+items:
+  'filler_item':
+    material: AIR
+    slots: [0-26]
+    display_name: ' ' 
+  'AllSites':
+    material: BaseHead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjU5ZDNmNTk2ZjVhYTAzYzRlYmRlNmZmNGJlZWQwNDRhOTA3ZDY3ZTU0MTVjOWViMGNjNGUyNzAxNDE2ZGUwZCJ9fX0
+    slot: 11
+    priority: 1
+    update: true
+    hide_attributes: true
+    display_name: '§x§8§e§c§3§f§f&lᴠɪᴇᴡ ᴀʟʟ sɪᴛᴇs'
+    lore:
+      - ''
+      - '§x§c§4§9§3§f§fᴄʟɪᴄᴋ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴠᴏᴛɪɴɢ sɪᴛᴇs'
+    left_click_commands:
+      - "[sound] BLOCK_NOTE_BLOCK_PLING"
+      - '[message] §x§c§4§9§3§f§f----------------------------------------------------'
+      - '[message] §x§8§e§c§3§f§f&a&lᴀʟʟ ᴠᴏᴛɪɴɢ sɪᴛᴇs'
+      - '[message] §x§c§4§9§3§f§f----------------------------------------------------'
+      - '[message] '
+      - '[message] * §x§c§4§9§3§f§f&6&lSITE 1'
+      - '[message] - §x§8§e§c§3§f§f&bhttps://minecraft-mp.com/server-s338852'
+      - '[message] '
+      - '[message] * §x§c§4§9§3§f§f&6&lSITE 2'
+      - '[message] - §x§8§e§c§3§f§f&bhttps://minecraft-server-list.com/server/508968/'
+      - '[message] '
+      - '[message] §x§c§4§9§3§f§f----------------------------------------------------'
+      - '[close]'
+  'SITE-1':
+    material: PAPER
+    slot: 13
+    priority: 1
+    update: true
+    hide_attributes: true
+    display_name: '§x§8§e§c§3§f§f&a&lᴠᴏᴛɪɴɢ sɪᴛᴇ 1'
+    lore:
+      - ''
+      - '§x§c§4§9§3§f§fᴄʟɪᴄᴋ ᴛᴏ ɢᴇᴛ ʟɪɴᴋ'
+    left_click_commands:
+      - "[sound] BLOCK_NOTE_BLOCK_PLING"
+      - '[message] * §x§c§4§9§3§f§f&6&lᴠᴏᴛɪɴɢ sɪᴛᴇ 1'
+      - '[message] - §x§8§e§c§3§f§f&bhttps://minecraft-mp.com/server-s338852'
+      - '[close]'
+  'SITE 2':
+    material: PAPER
+    slot: 15
+    priority: 1
+    update: true
+    hide_attributes: true
+    display_name: '§x§8§e§c§3§f§f&a&lᴠᴏᴛɪɴɢ sɪᴛᴇ 2'
+    lore:
+      - ''
+      - '§x§c§4§9§3§f§fᴄʟɪᴄᴋ ᴛᴏ ɢᴇᴛ ʟɪɴᴋ'
+    left_click_commands:
+      - "[sound] BLOCK_NOTE_BLOCK_PLING"
+      - '[message] * §x§c§4§9§3§f§f&6&lᴠᴏᴛɪɴɢ sɪᴛᴇ 2'
+      - '[message] - §x§8§e§c§3§f§f&bhttps://minecraft-server-list.com/server/508968/'
+      - '[close]'
