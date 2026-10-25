@@ -149,7 +149,7 @@ animated_border:
       name: "&eStatic clickable item"
       glow: true
     close:
-      slot: 40
+      slot: 31
       material: BARRIER
       name: "&cClose"
       close: true
@@ -169,6 +169,9 @@ animated_border:
         - slots:
             "0-8,36-44": { material: LIME_STAINED_GLASS_PANE, name: "&8" }
 ```
+
+The bundled `/animatedborder` example uses two yellow/orange/red trails moving around
+a dark glass border, with static center items and a Close button outside the animated slots.
 
 **Playback modes:**
 
@@ -238,6 +241,11 @@ The bundled `enderchest_viewer` menu (source `PLAYER_ENDERCHEST`) supports this 
 |---|---|
 | `/enderchestview` | View your **own** ender chest (unchanged behaviour) |
 | `/enderchestview <player>` | View **that player's** ender chest (requires the `.others` permission) |
+
+Other players' inventory and ender chest items are read-only: their dynamic item clicks do not
+run actions or transfer items, even when `give-item` / `take-item` are enabled. Your own
+inventory retains the configured click behavior. `%inventory_click_hint%` supplies the
+appropriate ender chest interaction hint.
 
 Aliases: `/ecview`. The target must be **online**. This works for any menu command whose GUI uses a
 player-scoped dynamic source — the ender chest is just the primary use case.

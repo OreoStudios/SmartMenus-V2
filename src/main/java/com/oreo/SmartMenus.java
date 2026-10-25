@@ -216,6 +216,7 @@ public class SmartMenus extends JavaPlugin implements Listener {
             "guis/dynamic_examples/full_screen_demo.yml",
 
             "guis/feature_showcase/showcase_hub.yml",
+            "guis/feature_showcase/animated_border.yml",
             "guis/feature_showcase/showcase_pagination.yml",
             "guis/feature_showcase/showcase_dynamic.yml",
             "guis/feature_showcase/showcase_switch_input.yml",

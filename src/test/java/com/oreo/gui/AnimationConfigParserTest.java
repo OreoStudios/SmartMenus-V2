@@ -130,4 +130,32 @@ class AnimationConfigParserTest {
         assertTrue(parsed.isAutoplay());
         assertEquals(GuiAnimation.INFINITE_LOOPS, parsed.getLoops());
     }
+
+    @Test
+    void bundledTrailMovesAroundPerimeterWithoutCoveringControls() throws Exception {
+        try (var stream = getClass().getResourceAsStream("/guis/feature_showcase/animated_border.yml")) {
+            assertNotNull(stream);
+            var yaml = org.bukkit.configuration.file.YamlConfiguration.loadConfiguration(
+                    new java.io.InputStreamReader(stream, java.nio.charset.StandardCharsets.UTF_8));
+            var menu = yaml.getConfigurationSection("animated_border");
+            var animation = parser.parse("animated_border", menu.getConfigurationSection("animations")).get("border");
+            assertNotNull(animation);
+            var perimeter = java.util.List.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 17, 26, 35,
+                    44, 43, 42, 41, 40, 39, 38, 37, 36, 27, 18, 9);
+            assertEquals(new java.util.HashSet<>(perimeter), animation.getOwnedSlots());
+            for (String key : menu.getConfigurationSection("items").getKeys(false)) {
+                int slot = menu.getInt("items." + key + ".slot");
+                org.junit.jupiter.api.Assertions.assertFalse(animation.getOwnedSlots().contains(slot), key);
+            }
+            assertEquals(12, animation.getFrameCount());
+            for (int i = 0; i < animation.getFrameCount(); i++) {
+                var frame = animation.getFrame(i).getSlotItems();
+                assertEquals(animation.getOwnedSlots(), frame.keySet());
+                for (int j = 0; j < perimeter.size(); j++) {
+                    String expected = (j == i || j == i + 12) ? "YELLOW_STAINED_GLASS_PANE" : null;
+                    if (expected != null) assertEquals(expected, frame.get(perimeter.get(j)).getMaterial());
+                }
+            }
+        }
+    }
 }

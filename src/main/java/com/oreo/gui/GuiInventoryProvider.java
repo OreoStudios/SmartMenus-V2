@@ -218,7 +218,7 @@ public class GuiInventoryProvider implements InventoryProvider {
                 ItemStack stack = buildItemStack(template, player, vars, element);
                 if (stack == null) continue;
 
-                contents.set(slotItem.getSlot(), ClickableItem.of(stack, e -> {
+                contents.set(slotItem.getSlot(), dynamicItem(ctx, template.getDynamicSource(), stack, e -> {
                     String clickKey = e.getClick().name();
                     executeClickActions(plugin, player, template, clickKey, vars);
                     if (template.isTakeItem()) {
@@ -233,6 +233,17 @@ public class GuiInventoryProvider implements InventoryProvider {
                 }));
             }
         }
+    }
+
+    /** Player inventory snapshots belonging to someone else are inspection-only. */
+    static ClickableItem dynamicItem(MenuContext context, DynamicSource source, ItemStack stack,
+                                     java.util.function.Consumer<org.bukkit.event.inventory.InventoryClickEvent> onClick) {
+        boolean playerInventory = source == DynamicSource.PLAYER_ENDERCHEST
+                || source == DynamicSource.PLAYER_INVENTORY;
+        if (playerInventory && !context.viewer().getUniqueId().equals(context.dataOwner().getUniqueId())) {
+            return ClickableItem.empty(stack);
+        }
+        return ClickableItem.of(stack, onClick);
     }
 
     private void putElementVars(Map<String, String> vars, Map<String, Object> element) {
@@ -508,6 +519,8 @@ public class GuiInventoryProvider implements InventoryProvider {
         vars.put("target", dataOwner.getName());
         vars.put("target_name", dataOwner.getName());
         vars.put("target_uuid", dataOwner.getUniqueId().toString());
+        vars.put("inventory_click_hint", viewer.getUniqueId().equals(dataOwner.getUniqueId())
+                ? "&aClick &7to move to your inventory" : "&7Read-only inspection");
 
         Map<String, String> argVars = ArgManager.getAll(viewer.getUniqueId());
         for (Map.Entry<String, String> e : argVars.entrySet()) {
