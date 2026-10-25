@@ -1,0 +1,103 @@
+################################################################################
+# CHANCE_REWARD example — Loot Crate
+#
+# CHANCE_REWARD picks exactly ONE tier per click based on weighted probability.
+# Tiers are checked top-to-bottom; the first tier whose cumulative chance
+# exceeds the random roll (0–100) is awarded.
+#
+# Chances do NOT have to sum to 100.
+# Anything left over is an implicit "miss" — no reward is given.
+#
+# In this example:
+#   Legendary  (NETHERITE_INGOT)   5 %
+#   Epic       (DIAMOND)          15 %  (cumulative  20 %)
+#   Rare       (GOLD_INGOT)       25 %  (cumulative  45 %)
+#   Common     (IRON_INGOT)       40 %  (cumulative  85 %)
+#   Miss       (nothing)          15 %  (remaining)
+################################################################################
+
+chance_crate:
+  title: "&6&l✦ Loot Crate ✦"
+  rows: 3
+  commands: [ "chancecrate", "lootcrate" ]
+  auto-convert: true
+  open_sound: BLOCK_CHEST_OPEN
+
+  items:
+
+    # ── decorative border ──────────────────────────────────────────────────────
+    border:
+      slots: [ 0-8, 18-26 ]
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8"
+
+    # ── the crate itself ───────────────────────────────────────────────────────
+    crate:
+      slot: 13
+      material: CHEST
+      name: "&6&lMystery Crate"
+      lore:
+        - ""
+        - "&7Roll the dice and win one of:"
+        - ""
+        - "  &6★ &e&lLegendary &8(5%)   &fNetherite Ingot"
+        - "  &5★ &d&lEpic      &8(15%)  &fDiamond"
+        - "  &9★ &b&lRare      &8(25%)  &fGold Ingot"
+        - "  &7★ &f&lCommon    &8(40%)  &fIron Ingot"
+        - "  &8★ &7&lMiss      &8(15%)  &fNothing"
+        - ""
+        - "&eClick to open!"
+      actions:
+        - type: CHANCE_REWARD
+          rewards:
+            # ── Legendary — 5 % ──────────────────────────────────────────────
+            - chance: 5
+              commands:
+                - "give {player} netherite_ingot 1"
+                - "broadcast &6&l[Crate] &e{player} &7found a &6Legendary &7reward!"
+              messages:
+                - "&6&l✦ LEGENDARY! &eYou found a Netherite Ingot!"
+
+            # ── Epic — 15 % (cumulative 20 %) ────────────────────────────────
+            - chance: 15
+              commands:
+                - "give {player} diamond 3"
+              messages:
+                - "&d&l✦ EPIC! &7You found &d3 Diamonds&7!"
+
+            # ── Rare — 25 % (cumulative 45 %) ────────────────────────────────
+            - chance: 25
+              commands:
+                - "give {player} gold_ingot 5"
+              messages:
+                - "&b&l✦ RARE! &7You found &b5 Gold Ingots&7!"
+
+            # ── Common — 40 % (cumulative 85 %) ──────────────────────────────
+            - chance: 40
+              commands:
+                - "give {player} iron_ingot 8"
+              messages:
+                - "&f✦ Common. &7You found &f8 Iron Ingots&7."
+
+            # ── Miss — implicit 15 % (100 - 85) — no commands needed ─────────
+            # Simply omit an entry here, or add one with an empty commands list:
+            # - chance: 15
+            #   commands: []
+
+      close: true
+
+    # ── info item ──────────────────────────────────────────────────────────────
+    info:
+      slot: 22
+      material: BOOK
+      name: "&7&lHow it works"
+      lore:
+        - "&7Each click rolls a random number"
+        - "&7from &f0 &7to &f100&7."
+        - ""
+        - "&7Tiers are checked in order —"
+        - "&7the first one your roll lands in"
+        - "&7is the prize you receive."
+        - ""
+        - "&7Chances don't have to add to 100."
+        - "&7The leftover % is simply a miss."
