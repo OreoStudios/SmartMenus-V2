@@ -1,0 +1,45 @@
+# ============================================================
+# EXAMPLE 15 — OREO WARPS (warp exists / permission check)
+# Checks whether a warp exists and/or whether the player has
+# permission to use it.
+# Not consumable.
+# Needs: OreoEssentials
+# ============================================================
+warp_shop:
+  title: "&5&lWarp Shop"
+  rows: 3
+  commands: [ "warpshop" ]
+  auto-convert: true
+  items:
+    "10":
+      material: ENDER_PEARL
+      name: "&d&lVIP Teleport Kit"
+      lore:
+        - "&7Requires the 'vip' warp to exist."
+      commands:
+        - "give {player} ender_pearl 16"
+      close: true
+      conditions:
+        - type: OREO_WARPS
+          warp: vip
+          check_exists: true         # warp must exist
+          check_permission: false    # don't check player permission
+
+    "12":
+      material: DIAMOND
+      name: "&b&lDonator Reward"
+      lore:
+        - "&7Must have permission to use 'donator' warp."
+      commands:
+        - "give {player} diamond 32"
+      close: true
+      conditions:
+        - type: OREO_WARPS
+          warp: donator
+          check_exists: true
+          check_permission: true     # player must have warp permission too
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
