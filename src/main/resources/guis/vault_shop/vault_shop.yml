@@ -1,0 +1,86 @@
+# ============================================================
+# EXAMPLE 1 — VAULT MONEY
+# Requires the player to have enough Vault economy balance.
+# The balance is deducted on click.
+# Needs: Vault + an economy plugin (e.g. EssentialsX economy)
+# ============================================================
+vault_shop:
+  title: "&6&l💰 Money Shop"
+  rows: 3
+  commands: [ "moneyshop", "vaultshop" ]
+
+  # ── Bedrock support ────────────────────────────────────────────────────────────
+  # Option A (recommended): auto-convert this inventory into a Paper Dialog for
+  # Bedrock players. Every item that has click actions becomes a button.
+  # Java players still see the normal chest inventory — nothing changes for them.
+  auto-convert: true
+
+  # Option B: explicit Bedrock form (overrides auto-convert when both are present).
+  # Uncomment and remove auto-convert: true above to use this instead.
+  #
+  # bedrock:
+  #   type: SIMPLE_FORM
+  #   title: "&6&l💰 Money Shop"
+  #   content: "&7Choose an item to purchase:"
+  #   buttons:
+  #     - text: "&b&lDiamond Sword\n&7Price: &a$500"
+  #       image-type: path
+  #       image-data: textures/items/diamond_sword
+  #       conditions:
+  #         - type: VAULT_MONEY
+  #           amount: 500
+  #       actions:
+  #         - type: CONSOLE_COMMAND
+  #           command: "give {player} diamond_sword 1"
+  #         - type: CLOSE_INVENTORY
+  #     - text: "&b&lDiamond Pickaxe\n&7Price: &a$750"
+  #       image-type: path
+  #       image-data: textures/items/diamond_pickaxe
+  #       conditions:
+  #         - type: VAULT_MONEY
+  #           amount: 750
+  #       actions:
+  #         - type: CONSOLE_COMMAND
+  #           command: "give {player} diamond_pickaxe 1"
+  #         - type: CLOSE_INVENTORY
+  #     - text: "&c&lClose"
+  #       actions:
+  #         - type: CLOSE_INVENTORY
+  # ──────────────────────────────────────────────────────────────────────────────
+
+  items:
+    "10":
+      material: DIAMOND_SWORD
+      name: "&b&lDiamond Sword"
+      lore:
+        - "&7A sharp blade."
+        - ""
+        - "&ePrice: &a$500"
+        - "&7Click to purchase!"
+      commands:
+        - "give {player} diamond_sword 1"
+      close: true
+      conditions:
+        - type: VAULT_MONEY
+          amount: 500
+
+    "12":
+      material: DIAMOND_PICKAXE
+      name: "&b&lDiamond Pickaxe"
+      lore:
+        - "&7Mine faster."
+        - ""
+        - "&ePrice: &a$750"
+      commands:
+        - "give {player} diamond_pickaxe 1"
+      close: true
+      conditions:
+        - type: VAULT_MONEY
+          amount: 750
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      lore:
+        - "&7Click to close."
+      close: true
