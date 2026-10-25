@@ -1,0 +1,61 @@
+# ============================================================
+# EXAMPLE 13 — WEATHER
+# Requires specific weather in the player's current world.
+# Values: clear  rain  thunder
+# Not consumable.
+# ============================================================
+weather_shop:
+  title: "&6&lWeather Shop"
+  rows: 3
+  commands: [ "weathershop" ]
+  auto-convert: true
+  items:
+    "10":
+      material: WATER_BUCKET
+      name: "&b&lRainy Day Item"
+      lore:
+        - "&7Only available during rain!"
+        - "&ePrice: &a$1,000"
+      commands:
+        - "give {player} water_bucket 4"
+      close: true
+      conditions:
+        - type: WEATHER
+          weather: rain
+        - type: VAULT_MONEY
+          amount: 1000
+
+    "12":
+      material: SUNFLOWER
+      name: "&e&lSunny Day Item"
+      lore:
+        - "&7Only in clear weather!"
+        - "&ePrice: &a$500"
+      commands:
+        - "give {player} sunflower 16"
+      close: true
+      conditions:
+        - type: WEATHER
+          weather: clear
+        - type: VAULT_MONEY
+          amount: 500
+
+    "14":
+      material: TRIDENT
+      name: "&9&lStorm Item"
+      lore:
+        - "&7Only during thunderstorms!"
+        - "&ePrice: &a$2,000"
+      commands:
+        - "give {player} trident 1"
+      close: true
+      conditions:
+        - type: WEATHER
+          weather: thunder
+        - type: VAULT_MONEY
+          amount: 2000
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
