@@ -1,5 +1,5 @@
 name: SmartMenus
-version: 3.5
+version: 3.6
 main: com.oreo.SmartMenus
 api-version: '1.21'
 folia-supported: true
