@@ -150,3 +150,159 @@ public class ColorUtil {
                 result.append(chatColor).append(c);
             } catch (Exception e) {
                 result.append(c);
+            }
+        }
+
+        return result.toString();
+    }
+
+    private static String applyGradient(String text, String startHex, String endHex) {
+        Color startColor = hexToColor(startHex);
+        Color endColor = hexToColor(endHex);
+
+        if (startColor == null || endColor == null) {
+            return text;
+        }
+
+        StringBuilder result = new StringBuilder();
+        int length = text.length();
+
+        for (int i = 0; i < length; i++) {
+            char c = text.charAt(i);
+
+            double ratio = (double) i / Math.max(1, length - 1);
+            Color color = interpolateColor(startColor, endColor, ratio);
+
+            try {
+                ChatColor chatColor = ChatColor.of(color);
+                result.append(chatColor).append(c);
+            } catch (Exception e) {
+                result.append(c);
+            }
+        }
+
+        return result.toString();
+    }
+
+    private static String applyRainbow(String text) {
+        StringBuilder result = new StringBuilder();
+        int length = text.length();
+
+        for (int i = 0; i < length; i++) {
+            char c = text.charAt(i);
+
+            float hue = (float) i / length;
+            Color color = Color.getHSBColor(hue, 1.0f, 1.0f);
+
+            try {
+                ChatColor chatColor = ChatColor.of(color);
+                result.append(chatColor).append(c);
+            } catch (Exception e) {
+                result.append(c);
+            }
+        }
+
+        return result.toString();
+    }
+
+    private static Color interpolateColor(Color start, Color end, double ratio) {
+        int red = (int) (start.getRed() + ratio * (end.getRed() - start.getRed()));
+        int green = (int) (start.getGreen() + ratio * (end.getGreen() - start.getGreen()));
+        int blue = (int) (start.getBlue() + ratio * (end.getBlue() - start.getBlue()));
+
+        return new Color(red, green, blue);
+    }
+
+    private static Color hexToColor(String hex) {
+        try {
+
+            hex = hex.replace("#", "");
+
+            int r = Integer.parseInt(hex.substring(0, 2), 16);
+            int g = Integer.parseInt(hex.substring(2, 4), 16);
+            int b = Integer.parseInt(hex.substring(4, 6), 16);
+
+            return new Color(r, g, b);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static net.kyori.adventure.text.Component colorComponent(String message) {
+        if (message == null || message.isEmpty()) {
+            return net.kyori.adventure.text.Component.empty();
+        }
+        return net.kyori.adventure.text.minimessage.MiniMessage.miniMessage()
+                .deserialize(legacyToMiniMessage(message));
+    }
+
+    private static String legacyToMiniMessage(String input) {
+        if (input == null) return "";
+
+        input = LEGACY_AMP_HEX.matcher(input).replaceAll("<#$1>");
+
+        input = input
+            .replaceAll("(?i)&0", "<black>")
+            .replaceAll("(?i)&1", "<dark_blue>")
+            .replaceAll("(?i)&2", "<dark_green>")
+            .replaceAll("(?i)&3", "<dark_aqua>")
+            .replaceAll("(?i)&4", "<dark_red>")
+            .replaceAll("(?i)&5", "<dark_purple>")
+            .replaceAll("(?i)&6", "<gold>")
+            .replaceAll("(?i)&7", "<gray>")
+            .replaceAll("(?i)&8", "<dark_gray>")
+            .replaceAll("(?i)&9", "<blue>")
+            .replaceAll("(?i)&a", "<green>")
+            .replaceAll("(?i)&b", "<aqua>")
+            .replaceAll("(?i)&c", "<red>")
+            .replaceAll("(?i)&d", "<light_purple>")
+            .replaceAll("(?i)&e", "<yellow>")
+            .replaceAll("(?i)&f", "<white>")
+            .replaceAll("(?i)&l", "<bold>")
+            .replaceAll("(?i)&o", "<italic>")
+            .replaceAll("(?i)&n", "<underlined>")
+            .replaceAll("(?i)&m", "<strikethrough>")
+            .replaceAll("(?i)&k", "<obfuscated>")
+            .replaceAll("(?i)&r", "<reset>");
+        return input;
+    }
+
+    public static String stripColor(String text) {
+        if (text == null || text.isEmpty()) {
+            return text;
+        }
+
+        text = text.replaceAll("&#[A-Fa-f0-9]{6}", "");
+
+        text = text.replaceAll("<gradient:[^>]+>", "").replaceAll("</gradient>", "");
+
+        text = text.replaceAll("<rainbow>", "").replaceAll("</rainbow>", "");
+
+        return ChatColor.stripColor(text);
+    }
+
+    public static List<String> color(List<String> messages) {
+        if (messages == null || messages.isEmpty()) {
+            return messages;
+        }
+
+        List<String> colored = new ArrayList<>();
+        for (String message : messages) {
+            colored.add(color(message));
+        }
+        return colored;
+    }
+
+    public static List<String> colorList(List<String> messages) {
+        return color(messages);
+    }
+
+    public static boolean supportsRGB() {
+        try {
+            ChatColor.of("#FFFFFF");
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+}
