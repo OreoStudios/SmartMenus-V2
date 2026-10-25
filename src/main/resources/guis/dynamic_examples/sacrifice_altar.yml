@@ -1,0 +1,80 @@
+# ============================================================
+# EXAMPLE 27 — INPUT slot (item sacrifice altar)
+# Players drop an item into the altar slot; the plugin runs
+# actions with the item info as placeholders.
+# remove-on-place: true consumes the item after actions fire.
+# Usage: /altar  or  /sacrifice
+#
+# CHANCE_REWARD picks exactly ONE reward tier per sacrifice.
+# Chances are out of 100. Any remainder = no reward (miss).
+# Example below: 50 % diamond, 30 % gold, 10 % netherite, 10 % nothing.
+# ============================================================
+sacrifice_altar:
+  title: "&4&l🔥 Sacrifice Altar"
+  rows: 3
+  commands: [ "altar", "sacrifice" ]
+  auto-convert: true
+
+  items:
+
+    border:
+      slots: [ 0-8, 18-26 ]
+      material: RED_STAINED_GLASS_PANE
+      name: "&8"
+
+    info:
+      slot: 4
+      material: KNOWLEDGE_BOOK
+      name: "&c&l⚠ Sacrifice an Item"
+      lore:
+        - "&7Place any item in the &cred slot&7 below."
+        - "&7The item will be consumed and you"
+        - "&7will receive a random reward."
+        - ""
+        - "&850% &7— &bDiamond"
+        - "&830% &7— &6Gold Ingot x3"
+        - "&810% &7— &5Netherite Ingot"
+        - "&810% &7— &cNothing..."
+
+    input-slot:
+      type: INPUT
+      slot: 13
+      material: RED_CONCRETE
+      name: "&c&l[ Place Item Here ]"
+      lore:
+        - "&7Drop an item here to sacrifice it."
+        - "&8Can be used once every 30 minutes."
+      cooldown:
+        id: "sacrifice"
+        minutes: 30
+        bypass-permission: "smartmenus.cooldown.bypass"
+        message: "&cYou already sacrificed recently! Wait &e%time_left%&c."
+        title: "&4&lWAIT %minutes% MINUTES"
+        subtitle: "&7You can sacrifice again in &e%time_left%"
+        fade-in: 10
+        stay: 50
+        fade-out: 10
+        action-bar: false
+        sound: "ENTITY_VILLAGER_NO"
+      on-place:
+        - type: BROADCAST
+          message: "&6{player} &7sacrificed &e%input_item_name% &7x&e%input_item_amount%&7!"
+        - type: CHANCE_REWARD
+          rewards:
+            - chance: 50
+              commands:
+                - "give {player} diamond 1"
+            - chance: 30
+              commands:
+                - "give {player} gold_ingot 3"
+            - chance: 10
+              commands:
+                - "give {player} netherite_ingot 1"
+            # remaining 10 % → no reward (intentional miss)
+      remove-on-place: true
+
+    close-btn:
+      slot: 22
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
