@@ -1,0 +1,51 @@
+#  Exert's DeluxeMenus Warp Menu
+#=========================================================
+menu_title: '&8> &6&lᴡᴀʀᴘs &8<'
+open_command:
+  - warps
+register_command: true
+open_commands:
+  - '[sound] BLOCK_PORTAL_TRAVEL_AMBIENT'
+  - '[message] &7Opening warp selection menu!'
+size: 27
+items:
+  'filler':
+    material: BLACK_STAINED_GLASS_PANE
+    display_name: '&f'
+    slots: [0-8, 18-26]
+  'spawn':
+    material: GRASS_BLOCK
+    slot: 11
+    display_name: '&6&lSpawn'
+    lore:
+      - '&7Teleport to the server spawn.'
+      - ''
+      - '&a&l▶ Click to teleport!'
+    click_commands:
+      - '[sound] ENTITY_ENDERMAN_TELEPORT_AMBIENT'
+      - '[close]'
+      - '[player] spawn'
+  'arena':
+    material: IRON_SWORD
+    slot: 13
+    display_name: '&6&lArena'
+    lore:
+      - '&7Challenge others in the PvP arena!'
+      - ''
+      - '&a&l▶ Click to teleport!'
+    click_commands:
+      - '[sound] ENTITY_WITHER_SPAWN_AMBIENT'
+      - '[close]'
+      - '[player] warp arena'
+  'event':
+    material: DIAMOND
+    slot: 15
+    display_name: '&6&lEvent'
+    lore:
+      - '&7Join the active event location.'
+      - ''
+      - '&a&l▶ Click to teleport!'
+    click_commands:
+      - '[sound] BLOCK_NOTE_BLOCK_BELL_AMBIENT'
+      - '[close]'
+      - '[player] warp event'
