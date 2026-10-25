@@ -1,0 +1,167 @@
+# ============================================================
+# EXAMPLE — use_bottom_inventory: true
+#
+# Turns the player's own inventory into part of the GUI, giving
+# you up to 90 interactive slots:
+#   Top section  — rows 1-6 of the chest GUI   (slots 0-53)
+#   Bottom section — player main + hotbar       (slots 0-35 in bottom_items)
+#
+# bottom_items slot mapping (screen order, top → bottom):
+#   0-8   → main row 1  (player inv 9-17)
+#   9-17  → main row 2  (player inv 18-26)
+#   18-26 → main row 3  (player inv 27-35)
+#   27-35 → hotbar      (player inv 0-8)
+#
+# bottom_inventory_mode options:
+#   DEFAULT      — saves/restores the real inventory on open/close (no extra plugins needed)
+#   PACKET_EVENT — requires PacketEvents; keeps real inventory untouched,
+#                  shows GUI items via packets only (safer, no risk of item loss on crash)
+#
+# Usage: /fullscreen  or  /fsdemo
+# ============================================================
+full_screen_demo:
+  title: "&5&l✦ Full-Screen GUI"
+  rows: 6
+  commands: [ "fullscreen", "fsdemo" ]
+  auto-convert: false
+  use_bottom_inventory: true
+  bottom_inventory_mode: DEFAULT   # DEFAULT or PACKET_EVENT (requires PacketEvents plugin)
+
+  items:
+
+    border-top:
+      slots: [ 0-8 ]
+      material: PURPLE_STAINED_GLASS_PANE
+      name: "&8"
+
+    border-bot:
+      slots: [ 45-53 ]
+      material: PURPLE_STAINED_GLASS_PANE
+      name: "&8"
+
+    side-left:
+      slots: [ 9, 18, 27, 36 ]
+      material: PURPLE_STAINED_GLASS_PANE
+      name: "&8"
+
+    side-right:
+      slots: [ 17, 26, 35, 44 ]
+      material: PURPLE_STAINED_GLASS_PANE
+      name: "&8"
+
+    center-info:
+      slot: 22
+      material: NETHER_STAR
+      name: "&d&lFull-Screen GUI"
+      lore:
+        - "&7The 6 rows above &fand&7 your inventory"
+        - "&7below are all part of this GUI."
+        - ""
+        - "&7Your real items are safely saved"
+        - "&7and restored when you close."
+      glow: true
+
+    btn-hello:
+      slot: 25
+      material: LIME_DYE
+      name: "&a&lSay Hello"
+      lore:
+        - "&7Sends you a chat message."
+        - ""
+        - "&eClick →"
+      actions:
+        - type: PLAYER_MESSAGE
+          message: "&d&lFull-Screen GUI &7says: &fHello, &e{player}&f!"
+        - type: SOUND
+          sound: UI_BUTTON_CLICK
+
+    btn-sound:
+      slot: 21
+      material: NOTE_BLOCK
+      name: "&b&lPlay Sound"
+      lore:
+        - "&7Plays a level-up sound."
+        - ""
+        - "&eClick →"
+      actions:
+        - type: SOUND
+          sound: ENTITY_PLAYER_LEVELUP
+          pitch: 1.5
+
+    close:
+      slot: 49
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
+
+  # ── Bottom inventory items ──────────────────────────────────────────────────
+  # Slots 0-35 map to the player's inventory section visible below the GUI.
+  # Row 1 (0-8), Row 2 (9-17), Row 3 (18-26), Hotbar (27-35).
+  bottom_items:
+
+    bottom-border-left:
+      slots: [ 0, 9, 18, 27 ]
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8"
+
+    bottom-border-right:
+      slots: [ 8, 17, 26, 35 ]
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&8"
+
+    bottom-btn-one:
+      slot: 4
+      material: DIAMOND
+      name: "&b&lBottom Button 1"
+      lore:
+        - "&7This button lives in your"
+        - "&7inventory section of the GUI."
+        - ""
+        - "&eClick →"
+      actions:
+        - type: PLAYER_MESSAGE
+          message: "&bYou clicked bottom button 1!"
+        - type: SOUND
+          sound: ENTITY_EXPERIENCE_ORB_PICKUP
+
+    bottom-btn-two:
+      slot: 13
+      material: EMERALD
+      name: "&a&lBottom Button 2"
+      lore:
+        - "&7Second row of the bottom section."
+        - ""
+        - "&eClick →"
+      actions:
+        - type: PLAYER_MESSAGE
+          message: "&aYou clicked bottom button 2!"
+        - type: SOUND
+          sound: ENTITY_EXPERIENCE_ORB_PICKUP
+
+    bottom-btn-three:
+      slot: 22
+      material: GOLD_INGOT
+      name: "&6&lBottom Button 3"
+      lore:
+        - "&7Third row of the bottom section."
+        - ""
+        - "&eClick →"
+      actions:
+        - type: PLAYER_MESSAGE
+          message: "&6You clicked bottom button 3!"
+        - type: SOUND
+          sound: ENTITY_EXPERIENCE_ORB_PICKUP
+
+    hotbar-center:
+      slot: 31
+      material: NETHER_STAR
+      name: "&d&lHotbar Center"
+      lore:
+        - "&7This is in the hotbar row."
+        - ""
+        - "&eClick →"
+      actions:
+        - type: TITLE
+          title: "&d✦"
+          subtitle: "&7You clicked the hotbar slot!"
+          stay: 40
