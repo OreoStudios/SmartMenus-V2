@@ -1,0 +1,65 @@
+open_command:
+- youtube
+- instagram
+- socials
+- social
+register_command: true
+open_commands:
+  - "[sound] UI_TOAST_IN"
+close_commands:
+  - "[sound] UI_TOAST_OUT"
+size: 27
+menu_title: '&7ѕᴏᴄɪᴀʟ ʟɪɴᴋѕ'
+
+items:
+
+  'filler':
+    material: GRAY_STAINED_GLASS_PANE
+    display_name: "&f"
+    data: 1
+    slots: [0-26]
+
+  'discord':
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzY2NGU1NGU3NjI4N2UzZmUyYmQzOTdjMDk4ZWU3YTRiZDBmOWM4OGY5MzlmZGU4YmFiNzhjMzI3MWE0NjE4ZiJ9fX0=
+    data: 1
+    slot: 11
+    display_name: "&#5865F2&lᴊᴏɪɴ ᴅɪѕᴄᴏʀᴅ ѕᴇʀᴠᴇʀ"
+    lore:
+      - ""
+      - "&f▶&#5865F2ᴊᴏɪɴ ᴛʜᴇ ѕᴇʀᴠᴇʀ ꜰᴏʀ ᴍᴏʀᴇ ɴᴇᴡ ᴜᴘᴅᴀᴛᴇѕ"
+      - "&ffor click this for a link in the chat"
+      - ""
+    left_click_commands:
+      - '[message] &f▶ &f&lᴊᴏɪɴ ᴅɪѕᴄᴏʀᴅ ѕᴇʀᴠᴇʀ &#5865F2https://discord.gg/SRTCEkdrbA'
+      - '[sound] ENTITY_EXPERIENCE_ORB_PICKUP'
+      - '[close]'
+
+  'youtube':
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzc2N2VkNzllZGU3YjU4MWRlNGM2YzczMWY1Yjg1OTg5MjRjZjQ1NmU1YTQwNDBlMjdmZGYyNWFjNjAyNTMxZCJ9fX0=
+    data: 1
+    slot: 13
+    display_name: "&c&lѕᴜʙѕᴄʀɪʙᴇ ʏᴏᴜᴛᴜʙᴇ ᴄʜᴀɴɴᴇʟ"
+    lore:
+      - ""
+      - "&f▶ &cѕᴜʙѕᴄʀɪʙᴇ ᴄʜᴀɴɴᴇʟ ꜰᴏʀ ᴍᴏʀᴇ ᴜᴘᴅᴀᴛᴇѕ"
+      - "&for click this for a link in the chat"
+      - ""
+    left_click_commands:
+      - '[message] &f▶ &f&lѕᴜʙѕᴄʀɪʙᴇ ʏᴏᴜᴛᴜʙᴇ ᴄʜᴀɴɴᴇʟ &chttps://www.youtube.com/@NoVaLandsSMP/'
+      - '[sound] ENTITY_EXPERIENCE_ORB_PICKUP'
+      - '[close]'
+
+  'Instagram':
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTBkNDY0MTg2ZTFhNTBkZGFhMTRiZTIyNTk2MTFhNGU4NDU4NTE1YTUzNjdhOTM4OWE5Y2M3Yzg5Yzk0YTkzYiJ9fX0=
+    data: 1
+    slot: 15
+    display_name: "&#9400FB&lꜰ&#B200C8&lᴏ&#CF0096&lʟ&#ED0063&lʟ&#F8004B&lᴏ&#E7015A&lᴡ &#D60169&lu&#C50278&ls &#C00295&lᴏ&#BE01B6&lɴ &#BC00D7&lɪ&#B308EE&lɴ&#922EE0&lѕ&#7155D1&lᴛ&#4F7CC3&lᴀ&#5D81C0&lɢ&#8A70C4&lʀ&#B75FC8&lᴀ&#E44ECC&lᴍ"
+    lore:
+      - ""
+      - "&f▶ &#9400FB&lꜰ&#AA00D5&lᴏ&#C100AF&lʟ&#D70089&lʟ&#ED0063&lᴏ&#FC0047&lᴡ &#F00153&lᴍ&#E3015E&lᴇ &#D60169&lꜰ&#CA0274&lᴏ&#C10285&lʀ &#C0019D&lᴍ&#BE01B6&lᴏ&#BC01CF&lʀ&#BB00E7&lᴇ &#AB11EA&lɴ&#922EE0&lᴇ&#794BD5&lᴡ &#6068CA&lᴜ&#4785BF&lᴘ&#5D81C0&lᴅ&#7F74C3&lᴀ&#A167C6&lᴛ&#C25BC9&lᴇ&#E44ECC&lѕ"
+      - "&for click this for a link in the chat"
+      - ""
+    left_click_commands:
+      - '[message] &f▶ &#9400FB&lꜰ&#E00079&lᴏ&#E5015C&lʟ&#C1028C&lʟ&#BB00E0&lᴏ&#754FD3&lᴡ &#707AC1&lu&#E44ECC&ls &dhttps://www.instagram.com/novalandssmp/'
+      - '[sound] ENTITY_EXPERIENCE_ORB_PICKUP'
+      - '[close]'
