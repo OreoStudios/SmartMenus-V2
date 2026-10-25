@@ -88,3 +88,94 @@ public class ItemLevelManager {
         if (!lore.isEmpty()) {
             List<String> colored = new ArrayList<>();
             for (String line : lore) colored.add(ColorUtil.color(line));
+            meta.setLore(colored);
+        }
+
+        if (sec.contains("custom_model_data")) meta.setCustomModelData(sec.getInt("custom_model_data"));
+
+        boolean glow = sec.getBoolean("glow", false);
+        ConfigurationSection enchSec = sec.getConfigurationSection("enchantments");
+        if (enchSec != null) {
+            for (String key : enchSec.getKeys(false)) {
+                Enchantment ench = Enchantment.getByKey(NamespacedKey.minecraft(key.toLowerCase()));
+                if (ench == null) ench = Enchantment.getByName(key.toUpperCase());
+                if (ench != null) meta.addEnchant(ench, enchSec.getInt(key), true);
+            }
+        } else if (glow) {
+            meta.addEnchant(Enchantment.UNBREAKING, 1, true);
+            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        }
+
+        for (String flagName : sec.getStringList("item_flags")) {
+            try { meta.addItemFlags(ItemFlag.valueOf(flagName.toUpperCase())); }
+            catch (IllegalArgumentException ignored) {}
+        }
+
+        PersistentDataContainer pdc = meta.getPersistentDataContainer();
+        pdc.set(keyId, PersistentDataType.STRING, itemId);
+        pdc.set(keyLevel, PersistentDataType.INTEGER, level);
+
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    public boolean give(Player player, String itemId, int level) {
+        ItemStack item = getItem(itemId, level);
+        if (item == null) return false;
+        player.getInventory().addItem(item.clone());
+        return true;
+    }
+
+    public boolean set(Player player, String itemId, int level) {
+        ItemStack newItem = getItem(itemId, level);
+        if (newItem == null) return false;
+        ItemStack[] contents = player.getInventory().getContents();
+        for (int i = 0; i < contents.length; i++) {
+            if (itemId.equals(getItemId(contents[i]))) {
+                player.getInventory().setItem(i, newItem.clone());
+                return true;
+            }
+        }
+        player.getInventory().addItem(newItem.clone());
+        return false;
+    }
+
+    public ItemStack getItem(String itemId, int level) {
+        TreeMap<Integer, ItemStack> levels = registry.get(itemId);
+        return levels == null ? null : levels.get(level);
+    }
+
+    public String getItemId(ItemStack item) {
+        if (item == null || !item.hasItemMeta()) return null;
+        return item.getItemMeta().getPersistentDataContainer().get(keyId, PersistentDataType.STRING);
+    }
+
+    public int getItemLevel(ItemStack item) {
+        if (item == null || !item.hasItemMeta()) return -1;
+        Integer lvl = item.getItemMeta().getPersistentDataContainer().get(keyLevel, PersistentDataType.INTEGER);
+        return lvl != null ? lvl : -1;
+    }
+
+    public int getMaxLevel(String itemId) {
+        TreeMap<Integer, ItemStack> levels = registry.get(itemId);
+        return (levels == null || levels.isEmpty()) ? -1 : levels.lastKey();
+    }
+
+    public int getMinLevel(String itemId) {
+        TreeMap<Integer, ItemStack> levels = registry.get(itemId);
+        return (levels == null || levels.isEmpty()) ? -1 : levels.firstKey();
+    }
+
+    public Set<String> getItemIds() {
+        return Collections.unmodifiableSet(registry.keySet());
+    }
+
+    public boolean hasItem(String itemId) {
+        return registry.containsKey(itemId);
+    }
+
+    public Set<Integer> getLevels(String itemId) {
+        TreeMap<Integer, ItemStack> levels = registry.get(itemId);
+        return levels == null ? Collections.emptySet() : Collections.unmodifiableSet(levels.keySet());
+    }
+}
