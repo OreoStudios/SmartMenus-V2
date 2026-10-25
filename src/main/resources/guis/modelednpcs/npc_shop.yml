@@ -1,0 +1,34 @@
+# ============================================================
+# EXAMPLE 17 — MODELED NPC PROXIMITY
+# Requires the player to be within `radius` blocks of a
+# ModeledNPCs NPC by its ID.
+# Not consumable.
+# Needs: ModeledNPCs
+# ============================================================
+npc_shop:
+  title: "&c&l⚔ Arena Shop"
+  rows: 3
+  npc_id: 1                            # also opens when right-clicking NPC #1
+  commands: [ "arenashop" ]
+  auto-convert: true
+  items:
+    "10":
+      material: DIAMOND_SWORD
+      name: "&c&lPvP Sword"
+      lore:
+        - "&7Must be within 10 blocks of the Arena Master (NPC #1)."
+        - "&ePrice: &a$5,000"
+      commands:
+        - "give {player} diamond_sword 1"
+      close: true
+      conditions:
+        - type: VAULT_MONEY
+          amount: 5000
+        - type: MODELED_NPC
+          npc_id: 1
+          radius: 10.0               # must be within 10 blocks of NPC #1
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
