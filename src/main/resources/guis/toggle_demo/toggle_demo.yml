@@ -1,0 +1,76 @@
+# ============================================================
+# EXAMPLE 22 — SWITCH button
+# Static-key toggle demo + multi-state difficulty picker.
+# Usage: /toggledemo
+# ============================================================
+toggle_demo:
+  title: "&8⚙ Toggle Settings"
+  rows: 3
+  commands: [ "toggledemo" ]
+  auto-convert: true
+
+  items:
+
+    border-td:
+      slots: [ 0-8, 18-26 ]
+      material: BLACK_STAINED_GLASS_PANE
+      name: "&8"
+
+    notifications:
+      type: SWITCH
+      slot: 11
+      key: "true"
+      buttons:
+        "true":
+          material: LIME_DYE
+          name: "&a&lNotifications: ON"
+          lore:
+            - "&7Notifications are &aenabled&7."
+            - "&eClick to disable"
+          commands:
+            - "say {player} disabled notifications"
+        "false":
+          material: GRAY_DYE
+          name: "&7&lNotifications: OFF"
+          lore:
+            - "&7Notifications are &cdisabled&7."
+            - "&eClick to enable"
+          commands:
+            - "say {player} enabled notifications"
+      material: ORANGE_DYE
+      name: "&6Unknown State"
+
+    difficulty:
+      type: SWITCH
+      slot: 15
+      key: "easy"
+      buttons:
+        "easy":
+          material: LIME_WOOL
+          name: "&a&lDifficulty: EASY"
+          lore:
+            - "&7Click to change to &eNormal"
+          commands:
+            - "say {player} set difficulty to normal"
+        "normal":
+          material: YELLOW_WOOL
+          name: "&e&lDifficulty: NORMAL"
+          lore:
+            - "&7Click to change to &cHard"
+          commands:
+            - "say {player} set difficulty to hard"
+        "hard":
+          material: RED_WOOL
+          name: "&c&lDifficulty: HARD"
+          lore:
+            - "&7Click to change to &aEasy"
+          commands:
+            - "say {player} set difficulty to easy"
+      material: YELLOW_WOOL
+      name: "&e&lDifficulty: NORMAL"
+
+    close-td:
+      slot: 22
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
