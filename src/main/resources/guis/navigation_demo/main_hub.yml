@@ -1,0 +1,91 @@
+# ============================================================
+# EXAMPLE 23 — INVENTORY / BACK / HOME navigation
+# Two linked menus: main_hub opens sub_shop.
+# BACK returns to previous menu; HOME resets navigation to root.
+# Usage: /mainhub  and  /subshop
+#
+# Both GUIs live in the same folder — multiple GUIs per file/
+# folder are fully supported. The GUI ID is the root key.
+# ============================================================
+main_hub:
+  title: "&6&l🏠 Main Hub"
+  rows: 3
+  commands: [ "mainhub" ]
+  main_menu: main_hub
+
+  items:
+
+    border-hub:
+      slots: [ 0-8, 18-26 ]
+      material: BLACK_STAINED_GLASS_PANE
+      name: "&8"
+
+    open-shop:
+      type: INVENTORY
+      slot: 13
+      inventory: sub_shop
+      material: GOLD_INGOT
+      name: "&e&lOpen Shop"
+      lore:
+        - "&7Browse available items"
+
+    close-hub:
+      slot: 22
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
+
+
+sub_shop:
+  title: "&a&l🛒 Sub Shop"
+  rows: 3
+  commands: [ "subshop" ]
+  auto-convert: true
+  main_menu: main_hub
+
+  items:
+
+    border-ss:
+      slots: [ 0-8, 18-26 ]
+      material: BLACK_STAINED_GLASS_PANE
+      name: "&8"
+
+    diamond-pack:
+      slot: 11
+      material: DIAMOND
+      name: "&b&lDiamond Pack"
+      lore:
+        - "&7Receive 5 diamonds."
+      commands:
+        - "give {player} diamond 5"
+      close: true
+
+    back-ss:
+      type: BACK
+      slot: 20
+      material: ARROW
+      name: "&c&l← Back"
+      lore:
+        - "&7Return to the previous menu"
+
+    home-ss:
+      type: HOME
+      slot: 22
+      material: NETHER_STAR
+      name: "&e&l⌂ Home"
+      lore:
+        - "&7Return to &6Main Hub"
+
+    main-menu-ss:
+      type: MAIN_MENU
+      slot: 24
+      material: COMPASS
+      name: "&6&lMain Menu"
+      lore:
+        - "&7Go directly to &6Main Hub"
+
+    close-ss:
+      slot: 26
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
