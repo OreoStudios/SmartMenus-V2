@@ -1,0 +1,96 @@
+#  Exert's DeluxeMenus RTP Menu
+#=========================================================
+open_command:
+  - rtp
+register_command: true
+size: 27
+menu_title: '&7&lRTP - Overworld'
+
+items:
+
+  'filler':
+    material: BLACK_STAINED_GLASS_PANE
+    display_name: "&f"
+    slots: [0-26]
+
+  'title_item':
+    material: GRASS_BLOCK
+    data: 1
+    slot: 13
+    display_name: "&a&lRandom Teleport - Overworld"
+    lore:
+      - "&7Click to teleport randomly within the Overworld!"
+      - ""
+      - "&7Keep exploring, find new places, and start new adventures."
+      - "&7Distance restrictions may apply to prevent server lag."
+      - ""
+      - "&fNote: There is a cooldown after teleportation."
+    click_commands:
+      - '[player] tpr'
+      - '[close]'
+      - '[sound] ENTITY_ENDERMAN_TELEPORT'
+
+  'north':
+    material: COMPASS
+    data: 1
+    slot: 10
+    display_name: "&a&lTeleport North"
+    lore:
+      - "&7Explore the northern areas of the Overworld!"
+      - "&f[Click to teleport]"
+    click_commands:
+      - '[player] tpr'
+      - '[close]'
+      - '[sound] ENTITY_ENDERMAN_TELEPORT'
+
+  'south':
+    material: COMPASS
+    data: 1
+    slot: 16
+    display_name: "&a&lTeleport South"
+    lore:
+      - "&7Explore the southern areas of the Overworld!"
+      - "&f[Click to teleport]"
+    click_commands:
+      - '[player] tpr'
+      - '[close]'
+      - '[sound] ENTITY_ENDERMAN_TELEPORT'
+
+  'east':
+    material: COMPASS
+    data: 1
+    slot: 12
+    display_name: "&a&lTeleport East"
+    lore:
+      - "&7Explore the eastern areas of the Overworld!"
+      - "&f[Click to teleport]"
+    click_commands:
+      - '[player] tpr'
+      - '[close]'
+      - '[sound] ENTITY_ENDERMAN_TELEPORT'
+
+  'west':
+    material: COMPASS
+    data: 1
+    slot: 14
+    display_name: "&a&lTeleport West"
+    lore:
+      - "&7Explore the western areas of the Overworld!"
+      - "&f[Click to teleport]"
+    click_commands:   
+      - '[player] tpr'
+      - '[close]'
+      - '[sound] ENTITY_ENDERMAN_TELEPORT'
+
+  'center':
+    material: EMERALD
+    data: 1
+    slot: 22
+    display_name: "&6&lTeleport to Center Areas"
+    lore:
+      - "&7Explore areas closer to the world spawn!"
+      - "&f[Click to teleport]"
+    click_commands:
+      - '[player] tpr'
+      - '[close]'
+      - '[sound] ENTITY_ENDERMAN_TELEPORT'
