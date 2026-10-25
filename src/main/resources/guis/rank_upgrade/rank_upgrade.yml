@@ -1,0 +1,62 @@
+# ============================================================
+# EXAMPLE 10 — LUCKPERMS GROUP
+# Checks whether the player is (or isn't) in a LuckPerms group.
+# negate: true  → player must NOT be in the group
+# include_inherited: true → counts inherited (parent) groups too
+# Not consumable.
+# Needs: LuckPerms
+# ============================================================
+rank_upgrade:
+  title: "&6&l⭐ Rank Upgrade Shop"
+  rows: 3
+  commands: [ "rankupgrade", "rankshop" ]
+  auto-convert: true
+  items:
+    # Buy VIP rank — requires NOT already being VIP or higher
+    "10":
+      material: IRON_BLOCK
+      name: "&7&lBecome VIP"
+      lore:
+        - "&ePrice: &a$5,000"
+        - "&7You must not already be VIP."
+      commands:
+        - "lp user {player} parent set vip"
+        - "tellraw {player} {\"text\":\"You are now VIP!\",\"color\":\"gold\"}"
+      close: true
+      conditions:
+        - type: LUCKPERMS_GROUP
+          group: vip
+          include_inherited: true
+          negate: true                   # block if ALREADY vip
+          error_message: "&c❌ You are already &eVIP&c or higher!"
+        - type: VAULT_MONEY
+          amount: 5000
+
+    # Buy VIP+ — requires current VIP rank AND not already VIP+
+    "12":
+      material: GOLD_BLOCK
+      name: "&6&lBecome VIP+"
+      lore:
+        - "&eRequires: &fVIP rank"
+        - "&ePrice: &a$10,000"
+      commands:
+        - "lp user {player} parent set vipplus"
+        - "tellraw {player} {\"text\":\"You are now VIP+!\",\"color\":\"gold\"}"
+      close: true
+      conditions:
+        - type: LUCKPERMS_GROUP
+          group: vip
+          include_inherited: true
+          error_message: "&c❌ You must be &eVIP&c first!"
+        - type: LUCKPERMS_GROUP
+          group: vipplus
+          include_inherited: true
+          negate: true
+          error_message: "&c❌ You are already &eVIP+&c or higher!"
+        - type: VAULT_MONEY
+          amount: 10000
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
