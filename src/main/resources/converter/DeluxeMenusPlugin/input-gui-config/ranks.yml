@@ -1,0 +1,277 @@
+#  Exert's DeluxeMenus Ranks Menu
+#=========================================================
+open_command: 
+- rank
+- ranks
+register_command: true
+open_commands:
+  - "[sound] UI_TOAST_IN"
+close_commands:
+  - "[sound] UI_TOAST_OUT"
+size: 36
+menu_title: '           &7ɴᴏᴠᴀʟᴀɴᴅs ʀᴀɴᴋѕ'
+
+items:
+
+  'filler':
+    material: BLACK_STAINED_GLASS_PANE
+    display_name: "&f"
+    data: 1
+    slots: [0-35]
+
+  'main':
+    material: head-%player_name%
+    data: 1
+    slot: 13
+    display_name: "&#ff3d47&lѕᴇʀᴠᴇʀ ʀᴀɴᴋѕ"
+    lore:
+      - "&8ᴅᴏɴᴀᴛᴏʀ ʀᴀɴᴋѕ"
+      - ""
+      - "&fRanks are designed to provide"
+      - "&fspecial perks while ensuring"
+      - "&#ff6970minimal pay-to-win elements."
+      - ""
+      - "&fPlease contact us on Discord to"
+      - "&fclaim ranks and support the server."
+      - ""
+      - "&#55FF55&lDiscord:"
+      - "&#55FF55&n&lhttps://discord.gg/SRTCEkdrbA"
+      - ""
+    click_commands:
+      - '[message] &#55FF55&l🎉 CLAIM YOUR RANKS ON DISCORD'
+      - '[message]  '
+      - '[message]  Verify, participate in events, or support the server!'
+      - '[close]'
+      - '[sound] ENTITY_EXPERIENCE_ORB_PICKUP'
+
+  'vip':
+    material: BOOK
+    data: 1
+    slot: 10
+    display_name: "&#01bc2c&lVIP &fRank"
+    lore:
+      - "&8ғʀᴇᴇ ʀᴀɴᴋ"
+      - ""
+      - "&#01bc2cHow to Claim:"
+      - "&7➥ &#01bc2cVerify your voice in our Discord"
+      - ""
+      - "&#01bc2cPerks:"
+      - "&7➥ &#01bc2c3 Rows of Enderchest"
+      - "&7➥ &#01bc2cPrefix"
+      - "&7➥ &#01bc2cTab Priority"
+      - "&7➥ &#01bc2c/afk"
+      - ""
+      - "&#01bc2cContact us on Discord!"
+      - ""
+    click_commands:
+      - '[message] &#55FF55&l🎉 CLAIM YOUR FREE VIP RANK'
+      - '[message]  '
+      - '[message]  Join our Discord and verify to claim this free rank!'
+      - '[close]'
+      - '[sound] ENTITY_EXPERIENCE_ORB_PICKUP'
+
+  'rekkr':
+    material: NETHERITE_SWORD
+    slot: 11
+    display_name: "&#d4af37&lRekkr &f(Event Winner)"
+    lore:
+      - "&8ᴇᴠᴇɴᴛ ᴡɪɴɴᴇʀ ʀᴀɴᴋ"
+      - ""
+      - "&#d4af37Awarded to winners of server events."
+      - ""
+      - "&#d4af37Perks:"
+      - "&7➥ &#d4af37Special Tag"
+      - "&7➥ &#d4af37Tab Priority"
+      - "&7➥ &#d4af373 Rows of Enderchest"
+      - "&7➥ &#d4af37/afk"
+      - ""
+      - "&#d4af37Participate in events to win this rank."
+      - ""
+    click_commands:
+      - '[message] &#55FF55&l🎉 PARTICIPATE IN EVENTS'
+      - '[message]  '
+      - '[message]  Compete and win to earn this exclusive rank!'
+      - '[close]'
+      - '[sound] ENTITY_EXPERIENCE_ORB_PICKUP'
+
+  'donator':
+    material: GOLD_INGOT
+    data: 1
+    slot: 12
+    display_name: "&#ffaa00&lDonator &fRank"
+    lore:
+      - "&8ᴘᴀɪᴅ ʀᴀɴᴋ"
+      - ""
+      - "&#ffaa00Price: &#ffaa0060 Taka"
+      - ""
+      - "&#ffaa00Perks:"
+      - "&7➥ &#ffaa003x &fHomes"
+      - "&7➥ &#ffaa00/echest"
+      - "&7➥ &#ffaa00/hat"
+      - "&7➥ &#ffaa00/msgtoggle"
+      - "&7➥ &#ffaa00/afk"
+      - "&7➥ &#ffaa003 Rows of Enderchest"      
+      - "&7➥ &#ffaa00Max auction house sell slots: 15"
+      - "&7➥ &#ffaa00Max auction house bid slots: 10"
+      - "&7➥ &#ffaa00Prefix"
+      - "&7➥ &#ffaa00Tab Priority"
+      - "&7➥ &#ffaa00Discord Role"
+      - ""
+      - "&#ffaa00Contact us on Discord to claim."
+      - ""
+    click_commands:
+      - '[message] &#55FF55&l💵 PURCHASE DONATOR RANK'
+      - '[message]  '
+      - '[message]  Contact us on Discord to buy this rank!'
+      - '[message]  https://discord.gg/SRTCEkdrbA'
+      - '[close]'
+      - '[sound] ENTITY_EXPERIENCE_ORB_PICKUP'
+
+  'donator_plus':
+    material: DIAMOND
+    data: 1
+    slot: 14
+    display_name: "&#00aaff&lDonator+ &fRank"
+    lore:
+      - "&8ᴘᴀɪᴅ ʀᴀɴᴋ"
+      - ""
+      - "&#00aaffPrice: &#00aaff100 Taka"
+      - ""
+      - "&#00aaffPerks:"
+      - "&7➥ &#00aaff5x &fHomes"
+      - "&7➥ &#00aaff/echest"
+      - "&7➥ &#00aaff/hat"
+      - "&7➥ &#00aaff/compass"
+      - "&7➥ &#00aaff/trash"
+      - "&7➥ &#00aaff/depth"
+      - "&7➥ &#00aaff/tptoggle"
+      - "&7➥ &#00aaff/afk"
+      - "&7➥ &#00aaff/msgtoggle"
+      - "&7➥ &#00aaff4 Rows of Enderchest"
+      - "&7➥ &#00aaffMax auction house sell slots: 15"
+      - "&7➥ &#00aaffMax auction house bid slots: 10"
+      - "&7➥ &#00aaffPrefix"
+      - "&7➥ &#00aaffTab Priority"
+      - "&7➥ &#00aaffDiscord Role"
+      - ""
+      - "&#00aaffContact us on Discord to claim."
+      - ""
+    click_commands:
+      - '[message] &#55FF55&l💵 PURCHASE DONATOR+ RANK'
+      - '[message]  '
+      - '[message]  Contact us on Discord to buy this rank!'
+      - '[message]  https://discord.gg/SRTCEkdrbA'
+      - '[close]'
+      - '[sound] ENTITY_EXPERIENCE_ORB_PICKUP'
+
+  'nova':
+    material: EMERALD
+    data: 1
+    slot: 15
+    display_name: "&#55ff55&lNova &fRank"
+    lore:
+      - "&8ᴘᴀɪᴅ ʀᴀɴᴋ"
+      - ""
+      - "&#55ff55Price: &#55ff55150 Taka"
+      - ""
+      - "&#55ff55Perks:"
+      - "&7➥ &#55ff557x &fHomes"
+      - "&7➥ &#55ff55/echest"
+      - "&7➥ &#55ff55/hat"
+      - "&7➥ &#55ff55/compass"
+      - "&7➥ &#55ff55/trash"
+      - "&7➥ &#55ff55/depth"
+      - "&7➥ &#55ff55/tptoggle"
+      - "&7➥ &#55ff55/afk"      
+      - "&7➥ &#55ff55/msgtoggle"
+      - "&7➥ &#55ff55/craft"
+      - "&7➥ &#55ff55/nickname"          
+      - "&7➥ &#55ff555 Rows of Enderchest"
+      - "&7➥ &#55ff55Max auction house sell slots: 15"
+      - "&7➥ &#55ff55Max auction house bid slots: 10"
+      - "&7➥ &#55ff55Prefix"
+      - "&7➥ &#55ff55Tab Priority"
+      - "&7➥ &#55ff55Discord Role"
+      - ""
+      - "&#55ff55Contact us on Discord to claim."
+      - ""
+    click_commands:
+      - '[message] &#55FF55&l💵 PURCHASE NOVA RANK'
+      - '[message]  '
+      - '[message]  Contact us on Discord to buy this rank!'
+      - '[message]  https://discord.gg/SRTCEkdrbA'
+      - '[close]'
+      - '[sound] ENTITY_EXPERIENCE_ORB_PICKUP'
+
+  'nova_plus':
+    material: NETHER_STAR
+    data: 1
+    slot: 16
+    display_name: "&#ff55ff&lNova+ &fRank"
+    lore:
+      - "&8ᴘᴀɪᴅ ʀᴀɴᴋ"
+      - ""
+      - "&#ff55ffPrice: &#ff55ff200 Taka"
+      - ""
+      - "&#ff55ffPerks:"
+      - "&7➥ &#ff55ff10x &fHomes"
+      - "&7➥ &#ff55ff/echest"
+      - "&7➥ &#ff55ff/hat"
+      - "&7➥ &#ff55ff/compass"
+      - "&7➥ &#ff55ff/trash"
+      - "&7➥ &#ff55ff/depth"
+      - "&7➥ &#ff55ff/afk"            
+      - "&7➥ &#ff55ff/tptoggle"
+      - "&7➥ &#ff55ff/msgtoggle"
+      - "&7➥ &#ff55ff/craft"
+      - "&7➥ &#ff55ff/anvil"
+      - "&7➥ &#ff55ff/cartographytable"
+      - "&7➥ &#ff55ff/ptime"
+      - "&7➥ &#ff55ff/nickname"      
+      - "&7➥ &#ff55ff6 Rows of Enderchest"
+      - "&7➥ &#ff55ffMax auction house sell slots: 15"
+      - "&7➥ &#ff55ffMax auction house bid slots: 10"
+      - "&7➥ &#ff55ffPrefix"
+      - "&7➥ &#ff55ffTab Priority"
+      - "&7➥ &#ff55ffDiscord Role"
+      - ""
+      - "&#ff55ffContact us on Discord to claim."
+      - ""
+    click_commands:
+      - '[message] &#55FF55&l💵 PURCHASE NOVA+ RANK'
+      - '[message]  '
+      - '[message]  Contact us on Discord to buy this rank!'
+      - '[message]  https://discord.gg/SRTCEkdrbA'
+      - '[close]'
+      - '[sound] ENTITY_EXPERIENCE_ORB_PICKUP'
+
+  'media':
+    material: PAPER
+    data: 1
+    slot: 22
+    display_name: "&#00d9ff&lMedia &fRank"
+    lore:
+      - "&8ᴍᴇᴅɪᴀ ʀᴀɴᴋ"
+      - ""
+      - "&#00d9ffRequirements:"
+      - "&7➥ &#00d9ffCreate and upload videos featuring"
+      - "&7   our server."
+      - "&7➥ &#00d9ffTalk to our admins on Discord"
+      - "&7   for additional details."
+      - ""
+      - "&#00d9ffPerks:"
+      - "&7➥ &#00d9ffExclusive Media Tag"
+      - "&7➥ &#00d9ffSpecial Prefix"
+      - "&7➥ &#00d9ffTab Priority"
+      - "&7➥ &#00d9ffDiscord Role"
+      - "&7➥ &#00d9ffEtc"
+      - ""
+      - "&#00d9ffContact us to apply for Media Rank!"
+      - ""
+    click_commands:
+      - '[message] &#55FF55&l🎥 APPLY FOR MEDIA RANK'
+      - '[message]  '
+      - '[message]  Contact us on Discord for Media Rank details!'
+      - '[message]  https://discord.gg/SRTCEkdrbA'
+      - '[close]'
+      - '[sound] ENTITY_EXPERIENCE_ORB_PICKUP'
