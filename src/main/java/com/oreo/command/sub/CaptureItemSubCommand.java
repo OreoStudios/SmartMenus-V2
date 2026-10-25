@@ -86,3 +86,67 @@ public class CaptureItemSubCommand extends SubCommand {
 
         config.set(basePath + ".slot", slot);
         config.set(basePath + ".material", held.getType().name());
+
+        ItemMeta meta = held.getItemMeta();
+        if (meta != null) {
+            if (meta.hasDisplayName()) {
+                config.set(basePath + ".name", meta.getDisplayName().replace('§', '&'));
+            }
+
+            if (meta.hasLore() && meta.getLore() != null) {
+                List<String> lore = new ArrayList<>();
+                for (String line : meta.getLore()) {
+                    lore.add(line.replace('§', '&'));
+                }
+                config.set(basePath + ".lore", lore);
+            }
+
+            if (meta.hasCustomModelData()) {
+                config.set(basePath + ".custom_model_data", meta.getCustomModelData());
+            }
+
+            if (!meta.getItemFlags().isEmpty()) {
+                List<String> flags = new ArrayList<>();
+                for (ItemFlag flag : meta.getItemFlags()) {
+                    flags.add(flag.name());
+                }
+                config.set(basePath + ".item_flags", flags);
+            }
+
+            Map<Enchantment, Integer> enchants = meta.getEnchants();
+            for (Map.Entry<Enchantment, Integer> entry : enchants.entrySet()) {
+                config.set(basePath + ".enchantments." + entry.getKey().getKey().getKey(), entry.getValue());
+            }
+            config.set(basePath + ".glow", false);
+
+            if (meta instanceof EnchantmentStorageMeta esm) {
+                for (Map.Entry<Enchantment, Integer> entry : esm.getStoredEnchants().entrySet()) {
+                    config.set(basePath + ".enchantments." + entry.getKey().getKey().getKey(), entry.getValue());
+                }
+            }
+        }
+
+        try {
+            config.save(guiFile);
+            plugin.reloadGuis();
+            msg(sender, "&a✔ Item captured as &f'" + itemKey + "'&a in GUI &f'" + guiId + "'&a at slot &f" + slot + "&a.");
+            msg(sender, "&7File: &f" + guiFile.getName());
+        } catch (IOException e) {
+            msg(sender, "&cFailed to save the GUI file: " + e.getMessage());
+            plugin.getLogger().severe("captureitem: failed to save " + guiFile.getName() + ": " + e.getMessage());
+        }
+    }
+
+    @Override
+    public List<String> tabComplete(CommandSender sender, String[] args) {
+        if (args.length == 2) {
+            return filter(new ArrayList<>(plugin.getGuiRegistry().getGuiIds()), args[1]);
+        }
+        if (args.length == 3) {
+            List<String> slots = new ArrayList<>();
+            for (int i = 0; i <= 53; i++) slots.add(String.valueOf(i));
+            return filter(slots, args[2]);
+        }
+        return List.of();
+    }
+}
