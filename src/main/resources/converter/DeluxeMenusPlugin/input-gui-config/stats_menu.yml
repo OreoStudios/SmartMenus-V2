@@ -1,0 +1,134 @@
+
+menu_title: '&7&lѕᴛᴀᴛѕ ᴍᴇɴᴜ'
+open_command:
+  - stats
+open_commands:
+  - "[sound] UI_TOAST_IN"
+close_commands:
+  - "[sound] UI_TOAST_OUT"
+register_command: true
+size: 45
+# as always, only cool people can open this menu :)
+items:
+  'filler_item':
+    material: AIR
+    slots: [0-44]
+    display_name: ' ' 
+
+  'date-time':
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGNlZWI3N2Q0ZDI1NzI0YTljYWYyYzdjZGYyZDg4Mzk5YjE0MTdjNmI5ZmY1MjEzNjU5YjY1M2JlNDM3NmUzIn19fQ==
+    slot: 0
+    priority: 1
+    update: true
+    hide_attributes: true
+    display_name: '&f&lᴅᴀᴛᴇ & ᴛɪᴍᴇ'
+    lore:
+      - '&8Shows Date & Time'
+      - ''
+      - '&f| Date: &f%localtime_time_MMM d, Y%'
+      - '&f| Time: &f%localtime_time_hh:mm aaa%'
+    
+  'player-info':
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGMyMjhhZWFmOTZmNWUzNmFkMWY3NWI3NThlZDMwNDIxMTc1YmJmMGIwZDJhNjU1NWUzMDY5ZDE0MzQ0OWJkYSJ9fX0=
+    slot: 12
+    priority: 1
+    update: true
+    hide_attributes: true
+    display_name: '&e&lᴘʟᴀʏᴇʀ ɪɴꜰᴏ'
+    lore:
+      - '&8Shows Your Info'
+      - ''
+      - '&e| Player Name: &f%player_name%'
+      - '&e| Player Ping: &f%player_ping%'
+  
+  'server-info':
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODgzZGQwZjkwZGYwNWZlNmEwOWFhY2NhZjU0YmMwNDNlNDU1ZTFjODY1YmRhMWZkMjcyZTNmNDdmYjliYjkxMCJ9fX0=
+    slot: 14
+    priority: 1
+    update: true
+    hide_attributes: true
+    display_name: '&a&lѕᴇʀᴠᴇʀ ɪɴꜰᴏ'
+    lore:
+      - '&8Shows Server Info'
+      - ''
+      - '&a| Server Name: &f%server_name%'
+      - '&a| Online Players: &f%server_online%'
+      - '&a| Version: &f%server_version%'
+
+  'player-health':
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTg0NzVkZTk1MjAzNDQ0MzUwZTI4NTRhZGYwNGZmYWI4OTAyZDE0ODZjYjJlMmZjOGIyZDRjNDc0YmUyMjhmMiJ9fX0=
+    slot: 28
+    priority: 1
+    update: true
+    hide_attributes: true
+    display_name: '&c&lᴘʟᴀʏᴇʀ ʜᴇᴀʟᴛʜ'
+    lore:
+      - '&8Shows Player Health'
+      - ''
+      - '&c| Health: &f%player_health%'
+
+  'player-kills':
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTBkZmM4YTM1NjNiZjk5NmY1YzFiNzRiMGIwMTViMmNjZWIyZDA0Zjk0YmJjZGFmYjIyOTlkOGE1OTc5ZmFjMSJ9fX0=
+    slot: 29
+    priority: 1
+    update: true
+    hide_attributes: true
+    display_name: '&4&lᴘʟᴀʏᴇʀ ᴋɪʟʟѕ'
+    lore:
+      - '&8Shows Player Kills'
+      - ''
+      - '&4| Kills: &f%statistic_player_kills%'
+      - '&4| Mob Kills: &f%statistic_mob_kills%'
+      
+  'player-deaths':
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzU1ZmVlOWYzZjUyMzc3ZWZhNWJlMzU1ZjI3MGZiMzNkMWJjOTJmMGRlMjMyYjRmYmQzYWUzMzY5NGNiMjk0YSJ9fX0=
+    slot: 30
+    priority: 1
+    update: true
+    hide_attributes: true
+    display_name: '&5&lᴘʟᴀʏᴇʀ ᴅᴇᴀᴛʜѕ'
+    lore:
+      - '&8Shows Player Deaths'
+      - ''
+      - '&5| Deaths: &f%statistic_deaths%'
+
+  'player-money':
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjA5Mjk5YTExN2JlZTg4ZDMyNjJmNmFiOTgyMTFmYmEzNDRlY2FlMzliNDdlYzg0ODEyOTcwNmRlZGM4MWU0ZiJ9fX0=
+    slot: 32
+    priority: 1
+    update: true
+    hide_attributes: true
+    display_name: '&6&lᴘʟᴀʏᴇʀ ᴍᴏɴᴇʏ'
+    lore:
+      - '&8Shows Player Money Balance'
+      - ''
+      - '&6| Money: &f%vault_eco_balance_formatted%'
+      
+
+  'player-playtime':
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWU5OThmM2ExNjFhNmM5ODlhNWQwYTFkYzk2OTMxYTM5OTI0OWMwODBiNjYzNjQ1ODFhYjk0NzBkZWE1ZTcyMCJ9fX0=
+    slot: 33
+    priority: 1
+    update: true
+    hide_attributes: true
+    display_name: '&b&lᴘʟᴀʏᴇʀ ᴘʟᴀʏᴛɪᴍᴇ'
+    lore:
+      - '&8Shows Player Playtime'
+      - ''
+      - '&b| Playtime: &f%statistic_time_played:hours% Hrs'
+
+  'player-location':
+    material: basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODU4ZWIwNzg4OTVlZmZhMDc4MWU1MjU0NTYxMGUzMWMyMTEzNzFjNjA5ZjBiMmEwMDA3NDE4YTc3YmZlN2UxMCJ9fX0=
+    slot: 34
+    priority: 1
+    update: true
+    hide_attributes: true
+    display_name: '&d&lᴘʟᴀʏᴇʀ ʟᴏᴄᴀᴛɪᴏɴ'
+    lore:
+      - '&8Shows Player Location'
+      - ''
+      - '&d| World: &f%player_world%'
+      - '&d| X: &f%player_x%'
+      - '&d| Y: &f%player_y%'
+      - '&d| Z: &f%player_z%'
+      
