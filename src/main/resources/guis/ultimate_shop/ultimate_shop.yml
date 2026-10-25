@@ -1,0 +1,48 @@
+# ============================================================
+# EXAMPLE 19 — MULTIPLE CONDITIONS (all must pass)
+# Demonstrates combining several condition types on one item.
+# ============================================================
+ultimate_shop:
+  title: "<gradient:#FFD700:#FF4500>Ultimate Shop</gradient>"
+  rows: 3
+  commands: [ "ultimateshop" ]
+  auto-convert: true
+  items:
+    "13":
+      material: NETHER_STAR
+      name: "<gradient:#FF0000:#FFD700>Ultimate Item</gradient>"
+      lore:
+        - "&7Requirements:"
+        - "  &f✦ Rank: VIP (LuckPerms)"
+        - "  &f✦ $10,000"
+        - "  &f✦ Level 50"
+        - "  &f✦ 10 Diamonds"
+        - "  &f✦ Clear weather"
+        - "  &f✦ In world 'world'"
+        - ""
+        - "&eClick to purchase!"
+      commands:
+        - "give {player} nether_star 1"
+        - "broadcast &6&l{player} &ebought the Ultimate Item!"
+      close: true
+      conditions:
+        - type: LUCKPERMS_GROUP
+          group: vip
+          include_inherited: true
+          error_message: "&c❌ Requires &eVIP&c rank!"
+        - type: VAULT_MONEY
+          amount: 10000
+        - type: XP_LEVEL
+          amount: 50
+        - type: ITEM
+          material: DIAMOND
+          amount: 10
+        - type: WEATHER
+          weather: clear
+        - type: WORLD
+          world: world
+
+    "22":
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
