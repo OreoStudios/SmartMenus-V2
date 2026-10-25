@@ -90,3 +90,68 @@ public class OreoWarpsLocationCondition implements Condition {
             Location playerLocation = player.getLocation();
 
             if (!warpLocation.getWorld().equals(playerLocation.getWorld())) {
+                Map<String, String> replacements = new HashMap<>();
+                replacements.put("world", warpLocation.getWorld().getName());
+                replacements.put("current", playerLocation.getWorld().getName());
+                return plugin.getMessageManager().getMessage("conditions.oreo_warps_location.wrong_world", player, replacements);
+            }
+
+            double distance = getHorizontalDistance(playerLocation, warpLocation);
+
+            Map<String, String> replacements = new HashMap<>();
+            replacements.put("warp", warpName);
+            replacements.put("distance", String.format("%.1f", distance));
+            replacements.put("radius", String.format("%.1f", radius));
+            replacements.put("player", player.getName());
+
+            if (customErrorMessage != null && !customErrorMessage.isEmpty()) {
+                String message = customErrorMessage;
+                for (Map.Entry<String, String> entry : replacements.entrySet()) {
+                    message = message.replace("{" + entry.getKey() + "}", entry.getValue());
+                }
+
+                if (getWarpService() != null && plugin.getMessageManager().isPlaceholderAPIAvailable()) {
+                    try {
+                        Class<?> papiClass = Class.forName("me.clip.placeholderapi.PlaceholderAPI");
+                        message = (String) papiClass.getMethod("setPlaceholders", Player.class, String.class)
+                                .invoke(null, player, message);
+                    } catch (Exception ignored) {
+                        // PlaceholderAPI missing or a placeholder threw; keep the raw message.
+                    }
+                }
+
+                return com.oreo.util.ColorUtil.color(message);
+            }
+
+            return plugin.getMessageManager().getMessage("conditions.oreo_warps_location.too_far", player, replacements);
+
+        } catch (Exception e) {
+            Map<String, String> replacements = new HashMap<>();
+            replacements.put("warp", warpName);
+            return plugin.getMessageManager().getMessage("conditions.oreo_warps_location.warp_not_found", player, replacements);
+        }
+    }
+
+    @Override
+    public ConditionType getType() {
+        return ConditionType.OREO_WARPS_LOCATION;
+    }
+
+    private WarpService getWarpService() {
+        try {
+            OreoEssentials oreo = (OreoEssentials) Bukkit.getPluginManager().getPlugin("OreoEssentials");
+            return oreo != null && oreo.isEnabled() ? oreo.getWarpService() : null;
+        } catch (Exception e) {
+            Map<String, String> replacements = new HashMap<>();
+            replacements.put("error", e.getMessage());
+            plugin.getLogger().warning(plugin.getMessageManager().getMessage("errors.oreo_warps_service_failed", replacements));
+            return null;
+        }
+    }
+
+    private double getHorizontalDistance(Location loc1, Location loc2) {
+        double dx = loc1.getX() - loc2.getX();
+        double dz = loc1.getZ() - loc2.getZ();
+        return Math.sqrt(dx * dx + dz * dz);
+    }
+}
