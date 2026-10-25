@@ -1,0 +1,54 @@
+# ============================================================
+# EXAMPLE 25 — DYNAMIC_PAGINATION + WORLDS
+# Lists all loaded worlds; click to teleport.
+# Usage: /worlds  or  /worldselector
+# ============================================================
+world_selector:
+  title: "&2&l🌍 World Selector"
+  rows: 4
+  commands: [ "worlds", "worldselector" ]
+  auto-convert: true
+
+  items:
+
+    border:
+      slots: [ 0-8, 27-35 ]
+      material: GREEN_STAINED_GLASS_PANE
+      name: "&8"
+
+    world-list:
+      type: DYNAMIC_PAGINATION
+      source: WORLDS
+      slots: [ 9-26 ]
+      # material AUTO → GRASS_BLOCK/NETHERRACK/END_STONE by environment
+      material: AUTO
+      name: "&a%world_name%"
+      lore:
+        - "&7Type: &f%world_type%"
+        - "&7Players online: &e%world_players%"
+        - "&7Time: &f%world_time%"
+        - "&7Difficulty: &c%world_difficulty%"
+        - ""
+        - "&eClick &7to teleport"
+      commands:
+        - "world {player} %world_name%"
+
+    previous-btn:
+      type: PREVIOUS
+      slot: 30
+      material: ARROW
+      name: "&c&l← Previous"
+      is-permanent: false
+
+    next-btn:
+      type: NEXT
+      slot: 32
+      material: ARROW
+      name: "&a&lNext →"
+      is-permanent: false
+
+    close-btn:
+      slot: 35
+      material: BARRIER
+      name: "&c&lClose"
+      close: true
