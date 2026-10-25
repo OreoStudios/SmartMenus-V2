@@ -54,3 +54,42 @@ public class BedrockFormDefinition {
         private List<Action> denyActions;
         private List<BedrockFormInput> inputs;
         private List<Action> submitActions;
+        private String submitButtonText = "Submit";
+        private List<Action> closeActions;
+        private String npcName = "NPC";
+        private String dialogueTag = "dialogue";
+
+        public Builder(FormType type) { this.type = type; }
+
+        public Builder title(String v)               { this.title = v; return this; }
+        public Builder content(String v)             { this.content = v; return this; }
+        public Builder buttons(List<BedrockButton> v){ this.buttons = v; return this; }
+        public Builder confirmButton(String v)       { this.confirmButton = v; return this; }
+        public Builder denyButton(String v)          { this.denyButton = v; return this; }
+        public Builder confirmActions(List<Action> v){ this.confirmActions = v; return this; }
+        public Builder denyActions(List<Action> v)   { this.denyActions = v; return this; }
+        public Builder inputs(List<BedrockFormInput> v){ this.inputs = v; return this; }
+        public Builder submitActions(List<Action> v) { this.submitActions = v; return this; }
+        public Builder submitButtonText(String v)    { this.submitButtonText = v; return this; }
+        public Builder closeActions(List<Action> v)  { this.closeActions = v; return this; }
+        public Builder npcName(String v)             { this.npcName = v; return this; }
+        public Builder dialogueTag(String v)         { this.dialogueTag = v; return this; }
+
+        public BedrockFormDefinition build() { return new BedrockFormDefinition(this); }
+    }
+
+    public FormType getType()              { return type; }
+    public String getTitle()               { return title; }
+    public String getContent()             { return content; }
+    public List<BedrockButton> getButtons(){ return buttons; }
+    public String getConfirmButton()       { return confirmButton; }
+    public String getDenyButton()          { return denyButton; }
+    public List<Action> getConfirmActions(){ return confirmActions; }
+    public List<Action> getDenyActions()   { return denyActions; }
+    public List<BedrockFormInput> getInputs(){ return inputs; }
+    public List<Action> getSubmitActions() { return submitActions; }
+    public String getSubmitButtonText()    { return submitButtonText; }
+    public List<Action> getCloseActions()  { return closeActions; }
+    public String getNpcName()             { return npcName; }
+    public String getDialogueTag()         { return dialogueTag; }
+}
