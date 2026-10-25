@@ -1,0 +1,87 @@
+name: '&6&lRTP'
+size: 27
+items:
+  btn-0:
+    item:
+      material: BLACK_STAINED_GLASS_PANE
+    slots:
+      - 0
+      - 2
+      - 4
+      - 6
+      - 8
+      - 12
+      - 14
+      - 18
+      - 20
+      - 24
+      - 26
+  btn-1:
+    item:
+      material: WHITE_STAINED_GLASS_PANE
+    slots:
+      - 1
+      - 3
+      - 5
+      - 7
+      - 9
+      - 11
+      - 15
+      - 17
+      - 19
+      - 21
+      - 23
+      - 25
+  btn-10:
+    slot: 10
+    item:
+      material: GRASS_BLOCK
+      name: '&aOverworld'
+      lore:
+        - '&2ɢᴏ ᴀɴᴅ ᴇxᴘʟᴏʀᴇ ᴛʜᴇ ᴡᴏʀʟᴅ ʙʏ ɢᴇᴛᴛɪɴɢ ʀᴇꜱᴏᴜʀᴄᴇꜱ'
+        - '&2ᴀɴᴅ ʙᴜɪʟᴅɪɴɢ ʏᴏᴜʀ ʙᴀꜱᴇ'
+        - ''
+        - '       &e&nClick to go'
+    actions:
+      -
+        type: 'player command'
+        commands:
+          - 'betterrtp world world'
+        command-in-chat: false
+  btn-13:
+    slot: 13
+    item:
+      material: NETHERRACK
+      name: '&4World Nether'
+      lore:
+        - '&cɴᴇᴛʜᴇʀ ᴡᴏʀʟᴅ ꜱᴇᴇ ᴀɴᴅ ᴇxᴘʟᴏʀᴇ '
+        - '&cᴛʜᴇ ᴅɪꜰꜰᴇʀᴇɴᴛ ᴘᴀʀᴛꜱ ᴏꜰ ᴛʜᴇ ɴᴇᴛʜᴇʀ'
+        - ''
+        - '      &e&nClick to go'
+    actions:
+      -
+        type: 'player command'
+        commands:
+          - 'betterrtp world world_nether'
+        command-in-chat: false
+  btn-16:
+    slot: 16
+    item:
+      material: END_PORTAL_FRAME
+      name: '&bWorld End'
+      lore:
+        - '&3ʏᴏᴜʀ ʟᴀꜱᴛ ꜱᴛᴀɢᴇ ᴏꜰ ᴛʜᴇ ɢᴀᴍᴇ ɪꜱ ᴛᴏ ᴋɪʟʟ ᴛʜᴇ ᴅʀᴀɢᴏɴ '
+        - '&3ᴀɴᴅ ʙᴇᴄᴏᴍᴇ ᴀ ꜱᴜʀᴠɪᴠᴏʀ.'
+        - ''
+        - '             &e&nClick to go'
+    actions:
+      -
+        type: 'player command'
+        commands:
+          - 'betterrtp world world_the_end'
+        command-in-chat: false
+  btn-22:
+    slot: 22
+    item:
+      material: BLACK_STAINED_GLASS_PANE
+
