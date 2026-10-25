@@ -1,0 +1,317 @@
+title: '&8          &#FFBA00A&#FFB100ᴊ&#FFA800ᴜ&#FF9F00ᴅ&#FF9700ᴀ &#FF8500B&#FF7C00ʟ&#FF8600ᴀ&#FF9100ᴄ&#FF9B00ᴋ&#FFA500O&#FFB000ᴜ&#FFBA00ᴛ'
+type: inventory
+rows: 6
+layout:
+  '13':
+  - ajuda_slot_13
+  '19':
+  - ajuda_slot_19
+  '21':
+  - ajuda_slot_21
+  '23':
+  - ajuda_slot_23
+  '25':
+  - ajuda_slot_25
+  '29':
+  - ajuda_slot_29
+  '31':
+  - ajuda_slot_31
+  '33':
+  - ajuda_slot_33
+  '37':
+  - ajuda_slot_37
+  '39':
+  - ajuda_slot_39
+  '41':
+  - ajuda_slot_41
+  '43':
+  - ajuda_slot_43
+  '47':
+  - ajuda_slot_47
+  fill:
+  - empty_item
+items:
+  ajuda_slot_13:
+    material: knowledge_book
+    name: '&#77FF5B❤ &#4EBB41Esᴛᴀᴛísᴛɪᴄᴀs ᴅᴇ: &7%player_name% &#77FF5B❤'
+    lore:
+    - '&7• ᴠᴇᴊᴀ ᴀs sᴜᴀs ᴇsᴛᴀᴛísᴛɪᴄᴀs ᴀǫᴜɪ!'
+    - '&7• &#FFED00ᴛᴇᴍᴘᴏ ᴛᴏᴛᴀʟ ᴊᴏɢᴀᴅᴏ&7 ⏵ &#EEFF68%statistic_time_played%'
+    - '&7• &#29FF1Eᴛᴏᴛᴀʟ ᴅᴇ ᴍᴏʙs ᴍᴏʀᴛᴏs&7 ⏵ &#6BFF58%statistic_mob_kills%'
+    - '&7• &#FF00EDᴛᴏᴛᴀʟ ᴅᴇ ʙʟᴏᴄᴏs ᴍɪɴᴇʀᴀᴅᴏs&7 ⏵ &#FF8BF0%statistic_mine_block%'
+    - '&7• &#FF0000ᴛᴏᴛᴀʟ ᴅᴇ ᴍᴏʀᴛᴇs&7 ⏵ &#FF4949%statistic_deaths%'
+    - '&7• &#880000ᴛᴏᴛᴀʟ ᴅᴇ ᴋɪʟʟs&7 ⏵ &#DA0000%statistic_player_kills%'
+    - '&7• &#009CFFᴛᴏᴛᴀʟ ᴅᴇ ᴘᴇɪxᴇs ᴘᴇsᴄᴀᴅᴏs&7 ⏵ &#6DE0FF%statistic_fish_caught%'
+    - '&7• &#7CFF46ᴛᴏᴛᴀʟ ᴅᴇ sᴀʟᴛᴏs&7 ⏵ &#91FF8B%statistic_jump%'
+    - '&7• &#8D6D43ᴛᴏᴛᴀʟ ᴅᴇ sᴀíᴅᴀs ᴅᴏ ʙʟᴀᴄᴋᴏᴜᴛ&7 ⏵ &#FFC679%statistic_leave_game%'
+    - '&7• &#0D00FFᴛᴏᴛᴀʟ ᴅᴇ ɪᴛᴇɴs ᴇɴᴄᴀɴᴛᴀᴅᴏs&7 ⏵ &#6567FF%statistic_item_enchanted%'
+    - '&7• &#A33AFFᴛᴏᴛᴀʟ ᴅᴇ ᴅᴀɴᴏs ᴄᴀᴜsᴀᴅᴏs&7 ⏵ &#C56EFF%statistic_damage_dealt%'
+    - '&7• &#FF6C00ᴛᴏᴛᴀʟ ᴅᴇ ᴅᴀɴᴏs ʀᴇᴄᴇʙɪᴅᴏs&7 ⏵ &#FFA042%statistic_damage_taken%'
+    - '&7• &#37FFDDᴅɪsᴛâɴᴄɪᴀ ᴛᴏᴛᴀʟ ᴘᴇʀᴄᴏʀʀɪᴅᴀ&7 ⏵ &#82FFF6%statistic_walk_one_cm%'
+    - '&7• &#12FF65ᴅɪsᴛâɴᴄɪᴀ ᴛᴏᴛᴀʟ ɴᴀᴅᴀᴅᴀ&7 ⏵ &#5FFF9B%statistic_swim_one_cm%'
+    - '&7• &#FFCA00ᴅɪsᴛâɴᴄɪᴀ ᴛᴏᴛᴀʟ ᴠᴏᴀᴅᴀ&7 ⏵ &#FFE47D%statistic_fly_one_cm%'
+    - '&7• &#5A00FFᴅɪsᴛâɴᴄɪᴀ ᴛᴏᴛᴀʟ ᴄᴀᴠᴀʟɢᴀᴅᴀ&7 ⏵ &#8C52FF%statistic_horse_one_cm%'
+    - '&7• &#FF0084ᴅɪsᴛâɴᴄɪᴀ ᴛᴏᴛᴀʟ ᴅᴇ ʙᴀʀᴄᴏ&7 ⏵ &#FF75B6%statistic_boat_one_cm%'
+    - '&7• &#D60000ᴅɪsᴛâɴᴄɪᴀ ᴛᴏᴛᴀʟ ᴅᴇ ᴄᴀʀʀɪɴʜᴏ&7 ⏵ &#FF4747%statistic_minecart_one_cm%'
+    - '&7• &#ABFF00ᴅɪsᴛâɴᴄɪᴀ ᴛᴏᴛᴀʟ ᴅᴇ ᴇʟʏᴛʀᴀ&7 ⏵ &#CBFF68%statistic_aviate_one_cm%'
+    - '&7• &#B59F68ɴúᴍᴇʀᴏ ᴛᴏᴛᴀʟ ᴅᴇ ᴄᴏᴄʜᴏs ᴜsᴀᴅᴏs&7 ⏵ &#FFDEAD%statistic_interact_with_campfire%'
+    - '&7• &#3CFF99ғᴏʀɴᴀʟʜᴀs ᴜᴛɪʟɪᴢᴀᴅᴀs&7 ⏵ &#7EFFCC%statistic_furnace_interaction%'
+    - '&7• &#FFA500ʙɪɢᴏʀɴᴀs ᴜᴛɪʟɪᴢᴀᴅᴀs&7 ⏵ &#FFC56F%statistic_interact_with_anvil%'
+    - '&7• (ᴀᴛᴜᴀʟɪᴢᴀ ᴀ ᴄᴀᴅᴀ 60s)'
+  ajuda_slot_19:
+    material: nether_star
+    stack: 1
+    name: '&#02CAFF♪ &7Cᴏᴍᴀɴᴅᴏs Essᴇɴᴄɪᴀɪs &#02CAFF♪'
+    lore:
+    - '&7• ᴇsᴛᴇs sãᴏ ᴏs ᴄᴏᴍᴀɴᴅᴏs ᴇssᴇɴᴄɪᴀɪs ǫᴜᴇ ᴠᴏᴄê ᴘʀᴇᴄɪsᴀ'
+    - '&7• ᴘᴀʀᴀ ᴄᴏᴍᴇçᴀʀ ᴀ sᴜᴀ ᴀᴠᴇɴᴛᴜʀᴀ ɴᴏ ʙʟᴀᴄᴋᴏᴜᴛ!'
+    - '&7• ᴄᴏᴍᴀɴᴅᴏs ᴅᴇ ᴄᴀsᴀ.'
+    - '&#02CAFF• &#02CAFF/sethome &3[ɴᴏᴍᴇ ᴅᴀ ᴄᴀsᴀ ǫᴜᴇ ᴠᴏᴄê ǫᴜᴇʀ]&7 ᴘᴀʀᴀ ᴄʀɪᴀʀ ᴀ sᴜᴀ
+      ʜᴏᴍᴇ.'
+    - '&#02CAFF• &#02CAFF/home &3[ɴᴏᴍᴇ ᴅᴀ ʜᴏᴍᴇ]&7 ᴘᴀʀᴀ ɪʀ ᴀᴛé ᴀ sᴜᴀ ʜᴏᴍᴇ.'
+    - '&#02CAFF• &#02CAFF/delhome &3[ɴᴏᴍᴇ ᴅᴀ ʜᴏᴍᴇ]&7 ᴘᴀʀᴀ ᴅᴇʟᴇᴛᴀʀ ᴀ sᴜᴀ ʜᴏᴍᴇ.'
+    - '&#02CAFF• ᴄᴏᴍᴀɴᴅᴏs ᴅᴇ ᴛᴇʟᴇᴘᴏʀᴛᴇ.'
+    - '&#87FF63• &#87FF63/tpa &#16FF34[ɴᴏᴍᴇ ᴅᴏ ᴊᴏɢᴀᴅᴏʀ]&7 ᴘᴀʀᴀ sᴇ ᴛᴇʟᴇᴘᴏʀᴛᴀʀ ᴘᴀʀᴀ
+      ᴜᴍ ᴊᴏɢᴀᴅᴏʀ.'
+    - '&#87FF63• &#87FF63/tpaccept &7ᴘᴀʀᴀ ᴀᴄᴇɪᴛᴀʀ ᴏ ᴘᴇᴅɪᴅᴏ ᴅᴇ ᴛᴇʟᴇᴘᴏʀᴛᴇ ᴅᴇ ᴏᴜᴛʀᴏ ᴊᴏɢᴀᴅᴏʀ.'
+    - '&#87FF63• &#87FF63/tpacancel &7ᴘᴀʀᴀ ᴄᴀɴᴄᴇʟᴀʀ ᴜᴍ ᴛᴇʟᴇᴘᴏʀᴛᴇ.'
+    - '&#87FF63• &#87FF63/tpahere &7ᴠᴏᴄê ᴘᴇᴅᴇ ᴀᴏ ᴊᴏɢᴀᴅᴏʀ ᴘᴀʀᴀ ᴛᴇʟᴇᴘᴏʀᴛᴀʀ ᴀᴛé ᴠᴏᴄê.'
+    - '&7• ᴏᴜᴛʀᴏs ᴄᴏᴍᴀɴᴅᴏs.'
+    - '&#F6FF4E• &#F6FF4E/ender &7ᴏᴜ &#F6FF4E/ec &7ᴀʙʀᴇ ᴏ ʙᴀú ᴅᴏ ᴇɴᴅ.&#FF5959 (ᴘᴏᴅᴇ
+      ᴇxɪᴊɪʀ ᴘᴇʀᴍɪssãᴏ)&7'
+    - '&#F6FF4E• &#F6FF4E/craft &7ᴏᴜ &#F6FF4E/workbench &7ᴀʙʀᴇ ᴀ ᴍᴇsᴀ ᴅᴇ ᴛʀᴀʙᴀʟʜᴏ.&#FF5959
+      (ᴘᴏᴅᴇ ᴇxɪᴊɪʀ ᴘᴇʀᴍɪssãᴏ)&7'
+    - '&#F6FF4E• &#F6FF4E/pay &#FFBF00[ᴊᴏɢᴀᴅᴏʀ] [ᴠᴀʟᴏʀ]&7 ᴘᴀʀᴀ ᴅᴀʀ ᴀʟɢᴜᴍ ᴅɪɴʜᴇɪʀᴏ.'
+    - '&#F6FF4E• &#F6FF4E/kits &7ᴀʙʀᴇ ᴏ ᴍᴇɴᴜ ᴅᴇ ᴋɪᴛs ᴅᴏ BʟᴀᴄᴋOᴜᴛ.'
+    - ''
+    - '&#D900FF• &#D900FF/dback &7Usᴇ ᴏ &#D900FF/dback &7ᴘᴀʀᴀ ᴠᴏʟᴛᴀʀ ᴀ sᴜᴀ ᴍᴏʀᴛᴇ! &#B300FF&lSUPER IMPORTANTE!'
+    - ''
+    - '&#FF0000• &#FF0000/back &7Usᴇ ᴏ &#FF0000/back &7ᴘᴀʀᴀ ᴠᴏʟᴛᴀʀ ᴀ sᴜᴀ ʟᴏᴄᴀʟɪᴢᴀçãᴏ ᴀɴᴛᴇʀɪᴏʀ!'
+    - '&#FF0000&lSUPER IMPORTANTE!'
+  ajuda_slot_21:
+    material: compass
+    stack: 1
+    name: '&#FBAD00⚡ &#5EB100Cᴏᴍᴏ ᴄᴏᴍᴇçᴀʀ ɴᴏ sᴇʀᴠɪᴅᴏʀ? &#FBAD00⚡'
+    lore:
+    - '&7•  &fCᴏᴍᴇçᴇ ᴄᴏᴍ &6/ᴋɪᴛʟɪsᴛ&f ᴘᴀʀᴀ ᴜsᴀʀ ᴏ &6✦ &#AFAFAFK&#B6B6B6ɪ&#BCBCBCᴛ
+      &#CACACAV&#D0D0D0ɪ&#D7D7D7s&#DEDEDEɪ&#E4E4E4ᴛ&#EBEBEBᴀ&#F2F2F2ɴ&#F8F8F8ᴛ&#FFFFFFᴇ
+      &6✦'
+    - '&7•  &fEᴍ sᴇɢᴜɪᴅᴀ, ᴜsᴇ &6/ʀᴛᴘ&f ᴘᴀʀᴀ ɪʀ ᴀᴏ ᴍᴜɴᴅᴏ ɴᴏʀᴍᴀʟ!'
+    - '&7•  &fJá ɴᴏ ᴍᴜɴᴅᴏ sᴜʀᴠɪᴠᴀʟ, ᴅɪɢɪᴛᴇ &6/Cʟᴀɪᴍ!'
+  ajuda_slot_23:
+    material: crafter
+    name: '&#FFB3EE⛏ &#FFF399Cʀᴀғᴛs Cᴜsᴛᴏᴍɪᴢᴀᴅᴏs &#FFB3EE⛏'
+    lore:
+    - '&#FFB3EE• &fNᴇsᴛᴀ Aʙᴀ ᴛᴇᴍᴏs ᴏs &#FFB3EE&nᴄʀᴀғᴛs&r&f ᴅᴏ BʟᴀᴄᴋOᴜᴛ!'
+    - '&#FFB3EE• &fTᴇᴍᴏs ᴏ &#FFB3EE/ʀᴇᴄɪᴘᴇs&f ǫᴜᴇ ᴘᴏᴅᴇᴍ ᴠᴇʀ'
+    - '&#FFB3EE• &fᴀʟɢᴜɴs ɪᴛᴇɴs ᴄᴜsᴛᴏᴍɪᴢᴀᴅᴏs!'
+    - '&#FFB3EE• &fO sᴇʀᴠɪᴅᴏʀ é ғᴏᴄᴀᴅᴏ ᴇᴍ &#FFB3EE&nᴄᴜsᴛᴏᴍɪᴢᴀçãᴏ&f'
+    - '&#FFB3EE• &fᴘᴏʀ ɪssᴏ, ᴘᴏᴅᴇᴍ ᴠᴇʀ ǫᴜᴇ ǫᴜᴀsᴇ ᴛᴜᴅᴏ'
+    - '&#FFB3EE• &#FFB3EEé ᴄᴜsᴛᴏᴍɪᴢᴀᴅᴏ&f, ᴅᴇ ɪᴛᴇɴs ᴀ sɪsᴛᴇᴍᴀs!'
+    - '&#FFB3EE• &fE ᴇssᴇs ɪᴛᴇɴs ᴄᴜsᴛᴏᴍɪᴢᴀᴅᴏs ᴘᴏᴅᴇᴍ sᴇʀ'
+    - '&#FFB3EE• &fᴏʙᴛɪᴅᴏs ᴘᴇʟᴀs &#FFB3EEᴄᴀɪxᴀs, ᴄʀᴀғᴛᴀɴᴅᴏ, ᴏᴜ'
+    - '&#FFB3EE• &fᴀᴛé ᴍᴇsᴍᴏ ᴀᴅǫᴜɪʀɪɴᴅᴏ ᴇʟᴇs ɴᴏs &#FFB3EE&nVɪᴘs!'
+    - '&#FFB3EE• &#FF86E4Aᴘʀᴏᴠᴇɪᴛᴇ ᴛᴜᴅɪɴʜᴏ, ᴘᴏɪs ᴠᴇᴍ ᴀɪ ᴍᴀɪs!'
+    - '&#FFF399&m                                                               &r'
+    - '             &#FFB3EE• Cʟɪǫᴜᴇ ᴘᴀʀᴀ ɪʀ &#FFB3EE&nàs recipes!'
+    - '&#FFF399&m                                                               &r'
+    actions:
+      commands:
+      - '[chat] /receitas %player_name%'
+  ajuda_slot_25:
+    material: comparator
+    stack: 1
+    name: '         &#00FF9C۞ &#00FF9CD&#04FF93ᴇ&#07FF8Bғ&#0BFF82ᴇ&#0EFF79ɴ&#12FE71ɪ&#16FE68ç&#19FE5Fõ&#1DFE57ᴇ&#21FE4Es
+      &#28FE3DB&#2BFE34ʟ&#2FFE2Bᴀ&#33FD23ᴄ&#36FD1Aᴋ&#3AFD11O&#3DFD09ᴜ&#41FD00ᴛ &#00FF9C۞'
+    lore:
+    - '&#41FD00• &fNᴏ BʟᴀᴄᴋOᴜᴛ ᴀʟɢᴜᴍᴀs ᴄᴏɪsᴀs ᴘᴏᴅᴇᴍ'
+    - '&#41FD00• &fsᴇʀ ᴅᴇsᴀʙɪʟɪᴛᴀᴅᴀs, ᴄᴏᴍᴏ ᴀ ʟᴜᴢ... ᴏᴜ ᴀᴛé'
+    - '&#41FD00• &fᴀ sᴄᴏʀᴇʙᴏᴀʀᴅ, ᴄʟɪǫᴜᴇ ᴇ ᴠᴇᴊᴀ ᴄᴏᴍᴏ é!'
+    - '&#00FF9C&m                                                     &r'
+    - '       &fCʟɪǫᴜᴇ ᴘᴀʀᴀ ɪʀ ás &#41FD00ᴅᴇғᴇɴɪçõᴇs&f!'
+    - '&#00FF9C&m                                                     &r'
+    enchanted:
+    - true
+    actions:
+      commands:
+      - '[console] pa open settings %player_name%'
+  ajuda_slot_29:
+    material: command_block
+    name: '     &#FFB400⚠ &#FF0000Sᴛᴀғғ ᴅᴏ BʟᴀᴄᴋOᴜᴛ! &#FFB400⚠'
+    lore:
+    - '&#FF0000• &fEsᴛᴇ ᴘᴏɴᴛᴏ é sᴜᴘᴇʀ Iᴍᴘᴏʀᴛᴀɴᴛᴇ!'
+    - '&#FF0000• &fPᴏɪs ᴀɢᴏʀᴀ sᴀʙᴇᴍ ǫᴜᴇᴍ ғᴀᴢ'
+    - '&#FF0000• &fᴘᴀʀᴛᴇ ᴅᴀ sᴛᴀғғ ᴅᴏ BʟᴀᴄᴋOᴜᴛ!'
+    - ''
+    - '         &f[ <#FFA500>∞ <#FFE300>Fᴜɴᴅᴀᴅᴏʀ <#FFA500>∞ &f]&r '
+    - '              &#FF0000Franciis_'
+    - '   &#FFB400(Fᴜɴᴅᴀᴅᴏʀ ᴇ ᴅᴇsᴇɴᴠᴏʟᴠᴇᴅᴏʀ)'
+    - ''
+    - '          &f[ <#FF0000>◆ <#C10000>Dɪʀᴇᴛᴏʀ <#FF0000>◆  &f]&r '
+    - '              &f'
+    - '          &f[ <#832CFF>♢ <#CE26FF>Gᴇʀᴇɴᴛᴇ <#832CFF>♢ &f] '
+    - '               &f'
+    - '        &f[ §x§0§0§D§8§F§F🛡 §x§C§7§F§8§F§FSᴜᴘᴇʀᴠɪsᴏʀ §x§0§0§D§8§F§F🛡 &f] &r'
+    - '            &#00F1FF• &fRuca112001&f'
+    - '            &#00F1FF• &fGonkaPT&f'
+    - ''
+    - '         &f[ <#39FF00>⌛ <#A1FF9F>Aᴜxɪʟɪᴀʀ <#39FF00>⌛ &f]&r '
+    - '                &f'
+    - '&#FF0000&m                                          &r'
+    - '     &fCʟɪǫᴜᴇ ᴘᴀʀᴀ ғᴀᴢᴇʀ ᴘᴀʀᴛᴇ!'
+    - '          &f&#FFB400/ʟɪɴᴋs&f ᴏᴜ &#FFB400/sᴛᴀғғ!'
+    - '&#FF0000&m                                          &r'
+  ajuda_slot_31:
+    material: bell
+    name: '          &#FF007C⚑ &#E400F3R&#E500EDᴇ&#E600E7ɪ&#E800E1ɴ&#E900DBɪ&#EB00D5ᴄ&#EC00CFɪ&#ED00C9ᴏ
+      &#F000BEᴀ&#F100B8ᴜ&#F300B2ᴛ&#F400ACᴏ&#F500A6ᴍ&#F700A0á&#F8009Aᴛ&#FA0094ɪ&#FB008Eᴄ&#FC0088ᴏ
+      &#E100FF⚑'
+    lore:
+    - '&#E100FF• &fPᴀʀᴀ ᴜᴍ ᴍᴇʟʜᴏʀ ᴅᴇsᴇᴍᴘᴇɴʜᴏ ᴅᴏ ɴᴏssᴏ'
+    - '&#E100FF• &fǫᴜᴇʀɪᴅᴏ BʟᴀᴄᴋOᴜᴛ ᴛᴇᴍᴏs ᴏ sɪsᴛᴇᴍᴀ ᴅᴇ'
+    - '&#E100FF• &fʀᴇɪɴɪᴄɪᴏ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴏ ᴀ ᴄᴇʀᴛᴀs ʜᴏʀᴀs!'
+    - '&#FF007C&m                                                    &r'
+    - '    &f🌎 &#61F000B&#81EB00ʀ&#A0E700ᴀ&#C0E200s&#DFDE00ɪ&#FFD900ʟ                 🇵🇹 &#FF7474ᴘ&#E78874ᴏ&#CE9C74ʀ&#B6B074ᴛ&#9EC375ᴜ&#86D775ɢ&#6DEB75ᴀ&#55FF75ʟ'
+    - '  &#FF007C01&f ᴅᴀ &#9BFFF0ᴍᴀᴅʀᴜɢᴀᴅᴀ&f  ➜     &#E100FF05&f ᴅᴀ &#9BFFF0ᴍᴀɴʜã&f'
+    - '  &#FF007C09&f ᴅᴀ &#9BFFF0ᴍᴀɴʜã&f      ➜       &#E100FF13&f ᴅᴀ &#FF7600ᴛᴀʀᴅᴇ&f'
+    - '  &#FF007C17&f ᴅᴀ &#FF7600ᴛᴀʀᴅᴇ&f      ➜       &#E100FF21&f ᴅᴀ &#4B00F0ɴᴏɪᴛᴇ&f'
+    - '&#FF007C&m                                                    &r'
+    - '&#E100FF• &fAᴄᴏɴᴛᴇᴄᴇ ᴜᴍ ᴀᴠɪsᴏ ᴘʀéᴠɪᴏ ᴇᴍ: 30ᴍɪɴ'
+    - '&#E100FF• &f10ᴍɪɴ, 1ᴍɪɴ, 30sᴇɢ, 5s, 4s, 3s, 2s, 1s.'
+    - '&#FF007C&m                                                    &r'
+    - '          &fCʟɪǫᴜᴇ ᴘᴀʀᴀ ᴠᴇʀ ᴏ &#FF74FF&nᴛᴇᴍᴘᴏ&f!'
+    - '&#FF007C&m                                                    &r'
+    actions:
+      commands:
+      - '[chat] /uar time'
+  ajuda_slot_33:
+    material: sugar_cane
+    name: '&#FFB400❂ &#88FF00Sᴋɪʟʟs ᴅᴏ BʟᴀᴄᴋOᴜᴛ &#FFB400❂'
+    lore:
+    - '&6• &fUᴍ sɪsᴛᴇᴍᴀ ᴅᴏ BʟᴀᴄᴋOᴜᴛ!'
+    - <#FF7070>❤ Vɪᴅᴀ &7➜ Vɪᴅᴀ ᴍáxɪᴍᴀ.
+    - <#0EFF00>✚ Rᴇɢᴇɴᴇʀᴀçãᴏ &7➜ Rᴇᴄᴜᴘᴇʀᴀçãᴏ ɴᴀᴛᴜʀᴀʟ.
+    - <#6AFFBD>☘ Sᴏʀᴛᴇ &7➜ Mᴀɪs ʜɪᴘóᴛᴇsᴇs ᴇᴍ ᴅʀᴏᴘs.
+    - <#0064FF>✿ Sᴀʙᴇᴅᴏʀɪᴀ &7➜ Mᴀɪs XP ᴇ ᴍᴀɢɪᴀ.
+    - <#9F00FF>✦ Rᴇsɪsᴛêɴᴄɪᴀ &7➜ Mᴇɴᴏs ᴅᴀɴᴏ ʀᴇᴄᴇʙɪᴅᴏ.
+    - <#FF00F8>⌘ Cʜᴀɴᴄᴇ Cʀíᴛɪᴄᴀ &7➜ Mᴀɪs ɢᴏʟᴘᴇs ᴄʀíᴛɪᴄᴏs.
+    - <#FFE300>✪ Dᴀɴᴏ Cʀíᴛɪᴄᴏ &7➜ Dᴀɴᴏ ᴇxᴛʀᴀ ᴇᴍ ᴄʀíᴛɪᴄᴏs.
+    - '&f⚡ Vᴇʟᴏᴄɪᴅᴀᴅᴇ &7➜ Mᴏᴠɪᴍᴇɴᴛᴀ-ᴛᴇ ᴍᴀɪs ʀáᴘɪᴅᴏ.'
+    - '&6&m                                                        &r'
+    - '             &fCʟɪǫᴜᴇ ᴘᴀʀᴀ ᴠᴇʀ ᴍᴇʟʜᴏʀ!!'
+    - '                      <#0064FF>/sᴋɪʟʟs'
+    - '&6&m                                                        &r'
+    actions:
+      commands:
+      - '[chat] /skills'
+  ajuda_slot_37:
+    material: skeleton_skull
+    stack: 1
+    name: '&7🗡 &#FF0000Wᴀʀᴘ ᴀʀᴇɴᴀ &7🗡'
+    lore:
+    - '&#FF0000• &fUᴍᴀ ᴀʀᴇɴᴀ, ᴏɴᴅᴇ ᴘᴏᴅᴇ ʙᴀᴛᴀʟʜᴀʀ'
+    - '&#FF0000• &fᴏ sᴇᴜ ᴀᴍɪɢᴏ, ᴘᴏʀǫᴜᴇ ᴀǫᴜɪ, ɴãᴏ'
+    - '&#FF0000• &fsᴇ ᴘᴇʀᴅᴇ ɴᴇɴʜᴜɴs ɪᴛᴇɴs!'
+    - ''
+    - '&#FF0000• &fE ᴀʟéᴍ ᴅᴇ ᴜᴍᴀ ᴀʀᴇɴᴀ, ᴏ ᴇᴠᴇɴᴛᴏ'
+    - '&#FF0000• &fᴅᴇ ɢᴜᴇʀʀᴀ ᴅᴇ ᴄʟᴀɴ, é ғᴇɪᴛᴏ ᴀǫᴜɪ!'
+    - '&4&m                                               &r'
+    - '&#FF0000•  Clique para ir para a &#FF0000&n/warp arena!'
+    - '&4&m                                               &r'
+    actions:
+      commands:
+      - '[chat] /warp arena %player_name%'
+      - '[close]'
+  ajuda_slot_39:
+    material: emerald
+    stack: 1
+    name: '&#FF0074✪ &#6AD5FFVɪᴘs BʟᴀᴄᴋOᴜᴛ &#FF0074✪'
+    lore:
+    - '&#FF0074• &fOs &#FF0074&nᴠɪᴘs&r&f ᴅᴏ BʟᴀᴄᴋOᴜᴛ sãᴏ sɪᴍᴘʟᴇs.'
+    - '&#FF0074• &fTᴏᴅᴏs ᴏs ǫᴜᴇ ᴀᴅǫᴜɪʀɪʀᴇᴍ ᴏs ᴠɪᴘs,'
+    - '&#FF0074• &fEsᴛᴀʀᴀᴍ ᴀᴘᴇɴᴀs ᴀ ᴅᴇɪxᴀʀ ᴏ sᴇʀᴠɪᴅᴏʀ'
+    - '&#FF0074• &#FF0074ʟɪɢᴀᴅᴏ ᴘᴏʀ ᴍᴀɪs ᴛᴇᴍᴘᴏ!'
+    - '&#FF0074• &fRᴇʟᴇᴍʙʀᴀɴᴅᴏ ǫᴜᴇ ᴏ sᴇʀᴠɪᴅᴏʀ ᴇsᴛá ᴇᴍ'
+    - '&#FF0074• &fUᴍᴀ &#FF0074&nʜᴏsᴛ ᴘᴀɢᴀ&r&f ᴇ ᴄᴏᴍ ɪssᴏ, ᴘᴇçᴏ ᴀ'
+    - '&#FF0074• &fᴀᴊᴜᴅᴀ ᴅᴇ ᴛᴏᴅᴏs ᴘᴀʀᴀ ᴄᴏɴsᴇɢᴜɪʀᴍᴏs ᴛᴇʀ'
+    - '&#FF0074• &fᴜᴍ sᴇʀᴠɪᴅᴏʀ ᴄʜᴇɪᴏ ᴅᴇ &#FF0074ᴀɴɪᴍᴀçãᴏ ᴇ ᴅɪᴠᴇʀsãᴏ!'
+    - '&#FF0074• &#FF0074&nAᴊᴜᴅᴇ&r&f ᴏ sᴇʀᴠɪᴅᴏʀ ᴀ ғɪᴄᴀʀ &#FF0074&nᴏɴʟɪɴᴇ!'
+    - '&#6AD5FF&m                                                         &r'
+    - '&#FF0074•       &#6AD5FFCʟɪǫᴜᴇ Aǫᴜɪ ᴘᴀʀᴀ ɪʀ ᴛᴇʀ ᴀᴏs &#FF0074&n/ᴠɪᴘs!'
+    - '&#6AD5FF&m                                                         &r'
+    actions:
+      commands:
+      - '[chat] /warp vips %player_name%'
+      - '[close]'
+  ajuda_slot_41:
+    material: light_blue_shulker_box
+    stack: 1
+    name: '&#00BFFF☁ &#C8EFFFCᴀɪxᴀs BʟᴀᴄᴋOᴜᴛ &#00BFFF☁'
+    lore:
+    - '&#C8EFFF• Nᴀs ᴄᴀɪxᴀs ᴅᴏ Bʟᴀᴄᴋᴏᴜᴛ ɪɴᴠᴇsᴛɪᴍᴏs ɴᴏ'
+    - '&#C8EFFF• ᴘʀᴀᴢᴇʀ ᴅᴇ ᴀʙʀɪʀ ᴄᴀɪxᴀs, ᴄᴏᴍ ᴜᴍᴀ ᴀɴɪᴍᴀçãᴏ'
+    - '&#C8EFFF• ᴍᴜɪᴛᴏ ʟɪɴᴅᴀ ᴇ ᴄʜᴇɪᴀ ᴅᴇ ᴇғᴇɪᴛᴏs, ᴍᴀs ɴãᴏ'
+    - '&#C8EFFF• ᴘᴀʀᴇᴍᴏs ᴘᴏʀ ᴀǫᴜɪ, ʟᴇɪᴀ ᴘᴏʀ ғᴀᴠᴏʀ!'
+    - ''
+    - '&#C8EFFF• Cᴀᴅᴀ ᴄᴀɪxᴀ, ᴛᴇᴍ ᴀ sᴜᴀ ʀᴀʀɪᴅᴀᴅᴇ!'
+    - ''
+    - '&f            ⭐✩✩✩✩ • Cᴏᴍᴜᴍ'
+    - '&f            &b⭐⭐&f✩✩✩ • &bRᴀʀᴏ'
+    - '&f            &d⭐⭐⭐&f✩✩ • &dÉᴘɪᴄᴏ'
+    - '&f            &e⭐⭐⭐⭐&f✩ • &eLᴇɴᴅáʀɪᴏ'
+    - '&f            &#FF0000⭐⭐⭐⭐⭐ &f• &#FF0000Sᴜᴘᴇʀ Lᴇɴᴅáʀɪᴏ'
+    - ''
+    - '&d&m                                                       &r'
+    - '&#E09DFF      Cʟɪǫᴜᴇ ᴘᴀʀᴀ ɪʀ ᴀs &#00BFFF&n/ᴡᴀʀᴘ Cᴀɪxᴀs!'
+    - '&d&m                                                       &r'
+    actions:
+      commands:
+      - '[chat] /warp caixas %player_name%'
+      - '[close]'
+  ajuda_slot_43:
+    material: ominous_trial_key
+    stack: 1
+    name: '&#C800FFΩ &#FFD700Rᴀçᴀs BʟᴀᴄᴋOᴜᴛ?! &#C800FFΩ'
+    lore:
+    - '&#FFD700• &fSɪᴍ, ɪssᴏ ᴍᴇsᴍᴏ! Vᴏᴄê ᴏᴜᴠɪᴜ ʙᴇᴍ...'
+    - '&#FFD700• &fVáʀɪᴀs &#FFD700ʀᴀçᴀs ᴄᴜsᴛᴏᴍɪᴢᴀᴅᴀs ᴇ ᴏʀɪɢɪɴᴀɪs,'
+    - '&#FFD700• &fғᴏʀᴀᴍ Iᴍᴘʟᴇᴍᴇɴᴛᴀᴅᴀs ɴᴏ BʟᴀᴄᴋOᴜᴛ!'
+    - '&#FFD700• &fAғɪᴍ ᴅᴇ ᴄᴏɴʜᴇᴄᴇʀ ᴀʟɢᴜᴍᴀs??'
+    - '&#FFD700• &fEɴᴛãᴏ ᴠᴀᴍᴏs ʟá!'
+    - '&#FFD700• &fVá ᴀᴏ &#FFD700/ᴋɪᴛʟɪsᴛ&f ᴇ ᴇsᴄᴏʟʜᴀ ᴏ ᴋɪᴛ'
+    - '       &r&x&3&0&9&A&A&B&l✦&r &x&0&0&8&9&F&FMᴏᴇᴅᴀ ᴅᴇ ʀᴀçᴀ &x&3&0&9&A&A&B&l✦'
+    - '&#FFD700• &fE ᴄᴏɴsᴇɢᴜᴇ ᴇsᴄᴏʟʜᴇʀ ᴜᴍᴀ &#FFD700ʀᴀçᴀ!'
+    - '&#C800FF&m                                                      &r'
+    - '   &fCʟɪǫᴜᴇ ᴘᴀʀᴀ ɪʀ ᴀs &#FFD700/ʀᴀᴄᴇs&f ᴏᴜ &#FFD700/ʀᴀçᴀs!'
+    - '&#C800FF&m                                                      &r'
+    enchanted:
+    - true
+    actions:
+      commands:
+      - '[chat] /raças'
+      - '[close]'
+  ajuda_slot_47:
+    material: music_disc_creator_music_box
+    name: '&#CA70FF🔔 &#FFFA00Rᴇᴅᴇs Sᴏᴄɪᴀɪs &#CA70FF🔔'
+    lore:
+    - '&7• &fClique aqui para ver todas'
+    - '&7• &fas nossas redes sociais!'
+    - '&#FFFA00&m                                      &r'
+    - '    &fCʟɪǫᴜᴇ ᴘᴀʀᴀ ᴠᴇʀ ᴍᴇʟʜᴏʀ!!'
+    - '              <#CA70FF>/ʟɪɴᴋs'
+    - '&#FFFA00&m                                      &r'
+    actions:
+      commands:
+      - '[console] pa open links %player_name%'
+      - '[close]'
+      - '[refresh]'
+  empty_item.material: AIR
+command: 'ajuda'
+aliases:
+- ?
+- blackout
+- perguntas-frequentes
+- questão
+- tutorial
+- ajudas
+update-delay: '5'
