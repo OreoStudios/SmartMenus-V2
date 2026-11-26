@@ -1,0 +1,51 @@
+guis:
+  dialog_demo:
+    type: DIALOG
+    title: "<gold>SmartMenus Dialog Demo"
+    commands:
+      - dialogdemo
+    dialog:
+      type: MULTI_ACTION
+      columns: 2
+      close-on-escape: true
+      body:
+        - type: TEXT
+          text: "<gray>Try native Minecraft form controls."
+        - type: ITEM
+          material: NETHER_STAR
+          text: "<yellow>Choose your preferences"
+      inputs:
+        username:
+          type: TEXT
+          label: "Username"
+          default: "%player_name%"
+          max-length: 32
+        notes:
+          type: MULTILINE_TEXT
+          label: "Notes"
+          max-length: 256
+        rank:
+          type: SINGLE_OPTION
+          label: "Rank"
+          options: [VIP, MVP, LEGEND]
+        duration:
+          type: NUMBER_RANGE
+          label: "Duration"
+          min: 7
+          max: 90
+          step: 1
+          default: 30
+        confirm:
+          type: BOOLEAN
+          label: "Confirm"
+          default: false
+      buttons:
+        submit:
+          label: "<green>Submit"
+          actions:
+            - type: PLAYER_MESSAGE
+              message: "&aSelected %rank% for %duration% days. Confirmed: %confirm%"
+        back:
+          label: "<red>Back"
+          actions:
+            - type: BACK

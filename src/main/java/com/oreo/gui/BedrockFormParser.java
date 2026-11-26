@@ -103,7 +103,7 @@ final class BedrockFormParser {
     }
 
     @SuppressWarnings("unchecked")
-    private BedrockButton loadButton(String guiId, Map<String, Object> map) {
+    BedrockButton loadButton(String guiId, Map<String, Object> map) {
         try {
             String text      = map.containsKey("text")       ? map.get("text").toString()       : "Button";
             String imageType = map.containsKey("image-type") ? map.get("image-type").toString() : null;
@@ -130,7 +130,7 @@ final class BedrockFormParser {
         }
     }
 
-    private BedrockFormInput loadInput(String guiId, Map<String, Object> map) {
+    BedrockFormInput loadInput(String guiId, Map<String, Object> map) {
         try {
             String typeStr = map.containsKey("type") ? map.get("type").toString().toUpperCase() : "INPUT";
             String label   = map.containsKey("label") ? map.get("label").toString() : "";

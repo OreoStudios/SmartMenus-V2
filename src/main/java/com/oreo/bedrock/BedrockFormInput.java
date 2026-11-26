@@ -52,7 +52,7 @@ public class BedrockFormInput {
         this.options = options == null ? Collections.emptyList() : options;
         this.defaultIndex = defaultIndex;
         this.min = min;
-        this.max = max == 0 ? 100f : max;
+        this.max = max;
         this.step = step <= 0 ? 1f : step;
         this.defaultFloat = defaultFloat;
         this.defaultBool = defaultBool;

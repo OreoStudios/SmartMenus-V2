@@ -223,6 +223,7 @@ public class SmartMenus extends JavaPlugin implements Listener {
             "guis/feature_showcase/showcase_advanced_conditions.yml",
 
             "guis/rewards/reward_menu.yml",
+            "guis/dialog_demo/dialog_demo.yml",
             "guis/rewards/chance_crate.yml",
         };
         for (String path : defaults) {
@@ -244,6 +245,7 @@ public class SmartMenus extends JavaPlugin implements Listener {
             NavigationManager.clearAll(id);
             PageManager.clearPlayer(id);
             ArgManager.clear(id);
+            com.oreo.bedrock.PaperDialogSender.invalidateNative(id);
             if (BottomInventoryService.getInstance() != null && BottomInventoryService.getInstance().isActive(id)) {
                 BottomInventoryService.getInstance().close(p);
             }

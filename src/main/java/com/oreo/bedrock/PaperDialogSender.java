@@ -24,13 +24,156 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-final class PaperDialogSender {
+public final class PaperDialogSender {
 
     private static final LegacyComponentSerializer LEGACY =
             LegacyComponentSerializer.legacyAmpersand();
 
     private static final ClickCallback.Options CALLBACK_OPTIONS =
             ClickCallback.Options.builder().uses(ClickCallback.UNLIMITED_USES).build();
+
+    private static final Map<java.util.UUID, java.util.UUID> NATIVE_SESSIONS = new java.util.concurrent.ConcurrentHashMap<>();
+
+    public static void invalidateNative(java.util.UUID playerId) {
+        NATIVE_SESSIONS.remove(playerId);
+    }
+
+    public static void sendNative(SmartMenus plugin, Player player, com.oreo.gui.GuiDefinition definition) {
+        NativeDialogDefinition config = definition.getNativeDialog();
+        DialogInstancesProvider inst = DialogInstancesProvider.instance();
+        List<DialogBody> bodies = new ArrayList<>();
+        for (NativeDialogDefinition.Body entry : config.body()) {
+            if (entry.material() != null) {
+                var item = DialogBody.item(new org.bukkit.inventory.ItemStack(entry.material()));
+                if (!entry.text().isBlank()) item.description(DialogBody.plainMessage(nativeComponent(player, entry.text())));
+                bodies.add(item.build());
+            } else bodies.add(DialogBody.plainMessage(nativeComponent(player, entry.text())));
+        }
+        List<DialogInput> inputs = new ArrayList<>();
+        for (BedrockFormInput input : config.inputs()) {
+            Component label = nativeComponent(player, input.getLabel());
+            switch (input.getType()) {
+                case INPUT -> {
+                    var builder = inst.textBuilder(input.getKey(), label)
+                            .initial(initialText(player, input)).maxLength(input.getMaxLength());
+                    if (config.multilineKeys().contains(input.getKey()))
+                        builder.multiline(io.papermc.paper.registry.data.dialog.input.TextDialogInput.MultilineOptions.create(5, 80));
+                    inputs.add(builder.build());
+                }
+                case TOGGLE -> inputs.add(inst.booleanBuilder(input.getKey(), label).initial(input.getDefaultBool()).build());
+                case SLIDER -> inputs.add(inst.numberRangeBuilder(input.getKey(), label, input.getMin(), input.getMax())
+                        .step(input.getStep()).initial(input.getDefaultFloat()).build());
+                case DROPDOWN, STEP_SLIDER -> {
+                    List<SingleOptionDialogInput.OptionEntry> entries = new ArrayList<>();
+                    for (int i = 0; i < input.getOptions().size(); i++)
+                        entries.add(inst.singleOptionEntry(String.valueOf(i), nativeComponent(player, input.getOptions().get(i)), i == input.getDefaultIndex()));
+                    inputs.add(inst.singleOptionBuilder(input.getKey(), label, entries).build());
+                }
+                default -> throw new IllegalArgumentException("Unsupported native dialog input");
+            }
+        }
+        var baseBuilder = DialogBase.builder(nativeComponent(player, config.title()))
+                .canCloseWithEscape(config.closeOnEscape()).body(bodies).inputs(inputs);
+        if (config.externalTitle() != null) baseBuilder.externalTitle(nativeComponent(player, config.externalTitle()));
+        DialogBase base = baseBuilder.build();
+        var session = java.util.UUID.randomUUID();
+        var sessionArgs = new HashMap<>(ArgManager.getAll(player.getUniqueId()));
+        List<ActionButton> buttons = new ArrayList<>();
+        for (BedrockButton button : config.buttons()) {
+            buttons.add(ActionButton.builder(nativeComponent(player, button.getText()))
+                    .action(DialogAction.customClick((response, audience) -> onAudiencePlayer(audience, p -> {
+                        if (!p.getUniqueId().equals(player.getUniqueId()) || !NATIVE_SESSIONS.remove(p.getUniqueId(), session)) return;
+                        Map<String, String> values = new HashMap<>(sessionArgs);
+                        try {
+                            for (BedrockFormInput input : config.inputs()) {
+                                String value = validatedValue(input, response);
+                                if (input.getType() == BedrockFormInput.InputType.INPUT) {
+                                    long lines = value.lines().count();
+                                    if (config.multilineKeys().contains(input.getKey()) ? lines > 5 : value.indexOf('\n') >= 0 || value.indexOf('\r') >= 0)
+                                        throw new IllegalArgumentException("Invalid line count");
+                                }
+                                values.put(input.getKey(), value);
+                            }
+                        } catch (RuntimeException e) {
+                            p.sendMessage("Invalid dialog response.");
+                            return;
+                        }
+                        com.oreo.util.SmartScheduler.runTaskForPlayer(plugin, p, () -> {
+                            if (!p.isOnline() || plugin.getGuiRegistry().getGui(definition.getId()) != definition
+                                    || NATIVE_SESSIONS.containsKey(p.getUniqueId())
+                                    || !definition.getId().equals(com.oreo.gui.NavigationManager.peekCurrent(p.getUniqueId()))) return;
+                            try {
+                                for (var requirement : definition.getOpenRequirements()) {
+                                    if (!requirement.check(p)) { p.sendMessage(requirement.getErrorMessage(p)); return; }
+                                }
+                                for (var condition : button.getConditions()) {
+                                    if (!condition.check(p)) { p.sendMessage(condition.getErrorMessage(p)); return; }
+                                }
+                                ArgManager.store(p.getUniqueId(), values);
+                                BedrockManager.executeActions(p, button.getActions(), plugin);
+                            } catch (RuntimeException e) {
+                                plugin.getLogger().warning("Native dialog action failed: " + e.getMessage());
+                            }
+                        });
+                    }), ClickCallback.Options.builder().uses(1).build())).build());
+        }
+        Dialog dialog = Dialog.create(factory -> {
+            var builder = factory.empty();
+            builder.base(base);
+            if (config.confirmation()) builder.type(inst.confirmation(buttons.get(0), buttons.get(1)));
+            else builder.type(inst.multiAction(buttons).columns(config.columns()).build());
+        });
+        player.closeInventory();
+        NATIVE_SESSIONS.put(player.getUniqueId(), session);
+        try {
+            showDialog(player, dialog);
+        } catch (RuntimeException | LinkageError e) {
+            NATIVE_SESSIONS.remove(player.getUniqueId(), session);
+            throw e;
+        }
+    }
+
+    private static String initialText(Player player, BedrockFormInput input) {
+        String text = applyPlaceholders(player, input.getDefaultText().replace("{player}", player.getName()));
+        return text.length() <= input.getMaxLength() ? text : text.substring(0, input.getMaxLength());
+    }
+
+    private static Component nativeComponent(Player player, String value) {
+        String text = applyPlaceholders(player, value == null ? "" : value.replace("{player}", player.getName()));
+        if (text.contains("<")) return net.kyori.adventure.text.minimessage.MiniMessage.miniMessage().deserialize(text);
+        return com.oreo.util.ColorUtil.colorComponent(text);
+    }
+
+    private static String validatedValue(BedrockFormInput input, DialogResponseView response) {
+        return switch (input.getType()) {
+            case INPUT -> {
+                String value = response.getText(input.getKey());
+                if (value == null || value.length() > input.getMaxLength() || value.indexOf(0) >= 0)
+                    throw new IllegalArgumentException("Invalid text");
+                yield value;
+            }
+            case TOGGLE -> {
+                Boolean value = response.getBoolean(input.getKey());
+                if (value == null) throw new IllegalArgumentException("Missing boolean");
+                yield value.toString();
+            }
+            case SLIDER -> {
+                Float value = response.getFloat(input.getKey());
+                if (value == null || !Float.isFinite(value) || value < input.getMin() || value > input.getMax())
+                    throw new IllegalArgumentException("Invalid number");
+                double steps = (value - input.getMin()) / input.getStep();
+                if (Math.abs(steps - Math.rint(steps)) > 0.001 && Math.abs(value - input.getMax()) > 0.0001)
+                    throw new IllegalArgumentException("Invalid step");
+                yield value.toString();
+            }
+            case DROPDOWN, STEP_SLIDER -> {
+                int index = Integer.parseInt(response.getText(input.getKey()));
+                if (index < 0 || index >= input.getOptions().size()) throw new IllegalArgumentException("Invalid option");
+                yield input.getOptions().get(index);
+            }
+            default -> throw new IllegalArgumentException("Unsupported input");
+        };
+    }
 
     static void sendSimpleForm(SmartMenus plugin, Player player, BedrockFormDefinition form) {
         DialogInstancesProvider inst = DialogInstancesProvider.instance();

@@ -133,7 +133,7 @@ public class GuiRegistry {
                 || section.isSet("commands")
                 || section.isSet("inventory-type")
                 || section.isSet("inventory_type")
-                || section.isSet("animations"));
+                || section.isSet("animations") || section.isSet("dialog") || section.isSet("type"));
     }
 
     private GuiDefinition loadGuiDefinition(String id, ConfigurationSection guiSection) {
@@ -267,7 +267,15 @@ public class GuiRegistry {
             bedrockAutoConvert = false;
         }
 
+        com.oreo.bedrock.NativeDialogDefinition nativeDialog = null;
+        if ("DIALOG".equalsIgnoreCase(guiSection.getString("type", "")) || guiSection.isConfigurationSection("dialog")) {
+            nativeDialog = NativeDialogParser.parse(id, title, guiSection.getConfigurationSection("dialog"), bedrockParser);
+        }
+
         List<Condition> openRequirements = conditionListParser.parseFromKey(guiSection, "open-requirements");
+        if (nativeDialog != null && guiSection.isSet("open-requirements")
+                && (!guiSection.isList("open-requirements") || openRequirements.size() != guiSection.getList("open-requirements").size()))
+            throw new IllegalArgumentException("Invalid dialog open-requirements");
         List<Action> openActions = ActionFactory.parseActions(guiSection.getList("open-actions"));
         List<Action> closeActions = ActionFactory.parseActions(guiSection.getList("close-actions"));
 
@@ -312,6 +320,7 @@ public class GuiRegistry {
                 .bottomItems(bottomItems)
                 .bedrockDefinition(bedrockDefinition)
                 .bedrockAutoConvert(bedrockAutoConvert)
+                .nativeDialog(nativeDialog)
                 .openRequirements(openRequirements)
                 .openActions(openActions)
                 .closeActions(closeActions)

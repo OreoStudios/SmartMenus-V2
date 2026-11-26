@@ -48,20 +48,16 @@ public final class SmartMenusAPI {
     public boolean openGui(Player player, String guiId) {
         GuiDefinition def = plugin.getGuiRegistry().getGui(guiId);
         if (def == null) return false;
-        com.oreo.bedrock.BedrockManager bm = plugin.getBedrockManager();
-        if (bm != null && (bm.openForBedrock(player, def) || bm.autoConvertForBedrock(player, def))) return true;
-        def.createInventory(plugin.getInventoryManager(), plugin, player).open(player);
-        return true;
+        return com.oreo.gui.GuiOpener.open(plugin, player, def,
+                com.oreo.gui.GuiOpener.OpenOptions.unchecked());
     }
 
     public boolean openGui(Player player, String guiId, Map<String, String> args) {
         GuiDefinition def = plugin.getGuiRegistry().getGui(guiId);
         if (def == null) return false;
         com.oreo.gui.ArgManager.store(player.getUniqueId(), args);
-        com.oreo.bedrock.BedrockManager bm = plugin.getBedrockManager();
-        if (bm != null && (bm.openForBedrock(player, def) || bm.autoConvertForBedrock(player, def))) return true;
-        def.createInventory(plugin.getInventoryManager(), plugin, player).open(player);
-        return true;
+        return com.oreo.gui.GuiOpener.open(plugin, player, def,
+                com.oreo.gui.GuiOpener.OpenOptions.unchecked());
     }
 
     /**
