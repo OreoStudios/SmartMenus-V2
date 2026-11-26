@@ -59,6 +59,27 @@ public final class GuiOpener {
             return false;
         }
 
+        if (def.getNativeDialog() != null) {
+            // Native dialogs always enforce access, including programmatic navigation.
+            if (!options.checkRequirements()) {
+                for (Condition req : def.getOpenRequirements()) {
+                    if (!req.check(player)) { player.sendMessage(req.getErrorMessage(player)); return false; }
+                }
+            }
+            try {
+                com.oreo.bedrock.PaperDialogSender.sendNative(plugin, player, def);
+                String id = def.getId();
+                if (id != null && !id.equals(NavigationManager.peekCurrent(player.getUniqueId()))) {
+                    NavigationManager.push(player.getUniqueId(), id);
+                }
+                return true;
+            } catch (RuntimeException | LinkageError e) {
+                plugin.getLogger().warning("Failed to open dialog " + def.getId() + ": " + e.getMessage());
+                player.sendMessage("This dialog is unavailable.");
+                return false;
+            }
+        }
+
         BedrockManager bm = plugin.getBedrockManager();
         if (bm != null) {
             if (bm.openForBedrock(player, def)) return true;

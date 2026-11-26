@@ -45,6 +45,7 @@ public class GuiDefinition {
     private final Map<Integer, GuiItem> bottomItems;
     private final BedrockFormDefinition bedrockDefinition;
     private final boolean bedrockAutoConvert;
+    private final com.oreo.bedrock.NativeDialogDefinition nativeDialog;
     private final List<Condition> openRequirements;
     private final List<Action> openActions;
     private final List<Action> closeActions;
@@ -64,7 +65,7 @@ public class GuiDefinition {
                           List<Condition> openRequirements, List<Action> openActions, List<Action> closeActions,
                           String openSound, float openSoundVolume, float openSoundPitch,
                           BottomInventoryMode bottomInventoryMode, com.oreo.util.CooldownConfig openCooldown,
-                          Map<String, GuiAnimation> animations) {
+                          Map<String, GuiAnimation> animations, com.oreo.bedrock.NativeDialogDefinition nativeDialog) {
         this.id = id;
         this.title = title;
         this.rows = rows;
@@ -78,6 +79,7 @@ public class GuiDefinition {
         this.bottomItems = bottomItems != null ? bottomItems : Collections.emptyMap();
         this.bedrockDefinition = bedrockDefinition;
         this.bedrockAutoConvert = bedrockAutoConvert;
+        this.nativeDialog = nativeDialog;
         this.openRequirements = openRequirements != null ? openRequirements : Collections.emptyList();
         this.openActions = openActions != null ? openActions : Collections.emptyList();
         this.closeActions = closeActions != null ? closeActions : Collections.emptyList();
@@ -103,6 +105,7 @@ public class GuiDefinition {
         private Map<Integer, GuiItem> bottomItems = Collections.emptyMap();
         private BedrockFormDefinition bedrockDefinition = null;
         private boolean bedrockAutoConvert = false;
+        private com.oreo.bedrock.NativeDialogDefinition nativeDialog;
         private List<Condition> openRequirements = Collections.emptyList();
         private List<Action> openActions = Collections.emptyList();
         private List<Action> closeActions = Collections.emptyList();
@@ -129,6 +132,7 @@ public class GuiDefinition {
         public Builder bottomItems(Map<Integer, GuiItem> bottomItems) { this.bottomItems = bottomItems; return this; }
         public Builder bedrockDefinition(BedrockFormDefinition bedrockDefinition) { this.bedrockDefinition = bedrockDefinition; return this; }
         public Builder bedrockAutoConvert(boolean bedrockAutoConvert) { this.bedrockAutoConvert = bedrockAutoConvert; return this; }
+        public Builder nativeDialog(com.oreo.bedrock.NativeDialogDefinition value) { this.nativeDialog = value; return this; }
         public Builder openRequirements(List<Condition> openRequirements) { this.openRequirements = openRequirements; return this; }
         public Builder openActions(List<Action> openActions) { this.openActions = openActions; return this; }
         public Builder closeActions(List<Action> closeActions) { this.closeActions = closeActions; return this; }
@@ -143,7 +147,7 @@ public class GuiDefinition {
             return new GuiDefinition(id, title, rows, items, commands, npcId, fillItem, inventoryType,
                     commandArgs, useBottomInventory, bottomItems, bedrockDefinition, bedrockAutoConvert,
                     openRequirements, openActions, closeActions, openSound, openSoundVolume, openSoundPitch,
-                    bottomInventoryMode, openCooldown, animations);
+                    bottomInventoryMode, openCooldown, animations, nativeDialog);
         }
     }
 
@@ -159,6 +163,7 @@ public class GuiDefinition {
     public boolean isUseBottomInventory() { return useBottomInventory; }
     public Map<Integer, GuiItem> getBottomItems() { return Collections.unmodifiableMap(bottomItems); }
     public BedrockFormDefinition getBedrockDefinition() { return bedrockDefinition; }
+    public com.oreo.bedrock.NativeDialogDefinition getNativeDialog() { return nativeDialog; }
     public boolean hasBedrockForm() { return bedrockDefinition != null; }
     public boolean isBedrockAutoConvert() { return bedrockAutoConvert; }
     public List<Condition> getOpenRequirements() { return Collections.unmodifiableList(openRequirements); }

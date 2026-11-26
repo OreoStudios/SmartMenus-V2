@@ -223,6 +223,7 @@ public class SmartMenus extends JavaPlugin implements Listener {
             "guis/feature_showcase/showcase_advanced_conditions.yml",
 
             "guis/rewards/reward_menu.yml",
+            "guis/dialog_demo/dialog_demo.yml",
             "guis/rewards/chance_crate.yml",
         };
         for (String path : defaults) {
