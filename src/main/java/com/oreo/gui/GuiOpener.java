@@ -45,7 +45,7 @@ public final class GuiOpener {
     public static boolean open(SmartMenus plugin, Player player, GuiDefinition def, OpenOptions options, Player target) {
         if (def == null) return false;
 
-        if (options.checkRequirements()) {
+        if (options.checkRequirements() || def.getNativeDialog() != null) {
             for (Condition req : def.getOpenRequirements()) {
                 if (!req.check(player)) {
                     player.sendMessage(req.getErrorMessage(player));
@@ -54,18 +54,13 @@ public final class GuiOpener {
             }
         }
 
-        if (options.checkCooldown() && plugin.getCooldownManager() != null
+        if ((options.checkCooldown() || def.getNativeDialog() != null) && plugin.getCooldownManager() != null
                 && !plugin.getCooldownManager().tryUse(player, def.getOpenCooldown())) {
             return false;
         }
 
+        com.oreo.bedrock.PaperDialogSender.invalidateNative(player.getUniqueId());
         if (def.getNativeDialog() != null) {
-            // Native dialogs always enforce access, including programmatic navigation.
-            if (!options.checkRequirements()) {
-                for (Condition req : def.getOpenRequirements()) {
-                    if (!req.check(player)) { player.sendMessage(req.getErrorMessage(player)); return false; }
-                }
-            }
             try {
                 com.oreo.bedrock.PaperDialogSender.sendNative(plugin, player, def);
                 String id = def.getId();

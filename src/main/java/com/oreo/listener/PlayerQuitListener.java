@@ -21,6 +21,7 @@ public class PlayerQuitListener implements Listener {
         NavigationManager.clearAll(id);
         PageManager.clearPlayer(id);
         ArgManager.clear(id);
+        com.oreo.bedrock.PaperDialogSender.invalidateNative(id);
 
         if (BottomInventoryService.getInstance().isActive(id)) {
             

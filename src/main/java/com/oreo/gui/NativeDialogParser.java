@@ -64,6 +64,12 @@ final class NativeDialogParser {
             if (map.containsKey("label")) map.put("text", map.get("label"));
             BedrockButton button = parser.loadButton(id, map);
             if (button == null) throw new IllegalArgumentException("Invalid dialog button");
+            if (map.containsKey("conditions") && (!(map.get("conditions") instanceof List<?> conditions)
+                    || button.getConditions().size() != conditions.size()))
+                throw new IllegalArgumentException("Invalid button conditions");
+            if (map.containsKey("actions") && (!(map.get("actions") instanceof List<?> actions)
+                    || button.getActions().size() != actions.size()))
+                throw new IllegalArgumentException("Invalid button actions");
             buttons.add(button);
         }
         if (buttons.isEmpty() || (type.equals("CONFIRMATION") && buttons.size() != 2))

@@ -32,6 +32,12 @@ public final class PaperDialogSender {
     private static final ClickCallback.Options CALLBACK_OPTIONS =
             ClickCallback.Options.builder().uses(ClickCallback.UNLIMITED_USES).build();
 
+    private static final Map<java.util.UUID, java.util.UUID> NATIVE_SESSIONS = new java.util.concurrent.ConcurrentHashMap<>();
+
+    public static void invalidateNative(java.util.UUID playerId) {
+        NATIVE_SESSIONS.remove(playerId);
+    }
+
     public static void sendNative(SmartMenus plugin, Player player, com.oreo.gui.GuiDefinition definition) {
         NativeDialogDefinition config = definition.getNativeDialog();
         DialogInstancesProvider inst = DialogInstancesProvider.instance();
@@ -49,7 +55,7 @@ public final class PaperDialogSender {
             switch (input.getType()) {
                 case INPUT -> {
                     var builder = inst.textBuilder(input.getKey(), label)
-                            .initial(applyPlaceholders(player, input.getDefaultText())).maxLength(input.getMaxLength());
+                            .initial(initialText(player, input)).maxLength(input.getMaxLength());
                     if (config.multilineKeys().contains(input.getKey()))
                         builder.multiline(io.papermc.paper.registry.data.dialog.input.TextDialogInput.MultilineOptions.create(5, 80));
                     inputs.add(builder.build());
@@ -70,22 +76,31 @@ public final class PaperDialogSender {
                 .canCloseWithEscape(config.closeOnEscape()).body(bodies).inputs(inputs);
         if (config.externalTitle() != null) baseBuilder.externalTitle(nativeComponent(player, config.externalTitle()));
         DialogBase base = baseBuilder.build();
-        var used = new java.util.concurrent.atomic.AtomicBoolean();
+        var session = java.util.UUID.randomUUID();
         var sessionArgs = new HashMap<>(ArgManager.getAll(player.getUniqueId()));
         List<ActionButton> buttons = new ArrayList<>();
         for (BedrockButton button : config.buttons()) {
             buttons.add(ActionButton.builder(nativeComponent(player, button.getText()))
                     .action(DialogAction.customClick((response, audience) -> onAudiencePlayer(audience, p -> {
-                        if (!p.getUniqueId().equals(player.getUniqueId()) || !used.compareAndSet(false, true)) return;
+                        if (!p.getUniqueId().equals(player.getUniqueId()) || !NATIVE_SESSIONS.remove(p.getUniqueId(), session)) return;
                         Map<String, String> values = new HashMap<>(sessionArgs);
                         try {
-                            for (BedrockFormInput input : config.inputs()) values.put(input.getKey(), validatedValue(input, response));
+                            for (BedrockFormInput input : config.inputs()) {
+                                String value = validatedValue(input, response);
+                                if (input.getType() == BedrockFormInput.InputType.INPUT) {
+                                    long lines = value.lines().count();
+                                    if (config.multilineKeys().contains(input.getKey()) ? lines > 5 : value.indexOf('\n') >= 0 || value.indexOf('\r') >= 0)
+                                        throw new IllegalArgumentException("Invalid line count");
+                                }
+                                values.put(input.getKey(), value);
+                            }
                         } catch (RuntimeException e) {
                             p.sendMessage("Invalid dialog response.");
                             return;
                         }
                         com.oreo.util.SmartScheduler.runTaskForPlayer(plugin, p, () -> {
                             if (!p.isOnline() || plugin.getGuiRegistry().getGui(definition.getId()) != definition
+                                    || NATIVE_SESSIONS.containsKey(p.getUniqueId())
                                     || !definition.getId().equals(com.oreo.gui.NavigationManager.peekCurrent(p.getUniqueId()))) return;
                             try {
                                 for (var requirement : definition.getOpenRequirements()) {
@@ -109,7 +124,18 @@ public final class PaperDialogSender {
             else builder.type(inst.multiAction(buttons).columns(config.columns()).build());
         });
         player.closeInventory();
-        showDialog(player, dialog);
+        NATIVE_SESSIONS.put(player.getUniqueId(), session);
+        try {
+            showDialog(player, dialog);
+        } catch (RuntimeException | LinkageError e) {
+            NATIVE_SESSIONS.remove(player.getUniqueId(), session);
+            throw e;
+        }
+    }
+
+    private static String initialText(Player player, BedrockFormInput input) {
+        String text = applyPlaceholders(player, input.getDefaultText().replace("{player}", player.getName()));
+        return text.length() <= input.getMaxLength() ? text : text.substring(0, input.getMaxLength());
     }
 
     private static Component nativeComponent(Player player, String value) {
